@@ -1636,6 +1636,8 @@ jquery ajax 跨越 jsonp
 
 [前端常用数据类型转换](https://juejin.im/post/5c00e8a66fb9a049db72dbd0)
 
+[js算法数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
+
 ### 书籍
 
 深入浅出node js
@@ -2772,6 +2774,10 @@ Guid id = list.ID;
 ### 问题
 
 启动流程超时，流程操作超时： 服务器流程服务问题
+
+## Azure
+
+
 
 ## 浏览器
 
