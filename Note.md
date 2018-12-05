@@ -1550,6 +1550,8 @@ Cannot GET /CalloutNestedExample
 
 [webpart实现js包](https://juejin.im/post/5bfca0e8f265da611204b3ca)
 
+[webpack详解](https://github.com/ruizeng/blog/blob/master/Frontend/dive-into-webpack/article.md?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
 #### Gulp
 
 [文件匹配规则](http://www.siyuweb.com/gulp/3207.html)
@@ -1637,6 +1639,8 @@ jquery ajax 跨越 jsonp
 [前端常用数据类型转换](https://juejin.im/post/5c00e8a66fb9a049db72dbd0)
 
 [js算法数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
+
+[用JS写一个JS解释器](https://segmentfault.com/a/1190000017241258)
 
 ### 书籍
 
@@ -2510,7 +2514,7 @@ C#组件
 
 webpart属性设置可以设置参数
 
-#### jsom
+#### Jsom
 
 ##### 前置
 
@@ -2571,6 +2575,10 @@ http://ramdotnetdeveloper.blogspot.com/2017/07/to-get-file-and-folder-from-docum
 
 [Working with the ECMAScript Client Object Model (JSOM) in SharePoint 2010](https://docs.microsoft.com/de-de/previous-versions/office/developer/sharepoint-2010/hh372944(v=office.14))
 
+[Top 51 JSOM SharePoint Examples ](https://www.sharepointsky.com/jsom-sharepoint/)
+
+[SharePoint Online: JSOM Examples](http://www.migee.com/2016/03/20/sharepoint-online-jsom-examples/#SPWebPerms)
+
 ##### 错误信息
 
 mException from HRESULT: 0x80131904，有以下可能	
@@ -2593,7 +2601,7 @@ i.$m_dict.xxxxx
 
 
 
-#### rest api
+#### Rest api
 
 ##### 主要事项
 
@@ -2621,6 +2629,8 @@ https://blog.csdn.net/abrahamcheng/article/details/12612455)
 [rest上传文件 ](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/upload-a-file-by-using-the-rest-api-and-jquery)
 
 [rest api 更新文档库的列表项会不同](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html)
+
+[How to Check User Permission in SharePoint 2013 Using REST API](https://www.c-sharpcorner.com/UploadFile/sagarp/how-to-check-user-permission-in-sharepoint-2013-using-rest-a/)
 
 ##### 库
 
@@ -2855,6 +2865,8 @@ display:none;
 
 
 花了比较多时间写的东西都用邮件的形式发出，抄送相关人员，并且写明需要测试的点、副作用和可能影响的地方
+
+代码修改记录，校对；正式环境慎重更新
 
 ### 沟通
 
