@@ -2693,9 +2693,19 @@ rowlimit 返回的记录条数，默认为100，如果不需要限制，将值�
 
 ##### 指定文件夹
 
+```c#
 query.Folder = docLib.RootFolder.SubFolders["system"];
+```
+
+```javascript
+camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需包含站点
+```
+
+
 
 ##### 文章
+
+[列表查询中的阈值限制](http://www.myexception.org/sharepoint/1905232.html)
 
 [caml groupby](https://piyushksingh.com/2016/11/21/retrieve-grouped-listitems-sharepoint/)
 
@@ -2724,6 +2734,10 @@ query.Folder = docLib.RootFolder.SubFolders["system"];
 [caml查询 Sharepoint文档的CAML分页及相关筛选记录](https://www.cnblogs.com/poissonnotes/p/3494439.html)
 
 [caml一些使用，关键词](https://www.cnblogs.com/carysun/archive/2011/01/12/moss-caml.html)
+
+[SharePoint服务器端对象模型 之 使用CAML进行数据查询](https://www.cnblogs.com/liyuxin/p/5575950.html)
+
+[官方文档](https://docs.microsoft.com/zh-CN/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas)
 
 #### 分页
 
