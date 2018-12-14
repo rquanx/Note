@@ -1310,6 +1310,8 @@ this.props.children属性。它表示组件的所有子节点
 [Airbnb React/JSX 代码规范](https://github.com/BingKui/javascript-zh/tree/master/react)
 [Airbnb JS 规范](https://github.com/BingKui/javascript-zh)
 
+[React 项目构建与开发入门](https://icepy.gitbook.io/simple-react-book/)
+
 ##### Redux
 
 ###### 文章
@@ -2081,14 +2083,16 @@ from SalesIndexInfo as a where ID=871
 
 ### VSCode
 
-### 快捷键
+#### 快捷键
 
 ctrl + D 往下选中匹配项
 alt + shift + 鼠标选中 列选择
 
-### 插件
+#### 插件
 
 [插件](https://medium.com/@wesharehoodies/immensely-upgrade-your-development-environment-with-these-visual-studio-code-extensions-9cd790478530)
+
+[VS Code插件](https://segmentfault.com/a/1190000017339754)
 
 ### Visual Studio
 
@@ -2444,6 +2448,11 @@ everyone: 表示所有账号		默认隐藏？所以查找不出来，要实际�
 
 日志路径：C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\LOGS
 ULSViewe-log工具	查看工具
+
+#### 权限
+
+可对Item项设置权限
+流程可以设置item权限
 
 ### 特性
 
@@ -2809,7 +2818,7 @@ Guid id = list.ID;
 
 ### Chrome
 
-### 调试
+#### 调试
 
 #### 操作
 
@@ -2817,6 +2826,10 @@ Guid id = list.ID;
 
 颜色选择器
 当我们在样式编辑器中选择一种颜色时，你可以点击颜色预览，颜色选择器就会弹出。
+
+
+
+console.table()将数据以一个漂亮的表格的形式打印出来
 
 #### 快捷键
 
@@ -2833,7 +2846,7 @@ Guid id = list.ID;
 - $$() : document.querySelectorAll()的缩写，返回一个数组，里面是与之匹配的CSS选择器的元素。
 - $0?$4 : 依次返回五个最近你在元素面板选择过的DOM元素的历史记录，$0是最新的记录，以此类推。
 
-### 杂
+#### 杂
 
 chrome设置的默认语言与程序多语言冲突问题
 
