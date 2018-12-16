@@ -466,17 +466,33 @@ var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
 管理URL对象,读取，改变，跳转
 
 - .host	主机地址	xxx.xxx.com
+
 - .href		url
+
 - .port		读取或修改访问端口
+
 - .protocol		协议
+
 - .search	修改或取得？和之后的参数信息
+
 - .reload()		刷新(可能会读缓存)，给一个参数true会刷新缓存
+
 - .replace(url)	页面替换，跳转但不会产生记录
+
 - .assign(url)     打开新的url
+
   - location.href = url,window.location = url   都回调用assign 
+
 - .hash            最后追加/xxx。不重新加载页面，会产生新的历史记录
+
 - .hostname      读取或修改  www--com这段
+
 - .pathname     读取或修改com后的/xx
+
+##### 应用
+
+[[535种使用JavaScript重新加载页面的方法](https://segmentfault.com/a/1190000017376047)](https://segmentfault.com/a/1190000017376047?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com&share_user=1030000000178452)
+
 
 ##### Navigator
 
@@ -2075,6 +2091,8 @@ from SalesIndexInfo as a where ID=871
 
 [编程论文](https://github.com/zziz/pwc)
 
+[The Book of Secret](https://github.com/trimstray/the-book-of-secret-knowledge)
+
 # 软件\工具
 
 ## 编辑器
@@ -2402,9 +2420,17 @@ ValidationGroup指定验证组，并在流程设置好，可只在指定流程�
 
 ```
 
-## SharePoint
+## 微软开发
 
-### 开发框架
+### 总览
+
+#### 文档
+
+[微软Office开发文档](https://developer.microsoft.com/zh-CN/office/docs)
+
+### SharePoint
+
+#### 开发框架
 
 ##### SharePointFrameWork
 
@@ -2424,34 +2450,34 @@ https://rencore.com/blog/sharepoint-framework-webinar-qa-follow-part-1-sharepoin
 https://github.com/SharePoint/sp-dev-fx-webparts)
 [modern web stack](https://github.com/SharePoint/sp-dev-samples/tree/dev )
 
-### 操作、知识点
+#### 操作、知识点
 
-#### sharepoint文件批量下载、获取
+##### sharepoint文件批量下载、获取
 
 在文件夹中输入网页地址能直接访问sharepoint文件夹
 
-#### 隐藏用户表,用户信息表
+##### 隐藏用户表,用户信息表
 
 http://192.168.20.40:8091/sites/rgciland/_catalogs/users/simple.aspx
 /_catalogs/users/simple.aspx
 
-#### 隐藏账号
+##### 隐藏账号
 
 everyone: 表示所有账号		默认隐藏？所以查找不出来，要实际查找点击一次才会出来
 ​	默认ID 13？
 
-#### 日志
+##### 日志
 
 日志路径：C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\LOGS
 ULSViewe-log工具	查看工具
 
-### 特性
+#### 特性
 
-#### 阈值
+##### 阈值
 
 [说明](https://blog.csdn.net/shrenk/article/details/39217223)
 
-##### 通过索引列避免
+###### 通过索引列避免
 
 索引列：  可以通过索引列进行多数据操作，查询，但是结果返回值不能超过阈值
 非索引列：只要数据量超过阈值就不能进行操作
@@ -2459,35 +2485,45 @@ ULSViewe-log工具	查看工具
 筛选条件含有索引列后，只要通过索引列查询的最大数不超过阈值，可以添加其他非索引列的字段筛选
 单个索引列筛选超过阈值时，可通过多个索引列组合筛选，只有一个索引列通过多次caml联合减少查询亦可
 
-##### 使用文件夹分割
+###### 使用文件夹分割
 
-#### 限制
+##### 限制
 
-##### 文件名符号限制
+###### 文件名符号限制
 
-##### 文件名长度限制
+###### 文件名长度限制
 
 url最长为260？
 
-### 开发
 
-#### 用户
+
+
+
+  [sharepoint 阈值查询](https://social.msdn.microsoft.com/Forums/sharepoint/en-US/db54d1c7-e19b-414d-84b9-d6c22ea3b676/how-can-i-overcome-limitations-of-list-view-threshold-when-querying-sharepoint-2013-online)
+
+[sharepoint阈值说明](https://www.abelsolutions.com/working-with-list-view-thresholds-in-sharepoint/)
+
+sql查询超过5000条的时候会锁定整张表  
+
+#### 开发
+
+##### 用户
 
 用户组和用户的lookupid应该是公用一个计数，不会重叠
 
-#### List
+##### List
 
-##### 权限
+###### 权限
 
 不同用户查询列表时结果不同,权限问题
 
 
 
-##### 文档库
+###### 文档库
 
 文档库文件fileref字段是包含当前站点的，除顶层站点外
 
-##### Item
+###### Item
 
 字段含有内部名称和显示名称
 
@@ -2499,24 +2535,24 @@ lookup值如果当文本读取的话是id+姓名；可以这样检索到
 
 
 
-##### 版本控制
+###### 版本控制
 
 连续更新数据时，由于隐藏的xxxx,会认为时旧版本，产生版本冲突，不能更新
 ​	解决方法，重新获取context
 
-#### Designer
+##### Designer
 
 通过站点连接进入可进入对应的站点文档库中操作
 
-#### Webpart
+##### Webpart
 
 C#组件
 
 webpart属性设置可以设置参数
 
-#### Jsom
+##### Jsom
 
-##### 前置
+###### 前置
 
 sp.js和sp.runtime.js, 其位于_layouts/15/###.js下
 
@@ -2540,11 +2576,11 @@ microsoftajax.js
 
 
 
-##### 参数相关
+###### 参数相关
 
 单个文件上传不能超过2M
 
-##### 相关文章
+###### 相关文章
 
 [jsom操作示例](http://www.thesharepointguide.com/sharepoint-javascript/#userperms)
 
@@ -2579,7 +2615,7 @@ http://ramdotnetdeveloper.blogspot.com/2017/07/to-get-file-and-folder-from-docum
 
 [SharePoint Online: JSOM Examples](http://www.migee.com/2016/03/20/sharepoint-online-jsom-examples/#SPWebPerms)
 
-##### 错误信息
+###### 错误信息
 
 mException from HRESULT: 0x80131904，有以下可能	
 
@@ -2587,7 +2623,7 @@ mException from HRESULT: 0x80131904，有以下可能
 
 
 
-##### 示例
+###### 示例
 
 ```javascript
 // 读取文档库
@@ -2601,17 +2637,17 @@ i.$m_dict.xxxxx
 
 
 
-#### Rest api
+##### Rest api
 
-##### 主要事项
+###### 主要事项
 
 rest api 更新时字段内容不能含有"\\"  转义字符
 
-##### 参数相关
+###### 参数相关
 
 REST最大上传文件2G
 
-##### 文章
+###### 文章
 
 [rest api odata](https://docs.microsoft.com/zh-cn/previous-versions/dynamicscrm-2015/developers-guide/gg490659(v%3dcrm.7))
 
@@ -2632,31 +2668,31 @@ https://blog.csdn.net/abrahamcheng/article/details/12612455)
 
 [How to Check User Permission in SharePoint 2013 Using REST API](https://www.c-sharpcorner.com/UploadFile/sagarp/how-to-check-user-permission-in-sharepoint-2013-using-rest-a/)
 
-##### 库
+###### 库
 
 [pnpjs](https://github.com/pnp/pnpjs)
 [pnpjs io](https://pnp.github.io/pnpjs/)	
 
-#### Csom
+##### Csom
 
-##### UpdateItem
+###### UpdateItem
 
 更新前的设置操作必须连续
 
-##### 批量操作
+###### 批量操作
 
 csom可以批量修改,并且跨表修改也可以
 当只修改一个表时，在update时就会马上更新，
 但是马上去修改另一个表的话，执行完update()并不会马上生效
 最后调用exectquery()可以确保数据更新
 
-#### Caml
+##### Caml
 
-##### 排序
+###### 排序
 
 查询条件中每个字段按照排列的顺序依次为首要查询条件、次要查询条件、第三查询条件
 
-```xml
+```
 
 
   
@@ -2665,11 +2701,7 @@ csom可以批量修改,并且跨表修改也可以
 
 ```
 
-
-
-##### 限制、注意点
-
-##### 嵌套
+###### 嵌套
 
 嵌套层数不能超过160！===> 最多2^160的条件
 
@@ -2683,15 +2715,15 @@ in条件内部超过500不行 	   in可以查lookup
 
 [caml datetime处理，搜索对比](http://www.cnblogs.com/qijiage/p/4059462.html)
 
-##### 查阅项数组
+###### 查阅项数组
 
 对于多选查阅项和多选用户也应使用Eq操作符
 
-###### RowLimit数量
+####### RowLimit数量
 
 rowlimit 返回的记录条数，默认为100，如果不需要限制，将值设为0
 
-##### 指定文件夹
+###### 指定文件夹
 
 ```c#
 query.Folder = docLib.RootFolder.SubFolders["system"];
@@ -2703,7 +2735,7 @@ camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需�
 
 
 
-##### 文章
+###### 文章
 
 [列表查询中的阈值限制](http://www.myexception.org/sharepoint/1905232.html)
 
@@ -2739,19 +2771,19 @@ camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需�
 
 [官方文档](https://docs.microsoft.com/zh-CN/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas)
 
-#### 分页
+##### 分页
 
 [分页](https://code.msdn.microsoft.com/SharePoint-JSOM-list-5104ca92)
 
 下一页的pageinfo可以通过collListItem.get_listItemCollectionPosition().get_pagingInfo()直接获取
 
-##### 排序
+###### 排序
 
 sharepoint分页排序与不排序只差了查询条件和在pageinfo中的排序字段信息
 
 如果有多个排序则继续按相应的格式进行拼接
 
-##### 示例
+###### 示例
 
 ```javascript
 var nextPageInfo = "Paged=TRUE&p_ID=218"
@@ -2771,15 +2803,15 @@ Guid id = list.ID;
 
 
 
-#### 插件
+##### 插件
 
 [sharepoint Dialog](https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ff410058(v=office.14))
 
 
 
-### 杂
+#### 杂
 
-#### 博客
+##### 博客
 
 [sharepoint blog](https://piyushksingh.com/category/sharepoint-online/)
 
@@ -2787,19 +2819,19 @@ Guid id = list.ID;
 
 
 
-#### 文章
+##### 文章
 
 [列表权限设置只控制自己创建的](https://sharepointmaven.com/how-to-enable-item-level-permissions-in-sharepoint/)
 
-#### 论坛
+##### 论坛
 
 [论坛sharepoint板块](https://sharepoint.stackexchange.com/)
 
-### 问题
+#### 问题
 
 启动流程超时，流程操作超时： 服务器流程服务问题
 
-## Azure
+### Azure
 
 
 
