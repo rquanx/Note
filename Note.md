@@ -1610,6 +1610,8 @@ babel只转换语法不转换api   如：map,set,object.assign
 
 Test.assertEquals(hello(), "hello edabit.com", "Did you *return* the result?");
 
+[前端单元测试探索](https://github.com/ecmadao/Coding-Guide/blob/master/Notes/UnitTest/%E5%89%8D%E7%AB%AF%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%8E%A2%E7%B4%A2.md)
+
 ### 库
 
 #### Ajax异步请求库
@@ -2060,6 +2062,10 @@ from SalesIndexInfo as a where ID=871
 
 
 ## 系统
+
+## 安全
+
+[安全技术精粹](https://paper.seebug.org/)
 
 ## 杂
 
