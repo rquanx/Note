@@ -27,6 +27,8 @@ var s2 = s.xxxx();
 2、在实例上调用函数
 3、销毁实例
 */
+
+// 语法错误会可能导致整段代码无法运行
 ```
 
 ##### number
@@ -1277,6 +1279,23 @@ https://www.cnblogs.com/mianbaodaxia/p/6170726.html
 
 [react 16后生命周期](https://blog.hhking.cn/2018/09/18/react-lifecycle-change/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
+##### Context
+
+组件间隔层传递数据，全局，但是需要通过provider和consumer来使用
+​	例如将某个组件的状态属性和状态更新函数传递给某个子组件
+
+```javascript
+// provide  
+var value = {  data: "a" , changeData: () => { xxx } }
+// consumer  
+this.context.changeData();
+```
+[context](https://www.cnblogs.com/mengff/p/9511419.html)
+
+##### Protal
+
+将组件render到悬浮最顶层，常用为dialog
+
 ##### 小知识点
 
 ###### refs
@@ -1419,7 +1438,7 @@ svg
 
 ​	api	onrenderSuccess
 
-
+[React实现全局组件：Toast轻提示](https://segmentfault.com/a/1190000016473517)
 
 #### Angular
 
@@ -2168,6 +2187,8 @@ c + s + f  微软输入法切换繁体
 
 ins键   insert   切换输入的插入或覆盖模式
 
+ctrl + alt + 方向键 屏幕旋转
+
 
 
 #### 优化
@@ -2602,9 +2623,6 @@ microsoftajax.js
 
 ```html
 
-
-
-
 ```
 
 ```javascript
@@ -2729,14 +2747,6 @@ csom可以批量修改,并且跨表修改也可以
 
 查询条件中每个字段按照排列的顺序依次为首要查询条件、次要查询条件、第三查询条件
 
-```
-
-
-  
-  
-
-
-```
 
 ###### 嵌套
 
@@ -2808,6 +2818,17 @@ camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需�
 
 [官方文档](https://docs.microsoft.com/zh-CN/sharepoint/dev/schema/collaborative-application-markup-language-caml-schemas)
 
+###### 阈值查询
+
+  caml设置路径后不要RecursiveAll
+时间索引可用来筛选
+
+ContentType可以设置索引，区分文件夹
+filedirref不能加索引，也不能作索引进行查询
+
+In可以用于索引筛选
+lookup value不能被索引到  
+
 ##### 分页
 
 [分页](https://code.msdn.microsoft.com/SharePoint-JSOM-list-5104ca92)
@@ -2872,7 +2893,9 @@ Guid id = list.ID;
 
 ### Azure
 
+### O365
 
+[exchange头像上传问题,备份](http://techgenix.com/user-photo-exchange-lync-and-active-directory/)
 
 ## 浏览器
 
