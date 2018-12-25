@@ -2820,7 +2820,7 @@ camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需�
 
 ###### 阈值查询
 
-  caml设置路径后不要RecursiveAll
+  caml设置路径后不要RecursiveAll和Recursive
 时间索引可用来筛选
 
 ContentType可以设置索引，区分文件夹
