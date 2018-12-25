@@ -650,6 +650,8 @@ vo顺序
 函数声明
 变量声明
 
+[javascript 从定义到执行，你不知道的那些事](http://www.webhek.com/post/javascript-from-define-to-execute.html)
+
 ### JS应用
 
 #### 拦截注入JS
@@ -724,6 +726,10 @@ window.onload =  function () {
 
 [js获取object标签对象失败](https://haizhiyan.iteye.com/blog/1262351)
 ​	被包裹在form标签内，不能直接读取，只能通过dom api拿到元素，一样
+
+#### 复制粘贴
+
+[Javascript中的复制粘贴功能](http://blog.poetries.top/2018/12/23/js-copy/?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com)
 
 ### TypeScript
 
@@ -1295,6 +1301,13 @@ this.context.changeData();
 ##### Protal
 
 将组件render到悬浮最顶层，常用为dialog
+
+##### Hook
+
+usestate
+usecontext
+useeffect
+​	返回函数在unmount调用？？
 
 ##### 小知识点
 
@@ -2199,6 +2212,8 @@ ctrl + alt + 方向键 屏幕旋转
 
 ### Github
 
+[Git的奇技淫巧--操作指令](https://github.com/521xueweihan/git-tips)
+
 ### Svn
 
 #### 新建分支
@@ -2477,6 +2492,10 @@ ValidationGroup指定验证组，并在流程设置好，可只在指定流程�
 [微软Office开发文档](https://developer.microsoft.com/zh-CN/office/docs)
 
 ### SharePoint
+
+#### 页面
+
+考勤默认页面文字， 编辑页面->编辑属性->页面内容->编辑源...
 
 #### 开发框架
 
