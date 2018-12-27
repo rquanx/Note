@@ -1,4 +1,4 @@
-原型/事件/闭包/Promise/ES6/HTTP协议
+# 原型/事件/闭包/Promise/ES6/HTTP协议
 
 ...结构
 
@@ -14,3 +14,4 @@ rest 参数
 
 Promise
 
+[下载](https://www.gratisexam.com/microsoft/70-347-exam/)
