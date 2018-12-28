@@ -2608,7 +2608,8 @@ ULSViewe-log工具	查看工具
 非索引列：只要数据量超过阈值就不能进行操作
 
 筛选条件含有索引列后，只要通过索引列查询的最大数不超过阈值，可以添加其他非索引列的字段筛选
-单个索引列筛选超过阈值时，可通过多个索引列组合筛选，只有一个索引列通过多次caml联合减少查询亦可
+单个索引列筛选超过阈值时，可通过设置符合索引列组合筛选，只有一个索引列通过多次caml联合减少查询亦可
+​	当两个非复合索引进行and查询时，先根据一个索引返回，再在返回的数据里进行另一个字段的筛选
 
 ###### 使用文件夹分割
 
@@ -2891,7 +2892,7 @@ camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需�
 
 ###### 阈值查询
 
-  caml设置路径后不要RecursiveAll和Recursive
+  caml设置路径后可以RecursiveAll和Recursive，在指定路径下进行
 时间索引可用来筛选
 
 ContentType可以设置索引，区分文件夹

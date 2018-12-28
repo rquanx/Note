@@ -14,4 +14,18 @@ rest 参数
 
 Promise
 
-[下载](https://www.gratisexam.com/microsoft/70-347-exam/)
+[前端开发工具](https://segmentfault.com/a/1190000017515552)
+
+uipath
+
+
+
+[whistle](https://cloud.tencent.com/developer/article/1334698)
+
+[web指南](https://segmentfault.com/a/1190000017525953)
+
+[http](https://segmentfault.com/a/1190000017514417)
+
+[理解响应式编程和RxJS](https://www.jianshu.com/p/4244e527c838)
+
+caml查询顺序从上到下？
