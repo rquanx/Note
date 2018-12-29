@@ -28,4 +28,4 @@ uipath
 
 [理解响应式编程和RxJS](https://www.jianshu.com/p/4244e527c838)
 
-caml查询顺序从上到下？
+caml查询第一个条件必须筛选到阈值以下？
