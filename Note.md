@@ -3091,3 +3091,7 @@ display:none;
 ##### 切换地区
 
 苹果账号地区	上官网设置即可切换地区 
+
+## 资源
+
+[资源下载](https://www.gratisexam.com/microsoft/70-347-exam/)

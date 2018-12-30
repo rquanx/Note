@@ -13,5 +13,3 @@ rest 参数
 模块化
 
 Promise
-
-[下载](https://www.gratisexam.com/microsoft/70-347-exam/)
