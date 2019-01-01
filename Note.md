@@ -439,6 +439,7 @@ m多行
   Promise 只能 resolve 一次，剩下的调用都会被忽略。 所以 第二次的 resolve('success2'); 也不会有作用。
 - Promise.resolve 方法的参数如果是一个原始值，或者是一个不具有 then 方法的对象，则 Promise.resolve 方法返回一个新的 Promise 对象，状态为resolved，Promise.resolve 方法的参数，会同时传给回调函数。
 - then 方法接受的参数是函数，而如果传递的并非是一个函数，它实际上会将其解释为 then(null)，这就会导致前一个 Promise 的结果会穿透下面（即使是promise对象也不行）
+- fanilly会返回上一个promise的值包装成的新promise，并且finally也不接收参数，上一个参数传递到下一步去
 
 #### Json
 
@@ -629,6 +630,10 @@ fetch(url, options)
 
 #### 跨域
 
+### 事件模型
+
+微任务优先于宏任务执行？
+
 ### JS编写规范
 
 #### 三目运算符
@@ -744,9 +749,15 @@ window.onload =  function () {
 
 [图片简介和前端图片优化](https://segmentfault.com/a/1190000017481260)
 
+[js压缩](https://www.cnblogs.com/007sx/p/7583202.html)
+
 #### js可视化
 
 [可视化js运行](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
+
+#### 常用技巧
+
+[前端常用数据类型转换](https://juejin.im/post/5c00e8a66fb9a049db72dbd0)
 
 ### TypeScript
 
@@ -1683,9 +1694,31 @@ jquery ajax 跨越 jsonp
 
 [Rex](https://areknawo.github.io/Rex/#/)
 
-#### lodash     
+#### lodash
 
 通用功能库
+
+#### revealjs
+
+md或html生成ppt
+
+[https://revealjs.com](https://revealjs.com/)
+
+#### Codelf
+
+[Codelf(变量命名神器)](https://github.com/unbug/codelf)
+
+#### whistle
+
+基于Node实现的跨平台抓包调试代理工具
+
+[whistle](https://cloud.tencent.com/developer/article/1334698)
+
+#### RXJS
+
+
+
+[理解响应式编程和RxJS](https://www.jianshu.com/p/4244e527c838)
 
 ### 文章
 
@@ -1699,19 +1732,21 @@ jquery ajax 跨越 jsonp
 
 [promise细节(题目)](https://juejin.im/post/5bd697cfe51d454c791cd1d5)
 
-[js压缩](https://www.cnblogs.com/007sx/p/7583202.html)
+##### 小工具
+
+[前端开发工具](https://segmentfault.com/a/1190000017515552)
+
+###### 杂
 
 [框架说明](https://www.jianshu.com/p/aa733914c65d)
 
- [布局](https://juejin.im/user/5930c4382f301e006bd42795/posts)
-
-[react折腾](https://juejin.im/user/575ebdbd5bbb5000638173fb/posts)
-
-[react折腾](https://juejin.im/post/5bcc104ce51d450e543edd70)
-
 [前端数据驱动的框架之下，我们不得不掌握的数据处理方法（一）](https://juejin.im/post/5bcc730ff265da0ad13bb60f  )
 
-[前端常用数据类型转换](https://juejin.im/post/5c00e8a66fb9a049db72dbd0)
+ [布局博客](https://juejin.im/user/5930c4382f301e006bd42795/posts)
+
+[react折腾博客](https://juejin.im/user/575ebdbd5bbb5000638173fb/posts)
+
+[react折腾](https://juejin.im/post/5bcc104ce51d450e543edd70)
 
 [js算法数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
 
@@ -1733,6 +1768,9 @@ JavaScript权威指南
 
 H5 匠人手册
 Web测试囧事
+Speaking JavaScript
+精通CSS
+CSS Secrets
 
 ### 站点
 
@@ -2111,6 +2149,10 @@ from SalesIndexInfo as a where ID=871
 - 500 表示服务器端在执行请求时发生了错误。也有可能是Web应用存在的bug或某些临时的故障。
 
 - 503 表示服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。
+
+### 文章
+
+[http](https://segmentfault.com/a/1190000017514417)
 
 ## 数据结构
 
@@ -2892,7 +2934,9 @@ camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需�
 
 ###### 阈值查询
 
-  caml设置路径后可以RecursiveAll和Recursive，在指定路径下进行
+ caml查询第一个条件必须筛选到阈值以下(复合索引未知)
+
+caml设置路径后可以RecursiveAll和Recursive，在指定路径下进行
 时间索引可用来筛选
 
 ContentType可以设置索引，区分文件夹
@@ -2975,7 +3019,7 @@ Guid id = list.ID;
 
 #### 调试
 
-#### 操作
+##### 操作
 
 勾选在Console标签下的保存日志选项，你可以使DevTools的console继续保存日志而不会在每个页面加载之后清除日志。
 
@@ -2986,7 +3030,7 @@ Guid id = list.ID;
 
 console.table()将数据以一个漂亮的表格的形式打印出来
 
-#### 快捷键
+##### 快捷键
 
 - ctrl+p 项目中定位文件
 - Ctrl + Shift + F   代码搜索
@@ -2995,11 +3039,25 @@ console.table()将数据以一个漂亮的表格的形式打印出来
 
 
 
-#### 元素选择
+##### 元素选择
 
 - $() : document.querySelector()的缩写，返回第一个与之匹配的CSS选择器的元素(例如：$('div') 它将返回本页的第一个div元素)。
+
 - $$() : document.querySelectorAll()的缩写，返回一个数组，里面是与之匹配的CSS选择器的元素。
+
 - $0?$4 : 依次返回五个最近你在元素面板选择过的DOM元素的历史记录，$0是最新的记录，以此类推。
+
+##### 功能
+
+###### 代码片段
+
+  保存代码片段随时可用
+
+  chrome=> source => snip
+
+###### 编辑
+
+拖动文件到chrome调试器，可以同步修改文件，   内置于编辑器
 
 #### 杂
 
