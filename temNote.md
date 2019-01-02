@@ -26,8 +26,21 @@ dart
 
 [webapi-rest-odata](https://www.cnblogs.com/fzrain/p/3688439.html)
 
-var a = { b,c }
+\__proto__  原型链属性,指向原型
+​	修改\__proto__对象的属性
+​	所有对象都有
 
-export default a;
+prototype
 
-import 
+```javascript
+new F().__proto__ === F.prototype
+```
+
+​	构造函数的prototype指向原型
+​	构造函数，函数才有
+
+[2018年你应该知道的 15个 JavaScript 实用程序库](https://www.css88.com/archives/9631)
+
+[momentjs](http://momentjs.com/)
+
+[可视化rx.js](https://reactive.how/)
