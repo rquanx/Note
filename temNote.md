@@ -24,7 +24,6 @@ dart
 
 [webapi-rest-odata](https://www.cnblogs.com/fzrain/p/3688439.html)
 
-<<<<<<< HEAD
 
 
 代码规范
@@ -43,7 +42,6 @@ var s = "start " + b + " end";  ==> var s = \`start ${b} end`
 
 ### Workflows can use app permissions   active
 
-=======
 \__proto__  原型链属性,指向原型
 ​	修改\__proto__对象的属性
 ​	所有对象都有
@@ -62,4 +60,3 @@ new F().__proto__ === F.prototype
 [momentjs](http://momentjs.com/)
 
 [可视化rx.js](https://reactive.how/)
->>>>>>> 9482c8bb73441ed6e54de5f6433894ee3d6f6441
