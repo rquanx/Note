@@ -14,8 +14,6 @@ rest 参数
 
 Promise
 
-[前端开发工具](https://segmentfault.com/a/1190000017515552)
-
 uipath
 
 [whistle，http调试，抓包，待看](https://cloud.tencent.com/developer/article/1334698)
@@ -26,8 +24,21 @@ dart
 
 [webapi-rest-odata](https://www.cnblogs.com/fzrain/p/3688439.html)
 
-var a = { b,c }
 
-export default a;
 
-import 
+代码规范
+
+命名
+
+
+
+编码
+
+字符串拼接
+
+var s = "start " + b + " end";  ==> var s = \`start ${b} end`
+
+
+
+### Workflows can use app permissions   active
+
