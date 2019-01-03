@@ -2304,6 +2304,20 @@ ctrl + alt + 方向键 屏幕旋转
 
 ### Github
 
+#### 编程
+
+```bash
+for i in */.git; 
+	do 
+		( echo $i; cd $i/..; git pull;); 
+	done
+# 遍历当前文件夹下的.git ，进行git pull;
+```
+
+
+
+#### 库
+
 [Git的奇技淫巧--操作指令](https://github.com/521xueweihan/git-tips)
 
 ### Svn
