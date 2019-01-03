@@ -12,6 +12,10 @@
 
 ### 基本语法
 
+#### 简介
+
+ES2015（ES6）
+
 #### 基本类型
 
 ##### 概述
@@ -226,6 +230,21 @@ var obj = {
 ES5：
 通过xx.property.x = xx   定义的属性是所有实例共享的
 ​	如果实例重新设置可以屏蔽原型的属性，但如果是引用值,修改它的内容会影响所有的实例
+
+
+
+\__proto__  原型链属性,指向原型
+​	修改\__proto__对象的属性
+​	所有对象都有
+
+prototype
+
+```javascript
+new F().__proto__ === F.prototype
+```
+
+​	构造函数的prototype指向原型
+​	构造函数，函数才有
 
 #### 原型链
 
@@ -797,6 +816,12 @@ tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示
 
 [import默认文件](https://www.cnblogs.com/goloving/p/8889585.html)
 
+### 文章
+
+[前端基础进阶系列，只看原型](https://www.jianshu.com/p/cd3fee40ef59)
+
+
+
 ## HTML
 
 ### 概述
@@ -878,6 +903,10 @@ alt属性：规定在图像无法显示时的替代文本
 #### IFrame
 
 跨域iframe不能被父窗口操作
+
+#### Meta
+
+[能够放在文档的 <head> 中的各种配置元素](https://www.awesomes.cn/repo/joshbuchea/head)
 
 ### 通用属性
 
@@ -1716,9 +1745,11 @@ md或html生成ppt
 
 #### RXJS
 
-
-
 [理解响应式编程和RxJS](https://www.jianshu.com/p/4244e527c838)
+
+#### moment
+
+[momentjs](http://momentjs.com/)
 
 ### 文章
 
@@ -1773,6 +1804,8 @@ Speaking JavaScript
 CSS Secrets
 
 ### 站点
+
+[](http://scriptoj.mangojuice.top/problems?tag=all)
 
 [js,html,json美化  格式化](https://beautifier.io/)
 
@@ -2307,11 +2340,17 @@ ctrl + alt + 方向键 屏幕旋转
 #### 编程
 
 ```bash
+# 遍历当前文件夹下的.git ，进行git pull;
 for i in */.git; 
 	do 
 		( echo $i; cd $i/..; git pull;); 
 	done
-# 遍历当前文件夹下的.git ，进行git pull;
+
+
+# 提交
+git add -A; 
+git commit -m "commit message"; 
+git push
 ```
 
 
@@ -2995,7 +3034,11 @@ Guid id = list.ID;
 
 [sharepoint Dialog](https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ff410058(v=office.14))
 
+##### 流程
 
+
+
+启动Workflows can use app permissions   active  服务才能让管理员启动流程
 
 #### 杂
 
