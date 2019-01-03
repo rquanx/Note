@@ -60,3 +60,8 @@ new F().__proto__ === F.prototype
 [momentjs](http://momentjs.com/)
 
 [可视化rx.js](https://reactive.how/)
+
+[前端基础进阶系列](https://www.jianshu.com/p/cd3fee40ef59)
+
+ES2015（ES6）
+
