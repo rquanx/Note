@@ -2341,12 +2341,11 @@ ctrl + alt + 方向键 屏幕旋转
 
 ```bash
 # 遍历当前文件夹下的.git ，进行git pull;
-for i in */.git; 
-	do 
-		( echo $i; cd $i/..; git pull;); 
-	done
+for i in */.git; do ( echo $i; cd $i/..; git pull;); done
 
-
+for i in */.git; do ( echo $i; cd $i/..; git add -A; 
+git commit -m "commit message"; 
+git push;); done
 # 提交
 git add -A; 
 git commit -m "commit message"; 
