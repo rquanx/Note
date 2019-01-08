@@ -67,3 +67,11 @@ https://aotu.io/index.html
 [webpack多页应用](https://github.com/lvzhenbang/webpack-play)
 
 [公共UI](https://public-apis.xyz/category/health)
+
+https://segmentfault.com/a/1190000017782625#articleHeader5
+
+https://mp.weixin.qq.com/s?__biz=MzU0Nzk1MTg5OA==&mid=2247484673&idx=1&sn=2056a95b60b9bc3b4739afc353564f7b&chksm=fb47c174cc3048623148ece520a0bc2581b100d99ea97a780b66df16dc9c6937ee8bce2c2ee2&mpshare=1&scene=2&srcid=&from=timeline&ascene=2&devicetype=androi
+
+https://www.baidu.com/s?ie=UTF-8&wd=%E9%9D%A2%E8%AF%95%E6%8A%80%E5%B7%A7
+
+https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html#at
