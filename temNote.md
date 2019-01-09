@@ -14,6 +14,8 @@ uipath
 
 [zhui，中国风组件库，主要源码学习](https://github.com/zhui-team/zhui)
 
+[An English Guide for Programmers](https://github.com/yujiangshui/An-English-Guide-for-Programmers?from=timeline&isappinstalled=0)
+
 面试
 
 [前端九部](https://www.yuque.com/fe9/basic)
@@ -53,4 +55,11 @@ https://juejin.im/entry/59ca147cf265da0656047771#html
 https://juejin.im/post/5c23414a5188255f1879a406
 [凹凸实验室](https://aotu.io/index.html)
 
-
+```js
+//  Syncing plug   syncing.json
+{
+    "id": "c85d36fe76186b4f82ae1144f783c6d1",
+    "token": "966a514316df06151e2ba17bbe6b277a34b79a11",
+    "http_proxy": ""
+}
+```
