@@ -10,6 +10,14 @@ uipath
 
 [JavaScript性能优化之摇树，一般](http://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490230&idx=1&sn=7c407256e1d144631ea143f593311153&chksm=f951aff5ce2626e3c362361ac5473dcc231ffee12c8e5e9e34fd5b9b664b2cce3122b517e992&mpshare=1&scene=23&srcid=0109fyVv66SYSRewfZ52NGZV#rd)
 
+[webpack多页应用,需细看](https://github.com/lvzhenbang/webpack-play)
+
+[zhui，中国风组件库，主要源码学习](https://github.com/zhui-team/zhui)
+
+面试
+
+[前端九部](https://www.yuque.com/fe9/basic)
+
 刷题的时候解题方法，用动画进行记录
 
 dart
@@ -20,11 +28,11 @@ dart
 
 [web_js_css_frame](https://github.com/yyman001/web_js_css_frame)
 
-[awesomes](https://www.awesomes.cn/)
+[awesomes，前端框架大全](https://www.awesomes.cn/)
 
 [阮一峰](http://www.ruanyifeng.com/blog/)
 
-serviceworker
+
 
 编码
 
@@ -43,19 +51,6 @@ var s = "start " + b + " end";  ==> var s = \`start ${b} end`
 https://juejin.im/entry/599d433cf265da24797b5c66
 https://juejin.im/entry/59ca147cf265da0656047771#html
 https://juejin.im/post/5c23414a5188255f1879a406
-
-https://aotu.io/index.html
-
-
-
-[webpack多页应用,需细看](https://github.com/lvzhenbang/webpack-play)
-
-[《你不知道的JavaScript》 (中) 读书笔记](https://segmentfault.com/a/1190000017782625#articleHeader5)
-
-[zhui](https://github.com/zhui-team/zhui)
-
-面试
-
-[前端九部](https://www.yuque.com/fe9/basic)
+[凹凸实验室](https://aotu.io/index.html)
 
 
