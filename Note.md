@@ -2073,6 +2073,10 @@ Cannot GET /CalloutNestedExample
 
 [webpack详解](https://github.com/ruizeng/blog/blob/master/Frontend/dive-into-webpack/article.md?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
+[你真的会拆分代码吗,好](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490234&idx=1&sn=a57614db8d5570eb4cf71c39d376ab46&chksm=f951aff9ce2626ef928250381d1914629393d75d75bbb124da6a3370bef94820132b07d11c6b&mpshare=1&scene=23&srcid=01094hCOdOckeg4crRiHe5xz#rd)
+
+[JavaScript性能优化之摇树，一般](http://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490230&idx=1&sn=7c407256e1d144631ea143f593311153&chksm=f951aff5ce2626e3c362361ac5473dcc231ffee12c8e5e9e34fd5b9b664b2cce3122b517e992&mpshare=1&scene=23&srcid=0109fyVv66SYSRewfZ52NGZV#rd)
+
 #### Gulp
 
 [文件匹配规则](http://www.siyuweb.com/gulp/3207.html)
@@ -2108,6 +2112,12 @@ babel只转换语法不转换api   如：map,set,object.assign
 ##### 设置
 
 [tslint规则](https://palantir.github.io/tslint/rules/)
+
+### 性能
+
+#### 缓存
+
+service worker，必须是https
 
 ### 单元测试
 
@@ -2745,6 +2755,19 @@ ctrl + alt + 方向键 屏幕旋转
 
 [Windows10资源管理器占用CPU过高解决办法,打开慢](https://blog.csdn.net/sinat_34104446/article/details/70878075)   禁用cotana(小娜) + 禁用问题收集服务
 
+#### 异常
+
+域服务器，事件查看器，事件ID2896,错误码8453
+
+- [support.hpe](https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c02912597)
+- [social.technet.microsoft问答](https://social.technet.microsoft.com/Forums/en-US/41835492-9d50-4dee-a847-a5291fc610d4/a-client-made-a-dirsync-ldap-request-for-a-directory-partition-access-was-denied-due-to-the?forum=ocssecurity)
+- [support.microsoft](https://support.microsoft.com/en-in/help/2022387/active-directory-replication-error-8453-replication-access-was-denied)
+- [mickputley](http://www.mickputley.net/2013/11/event-id-2896-in-directory-service-log.html)
+
+
+
+
+
 ## 版本控制
 
 ### Github
@@ -2769,6 +2792,12 @@ git push
 #### 库
 
 [Git的奇技淫巧--操作指令](https://github.com/521xueweihan/git-tips)
+
+#### 服务器
+
+[搭建自己的 Git 服务器](https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html#at)
+
+
 
 ### Svn
 
