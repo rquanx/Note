@@ -63,3 +63,16 @@ https://juejin.im/post/5c23414a5188255f1879a406
     "http_proxy": ""
 }
 ```
+
+
+
+部署时问题
+
+对象ID重复
+	右键package打开设计器，右下角可修改solution ID
+
+feature has already installed 
+	点击feature文件夹下的xxxfeature,右下属性选强制安装
+
+step 'activate features' Failed to load receiver assembly
+	右键项目属性，签名，新建强名称密钥文件，随便写名字，密码随意
