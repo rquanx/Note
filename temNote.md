@@ -76,3 +76,12 @@ feature has already installed
 
 step 'activate features' Failed to load receiver assembly
 	右键项目属性，签名，新建强名称密钥文件，随便写名字，密码随意
+
+
+
+多语言
+	考虑拼接问题
+
+服务器获取客户端IP
+
+​	有代理/网络负载平衡(NLB) 情况下，服务器可能无法通过常规的方式读取到真实的ip，一般代理会有在http的某处设置真实ip，可根据这个特定的东西来获取到真实的Ip
