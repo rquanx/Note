@@ -2255,9 +2255,10 @@ CSS Secrets
 [jspdf](https://github.com/MrRio/jsPDF)
 
 html to pdf
-https://github.com/pwcong/how-transform-html-into-multipage-pdf
-https://github.com/linwalker/render-html-to-pdf
-https://github.com/wojtekmaj/react-pdf
+
+> https://github.com/pwcong/how-transform-html-into-multipage-pdf
+> https://github.com/linwalker/render-html-to-pdf
+> https://github.com/wojtekmaj/react-pdf
 
 [pdf.js	官网示例](http://mozilla.github.io/pdf.js/examples/)
 
@@ -2268,16 +2269,19 @@ https://github.com/wojtekmaj/react-pdf
 [33-js-concepts](https://github.com/leonardomso/33-js-concepts)
 
 redux
-https://www.jianshu.com/p/1a2f3db4af61
-https://www.jianshu.com/p/1a2f3db4af61
-http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html
-https://segmentfault.com/a/1190000012976767
+
+> https://www.jianshu.com/p/1a2f3db4af61
+> https://www.jianshu.com/p/1a2f3db4af61
+> http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html
+> https://segmentfault.com/a/1190000012976767
 
 [es6](http://es6.ruanyifeng.com/#docs/number)
 
 [http](http://blogread.cn/it/article/7277?f=wb_blogread)
 
 [js异步](https://juejin.im/post/59e85eebf265da430d571f89)
+
+[awesomes，前端框架大全](https://www.awesomes.cn/)
 
 ### 博客
 
@@ -2335,6 +2339,14 @@ base64_encode(base64_decode("union select 1,2,3")) == "unionselect12w=="
 
 
 ## 后端
+
+
+
+### 开发问题
+
+#### 服务器获取客户端IP
+
+​	有代理/网络负载平衡(NLB) 情况下，服务器可能无法通过常规的方式读取到真实的ip，一般代理会有在http的某处设置真实ip，可根据这个特定的东西来获取到真实的Ip
 
 ### 站点
 
@@ -3076,11 +3088,44 @@ ValidationGroup指定验证组，并在流程设置好，可只在指定流程�
 
 [微软Office开发文档](https://developer.microsoft.com/zh-CN/office/docs)
 
+
+
+#### 工具
+
+sharepoint manager tool
+
+
+
+#### 文件上传
+
+可在管理中心设置不允许上传的文件类型(根据扩展名)
+
 ### SharePoint
+
+#### 学习记录
+
+##### 概述
+
+企业级 基于数据存储和协同办公信息化平台软件
+
+
 
 #### 页面
 
 考勤默认页面文字， 编辑页面->编辑属性->页面内容->编辑源...
+
+#### Webpart部署
+
+##### 部署时问题
+
+对象ID重复
+​	右键package打开设计器，右下角可修改solution ID
+
+feature has already installed 
+​	点击feature文件夹下的xxxfeature,右下属性选强制安装
+
+step 'activate features' Failed to load receiver assembly
+​	右键项目属性，签名，新建强名称密钥文件，随便写名字，密码随意
 
 #### 开发框架
 
@@ -3721,7 +3766,14 @@ display:none;
 
 [英语学习](https://github.com/byoungd/English-level-up-tips-for-Chinese)
 
+[An English Guide for Programmers](https://github.com/yujiangshui/An-English-Guide-for-Programmers?from=timeline&isappinstalled=0)
 
+## 梯子
+
+#### 被墙检查
+
+- [国内](http://tool.chinaz.com/port)
+- [国外](https://www.yougetsignal.com/tools/open-ports/)
 
 # 杂
 
