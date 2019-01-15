@@ -1062,6 +1062,33 @@ sessionstorage
 
 ### 基础
 
+#### Link标签
+
+##### 属性
+
+media
+
+> 可以设置不同的值来表示这个文件用于不同的设备
+
+rel
+
+> 可设置为候选样式，候选样式表可供用户选择切换，跟title关联
+
+
+
+#### @import
+
+引入css文件 
+
+```css
+<style type="text/css">
+@import url(CSS文件路径地址);
+</style>
+
+```
+
+
+
 #### 盒模型
 
 除inline元素外，每个元素都有盒模型，inline设置了也无效
