@@ -60,3 +60,18 @@ https://juejin.im/post/5c23414a5188255f1879a406
 
 [webpack教程](https://segmentfault.com/a/1190000017834557)
 
+
+
+# 19-1-17
+
+ {users
+    .filter(user => user.age > 26)
+    .map(user => <li>{user.name}</li>)
+  }
+
+
+
+redux demo 
+
+https://segmentfault.com/a/1190000017881320
+
