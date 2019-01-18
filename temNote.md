@@ -64,14 +64,30 @@ https://juejin.im/post/5c23414a5188255f1879a406
 
 # 19-1-17
 
- {users
-    .filter(user => user.age > 26)
-    .map(user => <li>{user.name}</li>)
-  }
+```javascript
+var users = []; 
+users.filter(user => user.age > 26)
+     .map(user => <li>{user.name}</li>)
+ 
 
 
+```
 
 redux demo 
 
-https://segmentfault.com/a/1190000017881320
+[浏览器渲染](https://segmentfault.com/a/1190000017881320)
+
+[Deep In React](https://hateonion.me/posts/3980/)
+
+[Go gotcha: newbie or ninja?](https://yourbasic.org/golang/gotcha/)
+
+```xml
+<modules>
+<add name="随意"  type="YHSD.TTC.HttpModule.Statement" /> 
+</modules>
+
+dll存放在bin中
+```
+
+
 
