@@ -4,14 +4,14 @@ if [ $# -gt 2 ]
 then
     message="$message 
     
-    $3";
+$3";
 fi
 
 if [ $# -gt 3 ]
 then 
     message="$message
     
-     $4";
+$4";
 fi
 
 echo $message;
