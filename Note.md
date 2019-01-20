@@ -1296,6 +1296,23 @@ label属性  提示标题title === tooltip   均有效
 
 
 
+#### Httpmodule
+
+编写代码，继承http，拦截请求或在预处理，asp.net的请求流程
+
+```xml
+webconfig 增加
+<modules>
+<add name="随意"  type="YHSD.TTC.HttpModule.Statement" /> 
+</modules>
+
+dll存放在bin中
+```
+
+
+
+
+
 ## Go
 
 ### 基本概念
@@ -2835,6 +2852,35 @@ git push
 #### 服务器
 
 [搭建自己的 Git 服务器](https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html#at)
+
+#### 使用规范
+
+##### 格式
+
+```bash
+<type>: <subject>
+// 空一行
+<body>
+// 空一行
+<footer>
+
+type：提交类型，可选值如下
+* work: 开发中(work in progress)
+* feature：新功能(new feature)
+* fix：修补bug(fix bug)
+* doc：文档(documentation changes)
+* style： 格式(change code format)
+* refactor：重构(modify code but not feature)
+* test：增加测试(test code)
+* chore：构建过程或辅助工具的变动(changes don't modify src and test files, only config or tasks)
+* none: 不写明
+
+subject：commit 目的的简短描述。
+
+body: 对本次 commit 的详细描述
+
+footer: 描述一些特殊情况，不兼容变动和issue关闭。
+```
 
 
 

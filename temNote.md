@@ -22,6 +22,14 @@ dart
 
 [An English Guide for Programmers](https://github.com/yujiangshui/An-English-Guide-for-Programmers?from=timeline&isappinstalled=0)
 
+[浏览器渲染](https://segmentfault.com/a/1190000017881320)
+
+[Deep In React系列](https://hateonion.me/posts/3980/)
+
+[Go语言练习网站？Go gotcha: newbie or ninja?](https://yourbasic.org/golang/gotcha/)
+
+[webpack系列教程](https://segmentfault.com/a/1190000017834557)
+
 #### 博客
 
 [前端九部](https://www.yuque.com/fe9/basic)
@@ -42,7 +50,7 @@ dart
 
 #### 文档
 
-@log
+@log  装饰器使用
 
 规范
 
@@ -51,43 +59,14 @@ https://juejin.im/entry/59ca147cf265da0656047771#html
 https://juejin.im/post/5c23414a5188255f1879a406
 [凹凸实验室](https://aotu.io/index.html)
 
-
-
 多语言
 ​	考虑拼接问题
 
 
 
-[webpack教程](https://segmentfault.com/a/1190000017834557)
-
-
-
-# 19-1-17
-
 ```javascript
+// 利用好map函数
 var users = []; 
 users.filter(user => user.age > 26)
      .map(user => <li>{user.name}</li>)
- 
-
-
 ```
-
-redux demo 
-
-[浏览器渲染](https://segmentfault.com/a/1190000017881320)
-
-[Deep In React](https://hateonion.me/posts/3980/)
-
-[Go gotcha: newbie or ninja?](https://yourbasic.org/golang/gotcha/)
-
-```xml
-<modules>
-<add name="随意"  type="YHSD.TTC.HttpModule.Statement" /> 
-</modules>
-
-dll存放在bin中
-```
-
-
-
