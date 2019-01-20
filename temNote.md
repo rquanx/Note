@@ -4,13 +4,17 @@
 
 uipath
 
+
+
 #### 开发学习
 
 dart
 
+
+
 #### 文章
 
-[whistle，http调试，抓包，待看](https://cloud.tencent.com/developer/article/1334698)
+[whistle，http调试，抓包，待看](https://blog.csdn.net/qian_xiaoqian/article/details/53068874)
 
 [你真的会拆分代码吗,好](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490234&idx=1&sn=a57614db8d5570eb4cf71c39d376ab46&chksm=f951aff9ce2626ef928250381d1914629393d75d75bbb124da6a3370bef94820132b07d11c6b&mpshare=1&scene=23&srcid=01094hCOdOckeg4crRiHe5xz#rd)
 
@@ -18,17 +22,17 @@ dart
 
 [webpack多页应用,需细看](https://github.com/lvzhenbang/webpack-play)
 
-[zhui，中国风组件库，主要源码学习](https://github.com/zhui-team/zhui)
+[webpack系列教程](https://segmentfault.com/a/1190000017834557)
 
-[An English Guide for Programmers](https://github.com/yujiangshui/An-English-Guide-for-Programmers?from=timeline&isappinstalled=0)
+[zhui，中国风组件库，主要通过源码了解](https://github.com/zhui-team/zhui)
 
 [浏览器渲染](https://segmentfault.com/a/1190000017881320)
 
-[Deep In React系列](https://hateonion.me/posts/3980/)
-
 [Go语言练习网站？Go gotcha: newbie or ninja?](https://yourbasic.org/golang/gotcha/)
 
-[webpack系列教程](https://segmentfault.com/a/1190000017834557)
+[react-redux解读，淘宝前端团队](http://taobaofed.org/blog/2016/08/18/react-redux-connect/)
+
+
 
 #### 博客
 
@@ -38,15 +42,21 @@ dart
 
 [阮一峰](http://www.ruanyifeng.com/blog/)
 
+
+
 #### 库
 
 [momentjs](http://momentjs.com/)
 
 [可视化rx.js](https://reactive.how/)
 
+
+
 #### 实践
 
 刷题的时候解题方法，用动画进行记录
+
+
 
 #### 文档
 
