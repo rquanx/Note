@@ -7,7 +7,7 @@ then
     then
         message="$message 
         
-    $3";
+$3";
     fi
 
     # 写入foot
@@ -15,7 +15,7 @@ then
     then 
         message="$message
         
-    $4";
+$4";
     fi
     
     echo $message;
