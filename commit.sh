@@ -1,13 +1,17 @@
-message="$1: $2 \n\n";
+message="$1: $2";
 
 if [ $# -gt 2 ]
 then
-    message="$message $3";
+    message="
+    
+    $message $3";
 fi
 
 if [ $# -gt 3 ]
 then 
-    message="$message\n\n $4"
+    message="$message
+    
+     $4";
 fi
 
 echo $message;
