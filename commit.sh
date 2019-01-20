@@ -14,7 +14,5 @@ echo $message;
 
 
 git add -A; 
-echo "add ok";
 git commit -m "$message";
-echo "committ ok" 
 git push;
