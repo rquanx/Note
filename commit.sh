@@ -1,5 +1,6 @@
+# 写入type和subject
 message="$1: $2";
-
+# 写入body
 if [ $# -gt 2 ]
 then
     message="$message 
@@ -7,6 +8,7 @@ then
 $3";
 fi
 
+# 写入foot
 if [ $# -gt 3 ]
 then 
     message="$message
