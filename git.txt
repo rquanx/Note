@@ -1,2 +1,2 @@
 for i in */.git; do ( echo $i; cd $i/..; git pull;); done
-for i in */.git; do ( echo $i; cd $i/..; git add -A; git commit -m "commit message"; git push;); done
+for i in */.git; do ( echo $i; cd $i/..; git add -A; ../Note/commit.sh "none" "commit all";); done
