@@ -2,9 +2,9 @@ message="$1: $2";
 
 if [ $# -gt 2 ]
 then
-    message="
+    message="$message 
     
-    $message $3";
+    $3";
 fi
 
 if [ $# -gt 3 ]
