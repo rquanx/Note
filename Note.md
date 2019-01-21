@@ -3248,7 +3248,7 @@ sharepoint manager tool
 
 对象ID重复
 
-> 右键package打开设计器，右下角可修改solution ID
+> 右键package打开设计器，右下角可修改solution ID  guid
 
 
 
