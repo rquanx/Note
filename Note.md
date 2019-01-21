@@ -3242,7 +3242,7 @@ sharepoint manager tool
 
 考勤默认页面文字， 编辑页面->编辑属性->页面内容->编辑源...
 
-#### Webpart部署
+#### Webpart
 
 ##### 部署时问题
 
@@ -3267,6 +3267,16 @@ step 'activate features' Failed to load receiver assembly
 Could not load file or assembly  The system cannot find the file specified
 
 > 确实少了dll
+
+
+
+wsp包打包文件还原
+
+- 新建一个同名的sharepoint项目，自带package和feature生成
+- 将package复制到需要还原的项目中，feature为空不需要
+- 项目总包含package,排除其他代码文件
+- 重新包含其他代码文件
+- 部署
 
 #### 开发框架
 
