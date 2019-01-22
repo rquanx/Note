@@ -3276,6 +3276,7 @@ wsp包打包文件还原
 - 将package复制到需要还原的项目中，feature为空不需要
 - 项目总包含package,排除其他代码文件
 - 重新包含其他代码文件
+- webpart需在package设计页面中拉取
 - 部署
 
 #### 开发框架
@@ -3726,7 +3727,7 @@ console.table()将数据以一个漂亮的表格的形式打印出来
 ##### 快捷键
 
 - ctrl+p 项目中定位文件
-- Ctrl + Shift + F   代码搜索
+- Ctrl + Shift + F   全局代码搜索
 - ctrl+shif+o 文件中定位成员函数
 - source左下角 { }  格式化代码  
 
