@@ -90,3 +90,9 @@ users.filter(user => user.age > 26)
 serviceWorker
 
 使用SP.UserProfiles需加载_layouts/15/SP.UserProfiles.js
+
+https://www.robinwieruch.de/mobx-react/
+
+https://www.reddit.com/r/reactjs/comments/4npzq5/confused_redux_or_mobx/
+
+https://www.jianshu.com/p/2de14ea46d26
