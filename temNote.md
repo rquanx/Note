@@ -87,3 +87,6 @@ users.filter(user => user.age > 26)
 
 [如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
 
+serviceWorker
+
+使用SP.UserProfiles需加载_layouts/15/SP.UserProfiles.js
