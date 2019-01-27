@@ -383,6 +383,27 @@ var x = [];
 Array.isArray(x);
 ```
 
+##### map
+
+```javascript
+var list = [1,2,3];
+// 遍历list的长度此，并且将return的结果拼接成数
+list.map((item,index) => { return 1; }) // ==> [1,1,1]
+
+// 手动实现
+list.map = function(fn) {
+    var result = [];
+    this.foreach((item,index) => {
+        result.push(fn(item,index));
+    });
+    return result;
+}
+```
+
+
+
+
+
 
 
 #### Date
@@ -2216,7 +2237,9 @@ babel只转换语法不转换api   如：map,set,object.assign
 
 #### 缓存
 
-service worker，必须是https
+service worker
+
+​	必须是https
 
 ### 单元测试
 
@@ -3415,6 +3438,10 @@ wsp包部署出问题    打开浏览器管理，进入系统设置  ---  管理
 ##### Jsom
 
 ###### 前置
+
+使用SP.UserProfiles需加载_layouts/15/SP.UserProfiles.js
+
+
 
 sp.js和sp.runtime.js, 其位于_layouts/15/###.js下
 

@@ -32,6 +32,18 @@ dart
 
 [react-redux解读，淘宝前端团队](http://taobaofed.org/blog/2016/08/18/react-redux-connect/)
 
+[js InterviewMap](https://yuchengkai.cn/docs/frontend/)
+
+[如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
+
+[github start排行](http://githubrank.com/)
+
+[react组件,学习一波](https://github.com/sheinsight/shineout)
+
+[早报](https://wubaiqing.github.io/zaobao/)
+
+[d2日报](https://awesome.fairyever.com/daily/)
+
 
 
 #### 博客
@@ -69,30 +81,20 @@ https://juejin.im/entry/59ca147cf265da0656047771#html
 https://juejin.im/post/5c23414a5188255f1879a406
 [凹凸实验室](https://aotu.io/index.html)
 
+[clean-code-javascript == 风格指南](https://github.com/ryanmcdermott/clean-code-javascript)
+
 多语言
 ​	考虑拼接问题
 
 
 
-```javascript
-// 利用好map函数
-var users = []; 
-users.filter(user => user.age > 26)
-     .map(user => <li>{user.name}</li>)
-```
-
-[github start排行](http://githubrank.com/)
-
-[js InterviewMap](https://yuchengkai.cn/docs/frontend/)
-
-[如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
-
-serviceWorker
-
-使用SP.UserProfiles需加载_layouts/15/SP.UserProfiles.js
+mobx
 
 https://www.robinwieruch.de/mobx-react/
 
 https://www.reddit.com/r/reactjs/comments/4npzq5/confused_redux_or_mobx/
 
 https://www.jianshu.com/p/2de14ea46d26
+
+
+
