@@ -74,18 +74,6 @@ dart
 
 @log  装饰器使用
 
-规范
-
-https://juejin.im/entry/599d433cf265da24797b5c66
-https://juejin.im/entry/59ca147cf265da0656047771#html
-https://juejin.im/post/5c23414a5188255f1879a406
-[凹凸实验室](https://aotu.io/index.html)
-
-[clean-code-javascript == 风格指南](https://github.com/ryanmcdermott/clean-code-javascript)
-
-多语言
-​	考虑拼接问题
-
 
 
 mobx
@@ -98,6 +86,15 @@ https://www.jianshu.com/p/2de14ea46d26
 
 
 
-[KICK START快速入门](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
+
+
+[KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
+
+[dan blog](https://overreacted.io/why-isnt-x-a-hook/)
+
+nintex form修改表单，需要发布
 
 项目树linux
+
+[react多语言](https://phraseapp.com/blog/posts/react-i18n-best-libraries/?tdsourcetag=s_pctim_aiomsg)
+
