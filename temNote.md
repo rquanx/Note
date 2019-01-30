@@ -98,3 +98,35 @@ nintex form修改表单，需要发布
 
 [react多语言](https://phraseapp.com/blog/posts/react-i18n-best-libraries/?tdsourcetag=s_pctim_aiomsg)
 
+
+
+[bootCDN](https://www.bootcdn.cn/)     
+
+>  公共资源库链接,不用下载库，直接引用此链接
+> 也可通过查看有哪些常用库
+
+[bootstrap](http://www.bootcss.com/)    
+
+> 样式库
+> example直接拿到需要的布局，将内容去除	  
+
+[fabric.js](http://fabricjs.com/)	   
+
+> 图片加工库，图片图片拖动,拉伸，图层叠加
+
+canvas
+
+- toDataURL     将canvas内容转成base64编码的数据
+- getActiveObject  获取当前图层
+- sendBackwards  将图层往后一层?
+- bringForward    图层往前一层
+- renderAll      强制重新渲染
+
+
+
+download.js	下载库
+saveAs.js		保存库
+keypress.js	键盘按键监听库
+gif.js		生成gif  
+
+[get社区](http://get.ftqq.com/528.card)
