@@ -3439,6 +3439,22 @@ ULSViewe-log工具	查看工具
 可对Item项设置权限
 流程可以设置item权限
 
+
+
+##### 强制重新登录
+
+xxx/_layouts/closeConnection.aspx?loginasanotheruser=true
+
+>  自动登录后自动跳转顶层站点？
+
+
+
+https://team.cargill.com/sites/Metals_Supply_China_E-chop_Test/_layouts/15/closeConnection.aspx?loginasanotheruser=true&Source=https://team.cargill.com/sites/Metals_Supply_China_E-chop_Test/eChop
+
+> 增加source参数指定跳转
+
+
+
 #### 特性
 
 ##### 阈值
