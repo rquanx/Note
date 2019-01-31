@@ -488,6 +488,18 @@ m多行
 
 
 
+#### Canvas
+
+##### Methods
+
+- toDataURL     将canvas内容转成base64编码的数据
+- getActiveObject  获取当前图层
+- sendBackwards  将图层往后一层?
+- bringForward    图层往前一层
+- renderAll      强制重新渲染
+
+
+
 ### 其他内置对象
 
 #### XML对象
@@ -1327,7 +1339,8 @@ webconfig 增加
 <add name="随意"  type="YHSD.TTC.HttpModule.Statement" /> 
 </modules>
 
-dll存放在bin中
+
+dll存放在bin文件夹中，type要到具体的类
 ```
 
 
@@ -2345,15 +2358,17 @@ CSS Secrets
 
 ### 站点
 
-[](http://scriptoj.mangojuice.top/problems?tag=all)
+[ScriptOJ](http://scriptoj.mangojuice.top/problems?tag=all)
+
+> 刷题
 
 [js,html,json美化  格式化](https://beautifier.io/)
 
 [learn x in y](https://learnxinyminutes.com/)
 
-[Front End Books](https://github.com/lisposter/frontend-books)
+> 学习网站
 
-[You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
+
 
 [前端收集，博客，社区....](https://github.com/foru17/front-end-collect)
 
@@ -2370,17 +2385,6 @@ CSS Secrets
 [前端知识点](https://juejin.im/entry/5b94d9d9e51d450e9704a4cb)
 
 [typescript](https://github.com/semlinker/awesome-typescript)
-
-[html2canvas
-将html转pdf库](http://html2canvas.hertzen.com/configuration)
-
-[jspdf](https://github.com/MrRio/jsPDF)
-
-html to pdf
-
-> https://github.com/pwcong/how-transform-html-into-multipage-pdf
-> https://github.com/linwalker/render-html-to-pdf
-> https://github.com/wojtekmaj/react-pdf
 
 [pdf.js	官网示例](http://mozilla.github.io/pdf.js/examples/)
 
@@ -2399,11 +2403,22 @@ redux
 
 [es6](http://es6.ruanyifeng.com/#docs/number)
 
+> 阮一峰
+
 [http](http://blogread.cn/it/article/7277?f=wb_blogread)
 
-[js异步](https://juejin.im/post/59e85eebf265da430d571f89)
+> 细节说明
 
 [awesomes，前端框架大全](https://www.awesomes.cn/)
+
+
+
+[bootCDN](https://www.bootcdn.cn/)     
+
+> 公共资源库链接,不用下载库，直接引用此链接
+> 也可通过查看有哪些常用库	  
+
+
 
 ### 博客
 
