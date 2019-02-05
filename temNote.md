@@ -14,6 +14,8 @@ dart
 
 #### 文章
 
+[KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
+
 [whistle，http调试，抓包](https://zhuanlan.zhihu.com/p/47029559)
 
 [你真的会拆分代码吗,好](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490234&idx=1&sn=a57614db8d5570eb4cf71c39d376ab46&chksm=f951aff9ce2626ef928250381d1914629393d75d75bbb124da6a3370bef94820132b07d11c6b&mpshare=1&scene=23&srcid=01094hCOdOckeg4crRiHe5xz#rd)
@@ -54,7 +56,7 @@ dart
 
 [阮一峰](http://www.ruanyifeng.com/blog/)
 
-
+[dan blog](https://overreacted.io/why-isnt-x-a-hook/)
 
 #### 库
 
@@ -74,42 +76,11 @@ dart
 
 @log  装饰器使用
 
-
-
-mobx
-
-https://www.robinwieruch.de/mobx-react/
-
-https://www.reddit.com/r/reactjs/comments/4npzq5/confused_redux_or_mobx/
-
-https://www.jianshu.com/p/2de14ea46d26
-
-
-
-
-
-[KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
-
-[dan blog](https://overreacted.io/why-isnt-x-a-hook/)
-
-nintex form修改表单，需要发布
-
-项目树linux
-
 [react多语言](https://phraseapp.com/blog/posts/react-i18n-best-libraries/?tdsourcetag=s_pctim_aiomsg)
 
-
-
-[bootCDN](https://www.bootcdn.cn/)     
-
->  公共资源库链接,不用下载库，直接引用此链接
-> 也可通过查看有哪些常用库	  
-
-
-
-download.js	下载库
-saveAs.js		保存库
-keypress.js	键盘按键监听库
-gif.js		生成gif  
-
 [get社区](http://get.ftqq.com/528.card)
+
+节流优化 :quickSearch
+
+
+
