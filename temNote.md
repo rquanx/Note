@@ -1,4 +1,4 @@
-### 待办
+###  待办
 
 #### 软件学习 
 
@@ -12,7 +12,7 @@ dart
 
 
 
-#### 文章
+#### 杂
 
 ##### Study
 
@@ -91,6 +91,8 @@ dart
 [早报](https://wubaiqing.github.io/zaobao/)
 
 [d2日报](https://awesome.fairyever.com/daily/)
+
+[d2日报](https://daily.fairyever.com/)
 
 
 
