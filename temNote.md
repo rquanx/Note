@@ -90,8 +90,6 @@ dart
 
 [早报](https://wubaiqing.github.io/zaobao/)
 
-[d2日报](https://awesome.fairyever.com/daily/)
-
 [d2日报](https://daily.fairyever.com/)
 
 
@@ -110,7 +108,7 @@ dart
 
 [阮一峰](http://www.ruanyifeng.com/blog/)
 
-[dan blog](https://overreacted.io/why-isnt-x-a-hook/)
+[dan blog](https://overreacted.io/)
 
 #### 库
 
@@ -134,7 +132,7 @@ dart
 
 [get社区](http://get.ftqq.com/528.card)
 
-节流优化 :quickSearch
+
 
 课程：cs 61 a b c
 [smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
