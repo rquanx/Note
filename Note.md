@@ -3595,6 +3595,53 @@ Project.json
 
 > 一个自动生成的文件，它包含在由 Studio 创建的每个自动化项目文件夹中。该文件包含有关项目依赖关系的信息。
 
+
+
+##### UI Interaction
+
+屏幕抓取
+
+> 抓取相同的数据，自动翻页
+
+数据抓取
+
+> 抓取表格
+
+
+
+##### Selector
+
+可以在selector中使用* ,?等正则字符串？
+
+full selector
+
+> 直接是整体的窗口 basic record
+> 包含程序名，文件名，....
+
+partical selector
+
+> 有部分窗口作上下文，desktop record
+
+dynamic selector
+
+> 使用变量控制，选中
+
+
+
+Anchor
+
+> 通过屏幕位置定位,不能再后台运行
+
+
+
+Relative Selector
+> 依赖于结构，可运行在后台
+
+
+
+
+
+
 ### flowportal
 
 #### 概述
