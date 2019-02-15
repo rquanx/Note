@@ -141,3 +141,7 @@ dart
 
 
 [node.js论坛](https://cnodejs.org/)
+
+
+
+rollup识别`../util/`时，并不会自动去查找util目录下的`index.js`文件
