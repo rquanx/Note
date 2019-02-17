@@ -78,11 +78,25 @@ dart
 
 [条件 CSS](https://zhuanlan.zhihu.com/p/55795638)
 
-
+[css规范](https://codeguide.bootcss.com/#html-syntax)
 
 ##### Node
 
 [Node+Mongodb 架构常见性能问题总结](https://zhuanlan.zhihu.com/p/56010506)
+
+##### 资讯
+
+[ReadHub](https://readhub.cn/topics)
+
+> 最新资讯
+
+
+
+[what is the best of xx](https://www.slant.co/)
+
+
+
+
 
 ##### Github
 
@@ -100,6 +114,10 @@ dart
 
 
 
+#### Book
+
+[电子书](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
+
 #### 博客
 
 [前端九部](https://www.yuque.com/fe9/basic)
@@ -109,6 +127,8 @@ dart
 [阮一峰](http://www.ruanyifeng.com/blog/)
 
 [dan blog](https://overreacted.io/)
+
+
 
 #### 库
 
@@ -136,12 +156,15 @@ dart
 
 课程：cs 61 a b c
 [smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
-[跟着动画学习TCP三次握手和四次挥手](https://mp.weixin.qq.com/s/pSrKbVryn71kDVIXUtpXMA)
-
-
 
 [node.js论坛](https://cnodejs.org/)
 
 
 
-rollup识别`../util/`时，并不会自动去查找util目录下的`index.js`文件
+丰通
+
+- 左侧导航链接
+- alert去除
+- 跳转页增加返回主页按钮，提示文本用中文符号
+- userProfile修复
+- 考勤修复

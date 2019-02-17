@@ -1996,7 +1996,11 @@ this.props.children属性。它表示组件的所有子节点
 
  [react-intl](https://segmentfault.com/a/1190000005824920#articleHeader8)
 
+
+
 ##### 文章
+
+
 
 [官方文档博客](https://reactjs.org/docs/implementation-notes.html)
 
@@ -2005,8 +2009,6 @@ this.props.children属性。它表示组件的所有子节点
 [React实践细节](https://juejin.im/entry/5a614d226fb9a01cac183cc9)
 
 [React Conf 2018](https://juejin.im/post/5bfcbc83e51d450fb3263a35)
-
-[react更新对象状态](https://www.cnblogs.com/chris-oil/p/8215756.html)
 
 [渲染](https://www.jianshu.com/p/100a55978253)
 
@@ -2017,9 +2019,10 @@ this.props.children属性。它表示组件的所有子节点
 [React Router	](https://www.jianshu.com/p/e3adc9b5f75c)NavLink比link多了激活样式
 
 [Airbnb React/JSX 代码规范](https://github.com/BingKui/javascript-zh/tree/master/react)
-[Airbnb JS 规范](https://github.com/BingKui/javascript-zh)
 
-[React 项目构建与开发入门](https://icepy.gitbook.io/simple-react-book/)
+[smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+
 
 ##### Redux
 
@@ -2276,6 +2279,28 @@ Cannot GET /CalloutNestedExample
 ##### 安装
 
 全局安装后看安装信息的最后，看安装路径，如果在命令窗找不到指令，可以手动设置环境变量的path增加安装路径
+
+
+
+#### Rollup
+
+##### 简述
+
+
+
+
+
+
+
+##### 注意
+
+rollup识别`../util/`时，并不会自动去查找util目录下的`index.js`文件
+
+
+
+
+
+
 
 ### 编译工具
 
@@ -2893,6 +2918,10 @@ from SalesIndexInfo as a where ID=871
 ### 文章
 
 [http](https://segmentfault.com/a/1190000017514417)
+
+[跟着动画学习TCP三次握手和四次挥手](https://mp.weixin.qq.com/s/pSrKbVryn71kDVIXUtpXMA)
+
+
 
 ## 数据结构
 
