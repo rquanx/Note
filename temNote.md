@@ -1,5 +1,9 @@
 ###  待办
 
+#### Work
+
+Hyper-V   MedalSoft2019
+
 #### 软件学习 
 
 uipath
@@ -161,10 +165,35 @@ dart
 
 
 
+插件：recover close tab
+
+
+
+
+
+组件打包整理
+
+```javascript
+// Promise.reslove().then
+
+Promise.reslove = (data) => {
+	return new Promise((res) => {  res(data); });
+}
+
+// 在then 中return而不是res()/rej();
+Promise.reslove(1).then(() => {})
+
+```
+
+
+
+https://blog.csdn.net/qq_32135281/article/details/87554088
+
+
+
+generator
+
 丰通
 
-- 左侧导航链接
-- alert去除
-- 跳转页增加返回主页按钮，提示文本用中文符号
 - userProfile修复
 - 考勤修复
