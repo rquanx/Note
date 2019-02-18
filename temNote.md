@@ -165,33 +165,9 @@ dart
 
 
 
-插件：recover close tab
+[学习路线](https://blog.csdn.net/qq_32135281/article/details/87554088)
 
 
-
-
-
-组件打包整理
-
-```javascript
-// Promise.reslove().then
-
-Promise.reslove = (data) => {
-	return new Promise((res) => {  res(data); });
-}
-
-// 在then 中return而不是res()/rej();
-Promise.reslove(1).then(() => {})
-
-```
-
-
-
-https://blog.csdn.net/qq_32135281/article/details/87554088
-
-
-
-generator
 
 丰通
 
