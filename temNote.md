@@ -183,6 +183,8 @@ Promise.reslove = (data) => {
 // 在then 中return而不是res()/rej();
 Promise.reslove(1).then(() => {})
 
+
+
 ```
 
 
