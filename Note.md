@@ -217,6 +217,32 @@ var obj = {
 // 设置get和set后对属性的访问会变成调用函数
 ```
 
+
+
+#### async/await
+
+[async/await 原理与实现](https://github.com/zexiplus/theory/blob/master/async/async.md)
+
+```javascript
+// Promise.reslove().then
+Promise.reslove = (data) => {
+	return new Promise((res) => {  res(data); });
+}
+
+// 在then 中return而不是res()/rej();
+Promise.reslove(1).then(() => {})
+
+// resolve传入参数为Promise时，会等待传入的Promise完成
+// data is Promise,  data --> xxx
+((data) => {
+	return new Promise((res) => {  res(data); });
+}).then(xxx)
+// Promise.resolve(new Promise)
+
+```
+
+
+
 ### 原型、类
 
 #### 概述
