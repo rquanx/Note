@@ -165,7 +165,9 @@ dart
 
 [node.js论坛](https://cnodejs.org/)
 
+[正则表达式](http://www.cppblog.com/vczh/archive/2008/05/22/50763.html)
 
+[web前端工程师读书单](https://www.douban.com/doulist/2772859/)
 
 [学习路线](https://blog.csdn.net/qq_32135281/article/details/87554088)
 
@@ -180,3 +182,4 @@ dart
 
 
 angular 增加loading， html	增加busy 模板
+
