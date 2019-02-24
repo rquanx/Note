@@ -1,8 +1,16 @@
 ###  待办
 
+#### 财务
+
+知乎书籍
+
+
+
 #### Work
 
-Hyper-V   MedalSoft2019
+Hyper-V  密码 MedalSoft2019
+
+[KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
 
 #### 软件学习 
 
@@ -14,6 +22,15 @@ uipath
 
 dart
 
+[web前端工程师读书单](https://www.douban.com/doulist/2772859/)
+
+[学习路线](https://blog.csdn.net/qq_32135281/article/details/87554088)
+
+[正则表达式](http://www.cppblog.com/vczh/archive/2008/05/22/50763.html)
+
+[SQL 的极简入门](https://segmentfault.com/a/1190000018179958)
+[caml Join](https://www.cnblogs.com/jianyus/p/3761809.html)
+
 
 
 #### 杂
@@ -21,10 +38,6 @@ dart
 ##### Study
 
 [必须收藏的两个查找论文和代码实现的网站](https://mp.weixin.qq.com/s/gP0aCO9R8uto7mqA5KrVNw)
-
-##### Work
-
-[KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
 
 
 
@@ -66,19 +79,19 @@ dart
 
 [react-redux解读，淘宝前端团队](http://taobaofed.org/blog/2016/08/18/react-redux-connect/)
 
-[react组件,学习一波](https://github.com/sheinsight/shineout)
+[smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
-[zhui，中国风组件库，主要通过源码了解](https://github.com/zhui-team/zhui)
+[react多语言](https://phraseapp.com/blog/posts/react-i18n-best-libraries/?tdsourcetag=s_pctim_aiomsg)
 
 
 
 ##### JavaScript
 
-[js InterviewMap](https://yuchengkai.cn/docs/frontend/)
-
 [如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
 
 [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+
+
 
 ##### CSS
 
@@ -86,9 +99,13 @@ dart
 
 [css规范](https://codeguide.bootcss.com/#html-syntax)
 
+
+
 ##### Node
 
 [Node+Mongodb 架构常见性能问题总结](https://zhuanlan.zhihu.com/p/56010506)
+
+
 
 ##### 资讯
 
@@ -99,8 +116,6 @@ dart
 
 
 [what is the best of xx](https://www.slant.co/)
-
-
 
 
 
@@ -123,6 +138,8 @@ dart
 #### Book
 
 [电子书](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
+
+
 
 #### 博客
 
@@ -148,39 +165,31 @@ dart
 
 刷题的时候解题方法，用动画进行记录
 
-
-
-#### 文档
-
 @log  装饰器使用
 
-[react多语言](https://phraseapp.com/blog/posts/react-i18n-best-libraries/?tdsourcetag=s_pctim_aiomsg)
+
+
+#### 社区
 
 [get社区](http://get.ftqq.com/528.card)
 
-
-
-课程：cs 61 a b c
-[smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
-
 [node.js论坛](https://cnodejs.org/)
 
-[正则表达式](http://www.cppblog.com/vczh/archive/2008/05/22/50763.html)
 
-[web前端工程师读书单](https://www.douban.com/doulist/2772859/)
 
-[学习路线](https://blog.csdn.net/qq_32135281/article/details/87554088)
+#### 课程
 
-[SQL 的极简入门](https://segmentfault.com/a/1190000018179958)
-[caml Join](https://www.cnblogs.com/jianyus/p/3761809.html)
+课程：cs 61 a b c
+
+
+
+
+#### 工作记录
 
 丰通
 
 - userProfile修复
 - 考勤修复
 
+pnp.js  node.js upload file
 
-
-angular 增加loading， html	增加busy 模板
-
-启动vpn可能会影响内网共享

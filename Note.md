@@ -51,6 +51,12 @@ null === 没有对象，object原型的原型就是null
 
 
 
+##### 运算符
+
+运算符优先级   类型隐式转换
+
+
+
 #### 循环
 
 ##### for
@@ -2139,6 +2145,16 @@ svg
 
 #### Angular
 
+##### 组件
+
+######  busy
+
+Service.Me
+
+angular 增加loading， 直接在html目标中 增加busy的模板
+
+
+
 
 
 #### Vue
@@ -2845,6 +2861,12 @@ from SalesIndexInfo as a where ID=871
 ​	http header 加上  no-store   或no-cahce来   不缓存信息   
 ​		1、Cache-Control: no-cache ...
 ​		2、ajax去缓存  加时间戳?t=xxx  
+
+
+
+启动vpn可能会影响内网共享
+
+
 
 ### 常见状态码
 
