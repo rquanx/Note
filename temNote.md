@@ -193,3 +193,8 @@ dart
 
 pnp.js  node.js upload file
 
+http://www.alloyteam.com/about/ 腾讯全端团队blog
+
+
+
+pnp.js要在线下版本的sp上运行，且在node.js运行时，由于原生的是支持线上版sp的，需要使用sp-pnp-node来创建认证信息
