@@ -200,3 +200,8 @@ pnp.js要在线下版本的sp上运行，且在node.js运行时，由于原生�
 
 
 [图解git原理与日常实用指南](https://segmentfault.com/a/1190000018272902)
+
+
+
+- rollup无法识别node_modules中的包，需要安装插件npm install --save-dev rollup-plugin-node-resolve，然后在plugins中使用：
+- node_modules中的包大部分都是commonjs格式的，要在rollup中使用必须先转为ES6语法，为此需要安装插件 [rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)
