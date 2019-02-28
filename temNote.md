@@ -220,10 +220,6 @@ pnp.js要在线下版本的sp上运行，且在node.js运行时，由于原生�
 
 [测试用例](https://www.bilibili.com/video/av44802599)
 
-[国际化库](https://github.com/developit/htm)
-
-[日报](https://github.com/kujian/frontendDaily/issues/458)
-
 
 
 

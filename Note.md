@@ -2378,6 +2378,14 @@ service worker
 
 ​	必须是https
 
+
+
+### 知识点
+
+#### 跨域
+
+[九种跨域方式实现原理](https://zhuanlan.zhihu.com/p/56718905?utm_source=wechat_session&utm_medium=social&utm_oi=881835120850501632&from=groupmessage)
+
 ### 单元测试
 
 Test.assertEquals(hello(), "hello edabit.com", "Did you *return* the result?");
