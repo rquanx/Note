@@ -220,7 +220,7 @@ pnp.js要在线下版本的sp上运行，且在node.js运行时，由于原生�
 
 [测试用例](https://www.bilibili.com/video/av44802599)
 
-
+[node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
 
 
 
