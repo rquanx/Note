@@ -1922,6 +1922,22 @@ done
 使用HTML，JavaScript和CSS构建前端。使用JavaScript处理HTML非常麻烦，所以我建议你使用像jQuery，Zepto或类似的库来做到这一点。如果你认为你有几千行JS代码，可以考虑使用一个MVC框架，比如Angular.js，Backbone.js或者Ember.js。如果您的网站是HTML或CSS，请考虑使用HTML模板引擎或SASS / LESS等语言。
 根据您选择的数据库和后端，找出承载您的应用的最佳位置。Heroku，Amazon EC2，Rackspace Cloud，Google AppEngine和EngineYard等几种常见选项
 
+
+
+## 小技巧
+
+### 取余
+
+取余
+
+> 如果用户访问，当数据量足够大的时候，可以通过取余进行均分
+>
+> % 2 平分
+>
+> % 3 、%4 ...  可以实现数据不同概率的分布
+>
+> 视频缓存?
+
 ## WEB前端
 
 github教程   https://github.com/wxyyxc1992/Web-Series		(现代 Web 开发基础与工程实践)
@@ -2327,6 +2343,14 @@ Cannot GET /CalloutNestedExample
 #### Rollup
 
 ##### 简述
+
+
+
+##### 注意
+
+- rollup无法识别node_modules中的包，需要安装插件npm install --save-dev rollup-plugin-node-resolve，然后在plugins中使用：
+- node_modules中的包大部分都是commonjs格式的，要在rollup中使用必须先转为ES6语法，为此需要安装插件 [rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)
+- 如果打包代码有使用node.js的基本库，需要增加忽略
 
 
 
@@ -3373,7 +3397,7 @@ c + space 智能提示
 
 #### 远程控制
 
-\10.182.21.12\c$\inetpub\wwwroot\wss\VirtualDirectories\portal.toyotsu-ea.com443\App_GlobalResources
+\\10.182.21.12\c$\inetpub\wwwroot\wss\VirtualDirectories\portal.toyotsu-ea.com443\App_GlobalResources
 ​	在文件夹输入路径可直接访问
 
 ​	
@@ -4030,6 +4054,12 @@ wsp包打包文件还原
 - webpart需在package设计页面中拉取
 - 部署
 
+
+
+版本问题？ 部署后aspx无效，要移动到layout下
+
+
+
 #### 开发框架
 
 ##### SharePointFrameWork
@@ -4308,6 +4338,8 @@ https://blog.csdn.net/abrahamcheng/article/details/12612455)
 
 [pnpjs](https://github.com/pnp/pnpjs)
 [pnpjs io](https://pnp.github.io/pnpjs/)	
+
+> pnp.js要在线下版本的sp上运行，且在node.js运行时，由于原生的是支持线上版sp的，需要使用sp-pnp-node来创建认证信息
 
 ##### Csom
 
