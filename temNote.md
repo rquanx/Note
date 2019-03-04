@@ -1,5 +1,17 @@
 ###  待办
 
+##### 每日计划
+
+金融书籍
+
+掘金
+
+github
+
+看书
+
+
+
 #### 财务
 
 知乎书籍
@@ -197,22 +209,20 @@ dart
 
 [node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
 
-万豪，大概什么什么时候完成
-
 插件
 
 
 
-##### 每日计划
+邮件
 
-金融书籍
+开头
 
-掘金
+​	Hi, Abc	逗号后空格，称呼第一个字母大写
 
-github
+内容
 
-看书
+​	去除不必要的空行
 
 
 
-##### 
+申请调休
