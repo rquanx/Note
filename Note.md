@@ -2653,6 +2653,16 @@ base64_encode(base64_decode("union select 1,2,3")) == "unionselect12w=="
 
 ​	有代理/网络负载平衡(NLB) 情况下，服务器可能无法通过常规的方式读取到真实的ip，一般代理会有在http的某处设置真实ip，可根据这个特定的东西来获取到真实的Ip
 
+
+
+#### 异常，站点不能访问
+
+503,检查application pool是否挂了；检查windows事件日志查看有没错误；检查sharepoint日志
+
+ping 服务器	ping ip
+
+ping被禁，使用telnet
+
 ### 站点
 
 [后端架构师技术图谱](https://github.com/xingshaocheng/architect-awesome)
