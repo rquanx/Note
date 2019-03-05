@@ -225,4 +225,33 @@ dart
 
 
 
-申请调休
+丰通application pool 挂了
+
+
+
+如何能评估比较准的工期呢？一个很简单的公式送给大家：
+
+- 需求非常明确而且经常这样做：自己评估时间 * 1.5
+- 需求不够清晰，有可能变，但是代码和技术方案熟悉：自己评估的时间 * 2
+- 需求不够清晰，代码和技术方案也是新的，需要探索：自己评估的时间 * 2.5 or 3
+
+
+
+sharepoint复制列表
+
+> list setting保存模板，且包含数据
+>
+> 创建list,在app中查找
+
+
+
+sharepoint list export to excel
+
+> 导出数据到excel，进行备份
+>
+> 使用ie打开列表
+>
+> 导出下载query.iqy
+>
+> 使用excel打开query.iqy
+
