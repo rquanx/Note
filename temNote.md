@@ -225,11 +225,6 @@ dart
 
 
 
-<<<<<<< HEAD
-丰通application pool 挂了
-
-
-
 如何能评估比较准的工期呢？一个很简单的公式送给大家：
 
 - 需求非常明确而且经常这样做：自己评估时间 * 1.5
@@ -256,10 +251,14 @@ sharepoint list export to excel
 >
 > 使用excel打开query.iqy
 
-=======
 https://github.com/sorrycc/awesome-f2e-libs
 
 [免费图库](https://www.yuque.com/ruanyf/share/free-photos)
 
 https://segmentfault.com/a/1190000018368885
->>>>>>> 1992bc12bdbdf30607f9dd8b57f9360d3d54f7ed
+
+Clear Cache
+
+https://www.youtube.com/watch?v=zIdlGyhxjLU&app=desktop
+
+https://segmentfault.com/a/1190000018368885
