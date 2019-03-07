@@ -3397,6 +3397,8 @@ c + space 智能提示
 ​	需要更新office tool for vs 
 ​	将csproj文件里得MinimumOfficeToolsVersion改为14.0
 
+visual studio installer 的sharepoint开发有visual studio tools for office可选
+
 #### 快捷键
 
 切换光标模式  insert键
@@ -4139,6 +4141,26 @@ https://team.cargill.com/sites/Metals_Supply_China_E-chop_Test/_layouts/15/close
 
 list setting,在contenType中点击，进入List Content Type页面，点击字段，可以选择Hidden
 
+##### 导出excel
+
+sharepoint list export to excel
+
+> 导出数据到excel，进行备份
+>
+> 使用ie打开列表
+>
+> 导出下载query.iqy
+>
+> 使用excel打开query.iqy
+
+
+
+##### sharepoint复制列表
+
+> list setting保存模板，且包含数据
+>
+> 创建list,在app中查找
+
 
 
 #### 特性
@@ -4617,17 +4639,46 @@ display:none;
 
 ### 开发
 
-
+#### 更新
 
 花了比较多时间写的东西都用邮件的形式发出，抄送相关人员，并且写明需要测试的点、副作用和可能影响的地方
 
 代码修改记录，校对；正式环境慎重更新
 
+
+
+#### 工时
+
+如何能评估比较准的工期呢？一个很简单的公式送给大家：
+
+- 需求非常明确而且经常这样做：自己评估时间 * 1.5
+- 需求不够清晰，有可能变，但是代码和技术方案熟悉：自己评估的时间 * 2
+- 需求不够清晰，代码和技术方案也是新的，需要探索：自己评估的时间 * 2.5 or 3
+
+
+
 ### 沟通
 
-- 邮件回复注意书写，潜在语气
-- 沟通方式：
-  需要我来做？ =>  是否需要我协助做？
+
+
+沟通方式：
+需要我来做？ =>  是否需要我协助做？
+
+
+
+#### 邮件
+
+邮件回复注意书写，潜在语气
+
+开头
+
+​	Hi, Abc	逗号后空格，称呼第一个字母大写
+
+内容
+
+​	去除不必要的空行
+
+
 
 
 

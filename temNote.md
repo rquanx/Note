@@ -198,67 +198,14 @@ dart
 
 #### 工作记录
 
-丰通
-
-- userProfile修复
-- 考勤修复
-
 [微软前端资料](https://github.com/Microsoft/frontend-bootcamp)
 
 [vue通信](https://segmentfault.com/a/1190000018241972)
 
 [node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
 
-插件
 
-
-
-邮件
-
-开头
-
-​	Hi, Abc	逗号后空格，称呼第一个字母大写
-
-内容
-
-​	去除不必要的空行
-
-
-
-如何能评估比较准的工期呢？一个很简单的公式送给大家：
-
-- 需求非常明确而且经常这样做：自己评估时间 * 1.5
-- 需求不够清晰，有可能变，但是代码和技术方案熟悉：自己评估的时间 * 2
-- 需求不够清晰，代码和技术方案也是新的，需要探索：自己评估的时间 * 2.5 or 3
-
-
-
-sharepoint复制列表
-
-> list setting保存模板，且包含数据
->
-> 创建list,在app中查找
-
-
-
-sharepoint list export to excel
-
-> 导出数据到excel，进行备份
->
-> 使用ie打开列表
->
-> 导出下载query.iqy
->
-> 使用excel打开query.iqy
-
-https://github.com/sorrycc/awesome-f2e-libs
 
 [免费图库](https://www.yuque.com/ruanyf/share/free-photos)
 
-https://segmentfault.com/a/1190000018368885
-
-Clear Cache
-
 https://www.youtube.com/watch?v=zIdlGyhxjLU&app=desktop
-
-https://segmentfault.com/a/1190000018368885
