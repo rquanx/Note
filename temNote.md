@@ -262,3 +262,11 @@ Clear Cache
 https://www.youtube.com/watch?v=zIdlGyhxjLU&app=desktop
 
 https://segmentfault.com/a/1190000018368885
+
+[react优化](https://segmentfault.com/a/1190000018398978#articleHeader4)
+
+
+
+ManageWeb
+
+​							  PermissionsString="EnumeratePermissions,ManageWeb,ManageSubwebs,AddAndCustomizePages,ApplyThemeAndBorder,ManageAlerts,ManageLists,ViewUsageData"
