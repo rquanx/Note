@@ -267,7 +267,9 @@ https://segmentfault.com/a/1190000018368885
 
 
 
-ManageWeb
+李中豪：本地管理员密码：123456?
 
-​							  PermissionsString="EnumeratePermissions,ManageWeb,ManageSubwebs,AddAndCustomizePages,ApplyThemeAndBorder,ManageAlerts,ManageLists,ViewUsageData"
+问题： 广州、广州、五邑
+
+<link rel="stylesheet" href="style/css/index.css"/>
 
