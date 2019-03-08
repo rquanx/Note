@@ -270,3 +270,4 @@ https://segmentfault.com/a/1190000018368885
 ManageWeb
 
 ​							  PermissionsString="EnumeratePermissions,ManageWeb,ManageSubwebs,AddAndCustomizePages,ApplyThemeAndBorder,ManageAlerts,ManageLists,ViewUsageData"
+
