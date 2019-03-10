@@ -1,6 +1,6 @@
 ###  待办
 
-##### 每日计划
+#### 每日计划
 
 金融书籍
 
@@ -34,34 +34,61 @@ uipath
 
 #### 开发学习
 
-dart
+##### 前端
 
 [web前端工程师读书单](https://www.douban.com/doulist/2772859/)
+
+[微软前端资料](https://github.com/Microsoft/frontend-bootcamp)
 
 [学习路线](https://blog.csdn.net/qq_32135281/article/details/87554088)
 
 [正则表达式](http://www.cppblog.com/vczh/archive/2008/05/22/50763.html)
 
-[SQL 的极简入门](https://segmentfault.com/a/1190000018179958)
-[caml Join](https://www.cnblogs.com/jianyus/p/3761809.html)
+
+
+###### Vue
+
+[vue通信](https://segmentfault.com/a/1190000018241972)
 
 
 
-#### 杂
+###### React
 
-##### Study
+[react-redux解读，淘宝前端团队](http://taobaofed.org/blog/2016/08/18/react-redux-connect/)
 
-[必须收藏的两个查找论文和代码实现的网站](https://mp.weixin.qq.com/s/gP0aCO9R8uto7mqA5KrVNw)
+[smart-and-dumb-components,组件划分](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
+[浅谈React数据流管理,场景使用](https://mp.weixin.qq.com/s/ii6H6mhe2OAUf7RquVxN8g)
 
-
-##### Network
-
-[whistle，http调试，抓包](https://zhuanlan.zhihu.com/p/47029559)
+[react优化系列](https://segmentfault.com/a/1190000018398978#articleHeader4)
 
 
 
-##### Webpack
+###### JavaScript
+
+[如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
+
+[Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+
+
+
+###### CSS
+
+[条件 CSS](https://zhuanlan.zhihu.com/p/55795638)
+
+[css规范](https://codeguide.bootcss.com/#html-syntax)
+
+
+
+###### Node
+
+[Node+Mongodb 架构常见性能问题总结](https://zhuanlan.zhihu.com/p/56010506)
+
+[node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
+
+
+
+###### Webpack
 
 [webpack多页应用,需细看](https://github.com/lvzhenbang/webpack-play)
 
@@ -75,9 +102,61 @@ dart
 
 
 
-##### Browser
+###### Browser
 
 [浏览器渲染](https://segmentfault.com/a/1190000017881320)
+
+
+
+###### 博客
+
+[前端九部](https://www.yuque.com/fe9/basic)
+
+[web_js_css_frame](https://github.com/yyman001/web_js_css_frame)
+
+[阮一峰](http://www.ruanyifeng.com/blog/)
+
+[dan blog](https://overreacted.io/)
+
+
+
+###### 库
+
+[momentjs](http://momentjs.com/)
+
+[可视化rx.js](https://reactive.how/)
+
+
+
+
+
+##### 数据库
+
+[SQL 的极简入门](https://segmentfault.com/a/1190000018179958)
+
+
+
+##### SharePoint
+
+[caml Join](https://www.cnblogs.com/jianyus/p/3761809.html)
+
+
+
+##### Flutter
+
+dart
+
+
+
+##### 学术
+
+[必须收藏的两个查找论文和代码实现的网站](https://mp.weixin.qq.com/s/gP0aCO9R8uto7mqA5KrVNw)
+
+
+
+##### 网络
+
+[whistle，http调试，抓包](https://zhuanlan.zhihu.com/p/47029559)
 
 
 
@@ -86,36 +165,6 @@ dart
 [Go语言练习网站？Go gotcha: newbie or ninja?](https://yourbasic.org/golang/gotcha/)
 
 [优雅的读取http请求或响应的数据](https://blog.thinkeridea.com/201902/go/you_ya_de_du_qu_http_qing_qiu_huo_xiang_ying_de_shu_ju_2.html)
-
-
-
-##### React
-
-[react-redux解读，淘宝前端团队](http://taobaofed.org/blog/2016/08/18/react-redux-connect/)
-
-[smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
-
-
-
-##### JavaScript
-
-[如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
-
-[Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
-
-
-
-##### CSS
-
-[条件 CSS](https://zhuanlan.zhihu.com/p/55795638)
-
-[css规范](https://codeguide.bootcss.com/#html-syntax)
-
-
-
-##### Node
-
-[Node+Mongodb 架构常见性能问题总结](https://zhuanlan.zhihu.com/p/56010506)
 
 
 
@@ -141,35 +190,9 @@ dart
 
 
 
-##### 设计
-
-[设计比较](https://cantunsee.space/)
-
-
-
 #### Book
 
 [电子书](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
-
-
-
-#### 博客
-
-[前端九部](https://www.yuque.com/fe9/basic)
-
-[web_js_css_frame](https://github.com/yyman001/web_js_css_frame)
-
-[阮一峰](http://www.ruanyifeng.com/blog/)
-
-[dan blog](https://overreacted.io/)
-
-
-
-#### 库
-
-[momentjs](http://momentjs.com/)
-
-[可视化rx.js](https://reactive.how/)
 
 
 
@@ -198,14 +221,8 @@ dart
 
 #### 工作记录
 
-[微软前端资料](https://github.com/Microsoft/frontend-bootcamp)
-
-[vue通信](https://segmentfault.com/a/1190000018241972)
-
-[node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
 
 
+李中豪：本地管理员密码：123456?
 
-[免费图库](https://www.yuque.com/ruanyf/share/free-photos)
-
-https://www.youtube.com/watch?v=zIdlGyhxjLU&app=desktop
+问题： 广州、广州、五邑

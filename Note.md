@@ -122,6 +122,246 @@ export {x,y,xxx}   import {xxx}	会自动解析出来对于的模块
 
 
 
+##### 模块化说明
+
+###### 模块化定义
+
+- 将复杂的代码，按一定的规则(规范)封装成几个块(文件), 并进行组合在一起
+- 块的内部相对是私有的, 只向外部暴露一些接口(方法)与外部其它模块通信
+
+
+
+###### 没有模块化
+
+- js文件中包含太多内容，文件大且不便于维护
+- 一些通用的操作的重复编写，包含
+
+
+
+###### 模块化作用
+
+- 分开后，功能单一，便于维护、管理
+- 提高复用性
+- 降低耦合
+
+
+
+###### 模块化分类
+
+- Common.js
+- AMD
+- CMD
+- ES6
+
+
+
+###### 模块化实现方式变化历史
+
+1、单纯的全局函数
+
+> 缺点：全局污染，命名冲突
+
+
+
+2、namespace模式
+
+> 使用全局对象包装
+>
+> 优点：减少了全局污染
+>
+> 缺点：对象内部是暴露的，可被随意修改
+
+
+
+3、IIFE
+
+> immediately-invoked function expression 自动执行函数
+>
+> 优点：内部数据不暴露，可只暴露部分接口，通过传参可实现依赖的传入
+>
+> 缺点：？
+
+
+
+###### 现代模块化
+
+1、CommonJS
+
+> 服务器模块规范，Node.js的模块化规范
+> 	使用`Browserify`打包后，也可用于浏览器
+>
+> 使用：
+> 	通过require("./xxx.js")和module.exports = { module} 或 exports.module = xxx实现 
+>
+> module是一个全局变量，module.exports = exports 
+>
+> 特点：同步加载，有缓存
+
+
+
+2、AMD
+
+> 异步模块定义规范，RequireJS 遵循的是 AMD（异步模块定义）规范
+>
+> 官网: http://www.requirejs.cn/
+> github : https://github.com/requirejs/requirejs
+> 将`require.js`导入项目: js/libs/require.js
+>
+> 由于浏览器和服务器的差异，浏览器使用同步加载是不现实的，AMD规范则是非同步加载模块，允许指定回调函数。故浏览器端一般会使用AMD规范。
+>
+> 使用:
+>
+> 导出
+>
+> ```javascript
+> // 模块定义
+> 
+> // 无依赖
+> define(function () {
+>   let msg = 'hello world lyuya';
+>   function dataServer() {
+>     return msg.toUpperCase();
+>   }
+>   // 暴露这个模块
+>   return dataServer;
+> });
+> 
+> // 有依赖
+> // define(['模块1', '模块2', '模块3'], function (m1, m2，m3) {})
+> // 一定要注意一一对应，前面有，后面一定要有，别忘记后面的传参
+> define(['dataServer'],function (dataServer) {
+>   let msg = dataServer();
+>   function alerter() {
+>     alert(msg);
+>   }
+>   return alerter;
+> });
+> 
+> ```
+>
+> 导入
+>
+> ```javascript
+> // 配置模块的路径
+> requirejs.config({
+>   baseUrl:'./',  // 配置所有引入模块的公共路径（基本路径）
+>   // 模块标识名与模块路径映射
+>   paths : {
+>     // 模块名称（一定要与引入的模块名称一一对应）: 模块的路径
+>     dataServer: 'modular/dataServer',  
+>     // 一定不能写文件的后缀名，它会自动补全
+>     alerter: 'modular/alerter',
+>     // 库/框架自己实现模块化的功能，定义了暴露模块的名称
+>     jquery: 'libs/jquery-1.10.1'
+>   }
+> })
+> 
+> // 主模块,下面requirejs可以用require代替,require是异步可缓存的
+> requirejs(['alerter','jquery'],function (alerter,$) {
+>   alerter();
+>   $('body').css('background','pink')
+> });
+> 
+> ```
+>
+> 特点：异步加载，有缓存
+
+
+
+3、CMD
+
+> 通用模块定义
+> CMD是根据CommonJS和AMD基础上提出的。
+>
+> SeaJS 遵循的是 CMD （通用模块定义）规范。
+>
+> > `seaJS` 是国人阿里建立的，代表着海纳百川之意。
+>
+> 官网: http://seajs.org/
+> github : https://github.com/seajs/seaj
+> 将`sea.js`导入项目: libs/sea.js
+>
+> 使用：
+>
+> 导出
+>
+> ```javascript
+> define(function (require, exports, module) {
+>     /*
+>       require: 引入依赖模块
+>       exports: 暴露模块
+>       module: 暴露模块
+>      */
+>     const msg = 'moduleone';
+>     function getMsg() {
+>       console.log('module1 getMsg() ' + msg);
+>       return msg;
+>     }
+>     //暴露模块
+>     module.exports = getMsg;  // 参考commond.js
+>   })
+> ```
+>
+> 导入
+>
+> ```javascript
+> // 异步引入模块
+> require.async('./module2', function (m2) {
+>       console.log(m2.msg1, m2.msg2);
+>     })
+>     console.log('module4执行了~~~');
+>   })
+>   
+> // 同步导入
+> define(function (require) {
+>     const m3 = require('./module3');
+>     require('./module4');
+> 
+>     console.log(m3.msg);
+>   })
+> 
+> ```
+
+
+
+4、UMD
+
+> Universal Module Definition,AMD 和 CommonJS 的兼容性处理
+>
+> 应用 UMD 规范的 JS 文件其实就是一个立即执行函数，通过检验 JS 环境是否支持 CommonJS 或 AMD 再进行模块化定义。
+>
+> ```javascript
+> (function (root, factory) {
+>     if (typeof exports === 'object') {
+>         // commonJS
+>         module.exports = factory();
+>     } else if (typeof define === 'function' && define.amd) {
+>         // AMD
+>         define(factory);
+>     } else {
+>         // 挂载到全局
+>         root.eventUtil = factory();
+>     }
+> })(this, function () {
+>     function myFunc(){};
+> 
+>     return {
+>         foo: myFunc
+>     };
+> });
+> 
+> ```
+>
+> 
+
+5、ES6模块化
+
+> 动态引入（按需加载），没有缓存
+
+
+
+
+
 #### 函数
 
 arguments.callee   指向当前函数声明的==>函数名，由于函数名是一个存储指针的变量如果在内部使用函数名即变量名进行调用，后续如果变量名改变了那么就可能会影响内部，使用callee则可避免
@@ -894,6 +1134,40 @@ quick增加防抖和节流
 >
 > > 连续 多次点击搜索按钮
 
+
+
+#### 模态框
+
+##### 基本要素
+
+- 模态框的蒙层：`modal-overlay`
+- 模态框头部：`modal-header`
+- 模态框主体：`modal-body`
+- 模态框脚部：`modal-footer`
+- 关闭按钮：`modal-close`
+  - 取消按钮
+  - 关闭按钮
+  - `ECS`键
+  - 点击模态框窗体外的区域关闭模态框
+
+
+
+##### 知识点
+
+- CSS的`transition`或`animation`相关知识点
+- JavaScript DOM操作相关知识点
+- JavaScript 构造器和构造函数
+- JavaScript 事件监听
+- JavaScript 函数
+
+
+
+```javascript
+
+```
+
+
+
 ### TypeScript
 
 #### 安装
@@ -931,6 +1205,94 @@ tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示
 ### NodeJS
 
 [import默认文件](https://www.cnblogs.com/goloving/p/8889585.html)
+
+
+
+### 浏览器
+
+#### 重排和重绘
+
+##### 定义
+
+- 重排：**重新生成布局**。当DOM 的变化影响了元素的几何属性（宽和高）
+  - 改变边框宽度或给段落增加文字导致行数增加
+  - 浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树。这个过程称为重排。
+- 重绘：**重新绘制**。完成重排后，浏览器会重新绘制受影响的部分到屏幕中。这个过程称为重绘。
+
+
+
+##### 重排与重绘的关系
+
+**重排一定会导致重绘**，重绘不一定导致重排。如果DOM变化不影响几何属性，元素的布局没有改变，则只发生一次重绘（不需要重排）。
+
+
+
+##### 发生重排的情况
+
+当页面布局和几何属性改变时发生“重排”。如下：
+
+- 添加或删除可见的DOM 元素
+- 元素位置改变
+- 元素尺寸改变（包括外边距、内边距、边框厚度、宽度、高度等属性改变）
+- 内容改变，例如：文本改变后图片被另一个不同尺寸的图片替代
+- **页面渲染器初始化**
+- **浏览器窗口尺寸改变**
+
+
+
+##### 发生重排的范围
+
+整个页面或局部。例如：当滚动条出现时触发整个页面的重排。
+
+
+
+#### 性能
+
+```javascript
+// 浏览器优化一次重排和重绘,会批量进行操作
+div.style.color = 'blue';
+div.style.marginTop = '30px';
+
+
+// 由于中间会获取几何位置，会马上触发=>触发两次
+div.style.color = 'blue';
+var margin = parseInt(div.style.marginTop);
+div.style.marginTop = (margin + 10) + 'px';
+```
+
+
+
+##### 强制刷新
+
+`offsetTop`, `offsetLeft`, `offsetWidth`, `offsetHeight`
+`scrollTop`, `scrollLeft`, `scrollWidth`, `scrollHeight`
+`clientTop`, `clientLeft`, `clientWidth`, `clientHeight`
+
+获取以上属性时都会触发强制刷新
+
+###### 优化
+
+```javascript
+// bad
+div.style.left = div.offsetLeft + 10 + "px";
+div.style.top = div.offsetTop + 10 + "px";
+
+// good
+var left = div.offsetLeft;
+var top  = div.offsetTop;
+div.style.left = left + 10 + "px";
+div.style.top = top + 10 + "px";
+/*
+一般的规则是：
+样式表越简单，重排和重绘就越快。
+重排和重绘的DOM元素层级越高，成本就越高。
+table元素的重排和重绘成本，要高于div元素。
+*/
+```
+
+
+
+
 
 ### 文章
 
@@ -1029,6 +1391,10 @@ alt属性：规定在图像无法显示时的替代文本
 #### Meta
 
 [能够放在文档的 <head> 中的各种配置元素](https://www.awesomes.cn/repo/joshbuchea/head)
+
+#### nav
+
+自动实现导航
 
 ### 通用属性
 
@@ -1179,6 +1545,51 @@ mp4视频封装,把画面和音频封装在一起
 
 sessionstorage
 ​		关闭浏览器后被删除
+
+
+
+### 应用
+
+#### 登陆
+
+form + button(submit) 
+
+> 好处：点击自动提交，可以通过enter提交
+>
+> 登陆标题
+>
+> - fieldset + legend	语义化标签
+> - <fieldset><legend></legend></fieldset>
+> - h3/hx
+> - div
+>
+> 
+>
+> 输入框
+>
+> - p
+> - 会自动隔开一定距离
+> - div
+
+
+
+input
+
+> - 默认类型是text
+> - reqiure语义化，可自动增加必填提示
+> - form中增加novalidate，自带提示不好看，通过属性去除
+> - name 可提示历史输入
+> - autocomplete="off"关闭历史提示
+> - autofocus使用tap时第一个选中，防止导航等因素影响
+> - 有兼容性问题，会受js影响
+> - tapindex
+> - 弥补autofocus的缺点，且可以设置自定义的tap选中顺序
+
+
+
+span标签
+
+> 无法通过tap来选中
 
 ## CSS
 
@@ -2586,7 +2997,7 @@ redux
 > 公共资源库链接,不用下载库，直接引用此链接
 > 也可通过查看有哪些常用库	  
 
-
+[免费图库](https://www.yuque.com/ruanyf/share/free-photos)
 
 ### 博客
 
