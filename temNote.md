@@ -226,3 +226,13 @@ dart
 李中豪：本地管理员密码：123456?
 
 问题： 广州、广州、五邑
+
+
+
+[2019年最值得关注的国外科技公司技术博客](https://tonyxu.io/zh/posts/2019/top-engineering-blogs-from-tech-companies-to-follow-in-2019/)
+
+[前端培训-初级阶段（5 - 8）](https://segmentfault.com/a/1190000018462647)
+
+
+
+webpart打包，在wsp中添加依赖的dll，选择package ==>高级==>添加
