@@ -1136,6 +1136,52 @@ quick增加防抖和节流
 
 
 
+#### 异常捕获
+
+[各种方式的异常捕获](<http://news.51cto.com/art/201903/593360.htm>)
+
+
+
+##### window.onerror 
+
+> 当 `JS` 运行时错误发生时，`window` 会触发一个 `ErrorEvent` 接口的 `error` 事件，并执行 `window.onerror()`。
+>
+> 可以进行一个错误拦截
+>
+> `window.onerror` 函数只有在返回 `true` 的时候，异常才不会向上抛出，否则即使是知道异常的发生控制台还是会显示 `Uncaught Error: xxxxx`
+>
+> 
+>
+> 注意
+>
+> - `onerror` 最好写在所有 `JS` 脚本的前面，否则有可能捕获不到错误；
+> - `onerror` 无法捕获语法错误；
+>
+> 
+>
+> 使用场景
+>
+> `onerror` 主要是来捕获预料之外的错误，而 `try-catch`则是用来在可预见情况下监控特定的错误
+
+
+
+##### React 异常捕获
+
+componentDidCatch
+
+> 可以非常简单的获取到 `react` 下的错误信息
+
+error boundary
+
+> 不会捕捉下面这些错误。
+>
+> 1.事件处理器
+> 2.异步代码
+> 3.服务端的渲染代码
+> 4.在 `error boundaries` 区域内的错误
+
+
+
 #### 模态框
 
 ##### 基本要素
@@ -1201,6 +1247,95 @@ type  str  = string;
 tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示  
 
 [tsconfig.json](http://www.css88.com/doc/typescript/doc/handbook/tsconfig.json.html)
+
+
+
+#### 文件查找
+
+##### Place
+
+当我提及被检查的 `place` 时，我想表达的是在这个 `place`，TypeScript 将会检查以下内容（例如一个 `foo` 的位置）：
+
+- 如果这个 `place` 表示一个文件，如：`foo.ts`，欢呼！
+- 否则，如果这个 `place` 是一个文件夹，并且存在一个文件 `foo/index.ts`，欢呼！
+- 否则，如果这个 `place` 是一个文件夹，并且存在一个 `foo/package.json` 文件，在该文件中指定 `types` 的文件存在，那么就欢呼！
+- 否则，如果这个 `place` 是一个文件夹，并且存在一个 `package.json` 文件，在该文件中指定 `main` 的文件存在，那么就欢呼！
+
+
+
+
+
+##### 动态查找
+
+当导入路径不是相对路径时，模块解析将会模仿 [Node 模块解析策略](https://nodejs.org/api/modules.html#modules_all_together)，以下我将给出一个简单例子：
+
+- 当你使用
+
+  ```
+  import * as foo from 'foo'
+  ```
+
+  ，将会按如下顺序查找模块：
+
+  - `./node_modules/foo`
+  - `../node_modules/foo`
+  - `../../node_modules/foo`
+  - 直到系统的根目录
+
+  
+
+- 当你使用
+
+  ```
+  import * as foo from 'something/foo'
+  ```
+
+  ，将会按照如下顺序查找内容
+
+  - `./node_modules/something/foo`
+  - `../node_modules/something/foo`
+  - `../../node_modules/something/foo`
+  - 直到系统的根目录
+
+
+
+#### 命名空间
+
+```ts
+namespace Utility {
+  export function log(msg) {
+    console.log(msg);
+  }
+  export function error(msg) {
+    console.log(msg);
+  }
+}
+    
+// 编译结果
+(function (Utility) {
+  // 添加属性至 Utility
+})(Utility || Utility = {});
+```
+
+
+
+#### import非js文件
+
+在 TypeScript 中，甚至可以允许你导入任何文件，例如 `.css` 文件（如果你使用的是 webpack 样式加载器或 css 模块），你只要添加如下代码（放在 `globals.d.ts`）：
+
+```typescript
+declare module '*.css';
+```
+
+现在你可以使用 `import * as foo from './some/file.css'`。
+
+与此相似，如果你想使用 html 模版（例如：angular），你可以：
+
+```typescript
+declare module '*.html';
+```
+
+
 
 ### NodeJS
 

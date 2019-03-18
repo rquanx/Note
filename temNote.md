@@ -72,11 +72,19 @@ uipath
 
 
 
+###### Typescript
+
+[深入理解 TypeScript中文翻译](<https://github.com/jkchao/typescript-book-chinese>)
+
+
+
 ###### CSS
 
 [条件 CSS](https://zhuanlan.zhihu.com/p/55795638)
 
 [css规范](https://codeguide.bootcss.com/#html-syntax)
+
+[网站配色](https://mp.weixin.qq.com/s/TR_Y2W5zh9g0pB8nhZzM6Q)
 
 
 
@@ -222,8 +230,6 @@ dart
 
 
 #### 工作记录
-
-
 
 李中豪：本地管理员密码：123456?
 
