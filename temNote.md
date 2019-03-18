@@ -244,3 +244,5 @@ dart
 
 
 webpart打包，在wsp中添加依赖的dll，选择package ==>高级==>添加
+
+[富文本编辑器](https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/rich-editor.html#tinymce)
