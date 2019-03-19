@@ -4662,7 +4662,13 @@ wsp包打包文件还原
 
 
 
-版本问题？ 部署后aspx无效，要移动到layout下
+版本问题？ 部署后aspx中的aspx无效，要移动到layout下
+
+
+
+webpart打包，在wsp中添加依赖的dll，选择package ==>高级==>添加
+
+
 
 
 
