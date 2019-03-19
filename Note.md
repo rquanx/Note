@@ -49,6 +49,22 @@ Number(xx)  和 new Number(xx)  不同,一个是类型转换
 
 null === 没有对象，object原型的原型就是null
 
+##### Symbol
+
+普通的方式无法获取到symbol生成的结果
+
+某种程度上可实现私有变量，但是Reflect.ownKeys()能获取到以symbol为key的属性
+
+
+
+###### 唯一性
+
+每次产生都是唯一值，不会冲突
+
+
+
+
+
 
 
 ##### 运算符
@@ -5193,6 +5209,10 @@ console.table()将数据以一个漂亮的表格的形式打印出来
 ###### 编辑
 
 拖动文件到chrome调试器，可以同步修改文件，   内置于编辑器
+
+###### 事件
+
+event listener breakpoint   勾上click，当点击事件发生时就会断点
 
 #### 杂
 
