@@ -347,3 +347,17 @@ defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序�
 [行内 JS 脚本的堵塞效应](http://www.phpied.com/asynchronous-inline-scripts-via-data-urls/)
 
 [正则表达式为什么不能解析 HTML 网页？](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)
+
+
+
+react状态
+
+the state is meant to hold variables that relate to the current state of the UI
+
+保存跟ui相关的数据
+
+
+
+props 
+
+对组件的配置项
