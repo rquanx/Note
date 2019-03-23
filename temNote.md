@@ -242,3 +242,9 @@ dart
 [前端培训-初级阶段（5 - 8）](https://segmentfault.com/a/1190000018462647)
 
 [富文本编辑器](https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/rich-editor.html#tinymce)
+
+
+
+typora 可以进行缩放
+
+markdown流程，使用\<br/>可以进行换行
