@@ -423,6 +423,17 @@ obj.xxx()调用函数，依赖的是obj
 
 
 
+将null或者是undefined作为this的绑定对象传入call、apply或者是bind,这些值在调用时会被忽略，实际应用的是默认绑定规则
+
+
+
+默认绑定
+隐式绑定
+强制绑定
+New绑定
+
+
+
 #### 对象
 
 ##### defineProperty
@@ -1529,6 +1540,34 @@ alt属性：规定在图像无法显示时的替代文本
 <link  rel="stylesheet" type="text/css" href="..." />
 ```
 
+##### 作用
+
+1. 比如用于 SEO，主要给搜索引擎看的：
+
+<link rel="canonical" href="...">
+在网站中常有多个 url 指向同一个页面的情况，上述标签告知搜索引擎页面的主 url 是什么，以便搜索引擎保留主要页面而去除其他重复页面。
+
+
+
+2. 提供 rss 订阅的：
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="...">
+上述标签除搜索引擎可以看懂以外，也能被很多浏览器插件识别。
+
+
+
+3. 表示页面 icon 的：
+
+<link rel="icon" href="https://xxx.png">
+多数浏览器会读取这个 link 的资源并展示在页面上。
+
+
+
+4. 对页面提供预处理的：
+
+<link rel="dns-prefetch" href="//xxx.com">
+提前对一个域名做 dns 查询。强制对域名进行预读取在有的情况下很有用。
+
 
 
 #### 注释
@@ -1543,9 +1582,104 @@ alt属性：规定在图像无法显示时的替代文本
 
 [能够放在文档的 <head> 中的各种配置元素](https://www.awesomes.cn/repo/joshbuchea/head)
 
-#### nav
+一种通用的元数据信息表示标签，一般以键值对出现，如：
+
+<meta name="xxx" content="yyy">
+
+
+charset 属性
+
+<meta charset="UTF-8">
+从 HTML5 开始，上述写法被推荐使用，用于声明当前文档所使用的字符编码，推荐放在 <head> 中的第一位。
+
+
+
+http-equiv属性
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+在 HTML4 中，上述代码用于声明字符集，但是现在已不被推荐。
+
+除了 content-type ，还有其他几个值：
+
+content-language （已过时）、set-cookie （已过时）、default-style 、refresh 、content-security-policy
+
+
+
+name 属性
+
+其实 <meta> 标签可以被自由定义，只要读取和写入的双方约定好 name 和 content 的格式就可以了。来看一个例子：
+
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+上面这种用法并不在 HTML 标准中，但是却移动端开发的事实标准。这里来解释一下 content 中的内容：
+
+width：页面宽度，可以是一个正整数；也可以一个字符串 "device-width" ，表示跟设备宽度相等。
+
+height：页面高度，可以是一个正整数；也可以一个字符串 "device-height" ，表示跟设备高度相等。
+
+initial-scale：初始缩放比例。
+
+minimum-scale： 最小缩放比例。
+
+maximum-scale： 最大缩放比例。
+
+user-scalable：是否允许用户缩放。
+
+name 属性的值除了可以是 viewport 之外，还有相当多的值：
+
+application-name 、author 、description 、generator 、keywords 、referrer 、robots 等。
+
+
+
+#### Nav
 
 自动实现导航
+
+
+
+#### Head
+
+
+
+#### Base
+
+Head子标签
+
+给页面上所有相对 URL 的提供一个基础。一份文档中只能有一个 <base> 标签。
+
+
+
+#### Script
+
+用于嵌入或引用可执行脚本。来看几个 script 标签常见的全局属性：
+
+1. async
+
+使浏览器使用另一个线程下载脚本，这时不会阻塞页面渲染。当脚本下载完成后，浏览器会暂停渲染，执行脚本，执行完毕后继续渲染页面。
+
+async 无法保证脚本的执行顺序，哪个脚本先下载结束就会先执行。
+
+2. defer
+
+同样会使浏览器并行下载脚本，但是下载完毕不会立即执行，而是会等到 DOM 加载完成后（即刚刚读取完 </html> 标签）再执行脚本。
+
+defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序。
+
+3. src
+
+定义引用外部脚本的地址，指定此属性的 script 标签内不应再有嵌入的脚本。如果脚本文件使用了非英语字符，还应该注明字符的编码。如：
+
+<script charset="utf-8" src="https://www.example.com/script.js"></script>
+4. type
+
+默认值是 text/javascript
+
+
+
+#### NoScript
+
+如果页面上的脚本类型不受支持或者当前在浏览器中关闭了脚本，则在此中定义脚本未被执行时的替代内容。
+
+
 
 ### 通用属性
 
@@ -2508,6 +2642,18 @@ github教程   https://github.com/wxyyxc1992/Web-Series		(现代 Web 开发基�
 
 #### React
 
+##### 属性
+
+对组件的配置项,通信，数据
+
+##### 状态
+
+the state is meant to hold variables that relate to the current state of the UI
+
+保存跟ui相关的数据
+
+
+
 ##### 使用
 
 使用polyfill
@@ -2971,6 +3117,53 @@ service worker
 #### 跨域
 
 [九种跨域方式实现原理](https://zhuanlan.zhihu.com/p/56718905?utm_source=wechat_session&utm_medium=social&utm_oi=881835120850501632&from=groupmessage)
+
+
+
+#### 消息推送
+
+##### 短轮询
+
+指在特定的的时间间隔（如每10秒），由浏览器对服务器发出HTTP request，然后由服务器返回最新的数据给客户端的浏览器。
+
+优点：后端编写非常简单，逻辑不复杂。
+缺点：请求中大部分中是无用的，浪费了带宽和服务器资源。
+
+
+
+##### 长轮询
+
+客户端向服务器发送Ajax请求，服务器接到请求后hold住连接，直到有新消息才返回响应信息并关闭连接，客户端处理完响应信息后再向服务器发送新的请求；
+
+优点：在无消息的情况下不会频繁的请求，耗费资小并且实现了服务端主动向前端推送
+缺点：服务器hold连接会消耗资源，返回数据顺序无保证，难于管理维护。
+
+
+
+##### 长连接
+
+在页面中的iframe发送请求到服务端，服务端hold住请求并不断将需要返回前端的数据封装成调用javascript函数的形式响应到前端，前端不断收到响应并处理。
+
+优点：消息即时到达，不发无用请求，管理起来也相对方便。
+缺点：服务端维护一个长连接会增加开销。
+
+
+
+##### Flash XMLSocket
+
+
+
+##### Server-sent
+
+HTML5规范中提供的服务端事件EventSource
+
+
+
+##### WebSocket
+
+WebSocket是HTML5下一种新的协议，是基于TCP的应用层协议，只需要一次连接，便可以实现全双工通信，客户端和服务端可以相互主动发送消息
+
+
 
 ### 单元测试
 
@@ -4000,6 +4193,14 @@ visual studio installer 的sharepoint开发有visual studio tools for office可�
 #### 快捷键
 
 切换光标模式  insert键
+
+
+
+### Typora
+
+typora 模糊可以进行缩放
+
+markdown流程，使用\<br/>可以进行换行
 
 ## 操作系统
 
