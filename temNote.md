@@ -249,5 +249,15 @@ dart
 
 [行内 JS 脚本的堵塞效应](http://www.phpied.com/asynchronous-inline-scripts-via-data-urls/)
 
-[正则表达式为什么不能解析 HTML 网页？](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)
+
+
+js垃圾回收
+
+不可达的被回收
+
+标记清除算法
+
+一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除
+
+
 
