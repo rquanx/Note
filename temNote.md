@@ -198,6 +198,8 @@ dart
 
 [d2日报](https://daily.fairyever.com/)
 
+[腾讯新闻前端团队](<https://github.com/Tnfe/TNFE-Weekly>)
+
 
 
 #### Book
@@ -249,5 +251,13 @@ dart
 
 [行内 JS 脚本的堵塞效应](http://www.phpied.com/asynchronous-inline-scripts-via-data-urls/)
 
-[正则表达式为什么不能解析 HTML 网页？](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)
+
+
+模板停用
+
+​	site settingg --> solutions --> 停用
+
+
+
+[antd modal.confim()](<https://github.com/ant-design/ant-design/blob/master/components/modal/confirm.tsx>)
 
