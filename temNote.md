@@ -260,4 +260,13 @@ dart
 
 
 [antd modal.confim()](<https://github.com/ant-design/ant-design/blob/master/components/modal/confirm.tsx>)
+js垃圾回收
+
+不可达的被回收
+
+标记清除算法
+
+一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除
+
+
 
