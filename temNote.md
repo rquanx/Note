@@ -176,7 +176,11 @@ dart
 
 [d2日报](https://daily.fairyever.com/)
 
+<<<<<<< HEAD
 [TNFE-Weekly](<https://github.com/Tnfe/TNFE-Weekly>)
+=======
+[腾讯新闻前端团队](<https://github.com/Tnfe/TNFE-Weekly>)
+>>>>>>> 648339e5052ec43f251fc7e2e6b7470982bb8709
 
 
 
@@ -227,6 +231,59 @@ dart
 
 
 
+<<<<<<< HEAD
 权限判断隐藏导航	
 
 加强HtmlWebpackPlugin    通过一个模板和文件信息pageinfo.json进行信息填补
+=======
+模板停用
+
+​	site settingg --> solutions --> 停用
+
+
+
+[antd modal.confim()](<https://github.com/ant-design/ant-design/blob/master/components/modal/confirm.tsx>)
+js垃圾回收
+
+不可达的被回收
+
+标记清除算法
+
+一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除
+
+
+
+sharepoint  网站设置-> 母版页和页面布局-> Display Templates -> 可以找到搜索时使用的模板和js，从而对搜索结果做一些处理
+
+
+
+
+
+Fragments
+
+它是 React 中的常见模式，用于组件返回多个元素。*Fragments* 可以让你聚合一个子元素列表，而无需向 DOM 添加额外节点。
+
+```
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  )
+}
+```
+
+
+
+Portal
+
+*Portal* 提供了一种很好的将子节点渲染到父组件以外的 DOM 节点的方式。
+
+```
+ReactDOM.createPortal(child, container)
+```
+
+第一个参数是任何可渲染的 React 子节点，例如元素，字符串或片段。第二个参数是 DOM 元素。
+>>>>>>> 648339e5052ec43f251fc7e2e6b7470982bb8709
