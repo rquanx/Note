@@ -1454,6 +1454,14 @@ table元素的重排和重绘成本，要高于div元素。
 
 
 
+### 垃圾回收
+
+回收原则：不可达的被回收
+
+回收算法：标记清除算法
+
+一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除
+
 
 
 ### 文章
@@ -2696,6 +2704,8 @@ https://www.cnblogs.com/mianbaodaxia/p/6170726.html
 
 [react 16后生命周期](https://blog.hhking.cn/2018/09/18/react-lifecycle-change/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
+
+
 ##### Context
 
 组件间隔层传递数据，全局，但是需要通过provider和consumer来使用
@@ -2709,6 +2719,8 @@ this.context.changeData();
 ```
 [context](https://www.cnblogs.com/mengff/p/9511419.html)
 
+
+
 ##### Protal
 
 将组件render到悬浮最顶层，常用为dialog
@@ -2720,7 +2732,86 @@ usecontext
 useeffect
 ​	返回函数在unmount调用？？
 
-##### 小知识点
+
+
+##### 高阶组件
+
+###### 概念
+
+接受一个或多个组件作为参数并且返回一个组件就可称之为 高阶组件
+
+
+
+###### 分类
+
+- 无状态
+- 有状态
+
+
+
+属性代理
+
+- 操作 `props`
+  - 在render中给组件增加属性
+- 抽离 `state`
+  - 增加state处理,redux
+- 通过 `ref` 访问到组件实例
+- 用其他元素包裹传入的组件 `WrappedComponent`
+
+
+
+反向继承
+
+**一个函数接受一个 WrappedComponent 组件作为参数传入，并返回一个继承了该传入 WrappedComponent 组件的类，且在该类的 render() 方法中返回 super.render() 方法**
+
+- 操作 `state`
+- 渲染劫持（Render Highjacking）
+  - 有条件地展示元素树（`element tree`）
+  - 操作由 `render()` 输出的 React 元素树
+  - 在任何由 `render()` 输出的 React 元素中操作 `props`
+  - 用其他元素包裹传入的组件 `WrappedComponent` （同 **属性代理**）
+
+
+
+###### 高阶组件问题
+
+- 静态方法丢失
+- `refs` 属性不能透传
+- 反向继承不能保证完整的子组件树被解析
+
+
+
+高阶组件带给我们极大方便的同时，我们也要遵循一些 **约定**：
+
+- `props` 保持一致
+- 你不能在函数式（无状态）组件上使用 `ref` 属性，因为它没有实例
+- 不要以任何方式改变原始组件 `WrappedComponent`
+- 透传不相关 `props` 属性给被包裹的组件 `WrappedComponent`
+- 不要再 `render()` 方法中使用高阶组件
+  - // 每次 render 的时候，都会使子对象树完全被卸载和重新
+    // 重新加载一个组件会引起原有组件的状态和它的所有子组件丢失
+- 使用 `compose` 组合高阶组件
+- 包装显示名字以便于调试
+
+
+
+###### 应用场景
+
+- 权限判断
+
+
+
+##### Render Props
+
+通过children函数
+
+像 **控制反转（IoC）**
+
+
+
+
+
+##### 知识点
 
 ###### refs
 
@@ -2744,9 +2835,13 @@ key值并不是需要全局唯一，而只需要在相邻的兄弟元素中唯�
 
 this.props.children属性。它表示组件的所有子节点
 
+
+
 ###### 兼容性
 
 [浏览器兼容](https://reactjs.org/docs/react-dom.html#browser-support)
+
+
 
 ##### 国际化
 
@@ -3164,6 +3259,10 @@ HTML5规范中提供的服务端事件EventSource
 WebSocket是HTML5下一种新的协议，是基于TCP的应用层协议，只需要一次连接，便可以实现全双工通信，客户端和服务端可以相互主动发送消息
 
 
+
+##### 缓存
+
+[浏览器缓存](<https://www.jianshu.com/p/54cc04190252>)
 
 ### 单元测试
 
@@ -3832,7 +3931,27 @@ from SalesIndexInfo as a where ID=871
 
 
 
+### 堆栈
+
+栈存储基本变量类型
+
+堆存储引用类型，栈中变量通过地址指向堆变量
+
+
+
 ## 系统
+
+
+
+## 算法
+
+
+
+### 动态规划
+
+[什么是动态规划？动态规划的意义是什么？](<https://www.zhihu.com/question/23995189/answer/613096905>)
+
+> 从小往上找，类似斐波那契?
 
 ## 安全
 
@@ -4294,11 +4413,29 @@ ctrl + alt + 方向键 屏幕旋转
 
 
 
+#### Hyper-v
+
+##### 备份
+
+复制
+
+导出
 
 
 
+#### 账号
+
+账号设置分布
+
+- iis 应用池 账号设置
+- windows服务账号设置
+- sharepoint   邮件传出、nintex提示、UserProfile
 
 
+
+#### windows打开文件编码问题
+
+控制面板-->语言设置-->非unicode编码使用语言
 
 ## 版本控制
 
@@ -4836,39 +4973,50 @@ sharepoint manager tool
 
 
 
+##### 功能点
+
+- 点赞
+- 评论
+- 调查问卷
+- 空间使用
+
+
+
 #### 页面
 
 考勤默认页面文字， 编辑页面->编辑属性->页面内容->编辑源...
+
+
 
 #### Webpart
 
 ##### 部署时问题
 
-对象ID重复
+###### 对象ID重复
 
 > 右键package打开设计器，右下角可修改solution ID  guid
 
 
 
-feature has already installed
+###### feature has already installed
 
 > 点击feature文件夹下的xxxfeature,右下属性选强制安装
 
 
 
-step 'activate features' Failed to load receiver assembly
+###### step 'activate features' Failed to load receiver assembly
 
 > 右键项目属性，签名，新建强名称密钥文件，随便写名字，密码随意
 
 
 
-Could not load file or assembly  The system cannot find the file specified
+###### Could not load file or assembly  The system cannot find the file specified
 
 > 确实少了dll
 
 
 
-wsp包打包文件还原
+###### wsp包打包文件还原
 
 - 新建一个同名的sharepoint项目，自带package和feature生成
 - 将package复制到需要还原的项目中，feature为空不需要
@@ -4879,11 +5027,11 @@ wsp包打包文件还原
 
 
 
-版本问题？ 部署后aspx中的aspx无效，要移动到layout下
+###### 版本问题？ 部署后aspx中的aspx无效，要移动到layout下
 
 
 
-webpart打包，在wsp中添加依赖的dll，选择package ==>高级==>添加
+###### webpart打包，在wsp中添加依赖的dll，选择package ==>高级==>添加
 
 
 
@@ -4914,28 +5062,39 @@ https://github.com/SharePoint/sp-dev-fx-webparts)
 ##### 查看站点存储
 site setting --> (转到首要网站设置) --> 存储标准 --> file    不一定准
 
+
+
 ##### sharepoint文件批量下载、获取
 
 在文件夹中输入网页地址能直接访问sharepoint文件夹
+
+
 
 ##### 隐藏用户表,用户信息表
 
 http://192.168.20.40:8091/sites/rgciland/_catalogs/users/simple.aspx
 /_catalogs/users/simple.aspx
 
+
+
 ##### 隐藏账号
 
 everyone: 表示所有账号		默认隐藏？所以查找不出来，要实际查找点击一次才会出来
 ​	默认ID 13？
+
+
 
 ##### 日志
 
 日志路径：C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\LOGS
 ULSViewe-log工具	查看工具
 
+
+
 ##### 权限
 
-可对Item项设置权限
+通过组可对Item项设置权限
+
 流程可以设置item权限
 
 
@@ -4960,7 +5119,7 @@ list setting,在contenType中点击，进入List Content Type页面，点击字�
 
 ##### 导出excel
 
-sharepoint list export to excel
+sharepoint list export to excel   需要IE
 
 > 导出数据到excel，进行备份
 >
@@ -4977,6 +5136,24 @@ sharepoint list export to excel
 > list setting保存模板，且包含数据
 >
 > 创建list,在app中查找
+
+
+
+##### 网站集备份、还原
+
+```bash
+#  备份
+Restore-SPSite -Identity "http://10.182.21.33/sites/attendance" -Path C:\Users\farmadmin\Desktop\site\attend.bak -Force  
+
+# 还原
+Backup-SPSite -Identity "https://portal.toyotsu-ea.com" -Path C:\backup\deb\site.bak
+```
+
+
+
+##### 导航隐藏
+
+权限判断隐藏导航
 
 
 
@@ -5293,6 +5470,16 @@ filedirref不能加索引，也不能作索引进行查询
 In可以用于索引筛选
 lookup value不能被索引到  
 
+
+
+###### 索引
+
+索引设置后，caml查询时可能对字段类型有一致要求
+
+
+
+
+
 ##### 分页
 
 [分页](https://code.msdn.microsoft.com/SharePoint-JSOM-list-5104ca92)
@@ -5355,9 +5542,44 @@ Guid id = list.ID;
 
 #### 问题
 
-启动流程超时，流程操作超时： 服务器流程服务问题
+##### 启动流程超时
+
+流程操作超时： 服务器流程服务问题
+
+
+
+##### 错误信息显示，Debug模式
 
 ![9f1ed5f7040cfb2f514787bc096ca86](.\Note.assets\9f1ed5f7040cfb2f514787bc096ca86.png)
+
+
+
+##### 搜索结果预览的时候遮罩层不隐藏
+
+Nintex自带的代码产生的遮罩层，可能有Bug导致不隐藏
+
+
+
+##### AD组用户变更后 SharePoint没有及时生效
+
+1. User Profile Service      Full sync
+2. CA- > Service applications      -> user profile Service -> start profile sync(under sync) ->      start full sync
+3. <https://sergeluca.wordpress.com/2013/07/06/sharepoint-2013-use-ag-groups-yes-butdont-forget-the-security-token-caching-logontokencacheexpirationwindow-and-windowstokenlifetime/
+4. <https://sharepoint.stackexchange.com/questions/76313/users-added-to-ad-group-not-granted-access-in-sharepoint>
+
+
+
+##### 网站使用率报告问题
+
+1. <https://social.technet.microsoft.com/Forums/en-US/1b42b517-79cc-43b9-b6f0-2e4639461cb1/empty-usage-data-in-sharepoint-2013>
+
+
+
+##### 清除登陆Token（解决AD组用户变化及时更新问题）
+
+clear-spdistributedcacheitem -containerType DistributedLogonTokenCache
+
+
 
 ### Azure
 
@@ -5527,6 +5749,8 @@ display:none;
 
 - 如果对应的点确实很简单可根据情况进行省略
 
+
+
 ##### 技能相关
 
 **懂的知识点**
@@ -5536,6 +5760,8 @@ display:none;
 **不懂的知识点**
 
 直接问这个是什么，什么的一个概念，进行一个描述，看是否能说明白；重复三部曲
+
+
 
 ##### 个人相关
 
@@ -5600,6 +5826,120 @@ display:none;
 
 - 有没用爬虫做过什么？
 - ->项目小作品三部曲
+
+
+
+##### 中级面试
+
+1、之前的公司的团队有多大技术、开发人员、测试人员比例是多少？
+
+> 主要考察候选人的带队能力，以及一个团队里人员配比的合理性。
+
+
+
+2、你如何应对未过试用期的技术人员离职？
+
+> 主要考察候选人的管理能力及应对突发事件的能力。
+
+
+
+3、你在项目当中碰到的最大困难是什么，如何解决？
+
+> 通过候选人回答的最大困难，考察候选人有没有真正碰到过重大困难，以及他的解决问题的思路及能力。
+
+
+
+4、团队中技术人员技术参差不齐，你如何保证团队开发的质量？
+
+> 考察候选人在技术把控上的管理方法，比如有没有安排代码code review的习惯等，有没有安排单元测试的习惯等。
+
+5、现在团队只有你一个人，但是公司要求在2个月之内完成一个新项目，你有什么工作思路？
+
+> 考察候选人的工作推进能力，能否借力和充分利用现有资源，比如可以通过自有资源快速建立团队，可以使用外包等。
+
+
+
+6、在之前的开发中使用到那些新技术，对这种技术有什么看法？
+
+> 考察候选人对新技术的应用情况及理解，同时考察候选人的学习能力。
+
+
+
+7、觉得自身有哪些优点和不足，有哪些需要提升的地方？
+
+> 通过候选人的回答来确定候选人的品行，是否诚实、谦逊为人等品行。
+
+
+
+8、对新人怎么培训和管理，有没有什么方法？
+
+> 通过候选人的回答，考察其有没有真正的带队经验，团队建设的能力。
+
+
+
+9、在技术架构，技术选型的时候，主要考虑哪方面的因素，有哪些注意事项？
+
+> 考查技术架构能力，比如能否根据业务不同选择不同的技术解决方案，有没有考虑并发、分库分表等方面。
+
+
+
+10、对未来的职业规划？
+
+考察候选人对自己的未来有没有清晰的计划和目标，如果一个技术经理、CTO对自己未来没有清晰的认识的话，单纯是为了挣钱而工作的话，建议慎重考虑。
+
+
+
+11、有哪些技术标准规范是比较重要的？
+
+【特定标准】具体包含哪些内容？
+
+
+
+12、你认为项目管理最重要的是什么？
+
+
+
+### 面试
+
+面试需要知道
+
+- 岗位的技术栈
+- 团队的规模、话语权、重要性
+- 工作时间
+- 公司的行业信息和所处的地位
+- 工作内容
+- 项目的开发流程：从需求评审到发布上线，会经历哪些步骤
+- 公司的代码规范制定以及技术分享的频率和形式(`code review`)
+- 对于加班这块公司的规定是什么
+- 接下来要做的项目是什么
+- 公司或团队的发展方向
+
+### 管理
+
+[如果我是一线技术主管](<https://mp.weixin.qq.com/s/dPbxBLypSA94ZGPcmlD_xw>)
+
+> 任务分配
+>
+> 重要&紧急：能力强的人处理
+>
+> 重要不紧急：给人提供锻炼机会
+>
+> 技术想法：给积极的人
+>
+> 无关重要：能力一般的人
+>
+> 
+>
+> 积极的人
+>
+> 1、主动发现、提醒、处理问题
+> 2、即使是小事情也能做得好且有亮点
+>
+> 
+>
+> 做事
+>
+> 不仅完成基本的，还得完成额外的，考虑到更多的
 
 
 

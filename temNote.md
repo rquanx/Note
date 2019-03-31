@@ -1,17 +1,5 @@
 ###  待办
 
-#### 每日计划
-
-金融书籍
-
-掘金
-
-github
-
-看书
-
-
-
 #### 财务
 
 知乎书籍
@@ -23,12 +11,6 @@ github
 Hyper-V  密码 MedalSoft2019
 
 [KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
-
-
-
-#### 软件学习 
-
-uipath
 
 
 
@@ -62,13 +44,17 @@ uipath
 
 [react优化系列](https://segmentfault.com/a/1190000018398978#articleHeader4)
 
+[React 面试题 & 回答](<https://github.com/semlinker/reactjs-interview-questions>)
+
 
 
 ###### JavaScript
 
-[如何使用JavaScript构建模态框插件](https://www.w3cplus.com/javacript/building-your-own-javascript-modal-plugin.html)
-
 [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+
+[FE-booklet](<https://github.com/littlematch0123/FE-booklet>)
+
+装饰器使用
 
 
 
@@ -80,11 +66,13 @@ uipath
 
 ###### CSS
 
-[条件 CSS](https://zhuanlan.zhihu.com/p/55795638)
+[条件 CSS，须有基础](https://zhuanlan.zhihu.com/p/55795638)
 
 [css规范](https://codeguide.bootcss.com/#html-syntax)
 
 [网站配色](https://mp.weixin.qq.com/s/TR_Y2W5zh9g0pB8nhZzM6Q)
+
+[CSS-Inspiration](https://github.com/chokcoco/CSS-Inspiration)
 
 
 
@@ -126,17 +114,7 @@ uipath
 
 [dan blog](https://overreacted.io/)
 
-
-
-###### 库
-
-[momentjs](http://momentjs.com/)
-
-[可视化rx.js](https://reactive.how/)
-
-
-
-###### 优化
+[基伟博客](<https://qoxop.github.io/>)
 
 
 
@@ -178,7 +156,7 @@ dart
 
 
 
-##### 资讯
+##### 每日资讯
 
 [ReadHub](https://readhub.cn/topics)
 
@@ -190,13 +168,15 @@ dart
 
 
 
-##### Github
+##### 日报、周报
 
 [github start排行](http://githubrank.com/)
 
 [早报](https://wubaiqing.github.io/zaobao/)
 
 [d2日报](https://daily.fairyever.com/)
+
+[TNFE-Weekly](<https://github.com/Tnfe/TNFE-Weekly>)
 
 
 
@@ -206,19 +186,15 @@ dart
 
 
 
+#### 工具
+
+[logo生成](<https://mybrandnewlogo.com/logo-maker>)
+
+
+
 #### 实践
 
 刷题的时候解题方法，用动画进行记录
-
-@log  装饰器使用
-
-
-
-#### 社区
-
-[get社区](http://get.ftqq.com/528.card)
-
-[node.js论坛](https://cnodejs.org/)
 
 
 
@@ -251,13 +227,6 @@ dart
 
 
 
-js垃圾回收
+权限判断隐藏导航	
 
-不可达的被回收
-
-标记清除算法
-
-一般来说没有被引用的对象就是垃圾，就是要被清除， 有个例外如果几个对象引用形成一个环，互相引用，但根访问不到它们，这几个对象也是垃圾，也要被清除
-
-
-
+加强HtmlWebpackPlugin    通过一个模板和文件信息pageinfo.json进行信息填补
