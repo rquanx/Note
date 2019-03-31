@@ -2725,6 +2725,36 @@ this.context.changeData();
 
 将组件render到悬浮最顶层，常用为dialog
 
+*Portal* 提供了一种很好的将子节点渲染到父组件以外的 DOM 节点的方式。
+
+```
+ReactDOM.createPortal(child, container)
+```
+
+第一个参数是任何可渲染的 React 子节点，例如元素，字符串或片段。第二个参数是 DOM 元素。
+
+
+
+##### Fragments
+
+它是 React 中的常见模式，用于组件返回多个元素。*Fragments* 可以让你聚合一个子元素列表，而无需向 DOM 添加额外节点。
+
+```
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  )
+}
+```
+
+
+
+
+
 ##### Hook
 
 usestate
@@ -5154,6 +5184,18 @@ Backup-SPSite -Identity "https://portal.toyotsu-ea.com" -Path C:\backup\deb\site
 ##### 导航隐藏
 
 权限判断隐藏导航
+
+
+
+##### 模板停用
+
+​	site settingg --> solutions --> 停用
+
+
+
+##### 爬虫搜索加工
+
+网站设置-> 母版页和页面布局-> Display Templates -> 可以找到搜索时使用的模板和js，从而对搜索结果做一些处理
 
 
 
