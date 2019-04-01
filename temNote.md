@@ -227,29 +227,15 @@ dart
 
 [行内 JS 脚本的堵塞效应](http://www.phpied.com/asynchronous-inline-scripts-via-data-urls/)
 
+[dailyjs](<https://medium.com/dailyjs>)
+
+[codeburst](<https://codeburst.io/>)
+
+[echojs](<http://www.echojs.com/>)
+
+[frontendfront](<https://frontendfront.com/>)
 
 
-权限判断隐藏导航	
 
 加强HtmlWebpackPlugin    通过一个模板和文件信息pageinfo.json进行信息填补
-
-
-
-强制刷新
-
-​	component.forceUpdate(callback)
-
-
-
-```html
-<Sharepoint:SPSecurityTrimmedControl ID="SPSecurityTrimmedControl2" runat="server" PermissionsString="ManageWeb">                           
-          <script type="text/javascript">
-             $('#suiteBarDelta').css('display', 'block'); 
-          	 $("#s4-ribbonrow").css('display', 'block');
-         </script>         
-</Sharepoint:SPSecurityTrimmedControl>
-
-```
-
-
 

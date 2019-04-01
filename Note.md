@@ -2871,6 +2871,10 @@ this.props.children属性。它表示组件的所有子节点
 
 [浏览器兼容](https://reactjs.org/docs/react-dom.html#browser-support)
 
+###### 强制刷新
+
+​	component.forceUpdate(callback)
+
 
 
 ##### 国际化
@@ -5184,6 +5188,18 @@ Backup-SPSite -Identity "https://portal.toyotsu-ea.com" -Path C:\backup\deb\site
 ##### 导航隐藏
 
 权限判断隐藏导航
+
+
+
+```html
+<Sharepoint:SPSecurityTrimmedControl ID="SPSecurityTrimmedControl2" runat="server" PermissionsString="ManageWeb">                           
+          <script type="text/javascript">
+             $('#suiteBarDelta').css('display', 'block'); 
+          	 $("#s4-ribbonrow").css('display', 'block');
+         </script>         
+</Sharepoint:SPSecurityTrimmedControl>
+
+```
 
 
 
