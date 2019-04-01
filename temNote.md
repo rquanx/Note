@@ -178,11 +178,7 @@ dart
 
 [d2日报](https://daily.fairyever.com/)
 
-<<<<<<< HEAD
 [TNFE-Weekly](<https://github.com/Tnfe/TNFE-Weekly>)
-=======
-[腾讯新闻前端团队](<https://github.com/Tnfe/TNFE-Weekly>)
->>>>>>> 648339e5052ec43f251fc7e2e6b7470982bb8709
 
 
 
@@ -236,4 +232,24 @@ dart
 权限判断隐藏导航	
 
 加强HtmlWebpackPlugin    通过一个模板和文件信息pageinfo.json进行信息填补
+
+
+
+强制刷新
+
+​	component.forceUpdate(callback)
+
+
+
+```html
+<Sharepoint:SPSecurityTrimmedControl ID="SPSecurityTrimmedControl2" runat="server" PermissionsString="ManageWeb">                           
+          <script type="text/javascript">
+             $('#suiteBarDelta').css('display', 'block'); 
+          	 $("#s4-ribbonrow").css('display', 'block');
+         </script>         
+</Sharepoint:SPSecurityTrimmedControl>
+
+```
+
+
 
