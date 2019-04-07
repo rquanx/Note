@@ -1252,6 +1252,28 @@ error boundary
 declare var SP: any;
 ​	可以去掉引用外部js东西时报错
 
+
+
+##### type
+
+```typescript
+type a = {
+	b: string
+}
+
+/** x */
+interface b {
+    
+}
+
+type bb = b[];
+
+type t = typeof { b: "1"}
+
+```
+
+
+
 #### 使用
 
 ##### 预声明
@@ -1888,6 +1910,129 @@ span标签
 
 ### 基础
 
+#### 选择器
+
+##### 子选择器
+
+必须是父子关系
+
+```css
+li > a {
+
+}
+```
+
+##### 后代选择器
+
+```css
+li  a {
+
+}
+```
+
+
+
+##### 相邻选择器
+
+```css
+li+a {
+
+}
+```
+
+##### 属性选择器
+
+```css
+[title] {/*有title的属性*/}
+a[href][title] {/* 同时有href和title的 a标签 */}
+a[href="x"][title="y"] {/* 同时有href和title且值为对应值的 a标签 */}
+a[src^="x"] {/* 以x为开头 */}
+a[src$="y"]{/* 以y为结尾 */}
+a[src*="z"] {/**包含/}
+```
+
+##### 复合选择器
+
+```css
+li.a {/* li且class = a */}
+```
+
+
+
+##### 伪类选择器
+
+**nth-child(n)**
+
+```css
+li:nth-child(1) {
+    /* 某个父元素下的第1个子元素且是li
+    	n则为全部 
+    	2n表示复数的
+    	n+5  从第5个起的全部
+    */}
+```
+
+
+
+**nth-last-child(n)**
+
+和nth-child顺序相反
+
+
+
+**nth-of-type(n)**
+
+```css
+li: nth-of-type(1) {
+    /* 某个父元素下的第1个li
+    	n则为全部 
+    	2n表示复数的
+    	n+5  从第5个起的全部
+    */}
+```
+
+**nth-last-of-type(n)**
+
+
+
+**firts-of-type**
+
+​	等于nth-of-type(1)
+
+**last-of-type**
+
+​	等于nth-last-of-type(1)
+
+**last-child**
+
+```css
+/* 最后一个子元素 */
+```
+
+**only-child**
+
+```css
+p:only-child { /* 只有一个子元素且为p */}
+```
+
+**only-of-type**
+
+
+
+**root**
+
+选择跟元素
+
+
+
+**empty**
+
+选择没有任何内容的元素
+
+
+
+
+
 #### Link标签
 
 ##### 属性
@@ -1934,13 +2079,27 @@ rel
 
 ##### position	元素定位
 
-​	static	默认
-​	relative	相对定位
+​	static	默认值	top、left...都不生效
+​	relative	和默认值表现一直，但是可以使用top等属性
 ​		修改坐标时相对原本的位置更改	
 ​		改变坐标时不会对其他元素产生影响	
+
+**绝对定位**
+
+> 块元素宽度默认根据内容设置
+>
+> z-index默认会覆盖在其他元素上
+>
+> 脱离文档流，类似float
+>
+> absolute和fixed都是
+
+​	
+
 ​	absolute	绝对定位	
-​		以第一个非static的父元素作参考，然后根据坐标设置标号
+​		以第一个非static的父元素作参考，没有的话就相对整个html，然后根据坐标设置标号
 ​		页面滚动也会固定在那个位置
+
 ​	fiex	基于窗口绝对定位，不管怎么滚动，总是处于窗口的指定位置
 ​		窗口，===随滚动走
 
@@ -1954,12 +2113,44 @@ rel
 
 #### 浮动
 
-##### overflow
+默认的块元素占宽100%,当浮动后默认占内容宽度
+
+
+
+默认情况下父元素的高度会根据子元素高度定，当设置浮动后子元素脱离文档流，父元素高度变为0 ==> 高度坍塌
+
+
+
+脱离文档流后，内容不会相互覆盖，而是根据相对定位进行排放
+
+
+
+###### 清除浮动
+
+1、clear: both  此元素左右两侧不允许出现浮动元素，利用清除浮动来把外层的div撑开
+
+2、父元素中使用伪类清除 
+
+```css
+.clearfix:after {
+content: "\0020";	/*空白符*/
+display: block;
+clear: both；		
+    /* 确保这个空白字符是非浮动的独立区块*/
+height: 0；			/* 让content不显示*/
+}
+```
+
+3、overflow
 
 ​	hidden		对于溢出区域的内容隐藏
 ​	visible		默认
 ​	atuo			溢出时自动加滚动条	
 ​	scroll		强制滚动条，横向竖向都加
+
+
+
+
 
 #### 边框
 
@@ -2021,6 +2212,40 @@ block居中  margin:0 auto
 inline inline-block居中	text-align:center	
 
 outline类似于border但不会影响布局  
+
+
+
+### 兼容性
+
+浏览器兼容
+
+```css
+/*
+	条件注释控制
+https://www.cnblogs.com/kenan9527/p/4539673.html
+*/
+<!--[if !IE]> <!--> 
+	除IE外都可识别 
+<!-- <![endif]--> 
+
+.transform {
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+}
+/* 
+	-webkit- chrome,safari
+	-moz- 火狐
+	-m  IE
+	-o opera
+	各个浏览器可能会有自己的实现，为兼容使用前缀，且写全，下面的有效会覆盖上面的,所以默认的标准属性写在最后，postcss 帮助。。。
+*/
+
+```
+
+
 
 ### 杂
 
@@ -2625,6 +2850,14 @@ done
 选择你最熟悉的后端语言，让你开心。这并不重要。一旦选择了一种语言，最好使用框架来避免样板代码，并保持事物的安全性和结构性。再次，这是你的需求和个人喜好的问题。
 使用HTML，JavaScript和CSS构建前端。使用JavaScript处理HTML非常麻烦，所以我建议你使用像jQuery，Zepto或类似的库来做到这一点。如果你认为你有几千行JS代码，可以考虑使用一个MVC框架，比如Angular.js，Backbone.js或者Ember.js。如果您的网站是HTML或CSS，请考虑使用HTML模板引擎或SASS / LESS等语言。
 根据您选择的数据库和后端，找出承载您的应用的最佳位置。Heroku，Amazon EC2，Rackspace Cloud，Google AppEngine和EngineYard等几种常见选项
+
+
+
+## 知识点
+
+IO密集型和CPU密集型任务
+
+CDN 指的是[内容分发网络](https://en.wikipedia.org/wiki/Content_delivery_network)
 
 
 

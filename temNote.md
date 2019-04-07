@@ -239,3 +239,6 @@ dart
 
 加强HtmlWebpackPlugin    通过一个模板和文件信息pageinfo.json进行信息填补
 
+componentDidCatch
+
+loading.show()    portal	loading函数，加入计数，当现实
