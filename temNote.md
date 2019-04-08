@@ -242,3 +242,54 @@ dart
 componentDidCatch
 
 loading.show()    portal	loading函数，加入计数，当现实
+
+
+
+##### 响应式布局
+
+对需要适配的屏幕尺寸进行划分
+
+移动优先和PC优先
+
+- 移动优先使用min-width
+- PC优先用max-width
+
+百分比布局（计算困难）
+
+rem布局（根据font-size变化）
+
+
+
+
+
+##### 装饰器
+
+ES7 中的 decorator 同样借鉴了这个语法糖，不过依赖于 ES5 的 `Object.defineProperty` 方法
+
+decorator ===  高阶函数，通过Object.defineProperty进行处理
+
+> 通过高阶函数可以实现装饰器传参
+
+
+
+##### 浏览器存储
+
+Cookie、LocalStorage、sessionStorage与IndexedDB
+
+![img](E:\electronic\programandcompli\Github\Note\temNote.assets\169fb22fcd34051a)
+
+
+
+##### 浏览器
+
+`getEventListeners($(‘selector’))` 返回一个对象数组，其中包含绑定到该元素的所有事件
+
+
+
+`monitorEvents($(‘selector’))` 将监视与选择器的元素关联的所有事件，然后在它们被触发时将它们打印到控制台
+
+
+
+[在线PS](<https://www.photopea.com/>)
+
+[百度云盘搜索](<https://www.52sopan.com/>)
