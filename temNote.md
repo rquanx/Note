@@ -293,3 +293,73 @@ Cookie、LocalStorage、sessionStorage与IndexedDB
 [在线PS](<https://www.photopea.com/>)
 
 [百度云盘搜索](<https://www.52sopan.com/>)
+
+
+
+##### CSS
+
+###### overflow
+
+hidden
+
+当内容太多，设成Hidden,会把多出的内容隐藏
+
+auto
+
+父元素中形成滚动条可以滚动查看溢出的内容
+
+scroll
+
+不管内容是否超出，总是显示滚动条
+
+
+
+overflow-x / -y 可以单独对x和y进行设置
+
+
+
+###### position
+
+top、bottom、left、right是相对于父元素的
+
+
+
+sticky
+
+​	
+
+###### 水平居中
+
+文字
+
+ text-align: center
+
+
+
+div居中
+
+margin-left: auto;
+
+margin-rigth: auto;
+
+自动计算两侧
+
+
+
+###### 垂直居中
+
+在明确页面高度的情况下设置line-hight: 页面高度
+
+
+
+
+
+##### 列表
+
+一系列类似的内容，且不关心顺序，常用ul作结构
+
+li默认不会根据内容进行伸缩？可设置成display: table
+
+
+
+vscode主题 sublime material
