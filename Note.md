@@ -516,6 +516,18 @@ Promise.reslove(1).then(() => {})
 
 
 
+#### 装饰器
+
+ES7 中的 decorator 同样借鉴了这个语法糖，不过依赖于 ES5 的 `Object.defineProperty` 方法
+
+decorator ===  高阶函数，通过Object.defineProperty进行处理
+
+> 通过高阶函数可以实现装饰器传参
+
+
+
+
+
 ### 原型、类
 
 #### 概述
@@ -949,6 +961,12 @@ var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
 ##### Document
 
 - documentFrament  在批量添加元素时，可通过片段直接添加，避免反复渲染
+
+
+
+##### 事件绑定
+
+绑定事件使用addevent ，直接使用onxxx= 容易被覆盖
 
 ### 内置方法
 
@@ -1394,6 +1412,24 @@ declare module '*.html';
 
 ### 浏览器
 
+#### 杂
+
+`getEventListeners($(‘selector’))` 返回一个对象数组，其中包含绑定到该元素的所有事件
+
+
+
+`monitorEvents($(‘selector’))` 将监视与选择器的元素关联的所有事件，然后在它们被触发时将它们打印到控制台
+
+
+
+#### 存储
+
+Cookie、LocalStorage、sessionStorage与IndexedDB
+
+![img](E:\electronic\programandcompli\Github\Note\Note.assets\169fb22fcd34051a)
+
+
+
 #### 重排和重绘
 
 ##### 定义
@@ -1708,6 +1744,12 @@ defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序�
 #### NoScript
 
 如果页面上的脚本类型不受支持或者当前在浏览器中关闭了脚本，则在此中定义脚本未被执行时的替代内容。
+
+#### Ul
+
+一系列类似的内容，且不关心顺序，常用ul作结构
+
+li默认不会根据内容进行伸缩？可设置成display: table
 
 
 
@@ -2077,6 +2119,10 @@ rel
 
 #### 定位
 
+top、bottom、left、right是相对于父元素的
+
+
+
 ##### position	元素定位
 
 ​	static	默认值	top、left...都不生效
@@ -2122,6 +2168,26 @@ rel
 
 
 脱离文档流后，内容不会相互覆盖，而是根据相对定位进行排放
+
+
+
+###### overflow
+
+hidden
+
+当内容太多，设成Hidden,会把多出的内容隐藏
+
+auto
+
+父元素中形成滚动条可以滚动查看溢出的内容
+
+scroll
+
+不管内容是否超出，总是显示滚动条
+
+
+
+overflow-x / -y 可以单独对x和y进行设置
 
 
 
@@ -2195,6 +2261,14 @@ height: 0；			/* 让content不显示*/
 
 transform:translateY(-50%)		以自身原本为参考，往上移动50%  
 
+
+
+#### 字体图标
+
+引入css和字体文件后
+
+<I class="fa fa-xx"></i>
+
 ### 应用
 
 #### 项目css编写方式
@@ -2206,12 +2280,40 @@ transform:translateY(-50%)		以自身原本为参考，往上移动50%
 
 ​	可以通过js动态增删 一个隐藏的类来完成
 
+
+
 #### 居中
 
 block居中  margin:0 auto
 inline inline-block居中	text-align:center	
 
 outline类似于border但不会影响布局  
+
+
+
+###### 水平居中
+
+文字
+
+ text-align: center
+
+
+
+div居中
+
+margin-left: auto;
+
+margin-rigth: auto;
+
+自动计算两侧
+
+
+
+###### 垂直居中
+
+在明确页面高度的情况下设置line-hight: 页面高度
+
+
 
 
 
@@ -2859,6 +2961,12 @@ IO密集型和CPU密集型任务
 
 CDN 指的是[内容分发网络](https://en.wikipedia.org/wiki/Content_delivery_network)
 
+置
+
+
+
+[消息队列](<https://zhuanlan.zhihu.com/p/55712984>)
+
 
 
 ## 小技巧
@@ -2906,7 +3014,19 @@ the state is meant to hold variables that relate to the current state of the UI
 使用react，两个js库
 1、单独出来，全局引用,如果要配合polyfill则polyfill也只能全局引用
 2、打包进verdon中，需要有一个入口js import两个库然后调用render，进行组件挂载
-https://www.cnblogs.com/mianbaodaxia/p/6170726.html
+[wepack + react](https://www.cnblogs.com/mianbaodaxia/p/6170726.html)
+
+##### 函数组件
+
+```react
+let S = (props) => (<h1>{props.data}</h1>);
+<S data={"123"}> </S>
+
+```
+
+
+
+
 
 ##### 生命周期
 
@@ -2917,6 +3037,21 @@ https://www.cnblogs.com/mianbaodaxia/p/6170726.html
 ###### didmount 
 
  在render后,建议用于异步的数据加载
+
+```react
+componentDidMount = async () => {
+	Console.log(this.state.a) // 0
+	await This.setstate({ a: 1});
+	Console.log(this.state.a) // 1
+	await This.setstate({ a: 2});
+	Console.log(this.state.a) // 2
+}
+// 设置成asyn/await
+```
+
+
+
+
 
 ###### shouldComponentUpdate
 
@@ -2936,6 +3071,10 @@ https://www.cnblogs.com/mianbaodaxia/p/6170726.html
 返回状态对象来更新，不更新返回null =>  替代willreceive?
 
 [react 16后生命周期](https://blog.hhking.cn/2018/09/18/react-lifecycle-change/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
+
+
+componentDidCatch
 
 
 
@@ -2990,10 +3129,35 @@ render() {
 
 ##### Hook
 
-usestate
-usecontext
-useeffect
-​	返回函数在unmount调用？？
+useState
+
+> 普通状态或set
+
+
+
+useEffect
+
+> 替代didupdate,
+>
+> ​	返回值：一个函数，函数会用于willunmount
+>
+> ​	第二个参数：在useEffect里setState会触发再次执行，第二个参数传入依赖值，只有依赖变了才会再触发useEffect，空数组则只会执行一次
+>
+> 每次变化都能监控到，如果用didupdate是批量更新只获取到最新的
+
+
+
+useRef
+
+> 用来存储数据
+>
+> 因为是函数，每次执行内部变量都会重建，然后丢失保存的数据？
+
+
+
+useCallback
+
+> 成一个不随着组件更新而再次创建的 callback
 
 
 
@@ -3314,6 +3478,16 @@ module.rules.use数组中，loader 的位置。根据 webpack 规则：放在最
 
 
 
+##### Loader
+
+Loader  不写Include   会处理全部符合正则的代码
+
+​	Exclude  排除
+
+​	写include 处理include路径下所有符合条件的文件
+
+
+
 ##### 插件
 
 ###### 通用
@@ -3472,6 +3646,25 @@ babel只转换语法不转换api   如：map,set,object.assign
 
 [tslint规则](https://palantir.github.io/tslint/rules/)
 
+
+
+### 移动开发
+
+##### 响应式布局
+
+对需要适配的屏幕尺寸进行划分
+
+移动优先和PC优先
+
+- 移动优先使用min-width
+- PC优先用max-width
+
+百分比布局（计算困难）
+
+rem布局（根据font-size变化）
+
+
+
 ### 性能
 
 #### 缓存
@@ -3483,6 +3676,12 @@ service worker
 
 
 ### 知识点
+
+#### 数据模拟
+
+mock.js
+
+easy-mock
 
 #### 跨域
 
@@ -4558,6 +4757,16 @@ EagleEye 可以帮你通过一个名字或者至少一张照片找到 Facebook �
 
 # 软件\工具
 
+
+
+## 原型设计
+
+Xiaopiu
+
+[墨刀](<https://modao.cc/>)
+
+mockup
+
 ## 编辑器
 
 ### VSCode
@@ -4810,6 +5019,10 @@ footer: 描述一些特殊情况，不兼容变动和issue关闭。
 if else if......
 
 
+
+### Word
+
+分页：插入分页符
 
 ## 流程
 
@@ -5218,6 +5431,14 @@ ValidationGroup指定验证组，并在流程设置好，可只在指定流程�
 
 nintex form修改表单，需要发布
 
+nintex表单 在列表设置直接进入表单
+
+打开nintex表单
+
+​	列表设置  nintexForms
+
+​	点击事件，双击button, advand
+
 ## 微软开发
 
 ### 总览
@@ -5494,6 +5715,14 @@ url最长为260？
 sql查询超过5000条的时候会锁定整张表  
 
 #### 开发
+
+
+
+##### 交互模型
+
+Sharepoint  csom,jsom,update后会自动更新对象内容
+
+
 
 ##### 用户
 
@@ -5809,6 +6038,18 @@ SPList list = web.Lists["test"];
 Guid id = list.ID;
 ```
 
+###### 翻页信息
+
+collListItem.get_listItemCollectionPosition() 
+
+​	总是返回往下翻页的翻页信息，但是当是往上翻页时，要取15条，但只有14条时，翻页信息会为空
+
+
+
+sharepoint分页，规避最后一条删除，规避往上翻页删除最后一条
+
+> 会为空
+
 
 
 ##### 插件
@@ -5891,6 +6132,10 @@ clear-spdistributedcacheitem -containerType DistributedLogonTokenCache
 ### Chrome
 
 #### 调试
+
+##### console
+
+Console.table()
 
 ##### 操作
 

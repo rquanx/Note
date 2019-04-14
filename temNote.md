@@ -1,4 +1,4 @@
-###  待办
+###  Todo
 
 #### 财务
 
@@ -10,7 +10,7 @@
 
 Hyper-V  密码 MedalSoft2019
 
-[KICK START快速入门 google](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
+[KICK START快速入门 google,不可访问？](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
 
 
 
@@ -48,6 +48,8 @@ Hyper-V  密码 MedalSoft2019
 
 [antd modal.confim()](<https://github.com/ant-design/ant-design/blob/master/components/modal/confirm.tsx>)
 
+> antd弹出框
+
 
 
 ###### JavaScript
@@ -56,7 +58,7 @@ Hyper-V  密码 MedalSoft2019
 
 [FE-booklet](<https://github.com/littlematch0123/FE-booklet>)
 
-装饰器使用
+> 小火柴的前端册子
 
 
 
@@ -75,6 +77,16 @@ Hyper-V  密码 MedalSoft2019
 [网站配色](https://mp.weixin.qq.com/s/TR_Y2W5zh9g0pB8nhZzM6Q)
 
 [CSS-Inspiration](https://github.com/chokcoco/CSS-Inspiration)
+
+> css示例
+
+[Sass](<https://sass-lang.com/>)
+
+> css预处理
+
+[PostCSS](<https://www.postcss.com.cn/>)
+
+> css处理工具
 
 
 
@@ -118,6 +130,38 @@ Hyper-V  密码 MedalSoft2019
 
 [基伟博客](<https://qoxop.github.io/>)
 
+[2019年最值得关注的国外科技公司技术博客](https://tonyxu.io/zh/posts/2019/top-engineering-blogs-from-tech-companies-to-follow-in-2019/)
+
+
+
+###### 图标网站
+
+[Font Awesome](<http://www.fontawesome.com.cn/>)
+
+[Iconfont](<https://www.iconfont.cn/>)
+
+[icomoon](<https://icomoon.io/>)
+
+[EasyIcon](<https://www.easyicon.net/>)
+
+[icons8](<https://icons8.cn/>)
+
+[IconStore](<https://iconstore.co/>)
+
+[iconninja](<http://www.iconninja.com/>)
+
+
+
+###### 数据模拟
+
+[Easy Mock](https://www.easy-mock.com/)
+
+
+
+###### 开发
+
+[富文本编辑器方案](https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/rich-editor.html#tinymce)
+
 
 
 ##### 数据库
@@ -144,7 +188,7 @@ dart
 
 
 
-##### 网络
+##### 网络抓包
 
 [whistle，http调试，抓包](https://zhuanlan.zhihu.com/p/47029559)
 
@@ -170,6 +214,22 @@ dart
 
 
 
+[虎嗅网](<https://www.huxiu.com/>)
+[36氪](<https://36kr.com/>)
+[利器](<https://liqi.io/>)
+
+> 采访优秀的创造者，邀请他们来分享工作时所使用的工具。
+
+[湾区日报](<https://wanqu.co/>)
+
+> 每天推送 5 篇优质英文文章。
+
+[Solidot](<https://www.solidot.org/>)
+[品玩](<https://www.pingwest.com/>)
+[极客公园](<http://www.geekpark.net/>)
+
+
+
 ##### 日报、周报
 
 [github start排行](http://githubrank.com/)
@@ -182,9 +242,31 @@ dart
 
 
 
+##### 技术网站
+
+[dailyjs](<https://medium.com/dailyjs>)
+
+[codeburst](<https://codeburst.io/>)
+
+[echojs](<http://www.echojs.com/>)
+
+[frontendfront](<https://frontendfront.com/>)
+
+
+
+##### 教程
+
+[webgl](<https://webglfundamentals.org/webgl/lessons/zh_cn/>)
+
+[Function Program Guide](<https://mostly-adequate.gitbooks.io/mostly-adequate-guide/> )
+
+[Function Program Guide 中文版](<https://legacy.gitbook.com/book/llh911001/mostly-adequate-guide-chinese>)
+
+
+
 #### Book
 
-[电子书](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
+[电子书网站清单](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
 
 
 
@@ -192,11 +274,27 @@ dart
 
 [logo生成](<https://mybrandnewlogo.com/logo-maker>)
 
+[国家企业信用信息公示系统](http://www.gsxt.gov.cn/)
+
+> 通过这个网站，我们可以查到任何一家公司的基本信息（成立时间、法定代表人等）。如果你在这个网站上没有找到某公司的信息，放心吧，这个公司一定是个骗子。
 
 
-#### 实践
 
-刷题的时候解题方法，用动画进行记录
+[ProcessOn](<https://www.processon.com/>)
+
+> 在线流程图
+
+
+
+[在线PS](<https://www.photopea.com/>)
+
+[百度云盘搜索](<https://www.52sopan.com/>)
+
+[美剧搜索](<http://videos.yizhansou.com/> )
+
+[查询相似的网站](<https://www.similarsites.com/> )
+
+[文档翻译，保留格式](<https://www.onlinedoctranslator.com/>)
 
 
 
@@ -209,157 +307,10 @@ dart
 
 #### 工作记录
 
-李中豪：本地管理员密码：123456?
-
 问题： 广州、广州、五邑
 
 
 
-[2019年最值得关注的国外科技公司技术博客](https://tonyxu.io/zh/posts/2019/top-engineering-blogs-from-tech-companies-to-follow-in-2019/)
+#### 其他
 
-[富文本编辑器](https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/rich-editor.html#tinymce)
-
-[webgl](<https://webglfundamentals.org/webgl/lessons/zh_cn/>)
-
-[文档翻译，保留格式](<https://www.onlinedoctranslator.com/>)
-
-[异步编程是什么？](https://luminousmen.com/post/asynchronous-programming-blocking-and-non-blocking)
-
-[行内 JS 脚本的堵塞效应](http://www.phpied.com/asynchronous-inline-scripts-via-data-urls/)
-
-[dailyjs](<https://medium.com/dailyjs>)
-
-[codeburst](<https://codeburst.io/>)
-
-[echojs](<http://www.echojs.com/>)
-
-[frontendfront](<https://frontendfront.com/>)
-
-
-
-加强HtmlWebpackPlugin    通过一个模板和文件信息pageinfo.json进行信息填补
-
-componentDidCatch
-
-loading.show()    portal	loading函数，加入计数，当现实
-
-
-
-##### 响应式布局
-
-对需要适配的屏幕尺寸进行划分
-
-移动优先和PC优先
-
-- 移动优先使用min-width
-- PC优先用max-width
-
-百分比布局（计算困难）
-
-rem布局（根据font-size变化）
-
-
-
-
-
-##### 装饰器
-
-ES7 中的 decorator 同样借鉴了这个语法糖，不过依赖于 ES5 的 `Object.defineProperty` 方法
-
-decorator ===  高阶函数，通过Object.defineProperty进行处理
-
-> 通过高阶函数可以实现装饰器传参
-
-
-
-##### 浏览器存储
-
-Cookie、LocalStorage、sessionStorage与IndexedDB
-
-![img](E:\electronic\programandcompli\Github\Note\temNote.assets\169fb22fcd34051a)
-
-
-
-##### 浏览器
-
-`getEventListeners($(‘selector’))` 返回一个对象数组，其中包含绑定到该元素的所有事件
-
-
-
-`monitorEvents($(‘selector’))` 将监视与选择器的元素关联的所有事件，然后在它们被触发时将它们打印到控制台
-
-
-
-[在线PS](<https://www.photopea.com/>)
-
-[百度云盘搜索](<https://www.52sopan.com/>)
-
-
-
-##### CSS
-
-###### overflow
-
-hidden
-
-当内容太多，设成Hidden,会把多出的内容隐藏
-
-auto
-
-父元素中形成滚动条可以滚动查看溢出的内容
-
-scroll
-
-不管内容是否超出，总是显示滚动条
-
-
-
-overflow-x / -y 可以单独对x和y进行设置
-
-
-
-###### position
-
-top、bottom、left、right是相对于父元素的
-
-
-
-sticky
-
-​	
-
-###### 水平居中
-
-文字
-
- text-align: center
-
-
-
-div居中
-
-margin-left: auto;
-
-margin-rigth: auto;
-
-自动计算两侧
-
-
-
-###### 垂直居中
-
-在明确页面高度的情况下设置line-hight: 页面高度
-
-
-
-
-
-##### 列表
-
-一系列类似的内容，且不关心顺序，常用ul作结构
-
-li默认不会根据内容进行伸缩？可设置成display: table
-
-
-
-vscode主题 sublime material
+[刘慈欣演讲](<http://cn.chinadaily.com.cn/2018-11/12/content_37243853.htm>)
