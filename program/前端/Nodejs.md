@@ -1,0 +1,55 @@
+### NodeJS
+
+[import默认文件](https://www.cnblogs.com/goloving/p/8889585.html)
+
+
+
+#### NPM
+
+##### 安装
+
+###### cnpm安装
+
+类似指令安装问题通用解决方法
+
+- 安装结束重启cmd
+- 修改环境变量
+- 还不能行直接copy到nodejs文件目录中
+
+
+
+ 
+
+安装cnpm没能安装到全局c盘，反而安装到当前目录，是由于权限问题，导致无法下载上,会用管理员运行再下载或者copy
+
+
+
+##### package.json
+
+###### 指令
+
+npm i  ==>  npm install   自动安装所有依赖
+
+###### Script
+
+快速指令  npm run xxx
+
+###### dependencies
+
+生产环境依赖
+
+打包生产环境资源时， dependencies 中的依赖会被打包，而 devDependencies 中的依赖不会被打包。
+
+生产环境依赖安装到 devDependencies，在本地时没问题，到生产环境会因为缺少依赖而无法正常运行。
+
+npm i module_name  -S  = >  npm install module_name --save    
+​	写入到 dependencies 对象		小写s无效
+
+###### devDependencies
+
+开发环境依赖
+
+如果将开发环境依赖安装到 dependencies ，本地和生产环境都没问题，就是生成的文件会大一点。
+
+npm i module_name  -D  => npm install module_name --save-dev   
+​	写入到 devDependencies 对象  

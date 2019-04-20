@@ -1,0 +1,403 @@
+##### 属性
+
+对组件的配置项,通信，数据
+
+##### 状态
+
+the state is meant to hold variables that relate to the current state of the UI
+
+保存跟ui相关的数据
+
+
+
+##### 使用
+
+使用polyfill
+1、页面全局引用
+2、react内引入，在最顶部引入，或在webpack中设置打包
+
+
+
+使用react，两个js库
+1、单独出来，全局引用,如果要配合polyfill则polyfill也只能全局引用
+2、打包进verdon中，需要有一个入口js import两个库然后调用render，进行组件挂载
+[wepack + react](https://www.cnblogs.com/mianbaodaxia/p/6170726.html)
+
+##### 函数组件
+
+```react
+let S = (props) => (<h1>{props.data}</h1>);
+<S data={"123"}> </S>
+
+```
+
+
+
+
+
+##### 生命周期
+
+###### willmount
+
+  在render前,被后续版本会被取消
+
+###### didmount 
+
+ 在render后,建议用于异步的数据加载
+
+```react
+componentDidMount = async () => {
+	Console.log(this.state.a) // 0
+	await This.setstate({ a: 1});
+	Console.log(this.state.a) // 1
+	await This.setstate({ a: 2});
+	Console.log(this.state.a) // 2
+}
+// 设置成asyn/await
+```
+
+
+
+
+
+###### shouldComponentUpdate
+
+最好只用于性能优化  
+
+###### willreceive
+
+对于willreceive尽量不要无条件的更新状态，即做些判断？
+​	判断
+​	脱离willreceive的控制
+​	当多个复用的时候，通过key重新创建组件，如果元素简单可能会有略微的性能差异，但是复杂的时候直接创建新的可以避免差异对比，可能会更快
+
+控制好willreceive更新的状态，如一个输入框，如果在willreceive里有更新的话，这样本来应该受手动输入影响的就会多了父组件的render影响
+
+###### getDerivedStateFromProps
+
+返回状态对象来更新，不更新返回null =>  替代willreceive?
+
+[react 16后生命周期](https://blog.hhking.cn/2018/09/18/react-lifecycle-change/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
+
+
+componentDidCatch
+
+
+
+##### Context
+
+组件间隔层传递数据，全局，但是需要通过provider和consumer来使用
+​	例如将某个组件的状态属性和状态更新函数传递给某个子组件
+
+```javascript
+// provide  
+var value = {  data: "a" , changeData: () => { xxx } }
+// consumer  
+this.context.changeData();
+```
+
+[context](https://www.cnblogs.com/mengff/p/9511419.html)
+
+
+
+##### Protal
+
+将组件render到悬浮最顶层，常用为dialog
+
+*Portal* 提供了一种很好的将子节点渲染到父组件以外的 DOM 节点的方式。
+
+```
+ReactDOM.createPortal(child, container)
+```
+
+第一个参数是任何可渲染的 React 子节点，例如元素，字符串或片段。第二个参数是 DOM 元素。
+
+
+
+##### Fragments
+
+它是 React 中的常见模式，用于组件返回多个元素。*Fragments* 可以让你聚合一个子元素列表，而无需向 DOM 添加额外节点。
+
+```
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  )
+}
+```
+
+
+
+
+
+##### Hook
+
+useState
+
+> 普通状态或set
+
+
+
+useEffect
+
+> 替代didupdate,
+>
+> ​	返回值：一个函数，函数会用于willunmount
+>
+> ​	第二个参数：在useEffect里setState会触发再次执行，第二个参数传入依赖值，只有依赖变了才会再触发useEffect，空数组则只会执行一次
+>
+> 每次变化都能监控到，如果用didupdate是批量更新只获取到最新的
+
+
+
+useRef
+
+> 用来存储数据
+>
+> 因为是函数，每次执行内部变量都会重建，然后丢失保存的数据？
+
+
+
+useCallback
+
+> 成一个不随着组件更新而再次创建的 callback
+
+
+
+##### 高阶组件
+
+###### 概念
+
+接受一个或多个组件作为参数并且返回一个组件就可称之为 高阶组件
+
+
+
+###### 分类
+
+- 无状态
+- 有状态
+
+
+
+属性代理
+
+- 操作 `props`
+  - 在render中给组件增加属性
+- 抽离 `state`
+  - 增加state处理,redux
+- 通过 `ref` 访问到组件实例
+- 用其他元素包裹传入的组件 `WrappedComponent`
+
+
+
+反向继承
+
+**一个函数接受一个 WrappedComponent 组件作为参数传入，并返回一个继承了该传入 WrappedComponent 组件的类，且在该类的 render() 方法中返回 super.render() 方法**
+
+- 操作 `state`
+- 渲染劫持（Render Highjacking）
+  - 有条件地展示元素树（`element tree`）
+  - 操作由 `render()` 输出的 React 元素树
+  - 在任何由 `render()` 输出的 React 元素中操作 `props`
+  - 用其他元素包裹传入的组件 `WrappedComponent` （同 **属性代理**）
+
+
+
+###### 高阶组件问题
+
+- 静态方法丢失
+- `refs` 属性不能透传
+- 反向继承不能保证完整的子组件树被解析
+
+
+
+高阶组件带给我们极大方便的同时，我们也要遵循一些 **约定**：
+
+- `props` 保持一致
+- 你不能在函数式（无状态）组件上使用 `ref` 属性，因为它没有实例
+- 不要以任何方式改变原始组件 `WrappedComponent`
+- 透传不相关 `props` 属性给被包裹的组件 `WrappedComponent`
+- 不要再 `render()` 方法中使用高阶组件
+  - // 每次 render 的时候，都会使子对象树完全被卸载和重新
+    // 重新加载一个组件会引起原有组件的状态和它的所有子组件丢失
+- 使用 `compose` 组合高阶组件
+- 包装显示名字以便于调试
+
+
+
+###### 应用场景
+
+- 权限判断
+
+
+
+##### Render Props
+
+通过children函数
+
+像 **控制反转（IoC）**
+
+
+
+
+
+##### 知识点
+
+###### refs
+
+隐含的对象，  ref=x    this.refs.x   可以拿到元素
+
+ref 中使用回调函数
+​	ref={(ref) => { this.myRef = ref; }}
+​	有缺点，每次都是重新绑定
+
+###### key
+
+key值并不是需要全局唯一，而只需要在相邻的兄弟元素中唯一就好,用于渲染
+
+###### this 
+
+如果不绑定this.handleClick方法，那么在事件发生并且精确调用这个方法时，方法内部的this会丢失指向。
+这不是React的原因，这是JavaScript中本来就有的。如果你传递一个函数名给一个变量，然后通过在变量后加括号()来调用这个方法，
+　此时方法内部的this的指向就会丢失
+
+###### childrenthis
+
+this.props.children属性。它表示组件的所有子节点
+
+
+
+###### 兼容性
+
+[浏览器兼容](https://reactjs.org/docs/react-dom.html#browser-support)
+
+###### 强制刷新
+
+​	component.forceUpdate(callback)
+
+
+
+##### 国际化
+
+ [react-intl](https://segmentfault.com/a/1190000005824920#articleHeader8)
+
+
+
+##### 文章
+
+
+
+[官方文档博客](https://reactjs.org/docs/implementation-notes.html)
+
+[React-Css模块化](https://github.com/gajus/react-css-modules)
+
+[React实践细节](https://juejin.im/entry/5a614d226fb9a01cac183cc9)
+
+[React Conf 2018](https://juejin.im/post/5bfcbc83e51d450fb3263a35)
+
+[渲染](https://www.jianshu.com/p/100a55978253)
+
+[通讯](https://yq.aliyun.com/articles/66083)
+
+[react组件资料](https://www.jianshu.com/p/788a82dac136  )
+
+[React Router	](https://www.jianshu.com/p/e3adc9b5f75c)NavLink比link多了激活样式
+
+[Airbnb React/JSX 代码规范](https://github.com/BingKui/javascript-zh/tree/master/react)
+
+[smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+
+
+##### Redux
+
+###### 文章
+
+[redux Blob](https://github.com/lulujianglab/blog/issues/34)
+
+[redux](https://segmentfault.com/a/1190000012976767)
+[redux](https://segmentfault.com/a/1190000011474522)
+
+##### Fabric react
+
+TextField 的type会影响显示,number 、string
+
+defaultValue={this._editDate.item["Remark"]} onChanged={this._getRemark}
+设置默认值和读取新值
+
+##### 错误处理
+
+[Objects are not valid as a React child 错误处理	可能把对象给了元素](https://blog.csdn.net/isaisai/article/details/78083677)
+
+##### JSX
+
+###### 编译
+
+```html
+<!--如果不提前对js代码进行编译，进行jsx解析-->
+<script src="JSXTransformer.js"></script>
+<!--对应js加上type="text/jsx"-->
+```
+
+
+
+##### 应用
+
+###### 拖拽上传
+
+```react
+render()	{
+    var fileElements = "";
+    (<div className="upload-form" id="dragDiv" 
+         onDrop={(e) => this._getFile(e)} 
+         onDragEnter={(e) => this._handleDragHover(e)} 
+         onDragOver={(e) => this._handleDragHover(e)} 
+         onDragLeave={(e) => this._handleDragHover(e)}>
+              {fileElements}
+     </div>
+    )
+}
+
+
+ @autobind
+  private _getFile(e) {
+    var self = this;
+    e.preventDefault(); //取消默认浏览器拖拽效果
+    var fileList = e.dataTransfer.files; //获取文件对象
+    if (fileList.length == 0) { return false; }
+    self.setState({
+      files: fileList
+    })
+  }
+
+  @autobind
+  private _handleDragHover(e) {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+```
+
+###### PDF预览
+
+react-pdf
+canvas渲染
+​	chrome
+​		部分文件很快（1~2s），部分文件慢(10s左右)
+​	ie11   
+​		部分文件较快（8~10s），部分文件慢(1m),浏览器会无响应
+svg
+​	chrome
+​		小文件很快，大文件略慢，样式会乱（下方按钮）
+​	ie11
+​		小文件很快，大文件略慢，样式会乱（下方按钮、组件高度样式有bug），而且显示速度略慢，页面内容显示的顺序错乱，观感不好
+​			新版本的组件会修复组件样式问题但是目前新版本还没正式发布	
+
+​	api	onrenderSuccess
+
+[React实现全局组件：Toast轻提示](https://segmentfault.com/a/1190000016473517)
+

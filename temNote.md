@@ -88,6 +88,10 @@ Hyper-V  密码 MedalSoft2019
 
 > css处理工具
 
+[在线css效果预览](<https://css3generator.com/>)
+
+
+
 
 
 ###### Node
@@ -266,6 +270,10 @@ dart
 
 #### Book
 
+[书栈网](<https://www.bookstack.cn/>)
+
+> 获取电子书
+
 [电子书网站清单](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
 
 
@@ -296,6 +304,8 @@ dart
 
 [文档翻译，保留格式](<https://www.onlinedoctranslator.com/>)
 
+[查看信息泄露](<https://monitor.firefox.com/scan>)
+
 
 
 #### 课程
@@ -314,3 +324,32 @@ dart
 #### 其他
 
 [刘慈欣演讲](<http://cn.chinadaily.com.cn/2018-11/12/content_37243853.htm>)
+
+react-router-config
+
+[https://javascript.info](https://javascript.info/)	在线双语教程
+
+[medium](<https://medium.com/>)
+
+
+
+#### UI相关
+
+[蓝湖](<https://lanhuapp.com/>)
+
+> UI界面
+
+
+
+墨刀 
+
+pxcook 
+
+语雀 
+
+sketch 
+
+zeplin
+
+
+
