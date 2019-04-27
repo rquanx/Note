@@ -91,6 +91,34 @@ TypeScript: Duplicate identifier 'LibraryManagedAttributes
 react route 问题
 Cannot GET /CalloutNestedExample
 
+
+
+###### 打包node程序忽略自带模块
+
+```javascript
+const nodeModules = {};
+fs.readdirSync("node_modules")
+    .filter(function (x) {
+        return [".bin"].indexOf(x) === -1;
+    })
+    .forEach(function (mod) {
+        nodeModules[mod] = "commonjs " + mod;
+    });
+
+node: {
+        fs: 'empty',
+        child_process: 'empty',
+        tls: 'empty',
+        net: 'empty'
+    },
+        
+externals: nodeModules
+```
+
+
+
+
+
 ##### 文章
 
 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/#devserver-hot)
