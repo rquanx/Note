@@ -1,4 +1,4 @@
-##### 配置
+#### 配置
 
 [output](https://blog.csdn.net/whh181/article/details/80613633)
 ​	libraryTarget:  导出为什么，var以一个对象保存，window附加到window对象上
@@ -7,7 +7,7 @@ module.rules.use数组中，loader 的位置。根据 webpack 规则：放在最
 
 
 
-##### Loader
+#### Loader
 
 Loader  不写Include   会处理全部符合正则的代码
 
@@ -17,9 +17,9 @@ Loader  不写Include   会处理全部符合正则的代码
 
 
 
-##### 插件
+#### 插件
 
-###### 通用
+##### HTML
 
 HtmlWebpackPlugin(耗时长)
 
@@ -35,11 +35,11 @@ new webpack.ProvidePlugin({
 
 
 
-###### Css相关
+##### Css
 
-[style loader](https://github.com/webpack-contrib/style-loader)
+###### [style loader](https://github.com/webpack-contrib/style-loader)
 
-[css-module](https://github.com/gajus/react-css-modules)
+###### [css-module](https://github.com/gajus/react-css-modules)
 
 ```javascript
  {
@@ -50,6 +50,18 @@ new webpack.ProvidePlugin({
                 ]
             }
 ```
+
+###### postcss
+
+Postcsss 只处理import的
+
+precss ?  
+
+> 支持Sass语法，使用css变量 需先@import对于的css
+
+
+
+##### JS
 
 [typescript css modules](https://www.colabug.com/2303193.html)
 如果是typescript需要定义声明文件
@@ -65,15 +77,29 @@ declare module "*.css" {
 
 
 
-###### TypeScript
+##### TypeScript
 
 使用ts-loader或者awesome-typescript-loader进行编译
 
 Typescript 直出 ES5 已经非常成熟，用 ts-loader 即可，如果有需要使用 Babel 进行 ES6 到 ES3 编译的可以使用 awesome-typescript-loader
 
-##### 常见问题
 
-###### 打包出错
+
+
+
+##### 压缩
+
+###### ParallelUglifyPlugin
+
+多线程压缩
+
+现在不维护合并到UglifyJsPlugin
+
+
+
+#### 常见问题
+
+##### 打包出错
 
 - 文件内容缺少、未定义
   检查webpack和webpack-cli版本是否不对应
@@ -93,7 +119,7 @@ Cannot GET /CalloutNestedExample
 
 
 
-###### 打包node程序忽略自带模块
+##### 打包node程序忽略自带模块
 
 ```javascript
 const nodeModules = {};
@@ -119,7 +145,7 @@ externals: nodeModules
 
 
 
-##### 文章
+#### 文章
 
 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/#devserver-hot)
 
