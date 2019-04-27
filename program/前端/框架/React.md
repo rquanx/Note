@@ -8,7 +8,7 @@ the state is meant to hold variables that relate to the current state of the UI
 
 保存跟ui相关的数据
 
-
+[thinking-in-react](<https://reactjs.org/docs/thinking-in-react.html>)
 
 ##### 使用
 

@@ -126,6 +126,12 @@ import{x as y} from xxx 重命名引入的变量
 
 export {x,y,xxx}   import {xxx}	会自动解析出来对于的模块
 
+```javascript
+export * from './components/DatePicker/index';
+```
+
+
+
 
 
 ##### 模块化说明
@@ -515,6 +521,12 @@ decorator ===  高阶函数，通过Object.defineProperty进行处理
 > 通过高阶函数可以实现装饰器传参
 
 
+
+#### 存储
+
+##### LocalStorage
+
+localstorage的key也会占用空间
 
 
 
@@ -1275,6 +1287,14 @@ error boundary
 - JavaScript 构造器和构造函数
 - JavaScript 事件监听
 - JavaScript 函数
+
+
+
+#### SourceMap
+
+1、生成的js会有路径，浏览器会去拉取对应的map
+
+2、为了安全吗，不暴露源码，可以将sourcemap，放在内部网络的路径下
 
 
 
