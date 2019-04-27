@@ -6,14 +6,6 @@
 
 
 
-#### Work
-
-Hyper-V  密码 MedalSoft2019
-
-[KICK START快速入门 google,不可访问？](https://abser.top/blog/kickstart%E6%8C%87%E5%8D%97/)
-
-
-
 #### 开发学习
 
 ##### 前端
@@ -45,10 +37,6 @@ Hyper-V  密码 MedalSoft2019
 [react优化系列](https://segmentfault.com/a/1190000018398978#articleHeader4)
 
 [React 面试题 & 回答](<https://github.com/semlinker/reactjs-interview-questions>)
-
-[antd modal.confim()](<https://github.com/ant-design/ant-design/blob/master/components/modal/confirm.tsx>)
-
-> antd弹出框
 
 
 
@@ -320,13 +308,6 @@ dart
 
 
 
-
-#### 工作记录
-
-问题： 广州、广州、五邑
-
-
-
 #### 其他
 
 [刘慈欣演讲](<http://cn.chinadaily.com.cn/2018-11/12/content_37243853.htm>)
@@ -336,6 +317,10 @@ react-router-config
 [https://javascript.info](https://javascript.info/)	在线双语教程
 
 [medium](<https://medium.com/>)
+
+Pony Foo
+
+JavaScript Weekly
 
 
 
@@ -360,3 +345,7 @@ zeplin
 
 
 四人帮设计模式
+
+
+
+种子随机数
