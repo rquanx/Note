@@ -1,4 +1,4 @@
-#### 编程
+#### 脚本
 
 ```bash
 # 遍历当前文件夹下的.git ，进行git pull;
@@ -15,19 +15,17 @@ git push
 
 
 
-#### 凭证
-
-windows凭据会记录SharePoint、Office...的账号密码
-
-
-
 #### 库
 
 [Git的奇技淫巧--操作指令](https://github.com/521xueweihan/git-tips)
 
+
+
 #### 服务器
 
 [搭建自己的 Git 服务器](https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html#at)
+
+
 
 #### 使用规范
 
