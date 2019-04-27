@@ -244,6 +244,10 @@ dart
 
 [TNFE-Weekly](<https://github.com/Tnfe/TNFE-Weekly>)
 
+[薄荷前端周刊](<https://github.com/BooheeFE/weekly>)
+
+[IVWEB技术周刊](<https://github.com/iv-web/weekly>)
+
 
 
 ##### 技术网站
@@ -278,7 +282,7 @@ dart
 
 
 
-#### 工具
+#### 工具资源
 
 [logo生成](<https://mybrandnewlogo.com/logo-maker>)
 
@@ -305,6 +309,8 @@ dart
 [文档翻译，保留格式](<https://www.onlinedoctranslator.com/>)
 
 [查看信息泄露](<https://monitor.firefox.com/scan>)
+
+[无版权图库](<https://www.pickpik.com/>)
 
 
 
@@ -354,7 +360,3 @@ zeplin
 
 
 四人帮设计模式
-
-
-
-[无版权图库](<https://www.pickpik.com/>)
