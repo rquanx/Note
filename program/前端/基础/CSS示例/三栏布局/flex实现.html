@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer,
+        .left,
+        .middle,
+        .right {
+            height: 100px;
+            margin-bottom: 5px;
+        }
+
+        .left {
+            background: tomato;
+        }
+
+        .middle {
+            background: lightgreen;
+        }
+
+        .right {
+            background: gold;
+        }
+
+        .outer2 {
+            display: flex;
+        }
+
+        .outer2 .left {
+            flex: 0 0 100px;
+        }
+
+        .outer2 .middle {
+            flex: auto;
+        }
+
+        .outer2 .right {
+            flex: 0 0 200px;
+        }
+    </style>
+</head>
+<!-- 左右两栏，左边固定，右边自适应 -->
+
+<body>
+    <div class="outer outer2">
+        <div class="left">2-left</div>
+        <div class="middle">2-middle</div>
+        <div class="right">2-right</div>
+    </div>
+
+</body>
+
+</html>

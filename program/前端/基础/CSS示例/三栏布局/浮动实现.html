@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 样式重置，部分元素会自带margin */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*最小宽度= left*2 + right*/
+            min-width: 600px;
+        }
+
+        #left,
+        #right {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #middle {
+            height: 200px;
+            background-color: green;
+        }
+
+        #left {
+            float: left;
+        }
+
+        #right {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left">
+        left
+    </div>
+    <div id="right">
+        right
+    </div>
+    <div id="middle">
+        middle
+    </div>
+
+</body>
+
+</html>
