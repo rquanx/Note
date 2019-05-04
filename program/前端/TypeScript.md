@@ -160,3 +160,13 @@ declare module '*.html';
 
 [tslint规则](https://palantir.github.io/tslint/rules/)
 
+
+
+#### TsConfig
+
+```json
+jsxFactory": "h",// preact设置   编译成h
+```
+
+
+

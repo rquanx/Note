@@ -127,7 +127,9 @@ import{x as y} from xxx 重命名引入的变量
 export {x,y,xxx}   import {xxx}	会自动解析出来对于的模块
 
 ```javascript
-export * from './components/DatePicker/index';
+export * from './components/DatePicker/index'; // 直接从导出另一个文件的模块
+
+export default api as NotificationApi; // 对导出模块进行重命名
 ```
 
 

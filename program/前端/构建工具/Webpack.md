@@ -143,6 +143,17 @@ externals: nodeModules
 
 
 
+##### Dll TreeShaking
+
+建立一个js
+
+```js
+export { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+// xxx
+```
+
+以这个js为入口进行dll打包
+
 
 
 #### 文章
