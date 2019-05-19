@@ -434,6 +434,10 @@ New绑定
 
 #### 对象
 
+使用obj[key]来判断，如果value是false的就会有问题
+
+
+
 ##### defineProperty
 
 ```javascript

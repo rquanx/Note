@@ -1,5 +1,3 @@
-###  Todo
-
 #### 财务
 
 知乎书籍
@@ -50,12 +48,6 @@
 
 
 
-###### Typescript
-
-[深入理解 TypeScript中文翻译](<https://github.com/jkchao/typescript-book-chinese>)
-
-
-
 ###### CSS
 
 [条件 CSS，须有基础](https://zhuanlan.zhihu.com/p/55795638)
@@ -68,14 +60,6 @@
 
 > css示例
 
-[Sass](<https://sass-lang.com/>)
-
-> css预处理
-
-[PostCSS](<https://www.postcss.com.cn/>)
-
-> css处理工具
-
 [在线css效果预览](<https://css3generator.com/>)
 
 [postcss online](<https://autoprefixer.github.io/>)
@@ -87,6 +71,16 @@
 [Node+Mongodb 架构常见性能问题总结](https://zhuanlan.zhihu.com/p/56010506)
 
 [node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
+
+
+
+node
+
+> 1.推荐狼叔的《如何正确学习Node.js》，地址：https://github.com/i5ting/How-to-learn-node-correctly
+>
+> 2.Node.js国内交流社区：https://cnodejs.org/
+>
+> 3.推荐书籍：《Node.js实战》（第二版）、《Node.js调试指南》、《深入浅出Node.js》（有一定的基础后再看）、《更了不起的Node.js》
 
 
 
@@ -153,6 +147,18 @@
 ###### 开发
 
 [富文本编辑器方案](https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/rich-editor.html#tinymce)
+
+
+
+###### 多语言处理
+
+不刷新多语言切换
+
+>  组件===函数===类
+>
+> 可以封装成组件，在onLanguageChange的时候dispatch所有的多语言组件或者类实例进行更新
+>
+> 对于title是否可以使用react.render()来render一个组件上去
 
 
 
@@ -224,8 +230,6 @@ dart
 
 ##### 日报、周报
 
-[github start排行](http://githubrank.com/)
-
 [早报](https://wubaiqing.github.io/zaobao/)
 
 [d2日报](https://daily.fairyever.com/)
@@ -268,6 +272,10 @@ dart
 
 [电子书网站清单](https://mp.weixin.qq.com/s/njSQK-ATpqR9cLMFsPjxhg)
 
+[51nazhun](<https://kindle.51nazhun.pub/>)
+
+> kindle电子书下载
+
 
 
 #### 工具资源
@@ -300,6 +308,10 @@ dart
 
 [无版权图库](<https://www.pickpik.com/>)
 
+[i18ns](<https://i18ns.com/index.html>)
+
+> 翻译查询
+
 
 
 #### 课程
@@ -312,15 +324,7 @@ dart
 
 [刘慈欣演讲](<http://cn.chinadaily.com.cn/2018-11/12/content_37243853.htm>)
 
-react-router-config
-
-[https://javascript.info](https://javascript.info/)	在线双语教程
-
 [medium](<https://medium.com/>)
-
-Pony Foo
-
-JavaScript Weekly
 
 
 
@@ -344,22 +348,50 @@ zeplin
 
 
 
+##### snipaste
+
+团长切图 对比
+
+步骤1、snipaste，用这个截图工具，F1截图，然后F3贴图
+
+步骤2：在贴图上，按住ctrl建，然后滚动鼠标，设置贴图的透明度为50%，然后跟目标图进行对比
+
+
+
+#### Book
+
 设计模式	--四人帮
 
-种子随机数
+暗时间
+
+王小波、吴军、村上春树、 东野圭吾
+
+
+
+#### Git
 
 github.com ==> githistory.xyz
+
+
+
+#### Todo
 
 lint，测试，perpare，commitlint
 
 Linux
 
-今日掘金
-
-实现async
-
 webpack tapable应用
 
 
 
-暗时间
+1、薪资 
+2、工作时间 (996？加班调休？？？)
+3、技术栈 
+4、工作地点(出差) 
+5、外包？ 
+6、工作环境(网络等) 
+7、研发人员数量(前端人数……) 
+8、公司周围环境
+9、技术基础设施
+10、项目开发、发布流程
+11、晋升、调薪等

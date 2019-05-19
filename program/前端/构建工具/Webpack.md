@@ -7,6 +7,30 @@ module.rules.use数组中，loader 的位置。根据 webpack 规则：放在最
 
 
 
+#### Tapable
+
+- 普通型basic：这个比较好理解就是按照tap的注册顺序一个个向下执行。
+- 流水型water：这个相对于basic的区别就是，虽然也是按照tap的顺序一个个向下执行，但是如果上一个
+
+tap有返回值，那么下一个tap的传入参数就是上一个tap的返回值。
+
+- 熔断型bail：这个相对于water的区别就是，如果返回了null以外的值，就不继续执
+
+ 
+
+tapable的各AsyncHook都同时支持tap、tapAsync、tapPromise
+
+Tap: 增加同步事件?
+ tapAsync:增加异步回调型事件
+
+tapPromise: 增加Promise型事件
+
+ 
+
+部分Hook功能~无用/重复
+
+
+
 #### Loader
 
 Loader  不写Include   会处理全部符合正则的代码

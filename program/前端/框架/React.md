@@ -323,6 +323,22 @@ this.props.children属性。它表示组件的所有子节点
 [redux](https://segmentfault.com/a/1190000012976767)
 [redux](https://segmentfault.com/a/1190000011474522)
 
+##### Route
+
+React-Route
+
+path="/" === 所有页面都匹配上，所以要加exact来强匹配
+
+<Route> 匹配就渲染，<Switch>只渲染第一个匹配的？
+
+ 
+
+[Loadable Components按需加载](<https://reactjs.org/docs/code-splitting.html>)
+
+[官方按需加载](<https://www.smooth-code.com/open-source/loadable-components/docs/support/>)
+
+
+
 ##### Fabric react
 
 TextField 的type会影响显示,number 、string
