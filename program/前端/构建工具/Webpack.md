@@ -145,6 +145,11 @@ Cannot GET /CalloutNestedExample
 
 ##### 打包node程序忽略自带模块
 
+忽略打包node模块
+	webpack-node-externals
+    Target: node
+
+
 ```javascript
 const nodeModules = {};
 fs.readdirSync("node_modules")
