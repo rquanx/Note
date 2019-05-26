@@ -23,6 +23,8 @@ the state is meant to hold variables that relate to the current state of the UI
 2、打包进verdon中，需要有一个入口js import两个库然后调用render，进行组件挂载
 [wepack + react](https://www.cnblogs.com/mianbaodaxia/p/6170726.html)
 
+不要使用renderXXX,要使用函数式组件
+
 ##### 函数组件
 
 ```react

@@ -312,6 +312,12 @@ dart
 
 > 翻译查询
 
+[glot.io](https://glot.io/)
+
+> 可运行代码段和 API 的在线工具
+
+[markdown微信排版](<https://mdnice.github.io/>)
+
 
 
 #### 课程
@@ -395,7 +401,3 @@ webpack tapable应用
 9、技术基础设施
 10、项目开发、发布流程
 11、晋升、调薪等
-
-[glot.io](https://glot.io/)
-
-> 可运行代码段和 API 的在线工具
