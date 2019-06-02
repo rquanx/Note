@@ -104,5 +104,19 @@ webconfig 增加
 dll存放在bin文件夹中，type要到具体的类
 ```
 
+#### ascx
+通过cs代码在后端，将html内容通过字符串方式拼接然后返回
+
+##### 嵌入代码
+产生cs代码对象的方式，在.g.cs？的方式下
+1、runat="server" 就是有cs代码,通过cs创建一个对象然后add到html树中
+2、<%=xxx%>  拼接时直接嵌入变量
+3、<%# %> 生成databind方法
+
+
+
+##### 第三方控件使用：
+下载dll-->dll放置好位置(防止bin下？)-->引用dll-->重启vs？-->toolbox choose item --> browser加入dll--> 直接拖拽即可
+
 
 

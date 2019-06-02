@@ -319,6 +319,43 @@ dart
 [markdown微信排版](<https://mdnice.github.io/>)
 
 
+#### Git
+
+github.com ==> githistory.xyz
+
+
+#### Work
+1、薪资 
+2、工作时间 (996？加班调休？？？)
+3、技术栈 
+4、工作地点(出差) 
+5、外包？ 
+6、工作环境(网络等) 
+7、研发人员数量(前端人数……) 
+8、公司周围环境
+9、技术基础设施
+10、项目开发、发布流程
+11、晋升、调薪等
+
+#### 英语
+有道曲根考研词汇：
+链接： https://pan.baidu.com/s/1CPTd3hracjQ7EqPqW9hfuw​
+提取码：tzlh
+王菲语法班：
+链接： https://pan.baidu.com/s/1h0zXkBcWXgdqj26JvVtNYQ​
+提取码：g9tw
+曲根万词班（推荐）：
+链接： https://pan.baidu.com/s/1cLFqAwUddIo3f7cUM7DXrA​
+提取码：a4m9
+腾飞口语矫正：
+链接： https://pan.baidu.com/s/17Nqng_Yb2j6-p-EElvZisw​
+提取码：cjjp
+
+
+#### 娱乐
+[在线小霸王](https://www.yikm.net/)
+
+
 
 #### 课程
 
@@ -374,11 +411,6 @@ zeplin
 
 
 
-#### Git
-
-github.com ==> githistory.xyz
-
-
 
 #### Todo
 
@@ -387,17 +419,3 @@ lint，测试，perpare，commitlint
 Linux
 
 webpack tapable应用
-
-
-
-1、薪资 
-2、工作时间 (996？加班调休？？？)
-3、技术栈 
-4、工作地点(出差) 
-5、外包？ 
-6、工作环境(网络等) 
-7、研发人员数量(前端人数……) 
-8、公司周围环境
-9、技术基础设施
-10、项目开发、发布流程
-11、晋升、调薪等
