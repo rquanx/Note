@@ -252,6 +252,8 @@ dart
 
 [frontendfront](<https://frontendfront.com/>)
 
+[芋道源码](<http://www.iocoder.cn/>)
+
 
 
 ##### 教程
@@ -275,6 +277,12 @@ dart
 [51nazhun](<https://kindle.51nazhun.pub/>)
 
 > kindle电子书下载
+
+
+
+#### Shell
+
+[查看shell语句功能](<https://explainshell.com/>)
 
 
 
@@ -355,9 +363,13 @@ github.com ==> githistory.xyz
 #### 娱乐
 [在线小霸王](https://www.yikm.net/)
 
+[在线老游戏](<https://dos.zczc.cz/>)
+
 
 
 #### 课程
+
+[Mooc搜索](<https://www.classcentral.com/>)
 
 课程：cs 61 a b c
 
