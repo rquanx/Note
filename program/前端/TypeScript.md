@@ -31,6 +31,12 @@ type t = typeof { b: "1"}
 
 #### 使用
 
+##### 高级
+
+Keyof
+Partial & Pick
+
+
 ##### 预声明
 
 模块的预声明.d.ts，要和对应模块在同一路径下

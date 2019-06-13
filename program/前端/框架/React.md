@@ -10,6 +10,11 @@ the state is meant to hold variables that relate to the current state of the UI
 
 [thinking-in-react](<https://reactjs.org/docs/thinking-in-react.html>)
 
+
+不要在 state 中添加 render() 方法中不需要的数据，会影响渲染性能！
+可以将组件内部使用但是不渲染在视图中的内容，直接添加给 this
+
+
 ##### 使用
 
 使用polyfill
