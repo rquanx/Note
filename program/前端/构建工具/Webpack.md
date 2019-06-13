@@ -84,7 +84,7 @@ precss ?
 > 支持Sass语法，使用css变量 需先@import对于的css
 
 提示没有使用插件问题
-
+> [require("postcss-import")处理](https://github.com/postcss/postcss/issues/1247)
 
 
 ##### JS
