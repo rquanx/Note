@@ -30,6 +30,10 @@
 
 npm i  ==>  npm install   自动安装所有依赖
 
+npm outdated  查看包的版本情况
+
+npm outdated -g 查看全局包的版本情况
+
 ###### Script
 
 快速指令  npm run xxx

@@ -33,8 +33,11 @@ type t = typeof { b: "1"}
 
 ##### 高级
 
-Keyof
-Partial & Pick
+Keyof 约束类型是一堆中的某一个
+
+Partial<x> // 使用这个类型时，x的属性不完整也不会报错
+
+Pick<x>
 
 
 ##### 预声明
