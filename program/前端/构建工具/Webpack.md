@@ -43,6 +43,11 @@ Loader  不写Include   会处理全部符合正则的代码
 
 #### 插件
 
+##### dll plugin
+
+Call undefined 报错： 可能dll打包缺少
+Object is not a function都可能是缺少dll
+
 ##### HTML
 
 HtmlWebpackPlugin(耗时长)
