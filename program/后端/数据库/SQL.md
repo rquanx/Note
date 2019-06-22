@@ -1,5 +1,6 @@
 ### SQLServer
 
+
 #### 存储过程
 
 ##### 小知识
@@ -210,8 +211,13 @@ from SalesIndexInfo as a where ID=871
 使用这种参数化查询的办法，防止SQL注入的任务就交给ADO.NET了, 如果在项目中统一规定必须使用参数化查询，就不用担心因个别程序员的疏忽导致的SQL注入漏洞了。     但是，问题还没有完，SQL注入的漏洞是堵住了，但是查询结果的正确性，参数化查询并不能帮上什么忙。
 
 
+##### 问题
+
+[sa用户启用问题，sql启动sa后仍报错，需要修改的登录模式，重启sql服务](https://blog.csdn.net/ytm15732625529/article/details/72630050)
+
 
 #### 博客
 
 [sql防注入](https://www.zhihu.com/question/22953267 )
+
 

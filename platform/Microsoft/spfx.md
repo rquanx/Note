@@ -830,3 +830,14 @@ gulp serve 无法访问
 #### 部署
 
 部署方式和webpart一致，会自动应用到整个网站？
+
+
+
+
+
+### 资料
+
+#### 博客
+
+[spfx博客]( <https://github.com/TrillCyborg/fullstack>)
+

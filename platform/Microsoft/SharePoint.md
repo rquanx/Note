@@ -1,5 +1,3 @@
-## 微软开发
-
 ### 总览
 
 #### 文档
@@ -35,6 +33,8 @@ sharepoint manager tool
 - 调查问卷
 - 空间使用
 
+- 温度分析
+
 
 
 #### 页面
@@ -44,6 +44,25 @@ sharepoint manager tool
 
 
 #### Webpart
+
+##### 开发
+
+| Featurel       | 设置要部署的控件===》部署后网站集功能的Featurel？ |
+| -------------- | ------------------------------------------------- |
+| Package        |                                                   |
+| webpart        |                                                   |
+| Ascx           | 控件内容                                          |
+| Cs             | 控件方法、属性                                    |
+| *Elements.xml* | 包含项目中的功能定义文件用于部署Web部件的信息     |
+
+ 
+
+| 方案类型           | 说明                        |
+| ------------------ | --------------------------- |
+| Sandbox   solution | 无法部署Farm only   webpart |
+| Farm   solution    |                             |
+
+
 
 ##### 部署时问题
 
@@ -111,6 +130,10 @@ https://social.msdn.microsoft.com/Forums/en-US/77c90214-a5c0-430a-b8c7-05483c76a
 https://rencore.com/blog/sharepoint-framework-webinar-qa-follow-part-1-sharepoint-framework/
 https://github.com/SharePoint/sp-dev-fx-webparts)
 [modern web stack](https://github.com/SharePoint/sp-dev-samples/tree/dev )
+
+
+
+
 
 #### 操作、知识点
 
@@ -249,6 +272,33 @@ owa有对应的服务器、站点
 
 
 
+##### 搜索
+
+Kql
+
+关键字查询，SharePoint根据文档名、内容进行了关键字提取，搜索时会根据搜索的关键词进行搜索，如果搜索的是非关键词则搜索不到
+
+缺点：查询逻辑与常用的不同，关键词不明确，导致搜索不稳定,只支持前缀匹配: a*  , *a不行
+
+ 
+
+| 普通关键字查询 |                                            |
+| -------------- | ------------------------------------------ |
+| 指定属性查询   | Filename:   123/ filename: "123"           |
+| 双引号查询     | "123 456"和123 456，没有""会由于空格被拆分 |
+| 逻辑组合       | (a) OR   (b) / (a) AND (b) /NOT            |
+| 通配符查询     | a*                                         |
+
+ 
+
+ 
+
+Fql
+
+开发人员使用，默认不开放
+
+
+
 #### 特性
 
 ##### 阈值
@@ -266,9 +316,13 @@ owa有对应的服务器、站点
 
 ###### 使用文件夹分割
 
+
+
 ##### 限制
 
 ###### 文件名符号限制
+
+
 
 ###### 文件名长度限制
 
@@ -446,6 +500,34 @@ rest api 更新时字段内容不能含有"\\"  转义字符
 
 Rest 过滤 filter=date ge datetime'xxxx'
 
+##### 知识点
+
+###### RenderListDataAsStream
+RenderListDataAsStream 使用caml进行查询
+```js
+fetch(
+`http://eip.carsgen.com/Management/InfoTechnal/_api/web/GetList(@listUrl)/RenderListDataAsStream?@listUrl='/Management/InfoTechnal/KnowledgeLibrary'`,
+{
+method: "Post",
+headers: {
+accept: "application/json;odata=nometadata",
+"content-type": "application/json;odata=nometadata"
+},
+body: JSON.stringify({
+parameters: {
+ViewXml: `<View Scope='RecursiveAll' ><Query><Where><Contains><FieldRef Name='FileLeafRef' /><Value Type='Text' >16Z</Value></Contains></Where></Query><RowLimit>1</RowLimit></View>`
+}
+})
+}
+);
+
+
+// pnp使用
+sp.web.lists.getByTitle("信息技术部文档库").renderListDataAsStream({
+ViewXml: `<View Scope='RecursiveAll' ><Query><Where><Contains><FieldRef Name='FileLeafRef' /><Value Type='Text' >16Z</Value></Contains></Where></Query><RowLimit>1</RowLimit></View>`
+});
+```
+
 ##### 版本冲突
 
 rest不会有版本冲突？
@@ -516,23 +598,29 @@ in条件内部超过500不行 	   in可以查lookup
 
 [caml datetime处理，搜索对比](http://www.cnblogs.com/qijiage/p/4059462.html)
 
+
+
 ###### 查阅项数组
 
 对于多选查阅项和多选用户也应使用Eq操作符
 
 查阅项可以用in操作判断，查阅项数组用in亦可
 
-####### RowLimit数量
+
+
+###### RowLimit数量
 
 rowlimit 返回的记录条数，默认为100，如果不需要限制，将值设为0
 
+
+
 ###### 指定文件夹
 
-```c#
+​```c#
 query.Folder = docLib.RootFolder.SubFolders["system"];
 ```
 
-```javascript
+​```javascript
 camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需包含站点
 ```
 
@@ -645,11 +733,7 @@ sharepoint分页，规避最后一条删除，规避往上翻页删除最后一�
 
 [sharepoint Dialog](https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ff410058(v=office.14))
 
-##### 流程
 
-
-
-启动Workflows can use app permissions   active  服务才能让管理员启动流程
 
 #### 杂
 
@@ -728,8 +812,26 @@ clear-spdistributedcacheitem -containerType DistributedLogonTokenCache
 
 
 
-### Azure
+#### Workflow
 
-### O365
+启动Workflows can use app permissions   active  服务才能让管理员启动流程
 
-[exchange头像上传问题,备份](http://techgenix.com/user-photo-exchange-lync-and-active-directory/)
+
+
+流程状态
+
+在item项中选 …  ,选择workflow,  可以进入流程信息界面，查看流程状态
+
+未开始、已完成、挂起
+
+流程详细界面
+
+在流程状态界面选择对应的流程，进入对应的详细信息界面，可以查看到异常的提示信息
+
+流程终止
+
+在流程详细信息界面，选择stop  workflow
+
+启动
+
+流程状态界面，选择流程，进入流程启动界面，点击启动
