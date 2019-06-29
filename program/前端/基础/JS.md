@@ -1020,6 +1020,16 @@ var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
 
 始终指向window
 
+#### Document
+
+Document.execCommand
+富文本核心api，对信息进行加工处理,bold、insertImage、undo、redo….
+
+#### Selection
+
+可控制光标选中，获取选中信息
+
+
 #### DOM
 
 ##### Document
@@ -1341,6 +1351,19 @@ error boundary
 - JavaScript 事件监听
 - JavaScript 函数
 
+#### 事件
+
+##### 获取绑定的事件
+Chrome	window.getEventListeners(e).keyup
+
+##### 触发事件
+
+例：input.dispatchEvent(new KeyboardEvent('keyup', {'key':'y'}));
+
+
+#### 暂时性死区
+
+大致是使用了未定义的变量
 
 
 #### SourceMap

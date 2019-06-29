@@ -62,6 +62,8 @@ new webpack.ProvidePlugin({
 })
 ```
 
+##### NamedModules
+new webpack.NamedModulesPlugin(), //用于启动HMR时可以显示模块的相对路径
 
 
 ##### Css
@@ -129,6 +131,12 @@ Typescript 直出 ES5 已经非常成熟，用 ts-loader 即可，如果有需�
 
 
 #### 常见问题
+
+##### 触发多次刷新
+
+配置了devServer.watchContentBase 为 true 的时候，Server 会监听这些配置文件夹中静态文件的变化
+> watchContentBase: true, // 会导致多次刷新
+
 
 ##### 打包出错
 
@@ -209,3 +217,5 @@ export { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 [你真的会拆分代码吗,好](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490234&idx=1&sn=a57614db8d5570eb4cf71c39d376ab46&chksm=f951aff9ce2626ef928250381d1914629393d75d75bbb124da6a3370bef94820132b07d11c6b&mpshare=1&scene=23&srcid=01094hCOdOckeg4crRiHe5xz#rd)
 
 [JavaScript性能优化之摇树，一般](http://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490230&idx=1&sn=7c407256e1d144631ea143f593311153&chksm=f951aff5ce2626e3c362361ac5473dcc231ffee12c8e5e9e34fd5b9b664b2cce3122b517e992&mpshare=1&scene=23&srcid=0109fyVv66SYSRewfZ52NGZV#rd)
+
+![img](..\..\..\Note.assets\16b978c70362f7a4)

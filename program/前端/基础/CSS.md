@@ -394,7 +394,72 @@ https://www.cnblogs.com/kenan9527/p/4539673.html
 */
 
 ```
+### 应用
 
+##### margin: atuo
+
+对长度或宽度进行智能计算，对拉伸部分进行分配
+
+margin: 0 atuo 为什么可以水平居中？
+
+> 会将元素进行拉伸，拉伸后如果没有宽度默认会占满，但是当有强制宽度后，由于进行了auto分配，没被占用的地方会被自动分配，所有水平居中
+>
+> 如果要实现右对齐： 
+>
+> 一、
+>
+> margin-left: auto即可，剩余的空间会自动分配给左侧形成右对齐
+>
+> 二、
+>
+> 使用绝对定位，top、bottom、right、left为0，则就会进行宽和高的拉伸
+>
+> 拉伸后进行宽高设置，这时再进行atuo，就可以右对齐、水平居中、垂直居中等....
+>
+> 为什么margin: auto 0 不能实现垂直居中
+>
+> 因为margin-top,margin-bottom不能进行拉伸
+>
+> 
+>
+> flex布局下所有元素就处于一个可拉伸的上下文中，所以使用margin-top: auto就可以实现顶部对齐
+
+
+##### Flex
+
+flex:1;
+
+> 占满空间，对空间进行分配，如果多个元素会等分？
+>
+> flex: auto
+>
+> width: 100%也一样的效果
+>
+> width: -webkit-fill-available
+
+
+
+##### table
+
+> 祖先设置table，table-layout：fixed;
+>
+> 然后子元素设置tale-cell就可以自动等分
+
+
+
+##### border
+
+> border颜色会默认基础color
+
+
+
+##### 左右间距
+
+> 实际开发左右1rem,通过大的结构元素控制；
+>
+> :not(:last-child) {margin-right: 1rem;}设置，这种方式不需要重置
+>
+> 单纯使用:last-child/first-child亦可，但是需要重置
 
 
 ### 小知识
