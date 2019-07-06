@@ -1,5 +1,11 @@
 ### 基础
 
+#### 语法
+
+##### 组成
+
+选择器 { 属性: 值 }
+
 #### 选择器
 
 ##### 子选择器
@@ -464,7 +470,65 @@ flex:1;
 
 ### 小知识
 
+#### 自适应
+
 height不设置就会根据内容自适应
+
+
+
+#### display:inline-block在什么时候会显示间隙
+
+##### 描述
+
+在标签中回车符，回车符相当于空白符，多个连续的空白符会合并成一个空白符，而产生“空白间隙”
+
+##### 解决
+
+1、全局font-size设置成0；
+
+2、取消两个div之间的空格，需要在div上加上 vertical-align:bottom，消除底部间隙
+
+
+
+#### overflow: scroll不能平滑滚动
+
+##### 解决
+
+ipone 上解决方法是这样的， -webkit-overflow-scrolling:
+touch;
+
+
+
+#### Fixed
+
+设置fixed后直接以窗口为基准，位置设置需要用top、bottom…. 
+
+
+
+##### 顶部固定
+
+```css
+position: fixed;
+width: 100%; // ？
+top: 0;
+z-index: 9999;
+```
+
+
+
+#### 强制（自动）中、英文换行与不换行
+
+word-break:break-all;只对英文起作用，以字母作为换行依据
+
+word-wrap:break-word; 只对英文起作用，以单词作为换行依据
+
+white-space:pre-wrap; 只对中文起作用，强制换行
+
+white-space:nowrap; 强制不换行，都起作用
+
+white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出部分隐藏且以省略号形式出现（部分浏览器支持）
+
+
 
 ### 杂
 

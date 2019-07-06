@@ -695,7 +695,7 @@ var argModule = (function(jquery) {
 编码作用：
 将url进行编码，方便发送给服务器，当含有非法字符(有效的URI不能包含某些字符)时也可以替换
 
-encodeURI   编码时会忽略某些特殊编码
+encodeURI   编码时会忽略某些特殊编码: ;,/?:@&=+$#
 encodeURIComponent	全部编码
 decode...
 
@@ -1115,6 +1115,26 @@ fetch(url, options)
 ### 事件模型
 
 微任务优先于宏任务执行？
+
+
+
+### 规则
+
+#### var x, y = 1; x + y = ?
+
+undefined+1 = NaN
+
+运算符 + 的implicit type	conversion规则
+
+#### call、bind、apply
+
+##### Call,apply
+
+绑定this，传递参数，立即执行
+
+##### bind可用于柯里化
+
+改变执行上下文传递参数然后返回新函数，不会执行
 
 ### JS编写规范
 

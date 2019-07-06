@@ -300,9 +300,9 @@ dart
 
 > 在线流程图
 
+[在线PS2](<https://ps.gaoding.com/#/>)
 
-
-[在线PS](<https://www.photopea.com/>)
+[在线PS1](<https://www.photopea.com/>)
 
 [百度云盘搜索](<https://www.52sopan.com/>)
 
@@ -330,6 +330,10 @@ dart
 #### Git
 
 github.com ==> githistory.xyz
+
+[Star history](https://star-history.t9t.io/)
+
+
 
 
 #### Work
@@ -431,4 +435,3 @@ lint，测试，perpare，commitlint
 Linux
 
 webpack tapable应用
-

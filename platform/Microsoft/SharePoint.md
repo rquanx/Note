@@ -502,6 +502,22 @@ Rest 过滤 filter=date ge datetime'xxxx'
 
 ##### 知识点
 
+###### 复制/移动
+move + copy
+1、可选所有的站点：搜索所有的站点（子站点下的子站点都可选，拍平）
+2、可选站点下所有文档库：搜索所有文档库
+3、进入文档库后可创建文件夹	必要
+4、move/copy 支持批量操作：CreateCopyJobs api	必要
+5、目标路径面包屑导航	必要
+6、文件夹可move/copy：紧复制文件夹	必要
+7、进度查看：GetCopyJobProgress api
+8、oneDrive
+
+###### CreateCopyJobs
+
+[CreateCopyJobs](https://gist.github.com/zplume/21248c3a8a5f840a366722442cf9ee97)
+
+
 ###### RenderListDataAsStream
 RenderListDataAsStream 使用caml进行查询
 ```js
@@ -612,6 +628,9 @@ in条件内部超过500不行 	   in可以查lookup
 
 rowlimit 返回的记录条数，默认为100，如果不需要限制，将值设为0
 
+###### 范围
+Scope
+> Recursive:遍历所有文档 RecursiveAll:遍历所有文档和文件夹 
 
 
 ###### 指定文件夹
@@ -624,6 +643,10 @@ query.Folder = docLib.RootFolder.SubFolders["system"];
 camlQuery.set_folderServerRelativeUrl(folderPath) // "/site/list/folder"   需包含站点
 ```
 
+###### 字段
+
+FSObjType
+> 0:文档 1：文件夹
 
 
 ###### 文章
