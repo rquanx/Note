@@ -585,12 +585,15 @@ import {
     "name": "hello-client-side-solution",
     "id": "b2ffa604-c624-4e21-b829-76031d2d3efd",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true	
+    "includeClientSideAssets": true,	
       // 打包时会自动打包资源
       // spfx v1.4才生效
       // o365或sp列表托管设为true,其他托管方式时设为false
           "isDomainIsolated": true
     // build web parts that securely communicate with APIs secured with Azure AD without exposing the access token to other components on the page or even scripts in the tenant.
+      "skipFeatureDeployment": false
+      // 是否自动部署到全部的站点，只适用于webpart,extensions仍需要手动设置
+      // extensions需要使用CSOM或REST以编程方式将CustomAction添加到每个Web（如通过迭代或包括进入一些配置代码，use CSOM or REST to add a CustomAction programmatically to each web as you need；need to take care of the programmatic association/registration to each site/web you require, using CustomAction/ClientSideComponentId.
   },
   "paths": {
     "zippedPackage": "solution/hello.sppkg"
@@ -701,6 +704,10 @@ require('sp-init');
 
 
 
+#### Element.xml
+
+[Provision SharePoint assets from your SharePoint client-side web part](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/provision-sp-assets-from-package)
+
 ### 操作
 
 #### 在线预览
@@ -787,7 +794,13 @@ gulp serve 无法访问
 
 - **Application Customizers**. Adds scripts to the page, and accesses well-known HTML element placeholders and extends them with custom renderings.
 
-  > 对页面固有元素进行设置或者调整
+  > 对页面固有元素进行设置或者调整，嵌入js代码
+  >
+  > 这种类型不支持列表类型设置
+  >
+  > RegistrationId="101"
+  >
+  > RegistrationType="List"
 
 - **Field Customizers**. Provides modified views to data for fields within a list.
 
@@ -801,17 +814,39 @@ gulp serve 无法访问
 
 #### 开发
 
+##### 环境
+
+如果开发SP2019,会使用V1.4版本，V1.4版本有https问题
+
+
+
+##### 位置
+
+- 命令栏 (`location: ClientSideExtension.ListViewCommandSet.CommandBar`)
+- 上下文菜单 (`location: ClientSideExtension.ListViewCommandSet.ContextMenu`)
+- 命令栏和上下文菜单 (`location: ClientSideExtension.ListViewCommandSet`)
+
+
+
 ##### 说明
 
-##### onInit
+
+
+##### Field Customizer
 
 
 
-##### onRenderCell
+##### ListView Command Set
+
+onInit
 
 
 
-##### onDisposeCell
+onRenderCell
+
+
+
+onDisposeCell
 
 
 
@@ -827,9 +862,226 @@ gulp serve 无法访问
 
 
 
+#### 调试
+
+无法本地调试，但也不需要部署到应用程序目录就可调试
+
+##### serve.json
+
+- serveConfigurations无效，要在另一个obj中设置pageUrl
+
+- https：V1.4需要设置为false
+
+
+
+#### 打包
+
+
+
+##### ClientSideInstance
+
+[租户范围部署文档](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/basics/tenant-wide-deployment-extensions)
+
+
+
+##### Element.xml
+
+CustomAction中运行的列表RegistrationId
+
+- 100为列表
+
+- 101为文档库
+
+
+
+如果要同时在列表和文档库生效，则需要两个CustomAction
+
+```xml
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <CustomAction 
+        Title="SPFxListViewCommandSet"
+        RegistrationId="100"
+        RegistrationType="List"
+        Location="ClientSideExtension.ListViewCommandSet.CommandBar"
+        ClientSideComponentId="5fc73e12-8085-4a4b-8743-f6d02ffe1240"
+        ClientSideComponentProperties="{&quot;sampleTextOne&quot;:&quot;One item is selected in the list.&quot;, &quot;sampleTextTwo&quot;:&quot;This command is always visible.&quot;}">
+    </CustomAction>
+
+    <CustomAction 
+        Title="SPFxListViewCommandSet"
+        RegistrationId="101"
+        RegistrationType="List"
+        Location="ClientSideExtension.ListViewCommandSet.CommandBar"
+        ClientSideComponentId="5fc73e12-8085-4a4b-8743-f6d02ffe1240"
+        ClientSideComponentProperties="{&quot;sampleTextOne&quot;:&quot;One item is selected in the list.&quot;, &quot;sampleTextTwo&quot;:&quot;This command is always visible.&quot;}">
+    </CustomAction>
+
+</Elements>
+```
+
+
+
+
+
+##### package
+
+###### SP2019
+
+```bash
+gulp bundle	--ship
+
+gulp package-solution	--ship
+```
+
+
+
+
+
+
+
+
+
 #### 部署
 
+
+
+Even though you would not require the solution to be installed on the site, you'd need to associate **ClientSideComponentId** to specific objects for the extension to be visible
+
+
+
 部署方式和webpart一致，会自动应用到整个网站？
+
+
+
+##### 扩展应用
+
+[以代码的方式讲扩展应用到多个地方](https://www.sharepointnutsandbolts.com/2017/09/manage-tenant-scoped-spfx-extensions.html)
+
+
+
+
+
+### 通用
+
+
+
+#### 更新
+
+在网站内容会提示可以更新？？
+
+
+
+#### 调试
+
+ctrl + F12可以打开自带的调试工具
+
+
+
+#### 打包
+
+##### webpack扩展
+
+[扩展webpack](https://docs.microsoft.com/zh-cn/sharepoint/dev/spfx/toolchain/extending-webpack-in-build-pipeline)
+
+
+
+##### 分析
+
+[打包分析](https://docs.microsoft.com/zh-cn/sharepoint/dev/spfx/toolchain/optimize-builds-for-production)
+
+
+
+##### 清理
+
+会保留多个版本的js,如果不需要可以gulp clean清除
+
+
+
+##### 问题
+
+###### ES6编译问题
+
+```js
+// gulp文件增加
+const gulp = require('gulp');
+const merge = require('webpack-merge');
+build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
+
+build.configureWebpack.setConfig({
+  additionalConfiguration: function (config) {
+    let newConfig = config;
+    config.plugins.forEach((plugin, i) => {
+      if (plugin.options && plugin.options.mangle) {
+        config.plugins.splice(i, 1);
+        newConfig = merge(config, {
+          plugins: [
+            new TerserPlugin()
+          ]
+        });
+      }
+    });
+
+    return newConfig;
+  }
+});
+```
+
+
+
+
+
+#### 部署
+
+##### 应用程序网站
+
+每个web应用都有自己的应用程序网站
+
+
+
+##### 创建App Catalog 网站集.
+
+- In Central Administration, on the Apps page, in the App Management section, click Manage App Catalog.
+
+- If no App Catalog exists for the farm, the Web Application page opens, so you can select a web application.
+
+- On the Web Application page, select the web application for which you want to create a catalog.
+
+- In the App Catalog Site section, select Create a new app catalog site, and then click OK.
+
+
+
+##### 步骤
+
+1、管理中心
+
+2、Apps分类
+
+3、管理app catalog
+
+4、创建
+
+
+
+线下版应用程序网站： http://192.168.20.47:8102/sites/AppCollection
+
+
+
+##### 问题
+
+
+
+添加app时报错The System Account cannot perform this action
+
+> 账号问题，管理员不一定能添加app
+
+
+
+
+
+#### 删除
+
+删除app有两个阶段，网站内容删除后进入回收站删除、还要第二阶段回收站需要删除
 
 
 
@@ -840,4 +1092,3 @@ gulp serve 无法访问
 #### 博客
 
 [spfx博客]( <https://github.com/TrillCyborg/fullstack>)
-
