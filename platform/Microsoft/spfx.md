@@ -786,6 +786,93 @@ gulp serve 无法访问
 
 
 
+### Webpart for teams
+
+#### 步骤
+
+1、src下supportedHosts增加TeamsTab
+
+2、打包部署后同步至teams
+
+3、修改manifests.json，压缩zip
+
+4、teams中上传
+
+
+
+#### manifests.json
+
+```json
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.2",
+    
+    // 显示的应用名，随意？
+  "packageName": "TeamsTabWebPart",
+     
+  // 随便生成一个，用于teams进行识别？
+  "id": "98a1e964-bcdd-4e60-8406-8be3e0755070",
+  "version": "0.1",
+  "developer": {
+    "name": "Parker Porcupine",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+    // 显示的应用名，随意？
+  "name": {
+    "short": "TeamsTabWebPart"
+  },
+    // 描述，随意，可根据spfx项目中的描述
+  "description": {
+    "short": "My awesome HelloWorld tab",
+    "full": "My awesome HelloWorld tab which is brilliantly created using SPFx"
+  },
+      // 一起压缩的图标
+  "icons": {
+    "outline": "parker_outline.png",
+    "color": "parker_color.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+        // 其他不需要改，componentId的id为xxxwebpart.manifest.json中的id
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId={{componentId}}%26forceLocale={locale}",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
+
+```
+
+
+
+
+
+#### 问题
+
+解压失败???
+
+> 用example的修改压缩，注意文件名！！！
+
+
+
 ### Extensions
 
 #### 功能
@@ -1082,13 +1169,3 @@ build.configureWebpack.setConfig({
 #### 删除
 
 删除app有两个阶段，网站内容删除后进入回收站删除、还要第二阶段回收站需要删除
-
-
-
-
-
-### 资料
-
-#### 博客
-
-[spfx博客]( <https://github.com/TrillCyborg/fullstack>)

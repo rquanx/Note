@@ -427,6 +427,32 @@ zeplin
 
 
 
+#### 好文记录
+
+[cli制作](<https://www.twilio.com/blog/how-to-build-a-cli-with-node-js?utm_source=youtube&utm_medium=video&utm_campaign=node-cli-howto>)
+
+[前后端分离接口规范](<https://mp.weixin.qq.com/s?__biz=MzA5MjQ0Mjk2NA==&mid=2247484575&idx=1&sn=bc02da2b9d13350e7d03e29394efdca8&chksm=906c5ca4a71bd5b20e82bcea23846c5d9d1b54f6adb0c2e0c06581bc69a36e56ee863b5aae3e&mpshare=1&scene=23&srcid=#rd>)
+
+[vscode快捷键](<https://code.visualstudio.com/docs/editor/codebasics#_shrinkexpand-selection>)
+
+[损失规避心理](<https://mp.weixin.qq.com/s/kYgJOrLIbfcbS7EoXI2QJA>)
+
+[面试](<https://www.cnblogs.com/JavaArchitect/p/7586949.html>)
+
+[css常见问题](<https://segmentfault.com/a/1190000019523323>)
+
+[hook](<https://zhuanlan.zhihu.com/p/69802663?utm_source=qq&utm_medium=social&utm_oi=583565170786308096>)
+
+[社招](<https://mp.weixin.qq.com/s/l46XxFLt5elTN0qMy_Q5pQ>)
+
+[代码混淆](<https://segmentfault.com/a/1190000019423501>)
+
+[为什么学了很多知识，仍然没有什么用](<https://mp.weixin.qq.com/s/L6AVwHDMXIxVlGJcW4wUoA>)
+
+[李笑来书籍](<https://mp.weixin.qq.com/s?__biz=MzI4NzIxOTQyMA==&mid=2651820035&idx=1&sn=ec0e8b9d3c7f669ba12d4f0b32f7b8c1&chksm=f02a3bb0c75db2a6f346e42721998bd533ec031cdeab66a7a2e1e2ab03689805003b6e8112cd&mpshare=1&scene=23&srcid=#rd>)
+
+
+
 
 #### Todo
 
@@ -435,3 +461,5 @@ lint，测试，perpare，commitlint
 Linux
 
 webpack tapable应用
+
+[table to any format](<https://tableconvert.com/>)

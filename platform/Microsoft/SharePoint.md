@@ -63,6 +63,10 @@ sharepoint manager tool
 | Farm   solution    |                             |
 
 
+##### 开发时问题
+
+###### 提示InitializeControl不存在
+右键ascx文件，run custom tool
 
 ##### 部署时问题
 

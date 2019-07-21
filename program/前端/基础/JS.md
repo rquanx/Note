@@ -745,6 +745,17 @@ list.map = function(fn) {
 }
 ```
 
+##### reduce
+
+```js
+function add(a,b) {
+    return a + b;
+}
+
+// 对两个参数的处理，加上reduce可以对多个进行处理
+[1,2,3,4].reduce(add)
+
+```
 
 
 
@@ -1083,7 +1094,13 @@ x.send(data)									// 发送请求
 
 ##### Ajax
 
-
+responseType indicates the type of data that the server will respond with options are 
+    'arraybuffer', 
+    'blob', 
+    'document', 
+    'json', 
+    'text', 
+    'stream'
 
 [ajax请求二进制流](https://www.cnblogs.com/cdemo/p/5225848.html)
 
@@ -1132,6 +1149,8 @@ undefined+1 = NaN
 
 绑定this，传递参数，立即执行
 
+apply: (obj,args) => this,arguments   会将数组分解成n个参数
+
 ##### bind可用于柯里化
 
 改变执行上下文传递参数然后返回新函数，不会执行
@@ -1169,6 +1188,50 @@ vo顺序
 [javascript 从定义到执行，你不知道的那些事](http://www.webhek.com/post/javascript-from-define-to-execute.html)
 
 ### JS应用
+
+#### 请求后端下载文件
+
+
+请求目标，WebServices,只能用Post请求，contentType也设置为json
+> 后台 context.response.write(binary);context.response.flush
+
+```js
+// 通过ajax请求下载
+function downloadVidAjax(url, value) {
+        $.ajax({
+            url: url,
+            method: 'POST', data: JSON.stringify({ type: value }), contentType: "application/json; charset=utf-8",
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function (data) {
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                a.href = url;
+                a.download = 't.' + value;
+                document.body.append(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            }
+        });
+    }
+
+// 通过Form提交下载
+    function downloadViaForm(url, key, value) {
+        var form = document.createElement("form");
+        form.action = url;
+        form.method = "post";
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+    }
+```
 
 #### 拦截注入JS
 
