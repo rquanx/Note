@@ -399,6 +399,27 @@ webpart属性设置可以设置参数
 
 wsp包部署出问题    打开浏览器管理，进入系统设置  ---  管理场解决方案  --- 处理  即可
 
+
+
+###### 部署
+
+C:\xxx.wsp 为电脑上存放wsp的路径
+xxx.wsp	为wsp的名称
+siteUrl	为部署的网站地址
+
+
+首次部署
+添加解决方案：stsadm -o addsolution -filename C:\xxx.wsp
+部署解决方案：stsadm -o deploysolution -name xxx.wsp -immediate -url siteUrl  -allowGacDeployment
+
+二次部署
+收回解决方案：stsadm -o retractsolution -name xxx.wsp -immediate -url  siteUrl
+删除解决方案：stsadm -o deletesolution -name xxx.wsp
+添加解决方案：stsadm -o addsolution -filename C:\xxx.wsp
+部署解决方案：stsadm -o deploysolution -name xxx.wsp -immediate -url siteUrl  -allowGacDeployment
+
+
+
 ##### Jsom
 
 [SharePoint 模型对比](https://docs.microsoft.com/zh-cn/sharepoint/dev/general-development/choose-the-right-api-set-in-sharepoint#client-object-models-for-managed-code)
