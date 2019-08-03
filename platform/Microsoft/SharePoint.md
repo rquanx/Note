@@ -41,6 +41,16 @@ sharepoint manager tool
 
 考勤默认页面文字， 编辑页面->编辑属性->页面内容->编辑源...
 
+#### JSLink
+设置给webpart加上自定义js
+
+操作：编辑页面-->编辑webpart-->最后一个选项-->最后一个配置（JS Link）
+
+~site/xxx  ==> ~site解析到当前站点下
+~sitecollection/xx ==> 解析到当前网站集（顶层站点？）
+~layouts/xx ==> 解析到当前页面下的/_layouts/14  or /_layouts/15
+~sitelayouts ==> 解析到当前站点下的/_layouts/14  or /_layouts/15
+ ~sitecollectionlayouts ==> 解析到当前网站集下的/_layouts/14  or /_layouts/15
 
 
 #### Webpart
@@ -61,6 +71,64 @@ sharepoint manager tool
 | ------------------ | --------------------------- |
 | Sandbox   solution | 无法部署Farm only   webpart |
 | Farm   solution    |                             |
+
+##### 映射
+右键添加Layout映射，可以讲c/xxxx/15/xxx   下的文件夹加入来
+然后在对应的地方加入文件在部署后就可以跟着部署到对应的映射文件夹下
+
+实质是会在package中设置打包
+
+###### 应用
+1、增加配置文件
+> sharepoint 无法设置webconfig，可以通过自定义配置文件实现类似的功能
+> 1、创建配置文件添加到映射文件下
+> 2、创建读取配置文件的class，固定读取配置文件所在的陆军
+> 3、建立配置文件映射class，每次读取映射class的值时检查文件是否被修改，若被修改则重新生成映射class的字段内容
+
+2、加入静态文件
+> 图片、资源、模板文件等
+
+
+##### DLL部署
+引入第三方/其他Project的dll时需要在package中添加dll
+> 部署到全局资源：被部署到globalAssembly中
+> 部署到webapplication：dll被部署到网站的bin目录下
+
+部署后webpart DLL位置：C:\Windows\Microsoft.NET\assembly\GAC_MSIL\xxx
+例：C:\Windows\Microsoft.NET\assembly\GAC_MSIL\ElectronicBill\v4.0_1.0.0.0__a4a40284d968eeb0
+
+
+##### 前后端分离
+一、进行WebService映射
+> 创建一个空webpart,后台内容不需要写，ascx为一个div,然后引入对应的js
+> 添加webService映射，asmx会被映射至对应的class中
+> asmx只能进行Post请求？（通过设置webconfig和标签好像可以进行Get请求）
+> 加入[script]标签可以用json进行数据交互
+
+###### webService映射设置
+1.右击SharePoint项目 -> 添加 -> SharePoint的layouts映射文件夹
+2.右击layouts文件夹中的项目文件夹 -> 添加 -> 选择文本文件 -> 修改为：服务名.asmx
+3.黏贴以下代码
+	<%@ WebService Class="SharePointProject1.Services.Test" %>  //SharePointProject1为项目名称,Services为文件夹名，Test为服务名
+	<%@ Assembly Name="SharePointProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba0f5ee04ebd97"%> 
+	//SharePointProject1为项目名称,PublicKeyToken需在添加WebService前先部署一次，然后从路径：C:\Windows\Microsoft.NET\assembly\项目名中，其中文件夹名下划线之后字符串
+4.右击SharePoint项目 -> 创建Services文件夹
+5.添加引用System.Web.Services
+6.右击Services文件夹 -> 添加类名为服务名的类
+7.黏贴以下代码到命名空间中
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    class Test: WebService //Test修改为对应的服务名
+    {
+        [WebMethod]
+        public string T() //T为WebService接口
+        {
+            return "成功";
+        }
+    }
+8.部署该SharePoint项目
+9.在IIS中的15目录中寻找该项目中的asmx文件，并调用接口进行测试是否成功
 
 
 ##### 开发时问题
@@ -400,7 +468,6 @@ webpart属性设置可以设置参数
 wsp包部署出问题    打开浏览器管理，进入系统设置  ---  管理场解决方案  --- 处理  即可
 
 
-
 ###### 部署
 
 C:\xxx.wsp 为电脑上存放wsp的路径
@@ -454,6 +521,71 @@ microsoftajax.js
 	但是先getbycaml,再update不行
 
 updateListItemByCaml，由于共用上下文信息所以可以不受版本冲突影响?
+
+###### 检查文件签入、签出
+CheckinUser、checkinxxx等属性
+
+```js
+// ???
+// item.File.CheckOut();
+// clientContext.ExecuteQuery();
+// item["Sprakkode"] = theValue; //UPDATE OPERATION GOES HERE
+// item.Update();
+// clientContext.ExecuteQuery();
+// item.File.CheckIn("", CheckinType.MajorCheckIn);
+// item.File.Publish("");
+// clientContext.ExecuteQuery();
+
+```
+
+###### 文件
+
+通过Attachment字段存储文件
+
+实际是会创建一个隐藏的文件夹来存放文件
+
+获取方式
+```js
+var ctx = SP.ClientContext.get_current();
+var web = ctx.get_web();
+var oListActiveMatter = web.get_lists().getByTitle("Test");
+var camlQuery = new SP.CamlQuery();    
+var viewXml = String.format("<View><Query><Where><Eq><FieldRef Name='ABCNumber' /><Value Type='Text'>{0}</Value></Eq></Where></Query></View>", "1232");
+camlQuery.set_viewXml(viewXml);
+var oListItems = oListActiveMatter.getItems(camlQuery);
+ctx.load(oListItems);
+ctx.executeQueryAsync(function () {
+    var oListItemEnumerators = oListItems.getEnumerator();
+    while (oListItemEnumerators.moveNext()) {
+        var item = oListItemEnumerators.get_current(); 
+        var createdBy = item.get_item('Author');
+        var createdDate = item.get_item('Created');
+        var modifiedBy = item.get_item('Editor');
+        var modifiedDate = item.get_item('Modified');
+        //debugger;
+        var attachmentFiles = item.get_attachmentFiles();
+        ctx.load(attachmentFiles);
+        ctx.executeQueryAsync(function () {
+            debugger;
+            if(attachmentFiles.get_count() > 0){
+                var attachmentsItemsEnumerator = attachmentFiles.getEnumerator();
+                while (attachmentsItemsEnumerator.moveNext()) {
+                    var attachitem = attachmentsItemsEnumerator.get_current(); 
+                    var fileName = attachitem.get_fileName();
+                    var filepath = attachitem.get_path();
+                    var serverPath = attachitem.get_serverRelativePath();
+                    var serverUrl = attachitem.get_serverRelativeUrl();
+                    var objetctData = attachitem.get_objectData();
+                    var typedObj = attachitem.get_typedObject();
+                }
+            }
+        });
+    }
+    console.log(oListItems.get_count());
+});
+
+```
+
 
 
 ###### 参数相关

@@ -25,6 +25,11 @@ DIV直接使用“focus”和“blur”两个方法是无效的,需要修改可�
 
 [div的blur事件](https://www.cnblogs.com/klbc/p/5303134.html)
 
+#### form
+张鑫旭 35期DOM小测
+通过事件阻止DOM提交、防止二次提交
+通过formData获取DOM数据
+通过form属性标记表单数据
 
 #### Button
 

@@ -17,6 +17,53 @@ log4net可以记录到innerexception的信息
 
 System.Web.HttpContext.Current.Request.Form["key"]
 
+#### 文件上传接收
+
+```c#
+[HttpPost]
+        public HttpResponseMessage ReceiveFile()
+        {
+           var f = HttpContext.Current.Request.Files[0];
+           return ReturnResponseMsg.ResponseMsg<string>("成功", 1);
+        }
+
+ private async Task GetFile()
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+
+            var provider = new MultipartMemoryStreamProvider();
+            await Request.Content.ReadAsMultipartAsync(provider);
+            var fileName = provider.Contents[0].ToString();
+            var file = provider.Contents[1];
+            var buffer = await file.ReadAsByteArrayAsync();
+            var m = new MemoryStream(buffer);
+        }
+
+```
+
+#### 文件发送
+
+```c#
+        private void FlushFile(MemoryStream ms, string type)
+        {
+            Context.Response.ClearContent();
+            Context.Response.ClearHeaders();
+            Context.Response.Buffer = true;
+            Context.Response.ContentType = "application/octet-stream";
+            Context.Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}." + type,
+                HttpUtility.UrlEncode("港口作业包干费客户对账清单" + "_" + DateTime.Now.ToString("yyyyMMddHHmmssfff"), System.Text.Encoding.UTF8)));
+            Context.Response.BinaryWrite(ms.ToArray());
+            Context.Response.Flush();
+            // Context.Response.End(); // End可能会引起线程异常
+
+            // 不会产生线程问题？ SuppressContent必须要有，否则返回的数据可能会由于多出数据引起异常，无法使用，例返回word文档无法打开
+            // Context.Response.SuppressContent = true;  // Gets or sets a value indicating whether to send HTTP content to the client.
+            // Context.ApplicationInstance.CompleteRequest();
+        }
+
+```
+
 #### Json
 
 [json对象后台处理](https://www.cnblogs.com/zxtceq/p/6610214.html)

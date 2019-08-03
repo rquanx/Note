@@ -451,7 +451,9 @@ zeplin
 
 [李笑来书籍](<https://mp.weixin.qq.com/s?__biz=MzI4NzIxOTQyMA==&mid=2651820035&idx=1&sn=ec0e8b9d3c7f669ba12d4f0b32f7b8c1&chksm=f02a3bb0c75db2a6f346e42721998bd533ec031cdeab66a7a2e1e2ab03689805003b6e8112cd&mpshare=1&scene=23&srcid=#rd>)
 
+[GraphQL-BFF：微服务背景下的前后端数据交互方案](<https://zhuanlan.zhihu.com/p/75241522?utm_source=qq&utm_medium=social&utm_oi=583565170786308096>)
 
+[前端异常监控解决方案研究](<https://www.tangshuang.net/5782.html>)
 
 
 #### Todo
@@ -463,3 +465,5 @@ Linux
 webpack tapable应用
 
 [table to any format](<https://tableconvert.com/>)
+
+[数据转换](https://transform.tools/)

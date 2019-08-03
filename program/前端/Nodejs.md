@@ -2,7 +2,15 @@
 
 [import默认文件](https://www.cnblogs.com/goloving/p/8889585.html)
 
+#### 模块
 
+##### 使用
+
+###### 不需要引入即可使用的模块
+
+把 API 挂载到 global 对象上就行
+
+例：在我们使用 Mocha 编写测试用例时，我们不需要手动引入 Mocha 提供的任何模块，就能够直接使用 describe、it 等一系列 API。
 
 #### NPM
 
@@ -57,3 +65,5 @@ npm i module_name  -S  = >  npm install module_name --save
 
 npm i module_name  -D  => npm install module_name --save-dev   
 ​	写入到 devDependencies 对象  
+
+

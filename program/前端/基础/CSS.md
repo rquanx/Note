@@ -164,6 +164,9 @@ rel
 ​		solid
 ​	padding	内容与边框的距离
 
+box-sizing:content-box /*（标准盒模型）*/
+box-sizing:border-box /*（IE盒模型）*/
+
 #### 占位
 
 元素占的区域因素display

@@ -30,6 +30,42 @@ the state is meant to hold variables that relate to the current state of the UI
 
 不要使用renderXXX,要使用函数式组件
 
+
+
+##### 组件分类
+
+样式型组件 
+
+> 内部已经规定好生成的结构和样式，只传入指定的内容属性即可     
+>
+> 如：title="123"                             
+
+
+
+结构型组件 
+
+> 内部规定好大致的结构，具体显示内容如何显示通过属性指定       
+>
+> 如：title={<span   className="">123</span>} 
+
+
+
+组合型组件 
+
+> 父组件作为容器，具体显示的内容通过jsx写到children中，基础组件可以考虑使用组合型  
+>
+> 如： ant design                             
+
+
+
+配置型组件  
+
+> 内部已经规定好根据指定的数据结构生成，复杂交互类可用，进行业务封装等 
+>
+> 如：fabric的dropDown等                      
+
+
+
 ##### 函数组件
 
 ```react
@@ -295,6 +331,15 @@ this.props.children属性。它表示组件的所有子节点
 ###### 兼容性
 
 [浏览器兼容](https://reactjs.org/docs/react-dom.html#browser-support)
+
+###### pureComponent和component
+pureComponent
+> 更新前会进行浅比较,变化后才会render
+
+component
+> setState,不管是否变化，必定会render
+
+
 
 ###### 强制刷新
 

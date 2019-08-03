@@ -1,7 +1,59 @@
+
+#### 备份
+将数据导出成sql
+[数据库导出、导入，通过sql](https://blog.csdn.net/weicoliang/article/details/80324346)
+
+
+
 ### SQLServer
+
+#### 语法知识
+
+##### 修改表名/列名
+```sql
+-- 列表改名
+EXEC sp_rename 'oldTableName', 'newTableName';
+
+-- 表xxx字段 x to y
+EXEC SP_RENAME 'table.column', 'newColumnName', 'COLUMN';
+
+```
+
+##### 创建列表
+```sql
+-- 创建CRType表
+CREATE TABLE CRType (
+	-- int 类型， not null 非空  identity(1,1) 从1开始自增1  primary key 主键
+	ID int not null identity(1,1) primary key,
+	TypeName nvarchar(255),
+
+	-- null 可以为空	unique  唯一约束  bit字节（0/1）
+	CostImpact bit null,
+	"Delete" bit null,
+	-- foreign key(columnName) references targetTable(targetColumn) 外键
+		CRTypeId int foreign key(CRTypeId) references CRType(ID),
+)
+```
+
+
+##### 增加表字段，修改字段
+```sql
+-- 表Stations增加字段LeadPlants，引用LeadPlants的ID字段
+ALTER TABLE Stations ADD  LeadPlants int foreign key(LeadPlants) references LeadPlants(ID);
+```
+
+#### 执行追踪
+Sql profiler
+追踪数据库执行的操作，可以看到执行的语句、用户、时间、资源等
+
+使用：工具->profiler
+
+需要较高的权限才能追踪
 
 
 #### 存储过程
+
+
 
 ##### 小知识
 
@@ -214,6 +266,11 @@ from SalesIndexInfo as a where ID=871
 ##### 问题
 
 [sa用户启用问题，sql启动sa后仍报错，需要修改的登录模式，重启sql服务](https://blog.csdn.net/ytm15732625529/article/details/72630050)
+
+
+###### favtory库
+存储过程设置参数，要设置空值DBNull.Value;
+
 
 
 #### 博客

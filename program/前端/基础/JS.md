@@ -88,6 +88,14 @@ for(var i in obj) {
 
 #### 小知识点
 
+##### 变量提升
+Let、const其实也会“提升”，但是不会被初始化，而var则会被初始化为undefined，class也会提升，但是一样不会进行初始化
+
+所以访问let的时候才会报错
+
+所以才产生暂时性死区
+
+
 ##### 逻辑运算
 
 a || b       结果返回其中为真的值，按顺序判断
@@ -616,6 +624,7 @@ new F().__proto__ === F.prototype
 {    }手动给let添加块作用域，回收垃圾
 
 prototype方法无法访问 构造函数var 变量，作用域，无法访问
+
 
 #### 闭包
 
@@ -1241,6 +1250,8 @@ js请求拦截,重定向至自定义js，从而使页面加载自定义的js
 
 监听，绑定Object.defineProperty
 
+监控对象的变化，根据调用栈找到源头
+
 #### DIV拖动
 
 可拖拽 onmousedown + onmouseup + onmousemove 
@@ -1335,6 +1346,12 @@ quick增加防抖和节流
 > 节流：一定的时间内只执行一次代码
 >
 > > 连续 多次点击搜索按钮
+
+
+
+#### 截取整数和小数
+
+[截取整数和小数](<https://github.com/akira-cn/FE_You_dont_know/issues/5>)
 
 
 
@@ -1433,6 +1450,7 @@ error boundary
 - JavaScript 构造器和构造函数
 - JavaScript 事件监听
 - JavaScript 函数
+
 
 #### 事件
 
