@@ -93,6 +93,13 @@ let S = (props) => (<h1>{props.data}</h1>);
 
 ##### 生命周期
 
+###### 是否要根据props设定state
+将属性值转化为state，建议只用来作初始化
+
+在componentDidUpdate中判断新属性和旧属性，然后进行更新
+
+新的方法试用useMemo可以实现依赖于某个属性更新时重新计算
+
 ###### willmount
 
   在render前,被后续版本会被取消
@@ -338,6 +345,21 @@ pureComponent
 
 component
 > setState,不管是否变化，必定会render
+
+1. Component存在的问题?
+1). 父组件重新render(), 当前组件也会重新执行render(), 即使没有任何变化
+2). 当前组件setState(), 重新执行render(), 即使state没有任何变化
+
+2. 解决Component存在的问题
+1). 原因: 组件的componentShouldUpdate()默认返回true, 即使数据没有变化render()都会重新执行
+2). 办法1: 重写shouldComponentUpdate(), 判断如果数据有变化返回true, 否则返回false
+3). 办法2: 使用PureComponent代替Component
+4). 说明: 一般都使用PureComponent来优化组件性能
+
+3. PureComponent的基本原理
+1). 重写实现shouldComponentUpdate()
+2). 对组件的新/旧state和props中的数据进行浅比较, 如果都没有变化, 返回false, 否则返回true
+3). 一旦componentShouldUpdate()返回false不再执行用于更新的render()
 
 
 
