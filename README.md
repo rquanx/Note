@@ -202,6 +202,8 @@ dart
 
 ##### 每日资讯
 
+[热榜](<https://www.printf520.com/hot.html>)
+
 [ReadHub](https://readhub.cn/topics)
 
 > 最新资讯
@@ -209,6 +211,8 @@ dart
 
 
 [what is the best of xx](https://www.slant.co/)
+
+
 
 
 
@@ -458,12 +462,8 @@ zeplin
 
 #### Todo
 
-lint，测试，perpare，commitlint
-
-Linux
-
-webpack tapable应用
-
 [table to any format](<https://tableconvert.com/>)
 
 [数据转换](https://transform.tools/)
+
+[正则校验、学习](<https://regexr.com/>)

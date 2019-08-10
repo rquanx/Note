@@ -11,6 +11,9 @@ log4net可以记录到innerexception的信息
 
 ### 知识点
 
+#### HTTP
+响应可自定义响应头
+
 #### 多线程
 
 #### 获取Post数据
@@ -43,6 +46,8 @@ System.Web.HttpContext.Current.Request.Form["key"]
 ```
 
 #### 文件发送
+[Webapi返回文件](https://blog.csdn.net/lbx_15887055073/article/details/82765059)  
+> 会遗留文件
 
 ```c#
         private void FlushFile(MemoryStream ms, string type)
@@ -50,6 +55,8 @@ System.Web.HttpContext.Current.Request.Form["key"]
             Context.Response.ClearContent();
             Context.Response.ClearHeaders();
             Context.Response.Buffer = true;
+            
+            // 跨域需要设置响应头
             Context.Response.ContentType = "application/octet-stream";
             Context.Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}." + type,
                 HttpUtility.UrlEncode("港口作业包干费客户对账清单" + "_" + DateTime.Now.ToString("yyyyMMddHHmmssfff"), System.Text.Encoding.UTF8)));

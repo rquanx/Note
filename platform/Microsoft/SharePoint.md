@@ -18,6 +18,10 @@ sharepoint manager tool
 
 ### SharePoint
 
+
+#### 管理中心 
+映射设置
+
 #### 学习记录
 
 ##### 概述
@@ -458,6 +462,9 @@ lookup值如果当文本读取的话是id+姓名；可以这样检索到
 ##### Designer
 
 通过站点连接进入可进入对应的站点文档库中操作
+
+
+Sharepoint designer 提示不能编辑非SP网站，重启，利用网页启动
 
 ##### Webpart
 

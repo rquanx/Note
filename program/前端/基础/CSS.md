@@ -446,7 +446,22 @@ flex:1;
 >
 > width: -webkit-fill-available
 
+###### 属性
 
+Flex-direction : row , column
+
+
+justify- 操作的是主轴（main axis）对齐，对齐方向与 flex-direction 方向一致。
+
+align- 操作的是交叉轴（cross axis）对齐，对齐方向与 flex-direction 方向垂直
+
+> Align-items 对单行和多行都有效
+> Align-content 只对多行有效
+> Align-self 对元素自己单独设置
+
+
+Place-content    
+> justify和align的简写  ==> margin和margin-right等的关系
 
 ##### table
 
