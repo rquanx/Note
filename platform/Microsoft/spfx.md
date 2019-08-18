@@ -1,3 +1,11 @@
+### 连接	
+https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components	      	
+https://docs.microsoft.com/zh-cn/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components	K753k951	
+https://weinteckdev.sharepoint.com/sites/Test/SitePages/testPage.aspx		
+https://weinteckdev.sharepoint.com/sites/App/AppCatalog/Forms/AllItems.aspx		
+https://weinteckdev-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/siteManagement		
+
+
 ### 目录说明
 
 ```js
