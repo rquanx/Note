@@ -42,6 +42,153 @@ flutter\bin   // Path设置sdk解压路径
 
 
 
+
+
+## 打包
+
+### Andorid
+
+#### 设置启动图标
+
+
+
+
+
+
+
+#### 签名
+
+1、创建密钥库
+
+mac/linx
+
+```bash
+keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+```
+
+
+
+window
+
+```bash
+keytool -genkey -v -keystore c:/Users/USER_NAME/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+# c:/Users/USER_NAME/key.jks是密钥库保存路径
+```
+
+
+
+如果无法找到keytool，以通过路径找到或设置环境变量
+
+> keytool位置，执行flutter doctor -v 在输出的’Java binary at:’ 后的路径中
+
+
+
+
+
+2、key.properties
+
+ 创建`<app dir>/android/key.properties`文件
+
+内容
+
+```properties
+storePassword=<上一步骤中的密码>
+keyPassword=<上一步骤中的密码>
+keyAlias=key
+storeFile=<密钥库的位置，e.g. /Users/<用户名>/key.jks>
+```
+
+
+
+3.gradle配置签名
+
+1、打开<app dir>/android/app/build.gradle
+
+2、在android {  前增加
+
+```properties
+def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+```
+
+3、将buildTypes替换
+
+```properties
+   signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile file(keystoreProperties['storeFile'])
+           storePassword keystoreProperties['storePassword']
+       }
+   }
+   buildTypes {
+       release {
+           signingConfig signingConfigs.release
+       }
+   }
+```
+
+
+
+#### 混淆压缩
+
+
+
+#### App Manifest配置
+
+设置<app dir>/android/app/src/main下的AndroidManifest.xml
+
+application标签的android:label： app名
+
+权限标签
+
+在manifest标签下增加
+
+```xml
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
+
+
+#### 构建配置
+
+
+
+`<app dir>/android/app` 下的 [Gradle build file](https://developer.android.google.cn/studio/build/#module-level)
+
+defaultConfig
+
+> - `applicationId`：指定最终的，唯一的（Application Id）[appid](https://developer.android.google.cn/studio/build/application-id)。
+> - `versionCode` & `versionName`：指定 app 的内部版本号，以及用于显示的版本号，这可以通过设置 pubspec.yaml 文件中 `version` 属性来做。具体可以参考 [版本文档](https://developer.android.google.cn/studio/publish/versioning) 中的版本信息指南。
+> - `minSdkVersion` & `targetSdkVersion`：指定支持的最低 API 版本，以及我们 app 的目标 API 版本。具体可以参考 [版本文档](https://developer.android.google.cn/studio/publish/versioning) 中的 API 版本部分
+
+
+
+#### 发布
+
+##### Bundle(官方推荐)
+
+
+
+##### APK
+
+1、cmd进入app目录
+
+2、执行 flutter build apk --split-per-abi
+
+> 没有 --split-per-abi将会生成一个包含_所有_目标 ABI 的 fat APK 文件
+>
+> 占用空间没必要
+
+
+
 # 开发
 
 ## APP名称
@@ -431,6 +578,10 @@ select widget mode
 
 # 基础
 
+## Flutter
+
+Flutter在Rlease模式下直接将Dart编译成本地机器码
+
 ## Material 
 
 原生提供的组件库，安卓风格
@@ -579,7 +730,35 @@ new FlatButton(
 
 
 
+### 对话框
 
+本质是通过路由增加一个透明的页面？
+
+
+
+向showDialog/showCupertinoDialog传入context可以弹框对话框、loading等
+
+> context属于widget的属性，可以直接访问
+
+
+
+关闭：Navigator.pop弹出路由
+
+> 注意同步、异步问题，再弹框出现前弹出会把页面弹出
+>
+> pop("ok") / pop("cancel")   
+
+
+
+返回future对象
+
+> pop的时候将pop的数据传递？
+
+
+
+#### AlertDialog
+
+AlertDialog
 
 
 
@@ -647,6 +826,8 @@ divideTiles
 
 图标组件
 
+[文档](https://api.flutter.dev/flutter/material/Icons-class.html)
+
 
 
 #### 属性
@@ -681,10 +862,36 @@ color
 
 
 
+### 滚动
+
+#### Scrollbar
+
+提供滚动条，为SingleChildScrollView的父元素
+
+
+
+#### SingleChildScrollView
+
+让页面可以滚动，如果父级不是Scrollbar可滚动，但不会显示滚动条
+
+
+
+#### 应用
+
+##### 将内容限制在指定大小，且可滚动
+
+使用container包裹且设定宽高
+
+> 固定/根据MediaQuery读取屏幕宽高然后设置
+
+
+
 ### 布局
 
 #### 资料
 [fltter布局](https://mp.weixin.qq.com/s/ms2ZKsYPiku6CkLh2FZEMw)
+
+https://mp.weixin.qq.com/s/Pzbfoszuoj_JDz1KvBGieA
 
 #### Container 
 
@@ -761,6 +968,80 @@ builder
 ## Cupertino
 
 [组件库，IOS风格](https://flutterchina.club/widgets/cupertino/)
+
+
+
+### 页面
+
+#### CupertinoApp
+
+
+
+#### CupertinoTabScaffold
+
+tab + 页面
+
+
+
+#### CupertinoTabBar
+
+底部TabBar
+
+
+
+#### BottomNavigationBarItem
+
+
+
+#### CupertinoTabView
+
+一个Tab视图
+
+
+
+#### CupertinoPageScaffold
+
+页面内容
+
+顶部导航+页面内容
+
+CupertinoNavigationBar会覆盖child内容
+
+> 需要用safeArea
+
+
+
+#### CupertinoNavigationBar
+
+
+
+### 对话框
+
+本质是通过路由增加一个透明的页面？
+
+
+
+向showCupertinoDialog传入context可以弹框对话框、loading等
+
+> context属于widget的属性，可以直接访问
+
+
+
+关闭：Navigator.pop弹出路由
+
+> 注意同步、异步问题，再弹框出现前弹出会把页面弹出
+>
+> pop("ok") / pop("cancel")   
+
+
+
+返回future对象
+
+> pop的时候将pop的数据传递？
+
+
+
+#### CupertinoAlertDialog
 
 
 
@@ -897,6 +1178,12 @@ class RandomWords extends StatefulWidget {
 
 
 
+### SafeArea
+
+根据屏幕尺寸进行内容适配，避免由于屏幕形状导致内容显示不全
+
+
+
 
 ## Dart
 
@@ -906,7 +1193,7 @@ class RandomWords extends StatefulWidget {
 
 Dart 不需要给变量设置 `setter getter`   方法。
 
-Dart 中所有的基础类型、类等都继承 Object ，默认值是 NULL， 自带 getter 和 setter 
+Dart 中所有的基础类型、类等都继承 Object ，定义后默认值是 NULL， 自带 getter 和 setter 
 
 > 如果是 final 或者 const 的话，那么它只有一个 getter 方法。
 
@@ -963,12 +1250,44 @@ final _suggestions = <WordPair>[] // 声明私有变量_suggestions,并且类型
 
 ### 字符串
 
-单引号、双引号均表示字符串.
+#### 单引号、双引号均表示字符串.
 
 ```dart
 var str = "123";
 var str = '123';
 String str = "123";
+```
+
+
+
+#### 多行字符串
+
+```dart
+var str = """ ab
+c""";
+
+var str = '''ab
+c''';
+```
+
+
+
+#### raw
+
+```dart
+var str = r"this is raw \n str"; // 不会进行转义
+```
+
+
+
+
+
+#### 模板字符串
+
+```dart
+var name = "n";
+var str = "$name.txt";
+var str = "${fun()}.txt";
 ```
 
 
@@ -987,6 +1306,387 @@ String str = "123";
 
 
 
+#### 类型声明
+
+```dart
+typedef int Compare(String a, String b);
+Function f(Compare fun) {
+    return fun;
+}
+var ff = f((String a,String b) => 1);
+```
+
+
+
+
+
+#### 箭头函数
+
+```dart
+bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
+/// () => expr; 箭头后只能是一个表达式
+```
+
+
+
+#### 参数
+
+##### 普通参数
+
+```dart
+void fun(int par) {};
+```
+
+##### 可选参数
+
+```dart
+void fun(int par, {String par2,String par3}) {}
+
+fun(1,par2:"par2");
+```
+
+
+
+##### 可选位置参数
+
+```dart
+void fun(int par, [String par2]) {}
+
+fun(1,"par2");
+```
+
+
+
+
+
+##### 默认参数
+
+默认值只能设置常量，没设置默认值默认为null
+
+```dart
+void fun(int par, {String par2 = "par2",String par3,
+                   List<int> list = const [1,2,3],
+                  Map<String,String> m = const {}
+                  }
+        ) {}
+
+fun(1);
+
+
+void fun1(int par, [String par2 = "par2",String par3]) {}
+
+fun1(1);
+```
+
+
+
+##### 函数参数
+
+返回函数（闭包）
+
+```dart
+Function makeAdder(num addBy) {
+  return (num i) => addBy + i;
+}
+
+Function f(int fun(String a, String b)) {
+    return fun;
+}
+
+main() {
+  // Create a function that adds 2.
+  var add2 = makeAdder(2);
+
+  // Create a function that adds 4.
+  var add4 = makeAdder(4);
+
+  assert(add2(3) == 5);
+  assert(add4(3) == 7);
+}
+```
+
+
+
+参数
+
+```dart
+Function add(Function f,int num1) {
+  return f(num);
+}
+
+Function fun(int num2) {
+  return (v)  => num2 + v;
+}
+
+Function addNum = add(f,1);
+var r = addNum(2);
+```
+
+
+
+### Class
+
+既是类也是接口
+
+implements  是实现接口
+
+extends 是继承
+
+
+
+#### 构造函数
+
+```dart
+class Point {
+  num x;
+  num y;
+
+  Point(num x, num y) {
+    // There's a better way to do this, stay tuned.
+    // 如果参数名不冲突可以不用this.xxx
+    this.x = x;
+    this.y = y;
+  }
+}
+
+// 等价于
+
+class Point {
+  num x;
+  num y;
+
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
+  Point(this.x, this.y);
+}
+```
+
+
+
+多构造函数
+
+```dart
+class Point {
+  num x;
+  num y;
+
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
+  Point(this.x, this.y);
+    
+  Point.empty();
+}
+
+var point = new Point(1,2);
+var point = new Point.empty();
+
+// new可以不用
+var point = Point(1,2);
+var point = Point.empty();
+```
+
+
+
+初始化
+
+```dart
+class Point {
+  num x;
+  num y;
+
+  Point(this.x, this.y);
+
+  // Initializer list sets instance variables before
+  // the constructor body runs.
+  Point.fromJson(Map jsonMap)
+      : x = jsonMap['x'],
+        y = jsonMap['y'] {
+    print('In Point.fromJson(): ($x, $y)');
+  }
+}
+```
+
+
+
+重定向构造函数
+
+```dart
+class Point {
+  num x;
+  num y;
+
+  // The main constructor for this class.
+  Point(this.x, this.y);
+
+  // Delegates to the main constructor.
+  Point.alongXAxis(num x) : this(x, 0);
+}
+```
+
+
+
+工厂方法构造函数
+
+如果一个构造函数并不总是返回一个新的对象，则使用 `factory` 来定义 这个构造函数
+
+```dart
+class Logger {
+  static final Map<String, Logger> _cache =
+      <String, Logger>{}
+
+  // The main constructor for this class.
+  factory Logger(String key) {
+     if (_cache.containsKey(name)) {
+      return _cache[name];
+    }
+}
+```
+
+
+
+类函数调用
+
+```dart
+// 通过call可以让类进行调用
+class WannabeFunction {
+  call(String a, String b, String c) => '$a $b $c!';
+}
+
+var out = wf("Hi","there,","gang");
+```
+
+
+
+### 操作符
+
+#### 四则运算
+
+~/
+
+> i ~/ 2 ==> *表示i除以2，但返回值是整形（向下取整）*
+
+
+
+#### 类型操作
+
+##### 转换
+
+```dart
+var a = [];
+(a as List<int>).add(1);
+```
+
+
+
+##### 判断
+
+```dart
+if(a is List<int>) {} // 为null结果是false
+
+if(a is! List<int>) {}
+```
+
+
+
+
+
+#### 特殊
+
+??/??=
+
+简写三目运算符
+
+> `AA ?? "999"` 表示如果 AA 为空，返回999；
+>
+> `AA ??= "999"` 表示如果 AA 为空，给 AA 设置成 999
+
+
+
+..
+
+cascade(级联调用，链式调用)
+
+对对象进行链式操作
+
+```dart
+var list = [1,2,3];
+list.add(4); // 返回值为空
+list..add(4)..add(5)..add(6);
+```
+
+
+
+?.
+
+条件成员访问
+
+```dart
+var v = foo?.bar; // bar 为null 则为null
+```
+
+
+
+### 操作符重载
+
+可重载操作符
+
+| `<`  | `+`  | `|`  | `[]`  |
+| ---- | ---- | ---- | ----- |
+| `>`  | `/`  | `^`  | `[]=` |
+| `<=` | `~/` | `&`  | `~`   |
+| `>=` | `*`  | `<<` | `==`  |
+| `–`  | `%`  | `>>` |       |
+
+
+
+```dart
+class Vector {
+  final int x;
+  final int y;
+  const Vector(this.x, this.y);
+
+  /// Overrides + (a + b).
+  Vector operator +(Vector v) {
+    return new Vector(x + v.x, y + v.y);
+  }
+}
+```
+
+
+
+### 模块
+
+#### 引入模块
+
+```dart
+// 引入全部内容
+import 'xxx';
+
+// 以别名Module引入
+import 'xxx' as Module;
+
+// 只导入foo
+import 'xxx' show foo;
+
+// 不导入foo
+import 'xxx' hide foo;
+
+// 懒加载
+import 'package:deferred/hello.dart' deferred as hello;
+
+// 懒加载使用时loadLibrary
+greet() async {
+  await hello.loadLibrary();
+  hello.printGreeting();
+}
+```
+
+
+
+
+
+### 异步编程
+
 #### Async
 
 返回Future对象 === Promise
@@ -1001,80 +1701,22 @@ return data;
 
 
 
-
-
-
-
-#### 构造函数
-
-##### 多构造函数
+##### 循环中使用
 
 ```dart
-class ModelA {
-  String name;
-  String tag;
-  
-  //默认构造方法，赋值给name和tag
-  ModelA(this.name, this.tag);
-
-  //返回一个空的ModelA
-  ModelA.empty();
-  
-  //返回一个设置了name的ModelA
-  ModelA.forName(this.name);
+var list = [1,2,3];
+for(var i in list) {
+    // await expression;
 }
 
-
-作者：恋猫de小郭
-链接：https://juejin.im/post/5b631d326fb9a04fce524db2
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+await for(var i in list) {
+    // expression;
+}
 ```
 
 
 
-
-
-
-
-### 符号
-
-#### 普通四则运算
-
-
-
-#### 特殊
-
-~/
-
-> i ~/ 2 ==> *表示i除以2，但返回值是整形（向下取整）*
-
-
-
-??
-
-简写三目运算符
-
-> `AA ?? "999"` 表示如果 AA 为空，返回999；
->
-> `AA ??= "999"` 表示如果 AA 为空，给 AA 设置成 999
-
-
-
-$字符串
-
-> ```dart
-> var name = "n";
-> var str = "$name.txt";
-> ```
-
-
-
-### 模块
-
-#### 引入模块
-
-import 'xxx';
+### isolate
 
 
 
@@ -1096,3 +1738,35 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 删除.packages文件，任务管理器结束dart.exe,删除flutter/.../cache下的lock文件，重新执行get
 
+
+
+#### minSdkVersion
+
+某些包可能有minSdk版本要求导致不能编译，需要修改以下内容的minSdkVersion
+
+```dart
+// ./android/app/build.gradle修改
+defaultConfig {
+    // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+    applicationId "com.example.projectname"
+    minSdkVersion 19 //*** This is the part that needs to be changed, previously was 16
+    targetSdkVersion 28
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+}
+```
+
+
+
+#### 权限问题
+
+当插件需要使用权限，且已同意时仍然提示没权限
+
+flutter clean清空旧的打包，然后重新打包
+
+
+
+#### app:transformClassesWithMultidexlistForDebug
+
+package依赖重复了，pubspec.yaml注释可能冲突的项

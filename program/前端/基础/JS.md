@@ -1203,7 +1203,36 @@ vo顺序
 
 [javascript 从定义到执行，你不知道的那些事](http://www.webhek.com/post/javascript-from-define-to-execute.html)
 
-### JS应用
+### JS
+
+#### 上传文件至后端
+
+##### FormData
+1、formData ajax
+```js 
+var formData = new FormData();
+formData.append()// file?
+
+// ajax...
+```
+
+2、formData submit
+```js
+```
+
+##### ajax
+var r = ...(e.target.files).map((f) => {
+    return new Promise((res,rej) => {
+        let xhr = new XMLHttpRequest();// ??
+        xhr.upload.onProgress = () => {};
+        xhr.onload = () => {};
+        // ...
+        xhr.open(...);
+        xhr.send(f);
+    });
+});
+
+
 
 #### 请求后端下载文件
 

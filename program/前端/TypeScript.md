@@ -31,6 +31,30 @@ type t = typeof { b: "1"}
 
 #### 使用
 
+##### 联合类型
+
+```typescript
+let myFavoriteNumber: string | number;
+```
+
+只能访问此联合类型的所有类型里共有的属性或方法
+
+
+
+##### 函数
+
+```typescript
+// 函数类型声明
+interface SearchFunc { 
+(source: string, subString: string): boolean; 
+(source: string, subString: string) => boolean; 
+}
+```
+
+
+
+
+
 ##### 高级
 
 Keyof 约束类型是一堆中的某一个
