@@ -2,7 +2,9 @@
 
 ## 环境安装
 
-[官网教程](https://flutter.dev/docs/get-started/install)
+[英文官网教程](https://flutter.dev/docs/get-started/install)
+
+[中文](https://flutter-io.cn/docs/get-started/install)
 
 1.安装flutter sdk
 
@@ -183,7 +185,7 @@ defaultConfig
 
 2、执行 flutter build apk --split-per-abi
 
-> 没有 --split-per-abi将会生成一个包含_所有_目标 ABI 的 fat APK 文件
+> 没有 --split-per-abi将会生成一个包含_所有_目标 ABI 平台的 fat APK 文件
 >
 > 占用空间没必要
 
@@ -257,6 +259,7 @@ import xxx
 dependencies:
   plugin1:
     path: ../plugin1/
+
 ```
 
 
@@ -276,6 +279,7 @@ dependencies:
     git:
       url: git://github.com/flutter/packages.git
       path: packages/package1  
+
 ```
 
 
@@ -295,6 +299,7 @@ dependencies:
 ```yaml
   assets:
    - lib/assets/img/t.jpg
+
 ```
 
 
@@ -308,6 +313,7 @@ dependencies:
     - family: wxcIconFont
       fonts:
         - asset: static/font/iconfont.ttf
+
 ```
 
 
@@ -331,6 +337,7 @@ new Tab(
         ],
       ),
     );
+
 ```
 
 
@@ -354,6 +361,7 @@ get() async {
   var response = await request.close();
   var responseBody = await response.transform(UTF8.decoder).join();
 }
+
 ```
 
 
@@ -370,6 +378,7 @@ Map data = json.decode(responseBody);
 // Assume the response body is something like: ['foo', { 'bar': 499 }]
 
 int barValue = data[1]['bar']; // barValue is set to 499
+
 ```
 
 
@@ -378,6 +387,7 @@ int barValue = data[1]['bar']; // barValue is set to 499
 
 ```dart
 import 'package:path_provider/path_provider.dart';
+
 ```
 
 
@@ -390,6 +400,7 @@ import 'package:path_provider/path_provider.dart';
 
 ```dart
 getTemporaryDirectory// ==> 对应于ios的  NSTemporaryDirectory()   android的getCacheDir()  
+
 ```
 
 
@@ -402,6 +413,7 @@ getTemporaryDirectory// ==> 对应于ios的  NSTemporaryDirectory()   android的
 
 ```dart
 getApplicationDocumentsDirectory()// ios上是NSDocumentDirectory	Android上是AppData
+
 ```
 
 
@@ -412,6 +424,7 @@ getApplicationDocumentsDirectory()// ios上是NSDocumentDirectory	Android上是A
 
 ```dart
 getExternalStorageDirectory() ///在iOS上，抛出异常，在Android上，这是getExternalStorageDirectory的返回值
+
 ```
 
 
@@ -424,6 +437,7 @@ getExternalStorageDirectory() ///在iOS上，抛出异常，在Android上，这�
 > var name = "test.txt";
 > String dir = (await fileProvider.getTemporaryDirectory()).path;
 > var file = new File('$dir/$name');
+> 
 > ```
 
 
@@ -432,6 +446,7 @@ getExternalStorageDirectory() ///在iOS上，抛出异常，在Android上，这�
 
 ```dart
 import 'dart:io';
+
 ```
 
 
@@ -454,6 +469,7 @@ create
 >
 > ```dart
 > await (new Directory("$dir/$folder").create(recursive: true)
+> 
 > ```
 
 
@@ -466,6 +482,7 @@ exists
 >
 > ```dart
 > await (new Directory("$dir/$folder").exists())
+> 
 > ```
 
 
@@ -486,6 +503,7 @@ copy
 >
 > ```dart
 > await file.copy(path)
+> 
 > ```
 
 
@@ -515,6 +533,7 @@ path
 > ```dart
 > import 'package:path/path.dart' as path;
 > var fileName = path.basename(file.path);
+> 
 > ```
 
 
@@ -531,6 +550,7 @@ Future<File> getImage(ImageSource source) async {
     // ImageSource.camera
     return await ImagePicker.pickImage(source: source);
   }
+
 ```
 
 
@@ -551,6 +571,7 @@ Navigator.pushNamedAndRemoveUntil(context, '/calendar', ModalRoute.withName('/')
 Navigator.push(context, new MaterialPageRoute(builder: (context) => new NotifyPage())).then((res) {
       ///获取返回处理
     });
+
 
 ```
 
@@ -696,6 +717,7 @@ actions
 new TextField(
 controller: //文本控制器, 
 obscureText: "hint文本");
+
 ```
 
 
@@ -714,6 +736,7 @@ new FadeInImage.assetNetwork(
     placeholder: "预览图", 
     fit: BoxFit.fitWidth, 
     image: "url");
+
 ```
 
 
@@ -726,6 +749,7 @@ new FadeInImage.assetNetwork(
 new FlatButton(
     onPressed: () {},
     child: new Container());
+
 ```
 
 
@@ -889,6 +913,7 @@ color
 ### 布局
 
 #### 资料
+
 [fltter布局](https://mp.weixin.qq.com/s/ms2ZKsYPiku6CkLh2FZEMw)
 
 https://mp.weixin.qq.com/s/Pzbfoszuoj_JDz1KvBGieA
@@ -925,7 +950,7 @@ https://mp.weixin.qq.com/s/Pzbfoszuoj_JDz1KvBGieA
 
   
 
-####  Row 
+#### Row 
 
 可以有多个子 Widget。水平布局。   
 
@@ -1085,6 +1110,7 @@ class RandomWordsState extends State<RandomWords> {
     return Text(wordPair.asPascalCase);   // 返回一个Text
   }
 }
+
 ```
 
 
@@ -1096,6 +1122,7 @@ class RandomWords extends StatefulWidget {
   @override
   RandomWordsState createState() => RandomWordsState();
 }
+
 ```
 
 
@@ -1158,7 +1185,7 @@ class RandomWords extends StatefulWidget {
 
   
 
-####  Row 
+#### Row 
 
 可以有多个子 Widget。水平布局。   
 
@@ -1178,9 +1205,119 @@ class RandomWords extends StatefulWidget {
 
 
 
+### GestureDetector
+
+给widget增加操作功能，如点击等
+
+
+
 ### SafeArea
 
 根据屏幕尺寸进行内容适配，避免由于屏幕形状导致内容显示不全
+
+
+
+### 类
+
+```dart
+// 状态类模板，无自身状态
+import 'package:flutter/material.dart';
+
+class TabContainer extends StatefulWidget {
+  TabContain(
+      {Key key,
+      this.leading,
+      this.middle,
+      this.trailing,
+      this.width = 200})
+      : super(key: key);
+
+  final Widget leading;
+  final Widget middle;
+  final Widget trailing;
+  final double width;
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return TabContainerState();
+  }
+}
+
+class TabContainerState extends State<TabContain> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: widget.width,
+      child: Stack(alignment: AlignmentDirectional.center, children: <Widget>[
+        if (widget.leading != null)
+          Positioned(
+            left: 0,
+            child: widget.leading,
+          ),
+        if (widget.middle != null)
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: widget.middle,
+              )
+            ],
+          ),
+        if (widget.trailing != null)
+          Positioned(
+            right: 0,
+            child: GestureDetector(
+              child: widget.trailing,
+            ),
+          ),
+      ]),
+    );
+  }
+}
+
+// 无状态类模板
+class TabContainer extends StatelessWidget {
+  TabContainer(
+      {Key key, this.leading, this.middle, this.trailing, this.width = 200})
+      : super(key: key);
+
+  final Widget leading;
+  final Widget middle;
+  final Widget trailing;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      child: Stack(alignment: AlignmentDirectional.center, children: <Widget>[
+        if (leading != null)
+          Positioned(
+            left: 0,
+            child: leading,
+          ),
+        if (middle != null)
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: middle,
+              )
+            ],
+          ),
+        if (trailing != null)
+          Positioned(
+            right: 0,
+            child: GestureDetector(
+              child: trailing,
+            ),
+          ),
+      ]),
+    );
+  }
+}
+
+```
+
 
 
 
@@ -1206,6 +1343,7 @@ var
 > ```dart
 > var str = "123";
 > var f = new File("");
+> 
 > ```
 
 
@@ -1236,6 +1374,7 @@ const
 
 ```dart
 final _suggestions = <WordPair>[] // 声明私有变量_suggestions,并且类型是WordPair数组
+
 ```
 
 
@@ -1256,6 +1395,7 @@ final _suggestions = <WordPair>[] // 声明私有变量_suggestions,并且类型
 var str = "123";
 var str = '123';
 String str = "123";
+
 ```
 
 
@@ -1268,6 +1408,7 @@ c""";
 
 var str = '''ab
 c''';
+
 ```
 
 
@@ -1276,6 +1417,7 @@ c''';
 
 ```dart
 var str = r"this is raw \n str"; // 不会进行转义
+
 ```
 
 
@@ -1288,6 +1430,7 @@ var str = r"this is raw \n str"; // 不会进行转义
 var name = "n";
 var str = "$name.txt";
 var str = "${fun()}.txt";
+
 ```
 
 
@@ -1314,6 +1457,7 @@ Function f(Compare fun) {
     return fun;
 }
 var ff = f((String a,String b) => 1);
+
 ```
 
 
@@ -1325,6 +1469,7 @@ var ff = f((String a,String b) => 1);
 ```dart
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 /// () => expr; 箭头后只能是一个表达式
+
 ```
 
 
@@ -1335,6 +1480,7 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 
 ```dart
 void fun(int par) {};
+
 ```
 
 ##### 可选参数
@@ -1343,6 +1489,7 @@ void fun(int par) {};
 void fun(int par, {String par2,String par3}) {}
 
 fun(1,par2:"par2");
+
 ```
 
 
@@ -1353,6 +1500,7 @@ fun(1,par2:"par2");
 void fun(int par, [String par2]) {}
 
 fun(1,"par2");
+
 ```
 
 
@@ -1376,6 +1524,7 @@ fun(1);
 void fun1(int par, [String par2 = "par2",String par3]) {}
 
 fun1(1);
+
 ```
 
 
@@ -1403,6 +1552,7 @@ main() {
   assert(add2(3) == 5);
   assert(add4(3) == 7);
 }
+
 ```
 
 
@@ -1420,6 +1570,7 @@ Function fun(int num2) {
 
 Function addNum = add(f,1);
 var r = addNum(2);
+
 ```
 
 
@@ -1459,6 +1610,7 @@ class Point {
   // before the constructor body runs.
   Point(this.x, this.y);
 }
+
 ```
 
 
@@ -1483,6 +1635,7 @@ var point = new Point.empty();
 // new可以不用
 var point = Point(1,2);
 var point = Point.empty();
+
 ```
 
 
@@ -1504,6 +1657,7 @@ class Point {
     print('In Point.fromJson(): ($x, $y)');
   }
 }
+
 ```
 
 
@@ -1521,6 +1675,7 @@ class Point {
   // Delegates to the main constructor.
   Point.alongXAxis(num x) : this(x, 0);
 }
+
 ```
 
 
@@ -1540,6 +1695,7 @@ class Logger {
       return _cache[name];
     }
 }
+
 ```
 
 
@@ -1553,6 +1709,7 @@ class WannabeFunction {
 }
 
 var out = wf("Hi","there,","gang");
+
 ```
 
 
@@ -1574,6 +1731,7 @@ var out = wf("Hi","there,","gang");
 ```dart
 var a = [];
 (a as List<int>).add(1);
+
 ```
 
 
@@ -1584,6 +1742,7 @@ var a = [];
 if(a is List<int>) {} // 为null结果是false
 
 if(a is! List<int>) {}
+
 ```
 
 
@@ -1612,6 +1771,7 @@ cascade(级联调用，链式调用)
 var list = [1,2,3];
 list.add(4); // 返回值为空
 list..add(4)..add(5)..add(6);
+
 ```
 
 
@@ -1622,6 +1782,7 @@ list..add(4)..add(5)..add(6);
 
 ```dart
 var v = foo?.bar; // bar 为null 则为null
+
 ```
 
 
@@ -1650,6 +1811,7 @@ class Vector {
     return new Vector(x + v.x, y + v.y);
   }
 }
+
 ```
 
 
@@ -1679,6 +1841,7 @@ greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
+
 ```
 
 
@@ -1697,6 +1860,7 @@ String data = await request();
 data = "ok from request";
 return data;
 }
+
 ```
 
 
@@ -1712,6 +1876,7 @@ for(var i in list) {
 await for(var i in list) {
     // expression;
 }
+
 ```
 
 
@@ -1726,6 +1891,7 @@ await for(var i in list) {
 new Future.delayed(const Duration(seconds: 1), () {
       // code
     });
+
 ```
 
 
@@ -1755,6 +1921,7 @@ defaultConfig {
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 }
+
 ```
 
 
@@ -1770,3 +1937,27 @@ flutter clean清空旧的打包，然后重新打包
 #### app:transformClassesWithMultidexlistForDebug
 
 package依赖重复了，pubspec.yaml注释可能冲突的项
+
+
+
+
+
+# 资料
+
+[dart语言教程](https://www.dartcn.com/guides/language/language-tour)
+
+> 简单过一遍
+
+
+
+[Flutter实战](https://book.flutterchina.club/)
+
+
+
+[Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning)
+
+
+
+[awesome-flutter](https://github.com/Solido/awesome-flutter)
+
+[规范](%5bhttps:/github.com/alibaba/flutter-go/blob/develop/Flutter_Go%20%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83.md%5d(https:/github.com/alibaba/flutter-go/blob/develop/Flutter_Go%20代码开发规范.md))

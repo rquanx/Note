@@ -249,6 +249,7 @@ ULSViewe-log工具	查看工具
 ##### 权限
 
 通过组可对Item项设置权限
+> 文档库，断开继承，删除权限，在item项中选择分享
 
 流程可以设置item权限
 
@@ -544,6 +545,11 @@ CheckinUser、checkinxxx等属性
 // clientContext.ExecuteQuery();
 
 ```
+###### 站点context
+
+通过相对路径可以取子站点
+绝对路径可以取当前站点和子站点
+父站点get_parentweb
 
 ###### 文件
 

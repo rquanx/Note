@@ -202,6 +202,9 @@ top、bottom、left、right是相对于父元素的
 ​	absolute	绝对定位	
 ​		以第一个非static的父元素作参考，没有的话就相对整个html，然后根据坐标设置标号
 ​		页面滚动也会固定在那个位置
+	
+	position: absolute 的元素自动对齐父元素 border 外边缘
+	所以设置padding，可以挤开border === 让absolute的元素远离
 
 ​	fiex	基于窗口绝对定位，不管怎么滚动，总是处于窗口的指定位置
 ​		窗口，===随滚动走
@@ -546,6 +549,41 @@ white-space:nowrap; 强制不换行，都起作用
 
 white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出部分隐藏且以省略号形式出现（部分浏览器支持）
 
+### 应用
+
+#### float基本套路
+  float套路
+  区域->版心->内容;内容通过float、absolute、relative进行布局
+  一般absolute、relative配合使用
+
+```html
+	<!-- 一般情况使用以下模板套即可，一些相对有规律，简单的布局基本类型  -->
+  <div class="area1">
+    <div class="content(版心)">
+      <div class="subArea11"></div>
+      <div class="subArea12"></div>
+    </div>
+  </div>
+  <div class="area2">
+    <div class="content(版心)">
+      <div class="subArea21"></div>
+      <div class="subArea22"></div>
+    </div>
+	</div>
+```
+
+#### 技巧
+  
+	absolute、relative配合使用常用于实现图标定位
+
+  
+	父元素line-height === 高度让文字垂直居中    button内文字默认居中
+
+  
+	display:block; + text-align:center; 实现文字水平居中
+
+  
+	定宽 + margin 0 auto  实现水平居中
 
 
 ### 杂
