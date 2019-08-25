@@ -1076,6 +1076,12 @@ CupertinoNavigationBar会覆盖child内容
 
 
 
+## 动画
+
+在widget中实现运行动画，首先需要加入TickerProviderStateMixin，并且声明一个controller和动画(Animation)本身
+
+
+
 ## widget
 
 部件

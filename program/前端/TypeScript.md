@@ -176,6 +176,21 @@ declare module '*.css';
 declare module '*.html';
 ```
 
+图片、svg资源等一样处理即可
+
+
+
+注：编写的.d.ts需要被tsconfig.json的include包含，建议在include最前
+
+```json
+ "include": [
+    "modules.d.ts",
+    "src/**/*"
+  ]
+```
+
+
+
 
 
 #### 编码规范

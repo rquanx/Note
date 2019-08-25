@@ -202,7 +202,7 @@ top、bottom、left、right是相对于父元素的
 ​	absolute	绝对定位	
 ​		以第一个非static的父元素作参考，没有的话就相对整个html，然后根据坐标设置标号
 ​		页面滚动也会固定在那个位置
-	
+​	
 	position: absolute 的元素自动对齐父元素 border 外边缘
 	所以设置padding，可以挤开border === 让absolute的元素远离
 
@@ -549,6 +549,20 @@ white-space:nowrap; 强制不换行，都起作用
 
 white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出部分隐藏且以省略号形式出现（部分浏览器支持）
 
+
+
+#### line-height
+
+单纯设置数字的话，可以设置成font-size的x倍，便于维护
+
+
+
+#### px
+
+比起设置px,设成百分比或者em更易维护
+
+em相对父级大小，ren相对根元素大小
+
 ### 应用
 
 #### float基本套路
@@ -573,16 +587,19 @@ white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出�
 ```
 
 #### 技巧
-  
+
 	absolute、relative配合使用常用于实现图标定位
 
   
+
 	父元素line-height === 高度让文字垂直居中    button内文字默认居中
 
   
+
 	display:block; + text-align:center; 实现文字水平居中
 
   
+
 	定宽 + margin 0 auto  实现水平居中
 
 

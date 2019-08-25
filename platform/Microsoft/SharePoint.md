@@ -509,10 +509,19 @@ contextinfo只是认证信息
 
 sp.js和sp.runtime.js, 其位于_layouts/15/###.js下
 
-使用sharepoint jsom api所需文件
-sp.js
-sp.runtime.js
-microsoftajax.js
+
+单纯使用jsom
+Init.js
+MicrosoftAjax.js
+Sp.runtime.js
+Sp.js
+
+
+要使用弹框
+Sp.ui.js?
+
+要使用原生的列表webpart
+Sp.init.js(最少要有，其他待定)
 
 
 
@@ -947,6 +956,11 @@ sharepoint分页，规避最后一条删除，规避往上翻页删除最后一�
 [论坛sharepoint板块](https://sharepoint.stackexchange.com/)
 
 #### 问题
+
+##### get_layoutsLatestVersionUrl  undefined
+1、引入sp.init.js
+2、sp.core.js删除
+3、SP.Utilities.VersionUtility = {}; SP.Utilities.VersionUtility.layoutsLatestVersionUrl  = () => {}
 
 ##### 启动流程超时
 
