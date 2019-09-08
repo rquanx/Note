@@ -311,6 +311,8 @@ useCallback
 
 ##### 知识点
 
+##### static defaultProps
+
 ###### refs
 
 隐含的对象，  ref=x    this.refs.x   可以拿到元素

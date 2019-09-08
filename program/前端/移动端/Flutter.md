@@ -1075,6 +1075,47 @@ CupertinoNavigationBar会覆盖child内容
 开关,switch按钮
 
 
+## WebView
+
+### 问题
+
+#### 无法访问
+
+```xml
+ <application android:usesCleartextTraffic="true">
+    </application>
+```
+### 知识点
+
+#### 加载
+支持字符串方式解析html
+
+Loadurl,直接加载字符串，但是location也是对应的字符串，不是正常url，有大小限制
+
+通过file:///加载  文件
+
+#### 通讯
+通过javascriptChannel进行通讯
+channel名
+_Action 	可以
+__Action	X
+__Action__	X
+_Action_	X
+
+
+js调用APP
+通过全局变量然后postMessage发送字符串信息
+
+APP调用js
+在全局作用域下执行js代码
+
+
+#### 文件交互
+
+通过url路径可以加载文件，但是无法获取到文件数据？？
+
+将文件转uri进行传递，需要注意mime类型
+
 
 ## 动画
 
@@ -1943,6 +1984,12 @@ flutter clean清空旧的打包，然后重新打包
 #### app:transformClassesWithMultidexlistForDebug
 
 package依赖重复了，pubspec.yaml注释可能冲突的项
+
+#### import
+
+Flutter import not fount  可能有地方import的时候使用了双斜杠，导致查找出错（错误信息中可以看出双斜杠问题）
+
+
 
 
 

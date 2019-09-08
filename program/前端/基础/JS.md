@@ -715,7 +715,8 @@ encodeURI   编码时会忽略某些特殊编码: ;,/?:@&=+$#
 encodeURIComponent	全部编码
 decode...
 
-
+#### Mao
+map对象要通过.set,.get,.delete进行操作
 
 #### Array
 
@@ -880,6 +881,8 @@ m多行
 - fanilly会返回上一个promise的值包装成的新promise，并且finally也不接收参数，上一个参数传递到下一步去
 
 
+为了处理异步resolve，用2个数组onFullfilledArray和onRejectedArray来保存异步的方法
+
 
 初始
 
@@ -917,6 +920,22 @@ T1完成，回调t2，t2返回Promise，是异步操作，等待t2完成，resol
 - sendBackwards  将图层往后一层?
 - bringForward    图层往前一层
 - renderAll      强制重新渲染
+
+
+
+
+
+#### 其他
+
+##### requestAnimationFrame
+
+使用requestAnimationFrame实现有哪些好处？
+
+相对于过去使用setInterval实现，requestAnimationFrame性能要好。requestAnimationFrame保证了每次改动样式后再进行回流重绘，setInterval可能使浏览器作出无效的回流和重绘。requestAnimationFrame在每一帧的生命周期都会触发，会使动画更加流畅，而setInterval不能保证每一帧都能触发。
+
+requestAnimationFrame的兼容性是非常好的,可以一直向下兼容到IE10。对于IE9及其以下，可以降级使用setTimeout或者setInterval实现requestAnimationFrame的polyfill。
+
+自己写就可以实现各种不同的滚动速度了，可以实现线性速度，也可以实现先加速后减速的效果。
 
 
 
@@ -1218,6 +1237,7 @@ formData.append()// file?
 
 2、formData submit
 ```js
+
 ```
 
 ##### ajax
