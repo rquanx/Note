@@ -57,11 +57,57 @@ interface SearchFunc {
 
 ##### 高级
 
-Keyof 约束类型是一堆中的某一个
+###### Omit
 
-Partial<x> // 使用这个类型时，x的属性不完整也不会报错
+复用一个类型，但是又不需要此类型内的全部属性，因此需要剔除某些属性
 
-Pick<x>
+```typescript
+interface User {
+    username: string
+    id: number
+    token: string
+    avatar: string
+    role: string
+}
+type UserWithoutToken = Omit<User, 'token'>;
+```
+
+
+
+###### Record
+
+从Union类型中创建新类型，Union类型中的值用作新类型的属性
+
+```typescript
+type Car = 'Audi' | 'BMW' | 'MercedesBenz'
+type CarList = Record<Car, {age: number}>
+
+const cars: CarList = {
+    Audi: { age: 119 },
+    BMW: { age: 113 },
+    MercedesBenz: { age: 133 },
+}
+```
+
+###### 交叉类型
+
+多个类型合并为一个类型
+
+<A & B>   同时有A、B的属性
+
+
+
+###### Keyof 
+
+约束类型是一堆中的某一个
+
+###### Partial<x> 
+
+ 使用这个类型时，x的属性不完整也不会报错
+
+###### Pick<x>
+
+
 
 
 ##### 预声明

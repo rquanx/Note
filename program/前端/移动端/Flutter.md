@@ -1237,10 +1237,19 @@ class RandomWords extends StatefulWidget {
 可以有多个子 Widget。水平布局。   
 
 
+##### 属性
+
+textBaseline
+> 文本对齐
+
 
 #### Expanded	
 
  只有一个子 Widget。在  Column 和  Row 中充满。  
+
+##### 属性
+flex
+> 占比
 
 
 

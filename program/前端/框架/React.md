@@ -10,9 +10,22 @@ the state is meant to hold variables that relate to the current state of the UI
 
 [thinking-in-react](<https://reactjs.org/docs/thinking-in-react.html>)
 
-
 不要在 state 中添加 render() 方法中不需要的数据，会影响渲染性能！
 可以将组件内部使用但是不渲染在视图中的内容，直接添加给 this
+
+###### SetState
+
+一般会是异步进行
+
+class组件会批量更新
+
+setState时必定render，然后根据新的结果更新页面
+
+> setState后会按照所有数据最新的值进行显示，即使是内部对象数据，只要变化了在render时就会按新的值呈现
+>
+> render时，会重新render所有子组件，父组件不会render
+
+
 
 
 ##### 使用
@@ -29,6 +42,12 @@ the state is meant to hold variables that relate to the current state of the UI
 [wepack + react](https://www.cnblogs.com/mianbaodaxia/p/6170726.html)
 
 不要使用renderXXX,要使用函数式组件
+
+
+
+
+
+
 
 
 
@@ -200,6 +219,16 @@ render() {
 
 ##### Hook
 
+```typescript
+const App: React.FC<{ title: string }> = ({ title }) => {
+  return React.useMemo(() => <div>{title}</div>, [title]);
+};
+
+App.defaultProps = {
+  title: 'Function Component'
+}
+```
+
 useState
 
 > 普通状态或set
@@ -222,13 +251,25 @@ useRef
 
 > 用来存储数据
 >
-> 因为是函数，每次执行内部变量都会重建，然后丢失保存的数据？
+> 创建一个一直存在的可变对象，修改值不会影响render
 
 
 
 useCallback
 
 > 成一个不随着组件更新而再次创建的 callback
+>
+> 
+>
+> 缓存函数  用来建立常量，不随render重建,依赖项变化才重建   == useMemo
+>
+> 函数要么放外面声明，要么用usecallback，提高性能
+
+
+
+useMemo
+
+> 缓存变量 ，当返回函数时===  useCallback  当依赖的状态发生改变时，才会触发计算函数的执行
 
 
 
