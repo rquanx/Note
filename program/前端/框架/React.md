@@ -547,3 +547,9 @@ svg
 
 [React实现全局组件：Toast轻提示](https://segmentfault.com/a/1190000016473517)
 
+###### 路由
+this.props.history.push可以适用于hash route
+hash路由依赖于window.location.href
+
+搜索window.location.href源码可以在源头改造路由？
+

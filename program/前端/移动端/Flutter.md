@@ -593,6 +593,57 @@ select widget mode
 
 
 
+### Ios调试
+
+#### mac
+
+安装xcode
+
+安装cocoapods
+
+ 
+
+#### cmd
+
+Flutter
+
+Flutter build ios
+
+Flutter run   
+
+ 
+
+#### 要求
+
+mac
+
+1、需要开发者账号，注册设备（可通过xcode自动注册？）
+
+2、根据flutter run 提示操作
+
+3、debug
+
+ 
+
+#### 操作
+
+Xcode,点击runner文件夹可以看到project setting
+
+
+### android调试
+
+#### webview
+
+webview的复用池，例如最多只存在3个webview，每次从池子里获取webview，达到复用的目的
+
+
+安卓 webview调试
+1、手机use连接电脑，打开调试模式
+2、代码webview中设置debugenable
+3、手机打开webview
+4、浏览器打开chrome://inspect/#devices
+5、在显示的remote target中找到对应的webview,点击inspect即可
+注：不需要代码在debug模式中，直接连接即可调试webview；如遇到http 1.1 404 nofound, 翻墙即可
 
 
 
@@ -602,6 +653,22 @@ select widget mode
 ## Flutter
 
 Flutter在Rlease模式下直接将Dart编译成本地机器码
+
+
+
+#### 颜色
+
+Color:0xff + rgb
+
+
+
+#### 路由
+
+popUntil
+
+pushAndRemoveUntil 和 pushNamedAndRemoveUntil
+
+maybePop
 
 ## Material 
 
@@ -783,6 +850,12 @@ new FlatButton(
 #### AlertDialog
 
 AlertDialog
+
+
+
+### ButtonTheme
+
+给Button类设置样式
 
 
 
@@ -1079,12 +1152,15 @@ CupertinoNavigationBar会覆盖child内容
 
 ### 问题
 
-#### 无法访问
+#### 无法发出请求，无法访问
 
 ```xml
  <application android:usesCleartextTraffic="true">
     </application>
 ```
+
+只需在main的AndroidManifest.xml的application标签设置即可
+
 ### 知识点
 
 #### 加载
@@ -1495,7 +1571,17 @@ var str = "${fun()}.txt";
 
 ### 数组
 
+#### 方法
 
+##### map
+
+popUntil
+
+pushAndRemoveUntil 和 pushNamedAndRemoveUntil
+
+maybePop
+
+#### 
 
 ### Set
 
@@ -1954,6 +2040,7 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 # 问题
 
+
 #### 安装Package
 
 ##### 一直get running
@@ -1998,7 +2085,17 @@ package依赖重复了，pubspec.yaml注释可能冲突的项
 
 Flutter import not fount  可能有地方import的时候使用了双斜杠，导致查找出错（错误信息中可以看出双斜杠问题）
 
+#### keepalive没能保持
 
+在实现keepalive的组件的build中需要super.build(context);否则还是会丢失状态
+
+
+
+#### dart操作、更新一直显示running
+
+1、任务管理器终止dart.exe
+
+2、删除flutter/bin/cache下的lockfile（可选？）
 
 
 

@@ -501,6 +501,8 @@ siteUrl	为部署的网站地址
 
 ###### 前置
 
+sp继承母版页，会自动引入所需的js，再重复手动引入可能会引用问题，具体原因待调查
+
 contextinfo只是认证信息
 
 使用SP.UserProfiles需加载_layouts/15/SP.UserProfiles.js
