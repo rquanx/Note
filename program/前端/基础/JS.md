@@ -95,6 +95,18 @@ for(var i in obj) {
 
 #### 小知识点
 
+##### undefined
+
+###### void 0
+
+Void 0 可以代表undefined,由于局部undefined实际也是可以被赋值的，所以void 0更准确,void后面跟1、2、3都一样
+
+
+
+在ECMAScript 5后通过设置是否可写属性设置为false，所以全局上的undefined是不可修改的，但是局部在可被修改
+
+
+
 ##### 变量提升
 Let、const其实也会“提升”，但是不会被初始化，而var则会被初始化为undefined，class也会提升，但是一样不会进行初始化
 
@@ -1070,6 +1082,18 @@ var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
 
 Document.execCommand
 富文本核心api，对信息进行加工处理,bold、insertImage、undo、redo….
+
+#####  append
+
+ie不兼容 append()
+
+
+
+##### createElement
+
+createElement不区分大小写
+
+
 
 #### Selection
 

@@ -203,8 +203,8 @@ top、bottom、left、right是相对于父元素的
 ​		以第一个非static的父元素作参考，没有的话就相对整个html，然后根据坐标设置标号
 ​		页面滚动也会固定在那个位置
 ​	
-	position: absolute 的元素自动对齐父元素 border 外边缘
-	所以设置padding，可以挤开border === 让absolute的元素远离
+​	position: absolute 的元素自动对齐父元素 border 外边缘
+​	所以设置padding，可以挤开border === 让absolute的元素远离
 
 ​	fiex	基于窗口绝对定位，不管怎么滚动，总是处于窗口的指定位置
 ​		窗口，===随滚动走
@@ -488,8 +488,27 @@ Place-content
 >
 > 单纯使用:last-child/first-child亦可，但是需要重置
 
-
 ### 小知识
+
+
+
+#### 字体大小
+
+##### transform
+
+Transform缩放可以超出限制
+
+例：显示10px，chrome默认最小12px 
+
+
+
+##### font weight
+
+Font weight从100->200没有变化==>字体支持问题
+
+
+
+
 
 #### 自适应
 
@@ -592,13 +611,16 @@ em相对父级大小，ren相对根元素大小
 
   
 
+
 	父元素line-height === 高度让文字垂直居中    button内文字默认居中
 
   
 
+
 	display:block; + text-align:center; 实现文字水平居中
 
   
+
 
 	定宽 + margin 0 auto  实现水平居中
 

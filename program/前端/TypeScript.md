@@ -89,6 +89,14 @@ const cars: CarList = {
 }
 ```
 
+
+
+Record<any, any> 和 object的区别
+
+> ts中定义obj类型，实际是不允许再自定义Key的
+
+
+
 ###### 交叉类型
 
 多个类型合并为一个类型

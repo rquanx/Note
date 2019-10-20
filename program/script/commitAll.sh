@@ -6,7 +6,7 @@ do
     if [[ `git status --porcelain` ]];
     then
         echo "changes";
-        ../Note/program/script/commit.sh "none" "commit all";
+        ../Note/program/script/commit.sh "note" "commit all";
     else
         echo "No changes";
     fi;)

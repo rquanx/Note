@@ -443,6 +443,29 @@ component
 [smart-and-dumb-components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
 
+##### https://overreacted.io/writing-resilient-components/
+
+React-hook配合lint
+1.a common mistake when learning React is to copy props into state
+	make sure to call that prop initialxxx or defaultxxx
+	少数情况下可以故意这样处理
+一种情况是利用props进行计算然后赋值给state，
+	一、move the state calculation into the render method
+	二、不想每次render都计算，仍然放到state但是在didupdate中进行判断和重新计算
+	三、useMemo hook，加上依赖项
+	
+2、依赖于特定的属性和状态去请求数据
+	一、didupdate中对比然后请求
+	二、useefftect 加上依赖
+	
+组件不应该因为它或其父组件频繁地重渲染而坏掉
+	使用一个不受控的组件，加上 key 来重置它
+	
+不阻断数据流 	props 和 state 可能会更新，组件应该处理好这些更新，不论什么时候。
+时刻准备渲染	 一个组件不应该被或多或少的渲染而损坏。
+没有单例组件 	即使组件只渲染一次，但通过设计让它渲染两次也不会被破坏，是更好了。
+隔离本地状态 	想想哪个状态是特定 UI 展示下的本地状态——并且除非必要，不要将该状态提升到更高的地方
+
 
 ##### Redux
 
@@ -552,4 +575,7 @@ this.props.history.push可以适用于hash route
 hash路由依赖于window.location.href
 
 搜索window.location.href源码可以在源头改造路由？
+
+
+
 

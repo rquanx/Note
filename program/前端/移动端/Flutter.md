@@ -647,6 +647,26 @@ webview的复用池，例如最多只存在3个webview，每次从池子里获�
 
 
 
+## 版本
+
+Pubspec.yaml
+
+1.0.0+1
+
+Version = 1.0.0
+
+Buildnumber = 1
+
+
+
+## flutter cmd
+
+
+
+ flutter -v输出更详细的信息
+
+
+
 
 # 基础
 
@@ -1209,6 +1229,8 @@ provide a `build()` method that describes how to display the widget in terms of 
 
 Widget变量不能为null
 
+监听Widget是否绘制完毕
+    WidgetsBinding.instance.addPostFrameCallback(_getRenderBox);
 
 
 ### StatelessWidget
@@ -1518,6 +1540,12 @@ final _suggestions = <WordPair>[] // 声明私有变量_suggestions,并且类型
 以_为开头声明的变量都被强制设为是私有变量
 
 
+
+### 枚举
+
+| Flutter 枚举tostring会得到 | 枚举.枚举名 |
+| -------------------------- | ----------- |
+|                            |             |
 
 ### 字符串
 
@@ -2096,6 +2124,12 @@ Flutter import not fount  可能有地方import的时候使用了双斜杠，导
 1、任务管理器终止dart.exe
 
 2、删除flutter/bin/cache下的lockfile（可选？）
+
+
+
+#### mac无法运行程序问题
+
+Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 
 
 

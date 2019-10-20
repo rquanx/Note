@@ -198,6 +198,13 @@ export { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 
 以这个js为入口进行dll打包
 
+#### 知识点
+##### hash
+| hash类型    | 区别                                                         |
+| ----------- | :----------------------------------------------------------- |
+| hash        | hash是根据整个项目构建，只要项目里有文件更改，整个项目构建的hash值都会更改，并且全部文件都共用相同的hash值 |
+| chunkhash   | chunkhash根据不同的入口文件(Entry)进行依赖文件解析、构建对应的代码块（chunk），生成对应的哈希值，某文件变化时只有该文件对应代码块（chunk）的hash会变化 |
+| contentHash | 每一个代码块（chunk）中的js和css输出文件都会独立生成一个hash，当某一个代码块（chunk）中的js源文件被修改时，只有该代码块（chunk）输出的js文件的hash会发生变化 |
 
 
 #### 文章
