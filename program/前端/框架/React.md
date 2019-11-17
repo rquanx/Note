@@ -349,8 +349,17 @@ useMemo
 
 
 
+##### 编码技巧 
+
+###### 条件渲染
+isTrue ? <p>True!</p> : null ;  ==>  isTrue && <p>True!</p>
+
+jsx表达式可以写iife来嵌入函数进行条件渲染
+
 
 ##### 知识点
+
+
 
 ##### static defaultProps
 

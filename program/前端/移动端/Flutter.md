@@ -1033,7 +1033,9 @@ https://mp.weixin.qq.com/s/Pzbfoszuoj_JDz1KvBGieA
 
 可以有多个子 Widget。 子Widget堆叠在一起。   
 
- 
+
+#### Flexible
+和expaned类似，但是不会自动占满，包裹？ 
 
 
 
@@ -2130,6 +2132,8 @@ Flutter import not fount  可能有地方import的时候使用了双斜杠，导
 #### mac无法运行程序问题
 
 Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
+
+
 
 
 
