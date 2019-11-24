@@ -361,7 +361,8 @@ jsx表达式可以写iife来嵌入函数进行条件渲染
 
 
 
-##### static defaultProps
+
+###### static defaultProps
 
 ###### refs
 
@@ -370,6 +371,10 @@ jsx表达式可以写iife来嵌入函数进行条件渲染
 ref 中使用回调函数
 ​	ref={(ref) => { this.myRef = ref; }}
 ​	有缺点，每次都是重新绑定
+
+
+onref
+> 在子组件挂载时回调父组件函数，将this传递给父组件
 
 ###### key
 

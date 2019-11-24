@@ -1185,6 +1185,9 @@ CupertinoNavigationBar会覆盖child内容
 
 ### 知识点
 
+#### 插件版本处理
+版本号用any.可自动处理版本问题 
+
 #### 加载
 支持字符串方式解析html
 

@@ -49,6 +49,11 @@ interface SearchFunc {
 (source: string, subString: string): boolean; 
 (source: string, subString: string) => boolean; 
 }
+
+interface Document {
+    helloWorld(a:string): void;
+	helloWorld: (a:string) => void;
+}
 ```
 
 
@@ -116,6 +121,13 @@ Record<any, any> 和 object的区别
 ###### Pick<x>
 
 
+
+###### 声明扩展
+要向现有的ts类型中扩展出新的属性
+	建立xxx.d.ts文件
+	直接定一个同名的声明类名
+  可能需要在tsconfig中设置include
+>  向现有的Windows类型定义中增加一个自定义的属性
 
 
 ##### 预声明

@@ -431,7 +431,7 @@ zeplin
 
 
 
-#### 好文记录
+#### 记录
 
 [cli制作](<https://www.twilio.com/blog/how-to-build-a-cli-with-node-js?utm_source=youtube&utm_medium=video&utm_campaign=node-cli-howto>)
 
@@ -458,6 +458,10 @@ zeplin
 [GraphQL-BFF：微服务背景下的前后端数据交互方案](<https://zhuanlan.zhihu.com/p/75241522?utm_source=qq&utm_medium=social&utm_oi=583565170786308096>)
 
 [前端异常监控解决方案研究](<https://www.tangshuang.net/5782.html>)
+
+[js骚操作](<https://github.com/EtherDream/web-frontend-magic>)
+
+
 
 
 #### Todo
