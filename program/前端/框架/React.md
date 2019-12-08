@@ -592,4 +592,14 @@ hash路由依赖于window.location.href
 
 
 
+##### 性能
 
+react-profile查看性能
+
+> ??
+
+
+
+React Developer Tools  highlight update功能
+
+> 可查看哪些组件被update,在插件界面开启即可

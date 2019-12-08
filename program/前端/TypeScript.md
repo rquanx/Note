@@ -54,6 +54,16 @@ interface Document {
     helloWorld(a:string): void;
 	helloWorld: (a:string) => void;
 }
+
+
+// 箭头函数+泛型
+const fun = <T extends {}>(config: Config<T>) => props =>  {};
+
+// 含有构造函数且包含只读props	
+ type con = {
+	  new (props: Readonly<EnhancedComponentProps>);
+	}
+
 ```
 
 
@@ -107,6 +117,12 @@ Record<any, any> 和 object的区别
 多个类型合并为一个类型
 
 <A & B>   同时有A、B的属性
+
+```typescript
+type a = b & c & d
+```
+
+
 
 
 

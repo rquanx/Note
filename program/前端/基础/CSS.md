@@ -331,6 +331,10 @@ transform:translateY(-50%)		以自身原本为参考，往上移动50%
 
 ### 应用
 
+#### 放大
+transform: scale(1.2)
+> 例：hover时元素放大
+
 #### 项目css编写方式
 
 - .以块+元素命名。 class="Contains-Div-Input ...."	简明，量大，不易复用

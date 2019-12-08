@@ -95,6 +95,28 @@ for(var i in obj) {
 
 #### 小知识点
 
+##### 按键
+
+###### 绑定事件
+一般绑定keydown事件
+
+###### key和keyCode
+Event.key和event.keyCode，如果不需要兼容IE8下，建议使用.key，不用考虑不同系统间keycode不一致的问题，也更方便理解
+
+##### 事件绑定
+###### 绑定移除
+移除dom时浏览器会自动移除监听事件
+
+###### 全局绑定
+全局绑定事件可能会冲突，如为了实现点击上下选择东西，可能会与浏览器的上下滚动冲突
+
+##### trim
+xxx.trim()，trim()不止过滤普通空格（Space键敲出来的空格）
+
+##### 全角转换
+全角转半角String.fromCharCode(str.charCodeAt(i)-65248)是常规方法，适用于任何全角字符
+
+
 ##### undefined
 
 ###### void 0
@@ -565,6 +587,24 @@ decorator ===  高阶函数，通过Object.defineProperty进行处理
 > 通过高阶函数可以实现装饰器传参
 
 
+为何无法对普通函数使用？
+> 由于存在函数提升，类不存在提升，所以普通函数无法使用装饰器，即使要使用也可以使用高阶函数替代
+
+##### 类装饰器
+接收一个类返回新的构造函数
+
+```js
+function HOF(class) {
+    return function newClass() {this.x = ""}
+}
+@HOF
+class Test {}
+
+```
+
+##### 方法装饰器
+Object.defineProperty
+
 
 #### 存储
 
@@ -647,6 +687,9 @@ new F().__proto__ === F.prototype
 
 
 #### 应用
+
+##### 并发数量控制
+使用Promise数组，Promise.race来控制
 
 ##### 模拟抽象类
 
@@ -1416,7 +1459,23 @@ vo顺序
 
 [javascript 从定义到执行，你不知道的那些事](http://www.webhek.com/post/javascript-from-define-to-execute.html)
 
-### JS
+### JS应用
+
+
+
+#### 画图
+
+橡皮擦功能：使用当前背景色作为画笔
+
+撤回：每次画完将结果保存并且push，撤销时pop
+
+
+
+#### 并发数量控制
+
+使用Promise数组 + Promise.race来控制，当有完成的时候pop出对于的元素，然后push进下一个promise，可实现同时并发请求且控制数量
+
+
 
 #### 上传文件至后端
 

@@ -1,5 +1,20 @@
 ### 基本语法
 
+
+
+#### 枚举
+
+C#的枚举值toString()会返回枚举的文本值
+
+```c#
+enum Test {
+	abc
+}
+Console.WriteLine(Test.abc); // abc
+```
+
+
+
 #### 异常捕获
 
 [多重异常捕获时，保留堆栈信息处理](https://blog.csdn.net/i_like_cpp/article/details/273819)
