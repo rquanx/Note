@@ -496,7 +496,14 @@ New绑定
 
 使用obj[key]来判断，如果value是false的就会有问题
 
+##### 内存泄漏？
+对象key
 
+当key为数字时自动转化为字符串的key,可能会存在内存泄漏？
+```js
+var a = { 1: 1 } // 1会自动被转化为"1"
+
+```
 
 ##### defineProperty
 
@@ -695,6 +702,16 @@ new F().__proto__ === F.prototype
 
 构造函数中抛出异常来防止不重写直接调用
 
+
+
+#### 类
+
+Class X{  a = () => {} } 会将函数绑定到this上
+
+Class XX { a() {}}  会绑定到原型上
+
+
+
 ### 作用域
 
 #### 说明
@@ -790,7 +807,7 @@ encodeURI   编码时会忽略某些特殊编码: ;,/?:@&=+$#
 encodeURIComponent	全部编码
 decode...
 
-#### Mao
+#### Map
 map对象要通过.set,.get,.delete进行操作
 
 #### Array
@@ -1134,7 +1151,17 @@ T1完成，回调t2，t2返回Promise，是异步操作，等待t2完成，resol
 对象数据转json字符串    JSON.stringify(this._cellData)	对象会被序列成json字符串   
 字符串转json     eval(""+ ？+"")或 JSON.parse?
 
+##### JSON.stringify
+###### 第二个参数
+替换器参数,可以是数组或函数
+> 数组可用于过滤出想要的属性
+> 函数可用于接收key,value，并通过返回值对输出的value进行自定义
 
+###### 第三个参数
+缩进处理，数字或字符串，如果是数字会以空格进行缩进
+
+###### toJSON方法
+如果对象函数toJSON方法，stringify时会调用这个函数
 
 #### Canvas
 
@@ -1461,7 +1488,20 @@ vo顺序
 
 ### JS应用
 
+#### 移动端缓存方案
+h5要想做到返回某个页面时具有历史状态，必须借助一些方式:
+1.利用浏览器的历史记录，可行但不便利，有些用户交互是不记录在浏览器的历史行为的。
+2.利用全局store存储页面的数据以及交互状态，简单的可以，复杂的难，工作量较大，需要区分来源是首次正常加载还是从链路页面返回。
+3.利用视觉效果，类似于app内的页面栈，页面层级管理，将新页面展示内容变为模态框全屏覆盖展示，返回时取消模态框显示。简单的1-2级链路可考虑。
+4.组件缓存效果，比如vue本身组件支持keep-alive
 
+#### 懒加载
+方案
+1、原始高度等属性+window.scroll
+2、getBoundingClientRect+window.scroll
+3、
+IntersectionObserver	监听元素是否可见，可用于懒加载（图片/单页应用资源）
+4、chrome loading=lazy
 
 #### 画图
 

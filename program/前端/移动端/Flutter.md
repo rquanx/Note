@@ -362,7 +362,21 @@ get() async {
   var responseBody = await response.transform(UTF8.decoder).join();
 }
 
+// 直接传输[{}]时使用stream.xxx
+
 ```
+
+
+
+## 状态管理
+
+### InheritedWidget
+
+
+
+### Provider
+
+基于InheritedWidget
 
 
 
@@ -2073,6 +2087,10 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 # 问题
 
+
+#### 初始化
+run app前执行 WidgetsFlutterBinding.ensureInitialized();
+> 不执行，在Dart 2.7runapp 前初始化会报错
 
 #### 安装Package
 
