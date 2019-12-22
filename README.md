@@ -2,6 +2,10 @@
 
 知乎书籍
 
+穷查理宝典
+
+小狗钱钱
+
 
 
 #### 开发学习
@@ -11,6 +15,8 @@
 ##### 计算机
 
 [计算机基础](https://github.com/ossu/computer-science)
+
+[Scip python](https://wizardforcel.gitbooks.io/sicp-py/content/ch1.html)
 
 
 
@@ -33,6 +39,10 @@
 
 
 ###### JavaScript
+
+[js系列文章]([https://www.barretlee.com/blog/2013/03/27/%E6%B1%A4%E5%A7%86%E5%A4%A7%E5%8F%94%E7%9A%84JS%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%EF%BC%8C%E6%94%BE%E5%9C%A8%E8%87%AA%E5%B7%B1%E5%AE%B6%E9%87%8C%E5%A5%BD%E6%89%BE/](https://www.barretlee.com/blog/2013/03/27/汤姆大叔的JS系列文章，放在自己家里好找/))
+
+
 
 [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
@@ -72,7 +82,9 @@
 
 [node](https://github.com/webfansplz/article)
 
+[重学Node.js](https://github.com/hellozhangran/happy-egg-server)
 
+[正确的学习node.js](https://i5ting.github.io/How-to-learn-node-correctly/)
 
 node
 
@@ -81,6 +93,8 @@ node
 > 2.Node.js国内交流社区：https://cnodejs.org/
 >
 > 3.推荐书籍：《Node.js实战》（第二版）、《Node.js调试指南》、《深入浅出Node.js》（有一定的基础后再看）、《更了不起的Node.js》
+
+深入浅出node.js
 
 
 
@@ -96,7 +110,7 @@ node
 
 [浏览器工作原理与实践](https://time.geekbang.org/column/intro/216)
 
-
+[V8系列文章](http://www.jayconrod.com/posts/51/a-tour-of-v8--full-compiler)
 
 ###### 博客
 
@@ -150,6 +164,12 @@ node
 
 
 
+##### 安全
+
+[安全工具](https://www.freebuf.com/sectool/215644.html)
+
+
+
 ##### 数据库
 
 
@@ -158,7 +178,7 @@ node
 
 [caml Join](https://www.cnblogs.com/jianyus/p/3761809.html)
 
-
+[odata](https://docs.microsoft.com/zh-cn/sharepoint/dev/sp-add-ins/use-odata-query-operations-in-sharepoint-rest-requests)
 
 ##### 学术
 
@@ -251,6 +271,10 @@ node
 [51nazhun](<https://kindle.51nazhun.pub/>)
 
 > kindle电子书下载
+
+
+
+[电子书资源](https://www.jqhtml.com/down/category/resources/front)
 
 
 
