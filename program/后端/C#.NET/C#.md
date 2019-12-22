@@ -8,9 +8,14 @@ C#的枚举值toString()会返回枚举的文本值
 
 ```c#
 enum Test {
-	abc
+	abc,
+    b
 }
 Console.WriteLine(Test.abc); // abc
+
+Enum.GetValues(typeof(Test)) // 0,1
+Enum.GetNames(typeof(Test))  // abc,a
+    
 ```
 
 
@@ -25,6 +30,61 @@ try catch 可以中断当前层次余下的操作，
 log4net可以记录到innerexception的信息
 
 ### 知识点
+
+#### 拓展
+
+```c#
+DeliveryStatus.YQD.GetRemark();
+
+public enum DeliveryStatus
+    {
+        [Remark("SignCount")]
+        YQD = 01,
+        [Remark("AssignCheckCount")]
+        YPY = 02,
+        [Remark("CheckCount")]
+        YYF = 03,
+        [Remark("ToSignCount")]
+        YQY = 04,
+        [Remark("ToReceiptCount")]
+        YSK = 05,
+        [Remark("RejectCount")]
+        YJS = 06
+    }
+
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
+    public class RemarkAttribute : Attribute
+    {
+        public string Remark { get; private set; }
+
+        public RemarkAttribute(string remark)
+        {
+            this.Remark = remark;
+        }
+    }
+
+    public static class AttributeExtend
+    {
+        public static string GetRemark(this Enum value)
+        {
+            var type = value.GetType();
+            var field = type.GetField(value.ToString());
+            if (field.IsDefined(typeof(RemarkAttribute), true))
+            {
+                RemarkAttribute attr = (RemarkAttribute)field.GetCustomAttribute(typeof(RemarkAttribute), true);
+                return attr.Remark;
+            }
+            else
+            {
+                return value.ToString();
+            }
+        }
+    }
+```
+
+
+
+
 
 #### HTTP
 响应可自定义响应头

@@ -6,21 +6,19 @@
 
 #### 开发学习
 
+
+
+##### 计算机
+
+[计算机基础](https://github.com/ossu/computer-science)
+
+
+
 ##### 前端
-
-[web前端工程师读书单](https://www.douban.com/doulist/2772859/)
-
-[微软前端资料](https://github.com/Microsoft/frontend-bootcamp)
 
 [学习路线](https://blog.csdn.net/qq_32135281/article/details/87554088)
 
-[正则表达式](http://www.cppblog.com/vczh/archive/2008/05/22/50763.html)
-
-
-
-###### Vue
-
-[vue通信](https://segmentfault.com/a/1190000018241972)
+[前端开发核心知识进阶](https://gitbook.cn/gitchat/column/5c91c813968b1d64b1e08fde)
 
 
 
@@ -28,11 +26,7 @@
 
 [react-redux解读，淘宝前端团队](http://taobaofed.org/blog/2016/08/18/react-redux-connect/)
 
-[smart-and-dumb-components,组件划分](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
-
 [浅谈React数据流管理,场景使用](https://mp.weixin.qq.com/s/ii6H6mhe2OAUf7RquVxN8g)
-
-[react优化系列](https://segmentfault.com/a/1190000018398978#articleHeader4)
 
 [React 面试题 & 回答](<https://github.com/semlinker/reactjs-interview-questions>)
 
@@ -45,6 +39,10 @@
 [FE-booklet](<https://github.com/littlematch0123/FE-booklet>)
 
 > 小火柴的前端册子
+
+
+
+
 
 
 
@@ -62,7 +60,7 @@
 
 [在线css效果预览](<https://css3generator.com/>)
 
-[postcss online](<https://autoprefixer.github.io/>)
+[css课程](https://www.html.cn/css/)
 
 
 
@@ -71,6 +69,8 @@
 [Node+Mongodb 架构常见性能问题总结](https://zhuanlan.zhihu.com/p/56010506)
 
 [node.js教程](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=%E5%AD%A6%E4%B9%A0+Node.js%EF%BC%8C%E7%AC%AC&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2)
+
+[node](https://github.com/webfansplz/article)
 
 
 
@@ -86,21 +86,15 @@ node
 
 ###### Webpack
 
-[webpack多页应用,需细看](https://github.com/lvzhenbang/webpack-play)
-
-[webpack系列教程](https://segmentfault.com/a/1190000017834557)
-
 [你真的会拆分代码吗,好](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490234&idx=1&sn=a57614db8d5570eb4cf71c39d376ab46&chksm=f951aff9ce2626ef928250381d1914629393d75d75bbb124da6a3370bef94820132b07d11c6b&mpshare=1&scene=23&srcid=01094hCOdOckeg4crRiHe5xz#rd)
 
 [JavaScript性能优化之摇树，一般](http://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490230&idx=1&sn=7c407256e1d144631ea143f593311153&chksm=f951aff5ce2626e3c362361ac5473dcc231ffee12c8e5e9e34fd5b9b664b2cce3122b517e992&mpshare=1&scene=23&srcid=0109fyVv66SYSRewfZ52NGZV#rd)
-
-[界面化配置](https://webpack.jakoblind.no/	)
 
 
 
 ###### Browser
 
-[浏览器渲染](https://segmentfault.com/a/1190000017881320)
+[浏览器工作原理与实践](https://time.geekbang.org/column/intro/216)
 
 
 
@@ -108,15 +102,9 @@ node
 
 [前端九部](https://www.yuque.com/fe9/basic)
 
-[web_js_css_frame](https://github.com/yyman001/web_js_css_frame)
-
 [阮一峰](http://www.ruanyifeng.com/blog/)
 
 [dan blog](https://overreacted.io/)
-
-[基伟博客](<https://qoxop.github.io/>)
-
-[2019年最值得关注的国外科技公司技术博客](https://tonyxu.io/zh/posts/2019/top-engineering-blogs-from-tech-companies-to-follow-in-2019/)
 
 
 
@@ -164,19 +152,11 @@ node
 
 ##### 数据库
 
-[SQL 的极简入门](https://segmentfault.com/a/1190000018179958)
-
 
 
 ##### SharePoint
 
 [caml Join](https://www.cnblogs.com/jianyus/p/3761809.html)
-
-
-
-##### Flutter
-
-dart
 
 
 
@@ -208,13 +188,7 @@ dart
 
 > 最新资讯
 
-
-
 [what is the best of xx](https://www.slant.co/)
-
-
-
-
 
 [虎嗅网](<https://www.huxiu.com/>)
 [36氪](<https://36kr.com/>)
@@ -236,11 +210,7 @@ dart
 
 [早报](https://wubaiqing.github.io/zaobao/)
 
-[d2日报](https://daily.fairyever.com/)
-
 [TNFE-Weekly](<https://github.com/Tnfe/TNFE-Weekly>)
-
-[薄荷前端周刊](<https://github.com/BooheeFE/weekly>)
 
 [IVWEB技术周刊](<https://github.com/iv-web/weekly>)
 
@@ -270,7 +240,7 @@ dart
 
 
 
-#### Book
+#### Book下载
 
 [书栈网](<https://www.bookstack.cn/>)
 
@@ -292,33 +262,41 @@ dart
 
 #### 工具资源
 
-[logo生成](<https://mybrandnewlogo.com/logo-maker>)
+##### 信息
 
 [国家企业信用信息公示系统](http://www.gsxt.gov.cn/)
 
 > 通过这个网站，我们可以查到任何一家公司的基本信息（成立时间、法定代表人等）。如果你在这个网站上没有找到某公司的信息，放心吧，这个公司一定是个骗子。
 
+[美剧搜索](<http://videos.yizhansou.com/> )
+
+[查询相似的网站](<https://www.similarsites.com/> )
+
+[查看信息泄露](<https://monitor.firefox.com/scan>)
 
 
-[ProcessOn](<https://www.processon.com/>)
 
-> 在线流程图
+##### 图片
+
+[logo生成](<https://mybrandnewlogo.com/logo-maker>)
 
 [在线PS2](<https://ps.gaoding.com/#/>)
 
 [在线PS1](<https://www.photopea.com/>)
 
-[百度云盘搜索](<https://www.52sopan.com/>)
-
-[美剧搜索](<http://videos.yizhansou.com/> )
-
-[查询相似的网站](<https://www.similarsites.com/> )
-
-[文档翻译，保留格式](<https://www.onlinedoctranslator.com/>)
-
-[查看信息泄露](<https://monitor.firefox.com/scan>)
-
 [无版权图库](<https://www.pickpik.com/>)
+
+
+
+##### 数据处理
+
+[table to any format](<https://tableconvert.com/>)
+
+[数据转换](https://transform.tools/)
+
+
+
+##### 功能
 
 [i18ns](<https://i18ns.com/index.html>)
 
@@ -329,6 +307,7 @@ dart
 > 可运行代码段和 API 的在线工具
 
 [markdown微信排版](<https://mdnice.github.io/>)
+
 
 
 #### Git
@@ -353,6 +332,8 @@ github.com ==> githistory.xyz
 10、项目开发、发布流程
 11、晋升、调薪等
 
+
+
 #### 英语
 有道曲根考研词汇：
 链接： https://pan.baidu.com/s/1CPTd3hracjQ7EqPqW9hfuw​
@@ -368,7 +349,9 @@ github.com ==> githistory.xyz
 提取码：cjjp
 
 
+
 #### 娱乐
+
 [在线小霸王](https://www.yikm.net/)
 
 [在线老游戏](<https://dos.zczc.cz/>)
@@ -382,12 +365,6 @@ github.com ==> githistory.xyz
 课程：cs 61 a b c
 
 
-
-#### 其他
-
-[刘慈欣演讲](<http://cn.chinadaily.com.cn/2018-11/12/content_37243853.htm>)
-
-[medium](<https://medium.com/>)
 
 
 
@@ -429,11 +406,23 @@ zeplin
 
 王小波、吴军、村上春树、 东野圭吾
 
+Hacker and Painters
+
+跨越鸿沟
+
+逃离速度
+
+对付达尔文
+
+闪电式扩张
+
+格鲁夫给经理人的第一课
+
+[赵三本](https://www.douban.com/doulist/38002743/)
+
 
 
 #### 记录
-
-[cli制作](<https://www.twilio.com/blog/how-to-build-a-cli-with-node-js?utm_source=youtube&utm_medium=video&utm_campaign=node-cli-howto>)
 
 [前后端分离接口规范](<https://mp.weixin.qq.com/s?__biz=MzA5MjQ0Mjk2NA==&mid=2247484575&idx=1&sn=bc02da2b9d13350e7d03e29394efdca8&chksm=906c5ca4a71bd5b20e82bcea23846c5d9d1b54f6adb0c2e0c06581bc69a36e56ee863b5aae3e&mpshare=1&scene=23&srcid=#rd>)
 
@@ -462,15 +451,6 @@ zeplin
 [js骚操作](<https://github.com/EtherDream/web-frontend-magic>)
 
 
-
-
-#### Todo
-
-[table to any format](<https://tableconvert.com/>)
-
-[数据转换](https://transform.tools/)
-
-[正则校验、学习](<https://regexr.com/>)
 
 
 

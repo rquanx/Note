@@ -19,13 +19,14 @@ the state is meant to hold variables that relate to the current state of the UI
 
 class组件会批量更新
 
-setState时必定render，然后根据新的结果更新页面
+setState(x)  x为null时不触发，{}会触发，必定render，然后根据新的结果更新页面
 
 > setState后会按照所有数据最新的值进行显示，即使是内部对象数据，只要变化了在render时就会按新的值呈现
 >
 > render时，会重新render所有子组件，父组件不会render
 
-
+在内部进行setState时会进入队列，从而形成异步、批量render
+但是如果在外部进行setState，则由于React无法捕获和优化所以会马上render,代码层面上则是batchUpdate不为true?
 
 
 ##### 使用
@@ -357,7 +358,16 @@ isTrue ? <p>True!</p> : null ;  ==>  isTrue && <p>True!</p>
 jsx表达式可以写iife来嵌入函数进行条件渲染
 
 
+
 ##### 知识点
+
+###### 正交性
+
+[正交性](https://zhuanlan.zhihu.com/p/96084784?utm_source=qq&utm_medium=social&utm_oi=583565170786308096 )
+
+核心将组件进行拆分，抽象出UI,数据获取，错误处理等，各自分离
+
+\> 优点：更易于维护，粒度更细  缺点：抽象有难度、可能会繁杂
 
 
 

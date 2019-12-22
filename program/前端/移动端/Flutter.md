@@ -2087,6 +2087,12 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 # 问题
 
+#### 问题集
+[flutter常见问题](https://blog.iw3c.com/archive/1166)
+
+[Textfield placrholde 对齐](https://github.com/flutter/flutter/issues/40248)
+
+[flutter笔记](https://www.yuque.com/zhiwa/deepin/vqc6y1)
 
 #### 初始化
 run app前执行 WidgetsFlutterBinding.ensureInitialized();

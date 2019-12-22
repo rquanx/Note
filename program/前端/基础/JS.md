@@ -1352,6 +1352,36 @@ createElement不区分大小写
 
 绑定事件使用addevent ，直接使用onxxx= 容易被覆盖
 
+
+
+
+
+#### MutationObserver
+
+监测某个范围内DOM的变动，如节点的增减、属性的变动，文本节点的变化等，异步
+
+
+
+##### Dom节点变动检测并录制
+
+
+
+使用MutationObserver监听整个页面，每当有页面变动，则将页面的html转换成图片进行存储，回放用户操作即不停从队列中取出元素进行展示
+
+html2canvas配合canvas.toDataURL实现录制图像
+
+
+
+
+
+##### 应用
+
+###### 长按截图
+
+监听长按的操作，然后html2canvas配合canvas.toDataURL实现
+
+
+
 ### 内置方法
 
 #### SetTimeOut
