@@ -1,3 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+##### 简述
+
+[react由来，好文](http://taoweng.site/index.php/archives/293/)
+
+
+
+
+
 ##### 属性
 
 对组件的配置项,通信，数据

@@ -50,11 +50,11 @@ flutter\bin   // Path设置sdk解压路径
 
 ### Andorid
 
-#### 设置启动图标
+#### 设置桌面图标
 
+flutter pub get
 
-
-
+flutter packages pub run flutter_launcher_icons:main
 
 
 
@@ -678,6 +678,30 @@ Buildnumber = 1
 
 
  flutter -v输出更详细的信息
+
+
+
+## 热重载
+
+#### 原理
+
+Flutter热重载是基于State的，也就是我们在代码中经常出现的setState方法，通过这个来修改后，会执行相应的build方法，这就是热重载的基本过程
+
+
+
+#### 源码
+
+~/flutter/packages/flutter_tools/lib/src/下，run_cold.dart和run_hot.dart两个文件，前者负责冷启动，后者负责热重载
+
+
+
+
+
+#### 过程
+
+在源码_reloadSources函数内部，会调用_updateDevFs函数，函数内部会扫描修改的文件，并将修改的文件进行对比，随后将被改动代码生成一个kernel files文件。
+
+然后通过HTTP Server将生成的kernel files文件发送给Dart VM虚拟机，虚拟机拿到kernel文件后会调用_reloadSources函数进行资源重载，将kernel文件注入正在运行的Dart VM中，当资源重载完成后，会调用RPC接口触发Widgets的重绘。
 
 
 
@@ -1318,6 +1342,50 @@ class RandomWords extends StatefulWidget {
 
 
 ### 布局
+
+#### SingleChildScrollView
+SingleChildScrollView不支持基于Sliver的延迟实例化模型
+预计视口可能包含超出屏幕尺寸太多的内容时，那么使用SingleChildScrollView将会非常昂贵
+
+#### 支持Sliver的
+ListView
+
+#### CustomScrollView
+CustomScrollView是可以使用Sliver来自定义滚动模型（效果）的组件。它可以包含多种滚动模型
+
+组合Sliver实现统一滑动
+子组件必须是Sliver
+
+#### Sliver
+Sliver版的可滚动组件和非Sliver版的可滚动组件最大的区别就是前者不包含滚动模型（自身不能再滚动），而后者包含滚动模型
+
+#### ScrollController
+控制和监听滑动
+
+offset：可滚动组件当前的滚动位置
+
+jumpTo(double offset)、animateTo(double offset,...)：这两个方法用于跳转到指定的位置，它们不同之处在于，后者在跳转时会执行一个动画，而前者不会
+
+#### PageStorageKey
+用于记录滚动位置，当页面切换后，可以用于回到之前的位置
+当页面有多个List时，可能需要显示定义PageStorageKey
+
+#### Element
+
+element.this == buildcontext
+
+
+
+
+
+#### Drawer
+
+弹出侧边panel
+
+
+
+
+
 
 #### Container 
 
@@ -2159,6 +2227,27 @@ Flutter import not fount  可能有地方import的时候使用了双斜杠，导
 #### mac无法运行程序问题
 
 Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
+
+
+
+
+
+# 试题
+
+### 屏幕计算
+
+1、一张图，宽度是 x 高度是 y（x px * y px），左右间隔是t，如何使用屏幕算法适配全机型屏幕宽和高
+> 宽度：整宽 - t * 2（左右的）。
+> 高度：(整宽 - t * 2 ) * y / x    宽度 * 比例
+
+
+
+2、一个未知数据数量有规则的列表视图，要求一行显示5个，每个间隔为10（含上下），最外边距margin左右都为20，高度为50，多出的数据继续往下排并向左对齐，适配任何机型
+
+> 使用组件：Wrap
+> spacing和runSpacing都设置为10间隔，
+> 然后Item的高度设置为50，宽度算法为：
+> ( 整宽 - （外边的margin + 内边的space） ) / 5
 
 
 
