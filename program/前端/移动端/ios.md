@@ -67,6 +67,25 @@ Ios build Archive 提示  library not found for…
 https://www.jianshu.com/p/026f54eef568
 https://github.com/flutter/flutter/issues/10654
 
+#### manifest.plist
+Manifest.plist  文件名可随意变化，能正确指向即可
+内容：
+platform-identifier	com.apple.platform.iphoneos	
+> 不能变
+
+Kind	Software	
+> 不能变类型确保
+
+bundle-version		
+> 随意
+
+bundle-identifier		
+> 高版本Ios会校验？
+
+Title	app	
+> 安装提示的内容
+
+
 #### 安装
 打包完成后可以导出，如果没有设置manifest的话默认不导出，设置有打包结果会有manifest.plist
 ipa安装需要将manifest的内容设置好，同时发布到https的网站上

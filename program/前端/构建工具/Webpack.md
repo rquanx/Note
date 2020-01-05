@@ -199,6 +199,18 @@ export { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 以这个js为入口进行dll打包
 
 #### 知识点
+
+##### SouceMap
+
+sourceMap:报错信息显示正确的变量名、行数
+
+- inline 是以dateURL的形式添加map，不额外生成map文件
+- cheap     是没有列信息
+- module 是包含了loader的sourcemap
+- source-map     则是映射到源文件
+
+
+
 ##### hash
 | hash类型    | 区别                                                         |
 | ----------- | :----------------------------------------------------------- |

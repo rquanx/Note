@@ -95,6 +95,13 @@ for(var i in obj) {
 
 #### 小知识点
 
+##### 逗号语法
+
+(0, foo.fn)(args)
+// 切断fn中的this于foo的绑定关系
+// 逗号表达式表示先执行左边，再执行右边，最终返回右边，(0, person.getName)相当于返回了person.getName的引用
+// 相当于const fn = foo.fn; fn(args)
+
 ##### 按键
 
 ###### 绑定事件
@@ -1181,13 +1188,27 @@ T1完成，回调t2，t2返回Promise，是异步操作，等待t2完成，resol
 
 ##### requestAnimationFrame
 
-使用requestAnimationFrame实现有哪些好处？
+会在每次重绘前执行
+
+缺点：页面处于后台时该回调函数不会执行
+
+
+
+###### 使用requestAnimationFrame实现有哪些好处？
 
 相对于过去使用setInterval实现，requestAnimationFrame性能要好。requestAnimationFrame保证了每次改动样式后再进行回流重绘，setInterval可能使浏览器作出无效的回流和重绘。requestAnimationFrame在每一帧的生命周期都会触发，会使动画更加流畅，而setInterval不能保证每一帧都能触发。
 
 requestAnimationFrame的兼容性是非常好的,可以一直向下兼容到IE10。对于IE9及其以下，可以降级使用setTimeout或者setInterval实现requestAnimationFrame的polyfill。
 
-自己写就可以实现各种不同的滚动速度了，可以实现线性速度，也可以实现先加速后减速的效果。
+使用：自己写就可以实现各种不同的滚动速度了，可以实现线性速度，也可以实现先加速后减速的效果。
+
+
+
+##### requestIdleCallback
+
+该函数的回调方法会在浏览器的空闲时期依次调用， 可以让我们在事件循环中执行一些任务，并且不会对像动画和用户交互这样延迟敏感的事件产生影响
+
+一秒只能调用回调 20 次
 
 
 
@@ -1458,9 +1479,70 @@ fetch(url, options)
 
 #### 跨域
 
-### 事件模型
 
-微任务优先于宏任务执行？
+
+### WebWorker
+
+web worker的postMessage是深拷贝的
+
+
+
+### 事件模型/事件循环/Event Loop
+
+每一轮执行完宏任务后会清理所有的微任务
+
+一般渲染后会执行宏任务
+
+
+
+常见宏任务：setTimeout、MessageChannel、postMessage、setImmediate
+
+常见微任务：MutationObsever 和 Promise.then，process.nextTick(Node.js 环境)
+
+
+
+#### 优先级
+
+宏任务：主代码块 > setImmediate（兼容性，Node.js 环境和ie） > MessageChannel > setTimeout / setInterval
+
+
+
+#### MessageChannel
+
+MessageChannel的postMessage传递的数据是深拷贝的，可以拷贝undefined和循环引用的对象，但对于函数会报错
+
+
+
+MessageChannel可作为两个worker之间传递消息使用
+
+> 通过worker.postmessage的第二个参数将控制权转移来实现，直接传递由于消息传递时深拷贝，而messageChannel是不能拷贝的（控制权问题？）
+
+
+
+##### 使用
+
+```js
+var channel = new MessageChannel();
+var port1 = channel.port1;
+var port2 = channel.port2;
+port1.onmessage = function(event) {
+  console.log("port1收到来自port2的数据：" + event.data);
+};
+port2.onmessage = function(event) {
+  console.log("port2收到来自port1的数据：" + event.data);
+};
+
+port1.postMessage("发送给port2");
+port2.postMessage("发送给port1");
+```
+
+
+
+
+
+
+
+
 
 
 
@@ -1517,6 +1599,18 @@ vo顺序
 [javascript 从定义到执行，你不知道的那些事](http://www.webhek.com/post/javascript-from-define-to-execute.html)
 
 ### JS应用
+
+#### 瀑布流
+
+本质：寻找各列之中高度最小的一列，并将新的元素添加到该列后面，只要有新的元素需要排列，就继续寻找所有列中的高度最小列，把后来的元素添加到高度最小列上
+
+
+
+#### 禁用控制台
+
+[防止打开控制台](https://segmentfault.com/a/1190000021459140)
+
+
 
 #### 移动端缓存方案
 h5要想做到返回某个页面时具有历史状态，必须借助一些方式:

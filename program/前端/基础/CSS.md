@@ -611,9 +611,14 @@ em相对父级大小，ren相对根元素大小
 
 #### 技巧
 
+##### 障眼法
+
+
+
 	absolute、relative配合使用常用于实现图标定位
 
   
+
 
 
 	父元素line-height === 高度让文字垂直居中    button内文字默认居中
@@ -621,9 +626,11 @@ em相对父级大小，ren相对根元素大小
   
 
 
+
 	display:block; + text-align:center; 实现文字水平居中
 
   
+
 
 
 	定宽 + margin 0 auto  实现水平居中
