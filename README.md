@@ -1,3 +1,8 @@
+#### 生活
+1688价格参考
+淘宝食品购买，看生产商，代工，除去溢价
+西洋菜？
+
 #### 财务
 
 知乎书籍
@@ -248,6 +253,10 @@ node
 
 [芋道源码](<http://www.iocoder.cn/>)
 
+[前端英文网站汇总](https://www.notion.so/0ba81e1707ae479b8c2b9ec79fe3a3ce)
+
+
+
 
 
 ##### 教程
@@ -259,6 +268,14 @@ node
 [Function Program Guide 中文版](<https://legacy.gitbook.com/book/llh911001/mostly-adequate-guide-chinese>)
 
 
+
+#### 面试
+
+[阮一峰简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
+
+[面试技巧](<https://www.cnblogs.com/JavaArchitect/p/7586949.html>)
+
+[社招](<https://mp.weixin.qq.com/s/l46XxFLt5elTN0qMy_Q5pQ>)
 
 #### Book下载
 
@@ -286,6 +303,14 @@ node
 
 #### 工具资源
 
+
+
+##### 原型
+
+[在线原型](https://github.com/excalidraw/excalidraw)
+
+
+
 ##### 信息
 
 [国家企业信用信息公示系统](http://www.gsxt.gov.cn/)
@@ -309,6 +334,10 @@ node
 [在线PS1](<https://www.photopea.com/>)
 
 [无版权图库](<https://www.pickpik.com/>)
+
+[免费图片](https://unsplash.com/)
+
+
 
 
 
@@ -380,6 +409,8 @@ github.com ==> githistory.xyz
 
 [在线老游戏](<https://dos.zczc.cz/>)
 
+[表情包](https://lab.bangbang93.com/)
+
 
 
 #### 课程
@@ -450,21 +481,19 @@ Hacker and Painters
 
 [前后端分离接口规范](<https://mp.weixin.qq.com/s?__biz=MzA5MjQ0Mjk2NA==&mid=2247484575&idx=1&sn=bc02da2b9d13350e7d03e29394efdca8&chksm=906c5ca4a71bd5b20e82bcea23846c5d9d1b54f6adb0c2e0c06581bc69a36e56ee863b5aae3e&mpshare=1&scene=23&srcid=#rd>)
 
-[vscode快捷键](<https://code.visualstudio.com/docs/editor/codebasics#_shrinkexpand-selection>)
-
 [损失规避心理](<https://mp.weixin.qq.com/s/kYgJOrLIbfcbS7EoXI2QJA>)
 
-[面试](<https://www.cnblogs.com/JavaArchitect/p/7586949.html>)
+> 管理上的应用
 
-[css常见问题](<https://segmentfault.com/a/1190000019523323>)
 
-[hook](<https://zhuanlan.zhihu.com/p/69802663?utm_source=qq&utm_medium=social&utm_oi=583565170786308096>)
 
-[社招](<https://mp.weixin.qq.com/s/l46XxFLt5elTN0qMy_Q5pQ>)
-
-[代码混淆](<https://segmentfault.com/a/1190000019423501>)
+[前端代码混淆](<https://segmentfault.com/a/1190000019423501>)
 
 [为什么学了很多知识，仍然没有什么用](<https://mp.weixin.qq.com/s/L6AVwHDMXIxVlGJcW4wUoA>)
+
+> 单纯积累知识并没有什么用，它并不能帮你解决问题。能做到这一点的，是思维方式
+
+
 
 [李笑来书籍](<https://mp.weixin.qq.com/s?__biz=MzI4NzIxOTQyMA==&mid=2651820035&idx=1&sn=ec0e8b9d3c7f669ba12d4f0b32f7b8c1&chksm=f02a3bb0c75db2a6f346e42721998bd533ec031cdeab66a7a2e1e2ab03689805003b6e8112cd&mpshare=1&scene=23&srcid=#rd>)
 
@@ -472,11 +501,17 @@ Hacker and Painters
 
 [前端异常监控解决方案研究](<https://www.tangshuang.net/5782.html>)
 
-[js骚操作](<https://github.com/EtherDream/web-frontend-magic>)
+[如何阅读源码](https://github.com/freedombird9/how-to-read-source-code/blob/master/how-to-read-code.md)
+
+[CSS 工具类和“关注点分离”](https://mp.weixin.qq.com/s?__biz=MzIwNDQ5MzE0OA==&mid=2247484275&idx=1&sn=22c20575108513e435b7de79248d9730&chksm=973e1b40a0499256d587692bd9491ea4193bb45ecc536a0f9c946f9141c2c825ef6077b16009&token=1274047175&lang=zh_CN#rd)
+
+> 组件化css
 
 
 
+[服务器运维](https://github.com/shfshanyue/op-note)
 
+> 服务器运维记录，如何运维
 
 
 

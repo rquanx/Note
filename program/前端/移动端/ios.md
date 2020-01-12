@@ -67,6 +67,17 @@ Ios build Archive 提示  library not found for…
 https://www.jianshu.com/p/026f54eef568
 https://github.com/flutter/flutter/issues/10654
 
+##### WebView渲染
+
+IOS 系统中的 WebView 并没有将首屏直出的这部分 HTML 页面显示出来。
+HTML 中直出的 DOM 结构会等待外部 CSS 和 JS 加载执行后**统一进行渲染**
+
+解决办法：通过onload事件动态加载资源
+
+##### webvoew动态渲染
+由于首页骨架屏的代码量本身并不大，待其加载后再去动态引入静态资源，时间影响不大（后面有实验数据）
+
+
 #### manifest.plist
 Manifest.plist  文件名可随意变化，能正确指向即可
 内容：

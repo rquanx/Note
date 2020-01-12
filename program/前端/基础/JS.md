@@ -1499,7 +1499,7 @@ web worker的postMessage是深拷贝的
 
 常见微任务：MutationObsever 和 Promise.then，process.nextTick(Node.js 环境)
 
-
+​	
 
 #### 优先级
 

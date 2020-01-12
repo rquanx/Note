@@ -33,6 +33,8 @@ type t = typeof { b: "1"}
 
 ##### 联合类型
 
+使用|连接符要么满足 A 的约束，要么满足 B 的约束
+
 ```typescript
 let myFavoriteNumber: string | number;
 ```
@@ -66,7 +68,14 @@ const fun = <T extends {}>(config: Config<T>) => props =>  {};
 
 ```
 
-
+##### 对象索引
+```ts
+interface ObjMap {
+    // 这意思是对象键名类型为 string 其对应的值类型为 User
+    [uid: string]: User;
+    // string => User
+}
+```
 
 
 
@@ -114,7 +123,7 @@ Record<any, any> 和 object的区别
 
 ###### 交叉类型
 
-多个类型合并为一个类型
+多个类型合并为一个类型？既要满足 A 的约束，也要满足 B 的约束
 
 <A & B>   同时有A、B的属性
 
@@ -128,7 +137,35 @@ type a = b & c & d
 
 ###### Keyof 
 
-约束类型是一堆中的某一个
+从对象类型中取出键名集合，约束类型为集合的某一个
+```ts
+interface Person {
+    name: string;
+    age: number;
+    sex: 0 | 1; // 0 代表女士；1 代表男士
+}
+
+type KeyOfPerson = keyof Person; // 'name' | 'age' | 'sex'
+
+
+
+// 通过泛型取任意对象的key
+
+// 把 T 上面的字段对应的值全部设置为 number
+type ObjToNum<T> = {
+    [key in keyof T]: number;
+}
+
+type Person = {
+    name: string;
+    address: string;
+}
+
+type Test = ObjToNum<Person>;
+// Test = { name: number, address: number }
+
+```
+
 
 ###### Partial<x> 
 
