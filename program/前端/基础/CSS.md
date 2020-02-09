@@ -638,6 +638,13 @@ em相对父级大小，ren相对根元素大小
 
 ### 杂
 
+#### 小技巧
+
+Attr()	获取元素属性值
+currentColor	返回当前的标签所继承的文字颜色
+user-select	可以控制用户能否选中内容
+
+
 #### 站点
 
 [浏览器css支持](https://caniuse.com/)

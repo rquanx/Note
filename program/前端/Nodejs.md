@@ -2,7 +2,21 @@
 
 [import默认文件](https://www.cnblogs.com/goloving/p/8889585.html)
 
+#### 知识点
+
+##### 大文件复制
+[Stream pipe](https://segmentfault.com/a/1190000021582224)
+
+#### 问题
+
+##### 内存泄漏
+[记录一次由一行代码引发的“血案”](https://cnodejs.org/topic/5aaba2dc19b2e3db18959e63)
+[一行 delete require.cache 引发的内存泄漏血案](https://zhuanlan.zhihu.com/p/34702356)
+
 #### 模块
+
+require.resolve的:拼接好路径以后，它会主动去帮你判断这个路径下的文件是否存在
+
 
 ##### 使用
 

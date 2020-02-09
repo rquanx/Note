@@ -63,10 +63,6 @@
 
 ###### CSS
 
-[条件 CSS，须有基础](https://zhuanlan.zhihu.com/p/55795638)
-
-[css规范](https://codeguide.bootcss.com/#html-syntax)
-
 [网站配色](https://mp.weixin.qq.com/s/TR_Y2W5zh9g0pB8nhZzM6Q)
 
 [CSS-Inspiration](https://github.com/chokcoco/CSS-Inspiration)
@@ -75,7 +71,6 @@
 
 [在线css效果预览](<https://css3generator.com/>)
 
-[css课程](https://www.html.cn/css/)
 
 
 

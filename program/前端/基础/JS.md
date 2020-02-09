@@ -434,6 +434,13 @@ export default api as NotificationApi; // 对导出模块进行重命名
 
 
 
+###### 模块化坑
+
+对象解构(object destruct)的语法和 命名导出(named export)的语法长得一模一样
+> 和import / export一起使用时不是对象解构，所以export default { } ; import { } from 会有问题，但是目前的打包修复了，但是建议不要这样？？？
+
+> 禁止对复合对象字面量进行导出操作包括数组和对象
+
 
 
 #### 函数
