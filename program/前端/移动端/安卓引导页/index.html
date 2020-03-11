@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>时代服务下载</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .weixin-tip {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        filter: alpha(opacity=80);
+        height: 100%;
+        width: 100%;
+        z-index: 100;
+      }
+      .weixin-tip p {
+        text-align: center;
+        margin-top: 10%;
+        padding: 0 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="weixin-tip">
+      <p>
+        <img src="img/live_weixin.png" alt="微信打开" />
+      </p>
+    </div>
+    <script type="text/javascript">
+      var winHeight = window.outerHeight;
+      var ua = navigator.userAgent.toLowerCase();
+      var downLoad_apk = {
+        init: function() {
+          downLoad_apk.initPage();
+        },
+        initPage: function() {
+          var isWeixin = downLoad_apk.is_weixin();
+          if (isWeixin) {
+            //如果是微信
+            var item = document.getElementsByClassName("weixin-tip")[0];
+            item.style.height = window.outerHeight;
+            item.style.display = "block";
+            document.getElementById("download").style.display = "";
+          } else {
+            location.href =
+              "https://times-crm.timesgroup.cn:28092/app/Timesgroup.CRM.App.apk";
+            
+          }
+          var winWidth = window.outerWidth;
+          document.body.style.height = winWidth * 3.29 + 60;
+        },
+        is_weixin: function() {
+          if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      };
+      window.onload = function(e) {
+        downLoad_apk.init();
+      };
+    </script>
+  </body>
+</html>

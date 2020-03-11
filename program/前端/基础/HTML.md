@@ -66,6 +66,13 @@ range	滑动条
 a标签默认是以当前网页的相对路径去跳转，如果要跳到其他页面则需要写上 http://xxxxxx  要把协议头写全download属性即可通过点击下载herf中的url文件
 target="_blank" 在新窗口打开页面，如果是文件根据浏览器会打开或下载
 
+
+
+可以作外部引用和内部引用
+内部引用：页面内位置跳转
+
+
+
 ##### 应用
 
 - 组合ul、li、a,可通过hover伪类实现输入框下拉的选中高亮，不需要js
@@ -242,7 +249,6 @@ defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序�
 定义引用外部脚本的地址，指定此属性的 script 标签内不应再有嵌入的脚本。如果脚本文件使用了非英语字符，还应该注明字符的编码。如：
 
 <script charset="utf-8" src="https://www.example.com/script.js"></script>
-
 1. type
 
 默认值是 text/javascript

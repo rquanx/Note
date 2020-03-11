@@ -76,6 +76,11 @@ a ? a : b ==> a || b
 
 #### 循环
 
+##### 迭代器
+解构赋值使用的是迭代器
+For of可中断，中断时会调用return函数
+> break / throw,均会执行return
+
 ##### for
 
 ```javascript
@@ -1492,6 +1497,10 @@ fetch(url, options)
 
 web worker的postMessage是深拷贝的
 
+#### 数据传递方式
+1、深拷贝
+2、移交：传递实现了Transferable接口的数据时， 数据会被移交到目标线程的上下文中
+> 不存在复制，因此性能会得到比较明显的提高
 
 
 ### 事件模型/事件循环/Event Loop
