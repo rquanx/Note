@@ -265,6 +265,10 @@ useEffect
 > ​	第二个参数：在useEffect里setState会触发再次执行，第二个参数传入依赖值，只有依赖变了才会再触发useEffect，空数组则只会执行一次
 >
 > 每次变化都能监控到，如果用didupdate是批量更新只获取到最新的
+>
+> 
+>
+> 时机：在组件挂载或者更新 DOM 之后的下一个tick
 
 
 
@@ -291,6 +295,12 @@ useCallback
 useMemo
 
 > 缓存变量 ，当返回函数时===  useCallback  当依赖的状态发生改变时，才会触发计算函数的执行
+
+
+
+useLayoutEffect
+
+> 时机：在组件挂载或者更新 DOM 之后同步调用
 
 
 
@@ -560,6 +570,12 @@ defaultValue={this._editDate.item["Remark"]} onChanged={this._getRemark}
 
 
 ##### 应用
+
+###### 组件缓存
+
+[React 缓存](https://www.v2ex.com/t/602399#reply0)
+
+
 
 ###### 拖拽上传
 

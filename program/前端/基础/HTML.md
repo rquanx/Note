@@ -10,6 +10,66 @@
 只要设置好属性，元素也可以自定义？
 ​	通过设置属性可以让<hh></hh>==<div></div>?
 
+#### Header/Footer
+
+header放在事物的开始
+
+footer放在事物的结尾
+
+> 所谓“事物”，不仅指页面
+>
+> 这对元素可以在文档中任何具有清晰开始和结尾的内容块中使用。这些内容块可以是表单、文章、文章中的某个部分、社交媒体网站上的帖子、卡片等
+
+
+
+##### 应用
+
+网站真正的header,footer
+
+section的header,footer
+
+
+
+#### Main
+
+主内容，只能出现一次
+
+
+
+#### Section
+
+结构上来说，它基本上就是一个具有特殊的语义的 <div>。
+
+\<section> 开启一个新的“sectioning content”区域，所以它可以有自己的 <header>、<footer>。
+
+
+
+#### Aside
+
+侧栏
+
+#### blockquote
+
+定义块引用
+
+
+
+#### Cite
+
+包含的文本对某个参考文献的引用
+
+
+
+#### del
+
+中划线
+
+
+
+#### ins
+
+下划线
+
 #### Dialog
 
 
@@ -56,6 +116,28 @@ range	滑动条
 ```
 
 文本框选择所有文本select方法：select事件
+
+
+
+##### inputmode
+
+单纯设置type键盘可能仍会有多余的键盘
+
+input设置type = "text"同时设置inputmode可以影响显示的键盘
+
+Inputmode：“tel”、“email”、“decimal”、“url”、“search”和“ none” 
+
+
+
+##### autocomplete
+
+one-time-code: 触发短信验证码自动提示
+
+username, email, new-password, 
+
+current-password: 触发浏览器提示密码建议
+
+
 
 #### A
 
@@ -277,6 +359,12 @@ li默认不会根据内容进行伸缩？可设置成display: table
 
 ### 通用属性
 
+#### for
+
+label的for属性 + input的id可以让label和input进行关联，点击label聚焦到Input
+
+
+
 #### Contenteditable
 
 元素内容可编辑
@@ -444,6 +532,49 @@ sessionstorage
 
 
 ### 应用
+
+#### 语义化
+
+```html
+<header>
+    <h1>Super duper best blog ever</h1>
+    <nav><a href="/">Home</a><a href="/about">About</a><a href="/archive">Archive</a></nav>
+</header>
+<main>
+    <article>
+    <header><h1>Why you should buy more cheeses than you currently do</h1></header>
+    <section>
+        <header><h2>Part 1: Variety is spicy</h2></header>
+        <!-- cheesy content -->
+    </section>
+    <section>
+        <header><h2>Part 2: Cows are great</h2></header>
+        <!-- more cheesy content -->
+    </section>
+</article>
+</main>
+<footer>
+    <section class="contact" vocab="http://schema.org/" typeof="LocalBusiness">
+        <h2>Contact us!</h2>
+        <address property="email">
+            <a href="mailto:us@example.com">us@example.com</a>
+        </address>
+        <address property="address" typeof="PostalAddress">
+            <p property="streetAddress">123 Main St., Suite 404</p>
+            <p>
+                <span property="addressLocality">Yourtown</span>,
+                <span property="addressRegion">AK</span>,
+                <span property="postalCode">12345</span>   
+            </p>
+            <p property="addressCountry">United States of America</p>
+        </address>
+    </section>
+</footer>
+```
+
+
+
+
 
 #### 登陆
 

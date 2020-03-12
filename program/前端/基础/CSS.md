@@ -182,14 +182,73 @@ box-sizing:border-box （IE盒模型）
 
 
 
+###### 特性
+
+不支持负值的
+
+支持百分比值，但和 height 等属性的百分比计算规则有些差异
+
+> 差异在于：padding 百分比值无论是水平方向还是垂直方向均是相对于宽度计算的
 
 
-#### 占位
 
-元素占的区域因素display
-​	block   块元素  必须独占一行
-​	inline-block	可以和别人同行的块元素，可设置宽高
-​	inline	只占元素大小的空间，一般不可设置宽高
+对于内联元素，其 padding 是会断行的
+
+> padding 区域是跟着内联盒模型中的行框盒子走的，由于文字比较多，一行显示不了，于是“若干”两字换到了下一行，于是，原本的 padding 区域也跟着一起掉下来了，根据后来居上的层叠规则，“内有”两字自然就正好被覆盖，于是看不见了
+
+
+
+##### display
+
+###### 内外盒子
+
+为了应对如inline-block等场景，对display实现了内外盒子的处理
+
+> 外盒子负责是否换行显示，内盒子绝对能否进行宽高等设置
+
+
+
+display: block ==> display: block-block // 非官方
+
+display: inline ==> display: inline-inline // 非官方
+
+> 例：display: inline-table,可以让元素同行显示，同时内部可进行表格处理
+
+
+
+###### 块级元素
+
+具有换行特性（所以能配合clear实现清除浮动???）
+
+
+
+block    
+
+list-item：li默认
+
+table：table默认
+
+
+
+###### 行内/内联元素
+
+内联元素的 padding 在垂直方向同样会影响布局，影响视觉表现
+
+内联元素没有可视宽度和可视高度的说法（clientHeight 和 clientWidth 永远是0），垂直方向的行为表现完全受 line-height 和 vertical-align 的影响，视觉上并没有改变和上一行下一行内容的间距，因此，给我们的感觉就会是垂直 padding 没有起作用
+
+
+
+inline-block	可以和别人同行的块元素，可设置宽高
+
+inline	只占元素大小的空间，一般不可设置宽高
+
+
+
+
+
+###### 标记盒子
+
+display: list-item的元素会附带一个存放圆点的附加盒子
 
 
 
@@ -331,6 +390,10 @@ overflow-x / -y 可以单独对x和y进行设置
 ##### 选择器优先级
 
 !important > 内联 > id选择器 > class选择器  > 元素选择器，当一个元素被多个不同级别的css选中，且冲突时，根据优先级  
+
+#### 伪元素
+
+根据input的类型，有的支持伪元素，有的不支持
 
 
 
@@ -549,9 +612,55 @@ Place-content
 
 ### 小知识
 
+#### 滚动条
+
+Chrome 浏览器是子元素超过 content box 尺寸触发滚动条显示
+
+IE 和 Firefox 浏览器是超过 padding box 尺寸触发滚动条显示
+
+
+
+#### 根节点样式
+
+根据不同浏览器的实现，body和html在被设置属性前可能是不被激活的，或者已经被预设了一定的作用
+
+ 浏览器会自动使用被激活的最顶层结点作为根节点，根节点属性必定作用于整个屏幕？（例设置background + border，但是background会被全屏使用）
+
+ ```css
+body 
+{ 
+    background: black; 
+    margin: 100px; 
+    border: 10px solid red; 
+}
+ ```
+
+
+
+#### 高度
+
+height: 100%
+
+要往上遍历祖先元素要有高度可寻（非auto or 没设置）
+
+```css
+body{ background:#039; border:50px solid #C00; }
+/* 给body设置背景色后可发现 默认body不是height: 100%的 */
+```
+
+
+
+
+
 #### 宽度
 
 内容总宽度超过100%会下滑（非flex，flex可以使用wrap）
+
+
+
+width: 100%
+
+> 对于 width 属性，就算父元素 width 为 auto，其百分比值也是支持的
 
 
 
@@ -777,6 +886,54 @@ inline-flex：使父元素尺寸跟随子元素们的尺寸动态调整，包裹
 
 
 
+### CSS3
+
+#### 计数器
+
+##### counter-reset
+
+设置计数器的名字和初始值
+
+```css
+.xxx 
+{ 
+    counter-reset: calc1 2 calc2 3; 
+} 
+/* 定义了两个计数器 ,初始值分别是2和3*/
+```
+
+##### counter-increment
+
+css中每出现一次 counter-increment，则对应的计数器+n，默认+1
+
+```css
+.counter:before { 
+    counter-increment: calc1 calc2; 
+}
+```
+
+##### counter(name, style)
+
+读取计数器的值，读取值是读取当前值，不会最新值
+
+style 使用 list-style-type的枚举值，显示不同的计数值，数字、字符、罗马？？
+
+```css
+.counter:before { content: counter(calc1); } 
+```
+
+##### counters(name, string);
+
+string表示嵌套的计数器时连接字符
+
+html嵌套来配合使用，counters可以让计数器在每一个父层级进行嵌套，保留之前的值作为前缀
+
+```css
+.counter { counters(calc1,'.') }
+```
+
+
+
 
 
 ### 应用
@@ -906,3 +1063,8 @@ outline
 
 
 
+##### 动画
+
+收起展开
+
+max-height从0变为足够小的安全值，可较好的实现如收起、展开的动画

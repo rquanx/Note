@@ -57,6 +57,11 @@ interface Document {
 	helloWorld: (a:string) => void;
 }
 
+// 函数类型接口
+interface discount2{
+  (price:number):number
+}
+
 
 // 箭头函数+泛型
 const fun = <T extends {}>(config: Config<T>) => props =>  {};

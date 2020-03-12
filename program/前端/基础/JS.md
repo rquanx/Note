@@ -1366,11 +1366,24 @@ ie不兼容 append()
 
 createElement不区分大小写
 
+创建的dom元素是对象，引用类型，在dom树上只能存在一份
 
+> 创建一个div，appendChild到body下作为最后一个子元素，再向body下的第一个div（非创建的） appendChild，会被转移到第一个div下，body最后一个子元素不是创建的div
+>
+> 如果进行循环引用的appendChild，会异常
+
+应用: react组件缓存
+
+
+
+##### Queryselector
+
+兼容性较好，比getElement好用
 
 #### Selection
 
 可控制光标选中，获取选中信息
+
 
 
 #### DOM

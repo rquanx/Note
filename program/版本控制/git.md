@@ -1,8 +1,34 @@
-#### 常用命令
+#### 快捷键
+
+q
+
+> 退出当前指令
+
+
+
+
+
+#### 命令
+
+##### 日志
+
+git log 
+
+> 查看提交的日志
+
+
 
 git relog
 
 > 显示所有历史记录
+
+
+
+##### 分支
+
+git checkout xxx
+
+> 切换分支
 
 
 
@@ -17,6 +43,56 @@ git cherry-pick
 > 将某个分支加入到现有，场景：在错误的分支下进行了commit，不需要重写
 
 
+
+
+
+##### 回滚
+
+add前
+
+> git checkout -- filename 将某个文件内容回滚
+>
+> git checkout -- .     一次性回滚多个文件
+
+
+
+commit前
+
+> 1、git reset HEAD filename
+>
+> 2、git reset HEAD 多个文件
+
+
+
+push前
+
+> 1、git log 找到hash
+>
+> 2、git revert hash 
+
+
+
+push后
+
+> 1、git reset --hard hash
+>
+> 2、git push --force  可以不用force?
+
+
+
+##### 源切换
+
+git remote add upstream xxxx
+
+> 将某个仓库作为只读的更新源
+
+
+
+##### 更新
+
+git pull upstream xxx
+
+> 从更新源拉起特定分支
 
 #### 脚本
 

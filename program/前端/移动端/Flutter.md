@@ -1969,6 +1969,22 @@ var out = wf("Hi","there,","gang");
 
 ```
 
+call
+
+```dart
+// 类实现call方法后，实例可被当作函数调用
+class Test {
+    void call() {}
+}
+
+var t = new Test();
+t();
+```
+
+
+
+
+
 
 
 ### 操作符
@@ -2228,7 +2244,9 @@ Flutter import not fount  可能有地方import的时候使用了双斜杠，导
 
 Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 
+#### Pods/Target Support Files/Pods-Runner
 
+[could not find included file 'Pods/Target Support Files/Pods-Runner](https://github.com/X-Wei/flutter_catalog/issues/26)
 
 
 
