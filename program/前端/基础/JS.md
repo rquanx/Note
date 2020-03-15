@@ -1400,6 +1400,10 @@ createElement不区分大小写
 
 
 
+##### 事件生命周期
+
+[dom加载事件](https://javascript.info/onload-ondomcontentloaded)
+
 
 
 #### MutationObserver
@@ -1499,6 +1503,10 @@ fetch(url, options)
 ```
 
 
+
+##### 坑
+
+xhr.open ie11 url为空字符串会抛异常
 
 
 

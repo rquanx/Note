@@ -254,3 +254,11 @@ dll存放在bin文件夹中，type要到具体的类
 #### 包出错
 \bin\roslyn\csc.exe
 找不到，语法编译器问题，nuget重装、重新生成即可
+
+
+
+
+
+#### vs打开项目后全部报错，提示找不多类
+
+可能是项目配置改了，记录：ServiceMe.Apps.CRM.Core.csproj

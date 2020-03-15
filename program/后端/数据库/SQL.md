@@ -671,6 +671,30 @@ over
 
 
 
+
+
+#### 主键
+
+##### UUID/GUID 作为主键
+
+优点：
+
+  在所有分片数据中都是唯一，容易跨数据库迁移合并
+
+  插入数据库前就知道主键值
+
+  相比数字主键更不容易泄漏信息
+
+缺点：
+
+  不直观
+
+  不能用于聚集索引，排序效率低，sql server的newsequentialid()
+
+  开销大
+
+[UUID相关文章和讨论](https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439)
+
 ## SQLServer
 
 #### 备份
@@ -679,6 +703,8 @@ over
 [数据库导出、导入，通过sql](https://blog.csdn.net/weicoliang/article/details/80324346)
 
 
+
+#### 
 
 #### 语法知识
 
@@ -978,8 +1004,52 @@ from SalesIndexInfo as a where ID=871
 
 
 
+#### 安全
+
+数据库可以有只读权限
+
 #### 博客
 
 [sql防注入](https://www.zhihu.com/question/22953267 )
+
+
+
+#### 性能优化
+
+##### 执行计划
+
+Sql执行计划：查看开销
+
+
+
+##### 索引
+
+添加索引
+
+
+
+##### 其他
+
+减少不必要的join
+
+减少不必要的子查询
+
+With as提取子查询？
+
+
+
+##### 原因
+
+大数据排序
+
+视图没有索引，对视图进行排序会慢
+
+#### 应用
+
+##### 刷数据
+
+Update a set a.c1 = b.c2 from a,b where a.ID = b.ID
+
+> 将a表的c1字段值更新为b表的c2值
 
 

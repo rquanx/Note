@@ -20,6 +20,14 @@ flutter\bin   // Path设置sdk解压路径
 
 4.cmd 执行 flutter doctor 按提示进行设置
 
+
+
+Jar下载：使用4g
+
+flutter升级： 普通网络即可
+
+
+
 ## 创建项目
 
 环境安装完毕后
@@ -1221,6 +1229,10 @@ CupertinoNavigationBar会覆盖child内容
 
 只需在main的AndroidManifest.xml的application标签设置即可
 
+
+
+
+
 ### 知识点
 
 #### 插件版本处理
@@ -1259,6 +1271,14 @@ APP调用js
 ## 动画
 
 在widget中实现运行动画，首先需要加入TickerProviderStateMixin，并且声明一个controller和动画(Animation)本身
+
+#### 路由动画
+
+> 继承PageRouteBuilder，重写transitionsBuilder方法
+>
+> 已封装好的动画效果，xxxTransition
+
+
 
 
 
@@ -1444,6 +1464,14 @@ flex
 
 
 
+### RepaintBoundary
+
+渲染一块区域，可通过自带UI库，将对应取回进行截图
+
+作为一个单独区域渲染时，利用好可以减少渲染性能消耗
+
+
+
 
 
 ### GestureDetector
@@ -1560,6 +1588,14 @@ class TabContainer extends StatelessWidget {
 ```
 
 
+
+### 应用
+
+涂鸦
+
+1、Canvas作为画笔
+
+2、RepaintBoundary 截图widget
 
 
 
