@@ -269,6 +269,7 @@ useEffect
 > 
 >
 > 时机：在组件挂载或者更新 DOM 之后的下一个tick
+> 由于时机问题？
 
 
 
@@ -284,8 +285,6 @@ useCallback
 
 > 成一个不随着组件更新而再次创建的 callback
 >
-> 
->
 > 缓存函数  用来建立常量，不随render重建,依赖项变化才重建   == useMemo
 >
 > 函数要么放外面声明，要么用usecallback，提高性能
@@ -294,8 +293,9 @@ useCallback
 
 useMemo
 
-> 缓存变量 ，当返回函数时===  useCallback  当依赖的状态发生改变时，才会触发计算函数的执行
-
+> 返回会缓存计算值
+> 当依赖的状态发生改变时，才会触发计算函数的执行
+> 在渲染期间执行
 
 
 useLayoutEffect

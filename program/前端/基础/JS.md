@@ -13,7 +13,7 @@ ES2015（ES6）
 当访问变量时,虽然基本类型不是对象，但是调用方法时会自动产生一个对象，从而实现调用方法,执行完马上销毁对象
 
 ```javascript
-var s  = "1"; 
+var s  = "1";
 var s2 = s.xxxx();
 /*
 内部细节
@@ -34,6 +34,7 @@ Number(xx)  和 new Number(xx)  不同,一个是类型转换
 ##### 字符串
 
 ###### 模板字符串
+
  ${name}字符串模板进行拼接，ie不兼容
 
 ###### 标签模板
@@ -63,7 +64,6 @@ null === 没有对象，object原型的原型就是null
 
 
 
-
 ##### 运算符
 
 运算符优先级   类型隐式转换
@@ -71,12 +71,14 @@ null === 没有对象，object原型的原型就是null
 a ? a : b ==> a || b
 
 ##### ==
+
 [== 时的类型转换](https://tc39.es/ecma262/#sec-abstract-equality-comparison)
 > 数字/字符串/bool == 数字/字符串/bool   类型不一致时，会将另一方转成数字 
 
 #### 循环
 
 ##### 迭代器
+
 解构赋值使用的是迭代器
 For of可中断，中断时会调用return函数
 > break / throw,均会执行return
@@ -85,13 +87,13 @@ For of可中断，中断时会调用return函数
 
 ```javascript
 // for of  本质通过迭代器(symbol.iterator)的next()   可自定义
-for(var i of array) { 
-    
+for(var i of array) {
+
 }  
 
 // for in 遍历所有可枚举的属性
 for(var i in obj) {
-    
+
 }
 
 
@@ -110,22 +112,29 @@ for(var i in obj) {
 ##### 按键
 
 ###### 绑定事件
+
 一般绑定keydown事件
 
 ###### key和keyCode
+
 Event.key和event.keyCode，如果不需要兼容IE8下，建议使用.key，不用考虑不同系统间keycode不一致的问题，也更方便理解
 
 ##### 事件绑定
+
 ###### 绑定移除
+
 移除dom时浏览器会自动移除监听事件
 
 ###### 全局绑定
+
 全局绑定事件可能会冲突，如为了实现点击上下选择东西，可能会与浏览器的上下滚动冲突
 
 ##### trim
+
 xxx.trim()，trim()不止过滤普通空格（Space键敲出来的空格）
 
 ##### 全角转换
+
 全角转半角String.fromCharCode(str.charCodeAt(i)-65248)是常规方法，适用于任何全角字符
 
 
