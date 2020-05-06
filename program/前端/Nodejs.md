@@ -13,12 +13,28 @@
 [记录一次由一行代码引发的“血案”](https://cnodejs.org/topic/5aaba2dc19b2e3db18959e63)
 [一行 delete require.cache 引发的内存泄漏血案](https://zhuanlan.zhihu.com/p/34702356)
 
+
+
+#### 文件操作
+
+
+
+#### 路径操作
+
+
+
+require.resolve拼接好路径以后，它会主动去帮你判断这个路径下的文件是否存在
+
 #### 模块
 
-require.resolve的:拼接好路径以后，它会主动去帮你判断这个路径下的文件是否存在
+##### 引入
+
+当存在多个版本的库时，require可能出现错误
 
 
-##### 使用
+
+
+##### 技巧
 
 ###### 不需要引入即可使用的模块
 

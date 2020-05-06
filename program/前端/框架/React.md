@@ -35,9 +35,21 @@ the state is meant to hold variables that relate to the current state of the UI
 
 ###### SetState
 
+**同步/异步**
+
 一般会是异步进行
 
-class组件会批量更新
+完整：只在合成事件和钩子函数中是“异步”的，在原生事件和setTimeout 中都是同步的。
+
+> setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值（setState后state中值还是旧的），形成了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。
+
+
+
+特点：class组件会批量更新
+
+> 批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次setState，setState的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时setState多个不同的值，在更新时会对其进行合并批量更新。
+
+
 
 setState(x)  x为null时不触发，{}会触发，必定render，然后根据新的结果更新页面
 
@@ -45,8 +57,10 @@ setState(x)  x为null时不触发，{}会触发，必定render，然后根据新
 >
 > render时，会重新render所有子组件，父组件不会render
 
+
+
 在内部进行setState时会进入队列，从而形成异步、批量render
-但是如果在外部进行setState，则由于React无法捕获和优化所以会马上render,代码层面上则是batchUpdate不为true?
+但是如果在外部进行setState，则由于React无法捕获和优化所以会马上render,代码层面表现为batchUpdate不为true?
 
 
 ##### 使用
@@ -278,6 +292,8 @@ useRef
 > 用来存储数据
 >
 > 创建一个一直存在的可变对象，修改值不会影响render
+>
+> 可当作this，作为一个固定的容器存放想要保持的数据
 
 
 

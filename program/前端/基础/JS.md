@@ -1089,7 +1089,8 @@ m多行
 
 
 
-####### 引用
+###### 引用
+
 将分组的结果重复使用，分组自动从1开始进行编号
 
 ```js
@@ -1126,9 +1127,20 @@ m多行
 空格 + 制表符(\t) + 换行符(\n) + 换页符(\f)
 
 
+
+###### 单词边界\b
+
+表示单词边界
+
+
+
+
 ##### 杂
-匹配中文
-> [\u4e00-\u9fa5]
+###### 匹配中文
+
+[\u4e00-\u9fa5]
+
+
 
 
 ##### 网站
@@ -1195,15 +1207,55 @@ T1完成，回调t2，t2返回Promise，是异步操作，等待t2完成，resol
 
 ##### Methods
 
-- toDataURL     将canvas内容转成base64编码的数据
-- getActiveObject  获取当前图层
-- sendBackwards  将图层往后一层?
-- bringForward    图层往前一层
-- renderAll      强制重新渲染
+**getContext**
+
+contextType
+
+- 2d：创建 CanvasRenderingContext2D 二维渲染上下文，像图片这种二维空间的选这个类型。
+
+- webgl/experimental-webgl：创建 WebGLRenderingContext 三维渲染上下文对象，适用于三维动画制作开发。
+
+- webgl2/experimental-webgl2：创建一个 WebGL2RenderingContext 三维渲染上下文对象，webgl的升级版本。
+
+- bitmaprenderer：将创建将canvas内容替换为指定ImageBitmap功能的ImageBitmapRenderingContext，canvas与位图的生成
+
+**drawImage**
+
+只在contextType为2d的时候才可以被调用
+
+参数可设置位置、大小.....
+
+可进行画图、组合图、剪切图、放大镜
 
 
 
+**toDataURL**     
 
+将canvas内容转成base64编码的数据, data:[<mediatype>][;base64],<data>
+
+通过参数可设置质量
+
+
+
+**getActiveObject**  
+
+获取当前图层
+
+**sendBackwards**  
+
+将图层往后一层?
+
+**bringForward**   
+
+ 图层往前一层
+
+**renderAll**      
+
+强制重新渲染
+
+
+
+##### 应用
 
 #### 其他
 

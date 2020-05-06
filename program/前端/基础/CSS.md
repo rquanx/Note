@@ -294,6 +294,90 @@ top、bottom、left、right是相对于父元素的
 
 
 
+#### 流
+
+浏览器默认的 HTML 布局方式，此时浏览器不对页面做任何布局控制，
+
+position为static或relative，且float为none时会触发普通流，普通流有以下特性：
+
+- 普通流中，所有的盒一个接一个排列
+
+- BFC 中，盒子会竖着排列
+
+- IFC 中，盒子会横着排列
+
+- 静态定位中（position 为 static），盒的位置就是普通流里布局的位置
+
+- 相对定位中（position 为 relative），盒的偏移位置由 top，right，bottom，left 定义，即使有偏移，仍然保留原有的位置，其它普通流不能占用这个位置
+
+> 会霸占元素位置 + 偏移位置的空间？待验证
+
+
+
+##### 浮动
+
+- 浮动定位中，盒称为浮动盒（Floating Box）
+
+- 浮动盒会脱离普通流，浮动到当前行的开头或结尾
+
+- 普通流会环绕在浮动盒周围，除非设置 clear 属性
+
+
+
+##### BFC
+
+以下元素会创建 BFC：
+
+- 根元素（<html>?）
+
+- 浮动元素（float 不为 none）
+
+- 绝对定位元素（position 为 absolute 或 fixed）
+
+- 表格的标题和单元格（display 为 table-caption，table-cell）
+
+- 匿名表格单元格元素（display 为 table 或 inline-table）
+
+- 行内块元素（display 为 inline-block）
+
+- overflow 的值不为 visible 的元素
+
+- 弹性元素（display 为 flex 或 inline-flex 的元素的直接子元素）
+
+- 网格元素（display 为 grid 或 inline-grid 的元素的直接子元素）
+
+
+
+**特点**
+
+- BFC之间是隔离的
+  - 一个元素不能同时存在于两个 BFC 中，当BFC嵌套的时候,内层元素只属于内层BFC
+
+- 盒子竖着排列：普通流排列
+
+- bfc和相邻的元素不产生上下边距折叠
+  - 使用bfc包裹子元素后，bfc内容子元素不会和bfc的相邻元素产生边距折叠
+
+- 浮动时：不可重叠
+
+- 计算高度时不会忽略浮动元素的高度，可用来解决高度塌陷
+
+
+
+##### FFC
+
+flex布局产生
+
+在css2.1中也属于BFC
+
+
+
+**GFC**
+
+grid布局产生
+
+在css2.1中也属于BFC
+
 #### 层次
 
 ##### z-index   
@@ -451,6 +535,22 @@ transform:translateY(-50%)		以自身原本为参考，往上移动50%
 ##### 伪类连用
 
 a:visited:hover {xxx}
+
+
+
+##### 其他
+
+**:empty**
+
+匹配内容为空的标签
+
+可实现对空内容的标签进行填充/隐藏处理
+
+
+
+**:only-child**
+
+匹配没有任何兄弟元素的元素
 
 
 
@@ -937,6 +1037,34 @@ html嵌套来配合使用，counters可以让计数器在每一个父层级进�
 
 
 ### 应用
+
+
+
+#### 数据处理
+
+##### 通过伪类来上传按钮点击数据
+
+```css
+.button-1:active::after {
+
+  content: url(./pixel.gif?action=click&id=button1);
+
+  display: none;
+
+}
+
+.button-2:active::after {
+
+  content: url(./pixel.gif?action=click&id=button2);
+
+  display: none;
+
+}
+```
+
+
+
+
 
 #### 技巧
 
