@@ -349,6 +349,24 @@ defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序�
 
 
 
+#### Table
+
+cellpadding
+
+> 表格内容padding
+
+
+
+cellspacing
+
+
+
+border
+
+> 表格边框宽度
+
+
+
 #### Ul
 
 一系列类似的内容，且不关心顺序，常用ul作结构

@@ -33,6 +33,12 @@ Number(xx)  和 new Number(xx)  不同,一个是类型转换
 
 ##### 字符串
 
+在 JavaScript 中，字符串值是一个由零或多个 Unicode 字符（字母、数字和其他字符）组成的序列。
+
+字符串中的每个字符均可由一个转义序列表示。比如字母 a，也可以用转义序列 \u0061 表示
+
+
+
 ###### 模板字符串
 
  ${name}字符串模板进行拼接，ie不兼容
@@ -42,6 +48,16 @@ Number(xx)  和 new Number(xx)  不同,一个是类型转换
 fun`asd`
 
 通过模板字符串调用函数
+
+
+
+###### 执行字符串代码
+
+1、eval 
+
+2、new Function
+
+
 
 ##### Null
 
@@ -68,12 +84,21 @@ null === 没有对象，object原型的原型就是null
 
 运算符优先级   类型隐式转换
 
+###### 三元运算符
+
 a ? a : b ==> a || b
 
-##### ==
+###### ==
 
 [== 时的类型转换](https://tc39.es/ecma262/#sec-abstract-equality-comparison)
+
 > 数字/字符串/bool == 数字/字符串/bool   类型不一致时，会将另一方转成数字 
+
+
+
+###### +
+
+[为什么 + 'b' === Nan](https://tc39.es/ecma262/#sec-unary-plus-operator)
 
 #### 循环
 
@@ -948,6 +973,8 @@ round()   四舍五入
 
 设置正则表达式时不能随便添加空格
 
+##### Mode	
+
 /xxx/mode
 mode
 g全局，匹配所有的，否则只匹配一个
@@ -955,8 +982,20 @@ i不区分大小写
 m多行
 红书p104
 
-
 ##### 操作符
+
+###### ?
+
+如果在数量词 *、+、? 或 {}, 任意一个后面紧跟该符号（?），会使数量词变为非贪婪（ non-greedy） ，即匹配次数最小化
+```js
+// 尽量匹配多的a进行替换
+console.log("aaabc".replace(/a+/g, "d")); // dbc
+
+// 匹配少的a进行替换
+console.log("aaabc".replace(/a+?/g, "d")); // dddbc
+```
+
+
 
 ###### 开头 ^
 ```js

@@ -39,8 +39,6 @@ Loader  不写Include   会处理全部符合正则的代码
 
 ​	写include 处理include路径下所有符合条件的文件
 
-
-
 #### 插件
 
 ##### dll plugin
@@ -207,6 +205,36 @@ export { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 以这个js为入口进行dll打包
 
 #### 知识点
+
+##### 魔术注释
+
+```js
+import (
+  /* webpackChunkName: “my-chunk-name” */ 	// 设置chunk name
+  /* webpackMode: lazy */					// 设置懒加载模式
+  /* webpackPrefetch: true */				// 类似<link rel=“prefetch”> 在空闲时加载所需资源，确保代码在未来一定会用到时，再开启该
+  './footer'
+)
+```
+
+
+
+##### CodeSplit
+
+```js
+// 静态分割固定路径
+const getModal = () => import('./src/modal.js') 
+
+// 动态加载
+const getTheme = (themeName) => import(`./src/themes/${themeName}`)
+
+// 实现
+// Webpack 会在构建时将你声明的目录下的所有可能分离的代码都抽象为一个文件（这被称为 contextModule 模块）
+```
+
+
+
+
 
 ##### SouceMap
 

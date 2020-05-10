@@ -203,7 +203,31 @@ defaultConfig
 
 ## APP名称
 
+### 显示名
+
 默认APP名称使用工程文件夹名，修改较麻烦，可网上查询资料
+
+android/app/src/main/AndroidManifest.xml android:label
+
+ios/Runner/Info.plist 
+
+```xml
+<key>CFBundleName</key> <string>应用名</string>
+```
+
+
+
+### APPID
+
+创建项目时设置：flutter create --org com.caojianfeng abc
+
+> 应用组织和名称  最终appid会是com.caojianfeng.abc
+>
+> 分别对应
+>
+> AndroidManifest.xml中的package字段
+>
+> ios/prooject.pbxproj中的PRODUCT_BUNDLE_IDENTIFIER字段
 
 
 
@@ -1214,6 +1238,35 @@ CupertinoNavigationBar会覆盖child内容
 ### CupertinoSwitch
 
 开关,switch按钮
+
+
+
+## 图像
+
+### RenderRepaintBoundary
+
+```dart
+  // 手动导入一下iamge包
+  import 'package:image/image.dart' as image;
+  
+  // 将一个Widget转为image.Image对象
+  Future<image.Image> _getImageFromWidget() async {
+    // _globalKey为需要图像化的widget的key
+    RenderRepaintBoundary boundary = _globalKey.currentContext.findRenderObject();
+    
+    // ui.Image => image.Image
+    var img = await boundary.toImage();
+    var byteData = await img.toByteData(format: ImageByteFormat.png);
+    var pngBytes = byteData.buffer.asUint8List();
+
+    return image.decodeImage(pngBytes);
+  }
+```
+
+#### 应用
+
+截图
+
 
 
 ## WebView

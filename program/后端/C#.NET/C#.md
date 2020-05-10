@@ -2,6 +2,117 @@
 
 
 
+#### Records
+
+
+
+#### 解构
+
+对象实现Deconstruct方法即可被解构
+
+```C#
+// 按此格式对类定义Deconstruct方法接口
+class type
+{
+    private typeA A;
+    private typeB B;
+    public void Deconstruct(out typeA a, out typeB b)
+    {
+        a = A;
+        b = B;
+    }
+}
+
+
+
+class MyDeconstruct
+{
+    private int A => 1;
+    private int B => 2;
+    public void Deconstruct(out int a, out int b)
+    {
+        a = A;
+        b = B;
+    }
+}
+var x = new MyDeconstruct();
+var (o, u) = x;
+```
+
+
+#### Range
+
+只要类可以被计数（拥有 Length 或 Count 属性），并且可以被切片（拥有一个 Slice(int, int) 方法），那么就可以用该特性
+
+```C#
+Range range = 1..4;  // 表示一个范围从索引为1的到索引为4的
+string[] names = { "Archimedes", "Pythagoras", "Euclid", "Socrates", "Plato" };
+foreach(var item in names[range]) {}
+
+foreach(var item in names[1..4]) {}
+
+// 两端均除去一个
+foreach(var item in names[1..^1]) {}
+// [..] == [0..^0]  全部
+// [1..] == [1..^0]  除去第一个
+```
+
+#### 索引
+
+Indexes 用于索引，例如使用 ^1 索引倒数第一个元素
+
+使用：
+1、内部维护一个数组属性，然后通过属性时是读取特定的属性
+2、返回特定的计算值
+
+```C#
+// 按以下方式定义后，可以对变量进行索引访问
+// 可以定义多个
+<return type> this[<parameter type> index]
+{
+    get{
+        //  自定义通过索引读取时操作
+        // return the value from the specified index of an internal collection
+    }
+    set{
+        // 自定义通过索引赋值时操作
+        // set values at the specified index in an internal collection
+    }
+}
+
+class StringDataStore
+{
+    private string[] strArr = new string[10]; // internal data storage
+
+    public string this[int index]
+    {
+        get
+        {
+            if (index < 0 &&  index >= strArr.Length)
+                throw new IndexOutOfRangeException("Index out of range");
+
+                return strArr[index];
+        }
+
+        set
+        {
+            if (index < 0 ||  index >= strArr.Length)
+                throw new IndexOutOfRangeException("Index out of range");
+
+            strArr[index] = value;
+        }
+    }
+}
+
+StringDataStore strStore = new StringDataStore();
+
+strStore[0] = "One";
+strStore[1] = "Two";
+strStore[2] = "Three";
+strStore[3] = "Four";
+```
+
+
 #### 枚举
 
 C#的枚举值toString()会返回枚举的文本值
@@ -219,6 +330,16 @@ label属性  提示标题title === tooltip   均有效
 
 
 
+#### HelpPage
+
+说明文档xml更新
+
+1、项目属性设置-->生成-->生成的xml路径
+
+2、将xml拷贝至app_data
+
+
+
 #### Httpmodule
 
 编写代码，继承http，拦截请求或在预处理，asp.net的请求流程
@@ -251,11 +372,17 @@ dll存放在bin文件夹中，type要到具体的类
 
 ### 问题
 
+
+
+#### system.badimageformatexception 未能加载文件或程序集问题解决
+
+[system.badimageformatexception 未能加载文件或程序集问题解决](https://blog.csdn.net/weixin_33881753/article/details/85745198)
+
+> 原因是项目CPU默认X86我的系统是X64，将目标平台改为 Any CPU就可以了;
+
 #### 包出错
 \bin\roslyn\csc.exe
 找不到，语法编译器问题，nuget重装、重新生成即可
-
-
 
 
 

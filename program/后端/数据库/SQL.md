@@ -822,14 +822,9 @@ mysql底层使用的数据结构，节点中存储索引（地址）
 将数据导出成sql
 [数据库导出、导入，通过sql](https://blog.csdn.net/weicoliang/article/details/80324346)
 
-
-
-#### 
-
 #### 语法知识
 
-关键字
-用[]  [Delete]
+关键字可以用[]  [Delete]
 
 ##### 修改表名/列名
 ```sql
@@ -875,9 +870,15 @@ Sql profiler
 
 #### 存储过程
 
+使用 exec name
 
+##### 参数化
 
-##### 小知识
+如果存储过程中使用字符串拼接sql的话，上面的参数化将不会起作用，单引号必须经过判断并替换，在数据库中，用2个单引号代表1个实际的单引号。所以，如果是拼接sql字符串的方式，需要用Replace(@para,'''', '''''')来替换一下，将1个单引号替换为2个就没有问题了。
+
+使用这种参数化查询的办法，防止SQL注入的任务就交给ADO.NET了, 如果在项目中统一规定必须使用参数化查询，就不用担心因个别程序员的疏忽导致的SQL注入漏洞了。     但是，问题还没有完，SQL注入的漏洞是堵住了，但是查询结果的正确性，参数化查询并不能帮上什么忙。
+
+#### 小知识
 
 多条sql语句用;连接
 
@@ -906,13 +907,19 @@ Sql profiler
 ###### 类型问题
 时间类型存储null时会变成 0001-01-01T00:00:00
 
+
+
 ###### 字符串自动补全空格问题
-字段类型为char
+字段类型为char会自动补全
+
+
 
 
 ###### 快捷键
 
 f5进行语句使用
+
+
 
 ###### 操作
 
@@ -937,196 +944,40 @@ select (
 						where DataKey='T201900000001'	and IsMasschange=@IsMasschange
 ```
 
-存储过程
-
-```sql
-/****** Object:  StoredProcedure [dbo].[SP_GetMassChange]    Script Date: 2018/6/6 9:11:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
---获取预算表单信息
-ALTER PROCEDURE [dbo].[SP_GetMassChange]
-@DataKey varchar(200),
-@IsMassChange bit
-AS
-BEGIN
-	declare @tabHead table(
-	IndexName nvarchar(200),
-	FormKey nvarchar(50)
-	)
-
-	insert into @tabHead (IndexName,FormKey) 
-	(select IndexName,FormKey from CostIndexHeadInfo where DataKey=@DataKey and IsMasschange=@IsMassChange )
-	insert into @tabHead (IndexName,FormKey) 
-	(select IndexName,FormKey from OpexIndexHeadInfo where DataKey=@DataKey and IsMasschange=@IsMassChange )
-	insert into @tabHead (IndexName,FormKey) 
-	(select IndexName,FormKey from AssumptionIndexHeadInfo where DataKey=@DataKey and IsMasschange=@IsMassChange )
-	insert into @tabHead (IndexName,FormKey) 
-	(select Title,FormKey from MasterIndex where DataKey=@DataKey and IsMasschange=@IsMassChange )
-
-	select * from @tabHead
 
 
-	declare @tabBody table(
-	IndexName nvarchar(200),
-	FormKey nvarchar(50)
-	)
+#### 角色权限
 
-	insert into @tabBody (IndexName,FormKey) 
-	(select 
-		(ISNULL(((select IndexName from SalesIndexInfo where DataKey=@DataKey and RowNum = a.ParentID   and  ParentID=0 ) + '_'),'')
-		+(IndexName)) as 'IndexName' ,FormKey
-		from SalesIndexInfo as a where DataKey=@DataKey and IsMasschange=@IsMassChange)
-	 
-	insert into @tabBody (IndexName,FormKey) 
-	(select 
-		(ISNULL(((select IndexName from CostIndexInfo where DataKey=@DataKey and RowNum = a.ParentID   and  ParentID=0 ) + '_'),'')
-		+(IndexName)) as 'IndexName' ,FormKey
-		from CostIndexInfo as a where DataKey=@DataKey and IsMasschange=@IsMassChange) 
+##### 角色
 
-	insert into @tabBody (IndexName,FormKey) 
-	(select 
-		(ISNULL(((select IndexName from OpexIndexInfo where DataKey=@DataKey and RowNum = a.ParentID   and  ParentID=0 ) + '_'),'')
-		+(IndexName)) as 'IndexName' ,FormKey
-		from OpexIndexInfo as a where DataKey=@DataKey and IsMasschange=@IsMassChange) 
-
-	insert into @tabBody (IndexName,FormKey) 
-	(select 
-		(ISNULL(((select IndexName from AssumptionIndexInfo where DataKey=@DataKey and RowNum = a.ParentID   and AssumptionIndexInfo.ParentID=0 ) + '_'),'')
-		+(IndexName)) as 'IndexName' ,FormKey
-		from AssumptionIndexInfo as a where DataKey=@DataKey and IsMasschange=@IsMassChange) 
-
-	insert into @tabBody (IndexName,FormKey) 
-	select IndexName,FormKey from MasterByMonth where DataKey = 'T201900000001' and IsMasschange=@IsMassChange
-
-	insert into @tabBody (IndexName,FormKey) 
-	select IndexName,FormKey from SCRIndexInfo where DataKey = 'T201900000001' and IsMasschange=@IsMassChange
-
-	select * from @tabBody
-END
-
---exec [SP_GetMassChange] 'T201900000001',1
-
-/****** Object:  StoredProcedure [dbo].[SP_GetMassChange]    Script Date: 2018/6/5 16:45:03 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
---获取预算表单信息
-ALTER PROCEDURE [dbo].[SP_GetMassChange]
-@DataKey varchar(200),
-@IsMassChange bit
-AS
-BEGIN
-CREATE TABLE #t 
-( 
-     [IndexName] [nvarchar()]  NOT NULL , 
-     [Oid] [ int ]  NOT NULL , 
-) 
-
-	declare @tabHead()
-
-	declare @tabBody()
-	select * from SalesIndexInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID
-	select * from SCRIndexInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID
-	select * from CostIndexInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID
-	select * from OpexIndexInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID
-	select * from AssumptionIndexInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID
-	select * from MasterByMonth where DataKey=@DataKey  and IsMasschange=@IsMasschange
-
-	select * from CostIndexHeadInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID	
-	select * from OpexIndexHeadInfo where DataKey=@DataKey  and IsMasschange=@IsMasschange order by ID
-	select * from AssumptionIndexHeadInfo where DataKey=@DataKey and IsMasschange=@IsMasschange order by ID
-	select * from MasterIndex where DataKey=@DataKey  and IsMasschange=@IsMasschange
-	
-END
-
---exec [SP_GetMassChange] 'T','T201900000001',1
-
-/****** Object:  StoredProcedure [dbo].[SP_GetTemplateData]    Script Date: 2018/6/5 10:29:19 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
---获取预算表单信息
-ALTER PROCEDURE [dbo].[SP_GetTemplateData]
-@DataType nvarchar(200),
-@DataKey varchar(200)
-AS
-BEGIN
-	select * from SalesIndexInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from CostIndexHeadInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from SCRIndexInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from CostIndexInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from OpexIndexHeadInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from OpexIndexInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from AssumptionIndexHeadInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from AssumptionIndexInfo where DataKey=@DataKey and DataType=@DataType order by ID
-	select * from MasterIndex where DataKey=@DataKey and DataType=@DataType
-	select * from MasterByMonth where DataKey=@DataKey and DataType=@DataType
-
-	if @DataType='F'
-	begin
-		select * from StoreBudgetAsset  where FormID=@DataKey
-	end
-
-	
-END
-
---exec SP_GetTemplateData 'T','T201900000001'
-
-
---分别在两个表查出一列合并
-select count(1) as 'count',(select count(1) as 'completed' from  MassChangeSchedule with(nolock) where State = 0) as 'completed'  from MassChangeSchedule with(nolock)
-
-
---???
-select IndexName,FormKey from SalesIndexInfo where ParentID=0 and  DataKey='T201900000001'
-Union All 
-select 
-((
-select IndexName from SalesIndexInfo where DataKey='T201900000001' and RowNum = a.ParentID   and  ParentID=0 
-)
-+'_'+(IndexName)) as 'IndexName' ,FormKey
-from SalesIndexInfo as a where DataKey='T201900000001' and ParentID <> 0
-
-//////////////////////////////////////////////////////////////////////////////////////
-select 
-(ISNULL (
-select IndexName from SalesIndexInfo where DataKey='T201900000001' and RowNum = a.ParentID   and  ParentID=0 
-,'')
-+'_'+(IndexName)) as 'IndexName' ,FormKey
-from SalesIndexInfo as a where DataKey='T201900000001'
-
-select FormKey,(
-select IndexName from SalesIndexInfo where RowNum = a.ParentID and DataKey='T201900000001'  and  ParentID=0
-)+'_'+(IndexName) 
-from SalesIndexInfo as a where ID=871 
-```
+| 角色名称          | 功能描述                                                     |
+| ----------------- | ------------------------------------------------------------ |
+| **bulkadmin**     | 可以运行 bulk insert 语句  bulk insert 详细 http://blog.csdn.net/jackmacro/article/details/5959321 |
+| **dbcreator**     | 创建，修改，删除，还原任何数据库                             |
+| **diskadmin**     | 管理磁盘文件                                                 |
+| **processadmin**  | 可以终止在数据库引擎实例中运行的程序                         |
+| **securityadmin** | 可以管理登录名及其属性，具有grant,deny,和revoke服务器和数据库级别权限，还可以重置sql server 登录名的密码 |
+| **serveradmin**   | 可以更改服务器范围的配置选项和关闭服务器                     |
+| **setupadmin**    | 可以添加和删除链接服务器，并对可以执行某些系统执行存储过程(如，sp_serveroption) |
+| **sysadmin**      | 在sql server中进行任何活动，该觉得的权限跨越所有其他固定服务器角色，默认情况下，windows builtin\admin组(本地管理员组)的所有成员都是sysadmin 固定服务器角色的成员 |
 
 
 
-##### 参数化
+##### 权限
 
-如果存储过程中使用字符串拼接sql的话，上面的参数化将不会起作用，单引号必须经过判断并替换，在数据库中，用2个单引号代表1个实际的单引号。所以，如果是拼接sql字符串的方式，需要用Replace(@para,'''', '''''')来替换一下，将1个单引号替换为2个就没有问题了。
+deny权限优先级更高，例：设置了owner和denywriter，仍然是不可写的
 
-使用这种参数化查询的办法，防止SQL注入的任务就交给ADO.NET了, 如果在项目中统一规定必须使用参数化查询，就不用担心因个别程序员的疏忽导致的SQL注入漏洞了。     但是，问题还没有完，SQL注入的漏洞是堵住了，但是查询结果的正确性，参数化查询并不能帮上什么忙。
-
-
-##### 问题
-
-[sa用户启用问题，sql启动sa后仍报错，需要修改的登录模式，重启sql服务](https://blog.csdn.net/ytm15732625529/article/details/72630050)
-
-
-###### favtory库
-存储过程设置参数，要设置空值DBNull.Value;
-
-
-
-#### 安全
-
-数据库可以有只读权限
+| 角色名称              | 功能描述                                                     |
+| --------------------- | ------------------------------------------------------------ |
+| **db_owner**          | 可以执行数据库中技术所有动作的用户                           |
+| **db_accessadmin**    | 可以添加，删除用户的用户                                     |
+| **db_datareader**     | 可以查看所有数据库中用户表内数据的用户                       |
+| **db_datawrite**      | 可以添加，修改，删除所有数据库用户表内数据的用户             |
+| **db_ddladmin**       | 可以在数据库中执行ddl操作的用户，DDL（Data Definition Language）数据表的创建以及管理 |
+| **db_securityadmin**  | 可以管理数据库中与安全权限有关所有动作的用户                 |
+| **db_backoperator**   | 可以备份数据库的用户(可以发布dbcc和checkPoint语句，这两个语句一般在备份前使用 |
+| **db_denydatareader** | 不能看到数据库中任何数据的用户                               |
+| **db_denydatawrite**  | 不能修改数据库中任何数据的用户                               |
 
 #### 博客
 
@@ -1163,6 +1014,19 @@ With as提取子查询？
 大数据排序
 
 视图没有索引，对视图进行排序会慢
+
+
+
+#### 问题
+
+[sa用户启用问题，sql启动sa后仍报错，需要修改的登录模式，重启sql服务](https://blog.csdn.net/ytm15732625529/article/details/72630050)
+
+
+###### favtory库
+
+存储过程设置参数，要设置空值DBNull.Value;
+
+
 
 #### 应用
 
