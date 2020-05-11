@@ -338,6 +338,14 @@ declare module '*.html';
 - 安装tslint
 - package.json的script中设置指令
 
+##### 属性
+
+paths属性
+
+> import提示时会按顺序进行匹配
+
+
+
 ##### 设置
 
 [tslint规则](https://palantir.github.io/tslint/rules/)
