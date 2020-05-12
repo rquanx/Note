@@ -2267,7 +2267,20 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 [flutter笔记](https://www.yuque.com/zhiwa/deepin/vqc6y1)
 
+
+
+#### 安卓10webview卡住
+
+java.lang.SecurityException: Neither user 10585 nor current process has android.permission.WAKE_LOCK.
+
+> 缺少权限
+
+> 在appmainfest中增加```<uses-permission android:name="android.permission.WAKE_LOCK"/>```
+
+
+
 #### 初始化
+
 run app前执行 WidgetsFlutterBinding.ensureInitialized();
 > 不执行，在Dart 2.7runapp 前初始化会报错
 

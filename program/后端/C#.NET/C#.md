@@ -1,3 +1,11 @@
+### 学习
+
+#### 路线
+
+[.net roadMap](https://zhuanlan.zhihu.com/p/62936714)
+
+
+
 ### 基本语法
 
 
@@ -204,9 +212,35 @@ where T : NameOfClass 限制类型参数T必须继承自某个类或实现某个
 
 
 
+###  反射
+
+
+
+```c#
+Type t = typeof(T) // 获取Type类型的变量，记录类的类型
+var constructors = t.GetConstructors() //获取所有的构造函数
+var interfaces = t.GetInterfaces() // 获取继承的所有接口
+var paramsInfos = constructors[0].GetParameters() // 获取构造函数的参数信息
+parameterInfo.ParameterType // 读取参数信息的类型
+```
+
 
 
 ### 知识点
+
+#### 函数传递
+
+```c#
+// 方法委托，存储函数
+
+// === Func(Type) { return object; }
+
+public Func<Type, object> GetParameterInstance { get; set; }
+```
+
+
+
+
 
 #### 拓展
 

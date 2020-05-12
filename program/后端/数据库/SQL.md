@@ -291,6 +291,16 @@ ALTER COLUMN column_name datatype
 
 #### 关键词
 
+##### distinct
+
+去重
+
+多列时，将多个字段完全相同的数据过滤
+
+> 原理：当DISTINCT多个字段时，是将多个字段的值拼接，再进行DISTINCT
+
+
+
 ##### order by
 
 ```sql
@@ -1029,6 +1039,37 @@ With as提取子查询？
 
 
 #### 应用
+
+##### join第一条
+
+```sql
+-- 1
+SELECT
+  Orders.OrderNumber,
+  LineItems.Quantity,
+  LineItems.Description
+FROM
+  Orders
+  JOIN LineItems ON LineItems.LineItemGUID = (
+    SELECT
+      TOP 1 LineItemGUID
+    FROM
+      LineItems
+    WHERE
+      OrderID = Orders.OrderID
+  )
+
+-- 2
+select * from users join (
+    select * from widgets
+    where id in (
+        select max(id) from widgets group by user_id
+    )
+) as most_recent_user_widget
+on users.id = most_recent_user_widget.user_id
+```
+
+
 
 ##### 刷数据
 
