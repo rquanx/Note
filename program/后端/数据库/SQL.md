@@ -291,6 +291,39 @@ ALTER COLUMN column_name datatype
 
 #### 关键词
 
+##### Case when
+
+**查询**
+
+```sql
+CASE column
+      WHEN '长沙' THEN '湖南' 
+      WHEN '衡阳' THEN '湖南'
+      WHEN '海口' THEN '海南' 
+      WHEN '三亚' THEN '海南'
+    ELSE '其他' as columnAlias
+-- 对特定列的值进行处理
+```
+
+
+
+**更新**
+
+根据数据进行不同的更新处理
+
+```sql
+UPDATE Salaries
+SET salary = 
+CASE 
+    WHEN salary >= 10000 THEN salary * 0.9
+    WHEN salary < 10000 THEN salary * 1.2
+    ELSE salary END
+```
+
+
+
+
+
 ##### distinct
 
 去重
@@ -654,7 +687,69 @@ over
 
 
 
+### 性能优化
 
+#### 避免子查询
+
+参数是子查询时，使用 EXISTS 代替 IN
+
+```sql
+-- 慢
+SELECT * 
+  FROM Class_A
+WHERE id IN (SELECT id 
+               FROM  CLASS_B);
+
+-- 快
+SELECT *
+  FROM Class_A A 
+ WHERE EXISTS
+(SELECT * 
+   FROM Class_B  B
+  WHERE A.id = B.id);
+  
+-- 可以用到索引，如果连接列 (id) 上建立了索引，那么查询 Class_B 时不用查实际的表，只需查索引就可以了。(子查询产生临时表后索引无效？)
+
+-- 如果使用 EXISTS，那么只要查到一行数据满足条件就会终止查询， 不用像使用 IN 时一样扫描全表。在这一点上 NOT EXISTS 也一样
+
+-- 详细原理：如果 IN 后面如果跟着的是子查询，由于 SQL 会先执行 IN 后面的子查询，会将子查询的结果保存在一张临时的工作表里（内联视图），然后扫描整个视图，显然扫描整个视图这个工作很多时候是非常耗时的，而用 EXISTS 不会生成临时表
+
+```
+
+
+
+#### 排序
+
+会产生排序的语句
+
+- GROUP BY 子句
+
+- ORDER BY 子句
+- 聚合函数(SUM、COUNT、AVG、MAX、MIN)
+- DISTINCT
+- 集合运算符(UNION、INTERSECT、EXCEPT)
+- 窗口函数(RANK、ROW_NUMBER 等)
+
+
+
+如果在内存中排序还好，但如果内存不够导致需要在硬盘上排序上的话，性能就会急剧下降
+
+> 数据量大时会出现问题
+
+
+
+#### 索引
+
+索引失效的情况
+
+- <>
+- !=
+- NOT IN
+- 类型转换
+  - 对char类型使用number值作条件
+
+- 子查询？
+  - 子查询的结果会产生一张新表，不过如果不加限制大量使用中间表的话，会带来两个问题，一是展示数据需要消耗内存资源，二是原始表中的索引不容易用到
 
 ### 设计
 
@@ -1038,7 +1133,19 @@ With as提取子查询？
 
 
 
-#### 应用
+#### 使用
+
+##### 查询字符串包含'
+
+```sql
+select * from table where column like '%a''b%'
+
+select id = @@IDENTITY  -- 获取最新的ID,刚插入
+```
+
+
+
+
 
 ##### join第一条
 

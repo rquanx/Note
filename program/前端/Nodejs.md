@@ -9,6 +9,24 @@
 
 #### 问题
 
+##### 执行child_process.exec报错maxBuffer exceeded
+
+options. stdio 设置有关, child_process.exec(x,{maxBuffer: 111},cb);
+
+
+
+##### child_process.spawn 方法调用shell脚本发现控制台无法监听用户的输入
+
+options. stdio 设置有关
+
+
+
+##### nodejs 调用 shell 后，shell里面的命令找不到
+
+options.env有关
+
+
+
 ##### 内存泄漏
 [记录一次由一行代码引发的“血案”](https://cnodejs.org/topic/5aaba2dc19b2e3db18959e63)
 [一行 delete require.cache 引发的内存泄漏血案](https://zhuanlan.zhihu.com/p/34702356)

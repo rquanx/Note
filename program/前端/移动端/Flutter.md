@@ -2352,6 +2352,12 @@ Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 
 
 
+#### Mac getpackages失败/久
+
+在bash里export 然后flutter packages get
+
+
+
 # 试题
 
 ### 屏幕计算

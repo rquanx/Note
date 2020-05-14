@@ -8,6 +8,18 @@
 
 ### 基本语法
 
+#### 类型
+
+##### Null
+
+null 可以和任意类型比较
+
+```c#
+null == 1 // false
+null == true // false
+null == null // true
+```
+
 
 
 #### Records
