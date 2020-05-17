@@ -816,7 +816,7 @@ Scope
 
 ###### 指定文件夹
 
-​```c#
+```c#
 query.Folder = docLib.RootFolder.SubFolders["system"];
 ```
 
@@ -958,6 +958,18 @@ sharepoint分页，规避最后一条删除，规避往上翻页删除最后一�
 [论坛sharepoint板块](https://sharepoint.stackexchange.com/)
 
 #### 问题
+
+##### Feature id xxx Is not installed farm
+
+应该是安装不了？考虑通过命令安装，或者停掉iis等，去除影响因素后安装
+
+
+
+##### 部署时提示Webconfig无法？？？
+
+停掉iis，或者webapplication servicea
+
+
 
 ##### get_layoutsLatestVersionUrl  undefined
 1、引入sp.init.js

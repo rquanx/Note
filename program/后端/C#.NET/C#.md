@@ -501,3 +501,21 @@ dll存放在bin文件夹中，type要到具体的类
 #### vs打开项目后全部报错，提示找不多类
 
 可能是项目配置改了，记录：ServiceMe.Apps.CRM.Core.csproj
+
+
+
+#### WebServices 处理请求时出错
+
+```xml
+<!--可能是返回的json文本太长了，于是在webconfig加了如下的配置：-->
+
+<system.web.extensions>
+    <scripting>
+        <webServices>
+           <!--单位为字节-->
+           <jsonSerialization maxJsonLength="1024000" />
+         </webServices>
+   </scripting>
+</system.web.extensions>
+```
+

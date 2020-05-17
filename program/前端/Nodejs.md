@@ -9,6 +9,12 @@
 
 #### 问题
 
+##### 请求时出现read ECONNRESET
+
+Headers增加：Connection: 'keep-alive'
+
+
+
 ##### 执行child_process.exec报错maxBuffer exceeded
 
 options. stdio 设置有关, child_process.exec(x,{maxBuffer: 111},cb);
@@ -125,4 +131,35 @@ npm i module_name  -S  = >  npm install module_name --save
 npm i module_name  -D  => npm install module_name --save-dev   
 ​	写入到 devDependencies 对象  
 
+
+
+#### PM2
+
+应用管理
+
+##### 启动
+
+```bash
+pm2 start app.js  # 启用程序
+pm2 start app.js -i 4        # cluster mode 模式启动4个app.js的应用实例
+pm2 start app.js --watch      # 当文件变化时自动重启应用
+pm2 start app.js --name="api" # 启动应用程序并命名为 "api"
+```
+
+##### 查看
+
+```bash
+pm2 list                      # 列表 PM2 启动的所有的应用程序
+```
+
+
+
+##### 自动启用
+
+
+
+```bash
+pm2 save                      # 保存当前应用列表
+pm2 resurrect                # 重新加载保存的应用列表
+```
 

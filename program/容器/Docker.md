@@ -54,9 +54,50 @@ docker login
 
 
 
+##### 通用
+
+```bash
+docker inspect imgID/containerID # 查看镜像/容器详细信息
+```
+
+
+
+
+
 
 
 ##### images
+
+**搜索**
+
+```bash
+docker search xxx
+```
+
+
+
+
+
+**查看**
+
+```bash
+docker images # 查看所有的镜像
+```
+
+
+
+
+
+**下载**
+
+```bash
+# docker pull 镜像名:TAG
+docker pull centos:latest
+```
+
+
+
+
 
 **制作**
 
@@ -115,7 +156,22 @@ centos 										# 基础images
 # privileged 给容器提供更高权限,可以使用systemctl
 # /usr/sbin/init：初始容器里的CENTOS，用于启动dbus-daemon
 # 作用：不再报  Failed to connect to bus: Host is down
+# -v 本地文件映射，-v p1 p2 p1是宿主路径
 ```
+
+
+
+##### 日志
+
+
+
+**查看容器日志**
+
+```bash
+docker logs containerID/name?
+```
+
+
 
 
 
@@ -197,6 +253,49 @@ docker network inspect bridge
 切换当前会话到新 group 或者重启 X 会话：newgrp - docker
 
 
+
+**DNS解析**
+
+修改防火墙设置
+
+```bash
+# 宿主
+firewall-cmd --zone=public --add-masquerade --permanent
+firewall-cmd --reload
+systemctl stop firewalld
+systemctl start firewalld
+systemctl stop docker
+systemctl start docker
+docker run --name tracker1 --privileged -v /usr/local/source:/usr/local/source -d -i -t 470671670cac /usr/sbin/init
+914e7dcb12983cc27302a7becf05833abab07d8a765bf11326ca0c9ecfa12e6a
+docker exec -it tracker1 /bin/bash
+
+# 容器
+ping www.sina.com.cn
+```
+
+
+
+**容器无法上网**
+
+```bash
+more /etc/docker/daemon.json 
+# {
+#	"dns" : ["114.114.114.114","8.8.8.8"]
+# }
+
+more /etc/sysctl.conf
+
+# net.ipv4.ip_forward = 1
+
+# net.ipv4.conf.default.rp_filter = 0
+
+# net.ipv4.conf.all.rp_filter = 0
+
+sysctl -p
+
+systemctl restart docker
+```
 
 
 
