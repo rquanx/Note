@@ -6,9 +6,9 @@
 
 #### 元素简述
 
-元素都可以是由于初始属性设置不同而产生？
+元素都可以是由于初始属性设置不同而产生
 只要设置好属性，元素也可以自定义？
-​	通过设置属性可以让<hh></hh>==<div></div>?
+​通过设置属性可以让<hh></hh>==<div></div>
 
 #### Header/Footer
 
@@ -76,7 +76,7 @@ section的header,footer
 
 #### Label
 
-会解析html
+文字，可解析html
 
 #### Span
 
@@ -90,29 +90,33 @@ DIV直接使用“focus”和“blur”两个方法是无效的,需要修改可�
 [div的blur事件](https://www.cnblogs.com/klbc/p/5303134.html)
 
 #### form
-张鑫旭 35期DOM小测
+参考：张鑫旭 35期DOM小测
 通过事件阻止DOM提交、防止二次提交
 通过formData获取DOM数据
 通过form属性标记表单数据
+
+
 
 #### Button
 
 点击时不会让选中项失去焦点
 
+
+
 #### Input
 
 ##### type
 
-text
-calendar
-email
-color	点击可以取色
-range	滑动条
+- text
+- calendar
+- email
+- color	点击可以取色
+- range	滑动条
 
 
 
 ```html
-<input type="..." type="..." />
+<input type="..." />
 ```
 
 文本框选择所有文本select方法：select事件
@@ -163,9 +167,13 @@ target="_blank" 在新窗口打开页面，如果是文件根据浏览器会打�
 
 #### IMG
 
-alt属性：规定在图像无法显示时的替代文本
 
-size
+
+##### 属性
+
+**alt**：规定在图像无法显示时的替代文本
+
+**size**
 
 > 给浏览器提供一个预估的图片显示宽度
 >
@@ -177,7 +185,7 @@ size
 
 
 
-srcset
+**srcset**
 
 > 浏览器根据宽、高和像素密度来加载相应的图片资源
 >
@@ -189,11 +197,7 @@ srcset
 
 
 
-#### Script
 
-```html
-<script src="test.js" type="text/javascript"></script>
-```
 
 #### Link
 
@@ -208,23 +212,21 @@ srcset
 <link rel="canonical" href="...">
 在网站中常有多个 url 指向同一个页面的情况，上述标签告知搜索引擎页面的主 url 是什么，以便搜索引擎保留主要页面而去除其他重复页面。
 
-
-
-1. 提供 rss 订阅的：
+- 提供 rss 订阅的：
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="...">
 上述标签除搜索引擎可以看懂以外，也能被很多浏览器插件识别。
 
 
 
-1. 表示页面 icon 的：
+- 表示页面 icon 的：
 
 <link rel="icon" href="https://xxx.png">
 多数浏览器会读取这个 link 的资源并展示在页面上。
 
 
 
-1. 对页面提供预处理的：
+- 对页面提供预处理的：
 
 <link rel="dns-prefetch" href="//xxx.com">
 提前对一个域名做 dns 查询。强制对域名进行预读取在有的情况下很有用。
@@ -235,11 +237,17 @@ srcset
 
 注释也是一个节点，可通过代码读取
 
+
+
 #### IFrame
 
 跨域iframe不能被父窗口操作
 
+
+
 #### Meta
+
+##### 简述
 
 [能够放在文档的 <head> 中的各种配置元素](https://www.awesomes.cn/repo/joshbuchea/head)
 
@@ -248,15 +256,15 @@ srcset
 <meta name="xxx" content="yyy">
 
 
+##### 属性
 
-charset 属性
+**charset** 
 
 <meta charset="UTF-8">
 从 HTML5 开始，上述写法被推荐使用，用于声明当前文档所使用的字符编码，推荐放在 <head> 中的第一位。
 
 
-
-http-equiv属性
+**http-equiv**
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 在 HTML4 中，上述代码用于声明字符集，但是现在已不被推荐。
@@ -267,24 +275,23 @@ content-language （已过时）、set-cookie （已过时）、default-style �
 
 
 
-name 属性
+**name** 
 
 其实 <meta> 标签可以被自由定义，只要读取和写入的双方约定好 name 和 content 的格式就可以了。来看一个例子：
 
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 上面这种用法并不在 HTML 标准中，但是却移动端开发的事实标准。这里来解释一下 content 中的内容：
+- width：页面宽度，可以是一个正整数；也可以一个字符串 "device-width" ，表示跟设备宽度相等。
 
-width：页面宽度，可以是一个正整数；也可以一个字符串 "device-width" ，表示跟设备宽度相等。
+- height：页面高度，可以是一个正整数；也可以一个字符串 "device-height" ，表示跟设备高度相等。
 
-height：页面高度，可以是一个正整数；也可以一个字符串 "device-height" ，表示跟设备高度相等。
+- initial-scale：初始缩放比例。
 
-initial-scale：初始缩放比例。
+- minimum-scale： 最小缩放比例。
 
-minimum-scale： 最小缩放比例。
+- maximum-scale： 最大缩放比例。
 
-maximum-scale： 最大缩放比例。
-
-user-scalable：是否允许用户缩放。
+- user-scalable：是否允许用户缩放。
 
 name 属性的值除了可以是 viewport 之外，还有相当多的值：
 
@@ -312,26 +319,33 @@ Head子标签
 
 #### Script
 
-用于嵌入或引用可执行脚本。来看几个 script 标签常见的全局属性：
 
-1. async
+
+<script src="test.js" type="text/javascript"></script>
+用于嵌入或引用可执行脚本
+
+
+
+##### 属性
+
+**async**
 
 使浏览器使用另一个线程下载脚本，这时不会阻塞页面渲染。当脚本下载完成后，浏览器会暂停渲染，执行脚本，执行完毕后继续渲染页面。
 
 async 无法保证脚本的执行顺序，哪个脚本先下载结束就会先执行。
 
-1. defer
+**defer**
 
 同样会使浏览器并行下载脚本，但是下载完毕不会立即执行，而是会等到 DOM 加载完成后（即刚刚读取完 </html> 标签）再执行脚本。
 
 defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序。
 
-1. src
+**src**
 
 定义引用外部脚本的地址，指定此属性的 script 标签内不应再有嵌入的脚本。如果脚本文件使用了非英语字符，还应该注明字符的编码。如：
 
 <script charset="utf-8" src="https://www.example.com/script.js"></script>
-1. type
+**type**
 
 默认值是 text/javascript
 
@@ -351,19 +365,21 @@ defer 可以保证脚本的执行顺序就是它们在页面上出现的顺序�
 
 #### Table
 
-cellpadding
-
-> 表格内容padding
 
 
+##### 属性
 
-cellspacing
+**cellpadding**：表格内容padding
 
 
 
-border
+**cellspacing**
 
-> 表格边框宽度
+
+
+**border**：表格边框宽度
+
+
 
 
 
@@ -429,11 +445,11 @@ Chrome:Alt + key触发不同系统、浏览器都不一致
 
 ### 通用事件
 
-onchange 焦点离开才会触发 
-keydown   键盘按下输入时就会触发，在按下生效前触发
-keyup      键盘
-onpaste 复制粘贴文件   onpaste事件
-focus    焦点事件，调用可手动获取焦点?
+**onchange** 焦点离开才会触发 
+**keydown**   键盘按下输入时就会触发，在按下生效前触发
+**keyup**      键盘
+**onpaste** 复制粘贴文件   onpaste事件
+**focus**    焦点事件，调用可手动获取焦点?
 
 #### 剪切相关事件
 
@@ -492,10 +508,12 @@ classlist.remove('xxx')移除类
 
 #### 基本说明
 
-冒泡事件，往下触发，并且最上层先返回
-​	even.cancelBubble = true   取消冒泡
-捕获模式，最底层先返回
-模式设置   通过addevenlisten的第三个参数设置
+**冒泡事件**：往下触发，并且最上层先返回
+
+> even.cancelBubble = true   取消冒泡
+>
+> 捕获模式，最底层先返回
+> 模式设置   通过addevenlisten的第三个参数设置
 
 
 
@@ -505,23 +523,37 @@ classlist.remove('xxx')移除类
 
 controls属性可以提供开始，暂停，滑动条等
 
-#### 视频
 
-​		controls控制器属性   source 视频源
-​		可以有多个source，解决浏览器支持问题
+
+#### 视频
 
 mp4视频封装,把画面和音频封装在一起
 
+
+
+##### 属性
+
+**source**： 视频源，可以设置多个source，解决浏览器支持问题
+
+
+
+
+
 #### 音频
 
-​		和video一样用法,含有api操作
-​		属性
-​			.volume
-​			.playbackrate
-​		方法
-​			.play()
-​			.pause()
-​			....
+与video一样用法,含有api操作
+
+
+
+##### 属性
+
+volume
+​playbackrate
+
+##### 方法
+
+play()
+pause()
 
 ### 画图
 
@@ -534,18 +566,6 @@ mp4视频封装,把画面和音频封装在一起
 #### webgl	
 
 ​	游戏
-
-### 存储
-
-#### 本地存储
-
-​	localstorage
-​		需要使用clear,remove来主动删除
-​	每个页面都有自己的localstrorage，即使关闭浏览器重新打开还是会有
-​	默认最大5M,只能存储string	
-
-sessionstorage
-​		关闭浏览器后被删除
 
 
 
@@ -643,19 +663,19 @@ span标签
 
 #### Device API
 
-dial: 拨打电话
+**dial**: 拨打电话
 
-beep: 发出蜂鸣声
+**beep**: 发出蜂鸣声
 
-vibrate: 设备振动
+**vibrate**: 设备振动
 
-setWakelock: 设置应用是否保持唤醒（屏幕常亮）状态
+**setWakelock**: 设置应用是否保持唤醒（屏幕常亮）状态
 
-isWakelock: 获取程序是否一直保持唤醒（屏幕常亮）状态
+**isWakelock**: 获取程序是否一直保持唤醒（屏幕常亮）状态
 
-setVolume: 设置设备的系统音量
+**setVolume**: 设置设备的系统音量
 
-getVolume: 获取设备的系统音量
+**getVolume**: 获取设备的系统音量
 
 
 
