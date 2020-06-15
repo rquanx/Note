@@ -1,5 +1,3 @@
-## SQL
-
 ### Quick
 
 结构化查询语言，是一种ANSI的标志计算机语言
@@ -10,21 +8,29 @@
 
 #### 分类
 
+
+
+#### 定义
+
 DBMS：数据库管理系统
 
 RDBMS：关系型数据库
 
 
 
-**现代的 SQL 服务器构建在 RDBMS 之上。**
+现代的 SQL 服务器构建在 RDBMS 之上。
 
  
 
 #### 书写
 
-##### 顺序
+##### 书写顺序
 
 select -> from -> where -> group by -> having
+
+##### 执行顺序
+
+form --> where --> group by --> having --> select --> order by --> limit
 
 
 
@@ -46,7 +52,7 @@ select -> from -> where -> group by -> having
 
 ##### DQL
 
-> 数据查询语言
+**定义**：数据查询语言
 
 
 
@@ -54,11 +60,11 @@ Select + from + where
 
 
 
-
-
 ##### DML
 
-> Data Manipulation Language 数据操纵语言
+**定义**：Data Manipulation Language 数据操纵语言
+
+
 
 update、delete、insert 
 
@@ -66,32 +72,50 @@ update、delete、insert
 
 ##### DDL
 
-> Data Definition Language数据定义语言
+**定义**：Data Definition Language数据定义语言
 
-​    Create database  创建数据库
+create、alter、drop
 
-​    Alter database   修改数据库
-
-​    create table     创建表
-
-​    alter  table     修改表
-
-​    Drop table     删除表
-
-​    Create index     创建索引
-
-​    Drop index  删除索引 
+> Create database  创建数据库
+>
+> Alter database   修改数据库
+>
+> 
+>
+> create table     创建表
+>
+> alter  table     修改表
+>
+> Drop table     删除表
+>
+> 
+>
+> Create index     创建索引
+>
+> Drop index  删除索引 
 
 
 
 ##### DCL
 
-> 数据控制语言
+**定义**：数据控制语言
 
 GRANT、ROLLBACK、COMMIT
 
 
-### 数据类型
+
+### 认知
+
+在SQL中一切皆表
+
+> 插入的时候也是把一个表插入
+
+
+
+
+
+
+### 数据类型与值
 #### 字符
 
 由于NCHAR类型是一种不可变长的数据类型,所以应用的场合非常狭隘,因为如果长度设定的非常的大,那么剩余的字节将会用空格代替
@@ -104,9 +128,23 @@ nvarchar： 可变长度，存储Unicode字符，根据数据长度自动变化�
 
 #### 值
 
-null 和 空字符串，为什么数据库使用is null 来判断null
+##### null
 
-> 在数据库中null标识unkonw值，不能当作一个值来判定，所以不一样
+column = null / column != null 总是false
+
+
+
+null == null ==> false
+
+
+
+除Oracle外，判断null时需要用is null/ is not null
+
+
+
+为什么数据库使用is null 来判断null
+
+> 在数据库中null标识unkonw值，不能当作一个值来判定d
 >
 > 除了oracle，oracle是将空字符串和null都当中空值，会自动将空字符串转化为Null
 >
@@ -125,9 +163,17 @@ null 和 空字符串，为什么数据库使用is null 来判断null
 
 #### 符号
 
+**单引号**
+
 为何字符串建议使用单引号
 
 > 在不同数据库的实现中 ''，“”，``会有不同作用，有的是非法、有的是定义时用....,只有作为字符串时用单引号是统一的，只使用单引号即不产生疑惑
+
+
+
+**分号**
+
+语句间用;分割
 
 
 
@@ -136,10 +182,12 @@ null 和 空字符串，为什么数据库使用is null 来判断null
 ##### Select
 
 ```sql
-SELECT 列名称 FROM 表名称       取具体列数据
-SELECT * FROM 表名称                  取所有列
-SELECT C1,C2 FROM 表名称             取指定列数据
-SELECT DISTINCT 列名称 FROM 表名称	去重
+SELECT 列名称 FROM 表名称       		-- 取具体列数据
+SELECT * FROM 表名称                 -- 取所有列
+SELECT C1,C2 FROM 表名称             -- 取指定列数据
+SELECT DISTINCT 列名称 FROM 表名称	-- 去重
+
+select * from table where column like '%a''b%' -- 查询包含'的数据
 ```
 
 
@@ -157,7 +205,7 @@ SELECT 列名称 FROM 表名称 WHERE column 运算符 value
 ##### Insert
 
 ```sql
-insert into table values (v1,v2,v3,v4)
+insert into table values (v1,v2,v3,v4),(v11,v22,v33,v44) -- 可以插入多条
 insert into table (column1,column2) values (value1,value2)
 ```
 
@@ -291,6 +339,42 @@ ALTER COLUMN column_name datatype
 
 #### 关键词
 
+##### VALUES()
+
+VALUES可以创建临时表
+
+
+
+select * from (  VALUES(1),(2),(3)  ) t
+
+不支持values可以用select 1 as a from DUAL union all xx  
+
+> oracle可以这样用
+
+
+
+##### with as
+
+临时表缓存
+
+
+
+```sql
+with tableName as (select * from [table])
+```
+
+
+
+将...的查询结果作为tableName表
+
+
+
+##### Having
+
+having可以看作where使用，但是having可以使用统计函数(count())来进行过滤
+
+
+
 ##### Case when
 
 **查询**
@@ -304,6 +388,36 @@ CASE column
     ELSE '其他' as columnAlias
 -- 对特定列的值进行处理
 ```
+
+
+
+```sql
+在count中使用case 
+COUNT(CASE WHEN isOrder > 0 THEN 1 END)
+
+SELECT *, COUNT(CASE 
+		WHEN isOrder > 0 THEN 1
+	END) AS OrderNum, COUNT(account) AS total
+FROM (
+	SELECT a.projectNo AS projectNo, a.account AS account, b.isOrder
+	FROM info a
+		INNER JOIN main b
+		ON a.projectNo = b.projectNo
+			AND a.account = b.account
+) t
+GROUP BY account;
+
+-- 在返回里设置case?
+SELECT b.DetailID AS TaskID
+	, CASE b.RequestType
+		WHEN '02' THEN '咨询'
+		WHEN '03' THEN '投诉'
+		WHEN '04' THEN '维修'
+		ELSE '' END AS ProcessName
+		FROM xxx
+```
+
+
 
 
 
@@ -322,9 +436,19 @@ CASE
 
 
 
+**联合操作符**
+
+```sql
+case where name like '%xxx%' then 1 else 0
+```
 
 
-##### distinct
+
+
+
+
+
+##### Distinct
 
 去重
 
@@ -334,7 +458,7 @@ CASE
 
 
 
-##### order by
+##### Order by
 
 ```sql
 select * from table order by a,b,c,d ....
@@ -346,9 +470,9 @@ desc 倒序
 
 
 
-##### Top
+##### Top/Limit
 
-不是所有数据库都支持top
+根据数据库支持使用top/limit
 
 ```sql
 Sql server
@@ -398,6 +522,8 @@ n个字符
 单个字符
 
 >  _abc   匹配 dabc   不匹配ddabc
+>
+>  __abc
 
 
 
@@ -459,6 +585,10 @@ SELECT column_name AS alias_name FROM table_name
 ```
 
 
+
+##### join
+
+join会先取两个表然后返回大的那一个作为计算?
 
 
 
@@ -526,36 +656,6 @@ UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有
 
 
 
-##### case
-
-```sql
-在count中使用case 
-COUNT(CASE WHEN isOrder > 0 THEN 1 END)
-
-SELECT *, COUNT(CASE 
-		WHEN isOrder > 0 THEN 1
-	END) AS OrderNum, COUNT(account) AS total
-FROM (
-	SELECT a.projectNo AS projectNo, a.account AS account, b.isOrder
-	FROM info a
-		INNER JOIN main b
-		ON a.projectNo = b.projectNo
-			AND a.account = b.account
-) t
-GROUP BY account;
-
-在返回里设置case?
-SELECT b.DetailID AS TaskID
-	, CASE b.RequestType
-		WHEN '02' THEN '咨询'
-		WHEN '03' THEN '投诉'
-		WHEN '04' THEN '维修'
-		ELSE '' END AS ProcessName
-		FROM xxx
-```
-
-
-
 
 
 
@@ -571,6 +671,15 @@ SELECT b.DetailID AS TaskID
 
 
 当使用group by时需要进行过滤，不能用where，但可以使用having
+
+
+
+**步骤**
+
+- 取出表数据，按分组字段进行分组
+- 对统计函数列进行计算
+- 结果合并成一个表
+- 使用having过滤
 
 
 
@@ -600,29 +709,26 @@ or      只要有一个成立                 通过()可以进行嵌套
 通过()划分子查询
 
 ```sql
-SELECT name FROM world WHERE population 运算符 ALL (SELECT population FROM world WHERE continent='Europe')
+SELECT name FROM world 
+WHERE population 运算符 ALL (SELECT population FROM world WHERE continent='Europe')
 
-运算符可用 = > < in ....
+-- 运算符可用 = > < in ....
 
-有的数据库在使用子查询时必须使用别名
+-- 有的数据库在使用子查询时必须使用别名
 SELECT name FROM world WHERE continent = (SELECT continent FROM world WHERE name='Brazil') AS brazil_continent
 
-做对比时如果子查询结果多于一条会出错，可以用all/ANY来处理  
+-- 做对比时如果子查询结果多于一条会出错，可以用all/ANY来处理  
 ```
 
 
 
-
-
-##### Select into
-
-表复制
+##### 表复制
 
 ```sql
-SELECT LastName,Firstname
-INTO Persons_backup
-FROM Persons
-WHERE City='Beijing'
+SELECT [fields]
+INTO table_backup
+FROM table_source
+WHERE 条件
 ```
 
 
@@ -633,7 +739,7 @@ WHERE City='Beijing'
 
 
 
-###### 特点
+**特点**
 
 视图不能被修改，表修改或者删除后应该删除视图再重建
 
@@ -645,9 +751,7 @@ WHERE City='Beijing'
 
 
 
-
-
-###### 场景
+**场景**
 
 使用视图，可以定制用户数据，聚焦特定的数据
 
@@ -661,9 +765,9 @@ WHERE City='Beijing'
 
 ##### 聚合函数
 
-group_concat
+**group_concat**
 
-> 对字段数据拼接，join
+对字段数据拼接，join
 
 
 
@@ -671,7 +775,7 @@ group_concat
 
 ##### 开窗函数
 
-over
+**over**
 
 开窗函数的特点就是,**输入几行,输出还是几行**,但**参与计算的字段有多行**
 
@@ -892,19 +996,21 @@ mysql底层使用的数据结构，节点中存储索引（地址）
 
 优点：相比于B树的存储数据，存储索引能存储更多的数据
 
+
+
 #### 聚集/非聚集索引
 
 索引和数据是分开不同文件存储还是存储在一起
 
 
 
-##### 非聚集
+**非聚集**
 
 索引文件更小，查询性能更好
 
 
 
-##### 聚集
+**聚集**
 
 相对非聚集，会冗余更多的数据在文件中
 
@@ -918,7 +1024,15 @@ mysql底层使用的数据结构，节点中存储索引（地址）
 
 
 
+### 应用
 
+#### 字符串处理
+
+```select owner string_agg(name,',') as names from cats group by owner ```
+
+对数据先用owner进行分组，然后将同组的name列使用,进行拼接，返回每组一行数据
+
+> PostgreSQL、MSSQL(2017): string_agg  MySQL: group_concat MSSQL:stuff 
 
 
 
@@ -928,12 +1042,29 @@ mysql底层使用的数据结构，节点中存储索引（地址）
 
 #### 备份
 
-将数据导出成sql
+**将数据导出成sql**
+
+右键任务--> 生成脚本-->选中数据库/表-->设置中选中架构/数据
+
 [数据库导出、导入，通过sql](https://blog.csdn.net/weicoliang/article/details/80324346)
+
+
+
+#### 导入
+
+**导入SQL文件**
+
+文件内容过大时：```sqlcmd -S myServer\instanceName -i C:\myScript.sql```
+
+> 待验证
+
+
 
 #### 语法知识
 
 关键字可以用[]  [Delete]
+
+
 
 ##### 修改表名/列名
 ```sql
@@ -945,7 +1076,10 @@ EXEC SP_RENAME 'table.column', 'newColumnName', 'COLUMN';
 
 ```
 
-##### 创建列表
+
+
+##### 创建表
+
 ```sql
 -- 创建CRType表
 CREATE TABLE CRType (
@@ -968,8 +1102,66 @@ CREATE TABLE CRType (
 ALTER TABLE Stations ADD  LeadPlants int foreign key(LeadPlants) references LeadPlants(ID);
 ```
 
+
+
+#### 函数
+
+##### STUFF 
+
+STUFF ( character_expression , start , length , replaceWith_expression )
+
+> character_expression中，将从start开始的length长度的的字符串替换成replaceWith_expression
+
+
+
+##### FOR xml path
+
+> 将select 的结果 输出xml格式的结果
+>
+> FOR xml path     ==> ```<row><field>v1</field></row> <row><field>v2</field></row>```
+>
+> FOR xml path('')   ==> ```<field>v1</field><field>v2</field>```
+>
+> FOR xml path('table') ==> ```<table><field>v1</field></table> <table><field>v2</field></table>```
+
+
+
+##### STUFF + XML Path
+
+```sql
+SELECT ',' + [value] 
+FROM temp t 
+WHERE t.id = temp.id 
+-- 得到 ,v1 ; ,v2  两行数据
+
+
+SELECT ',' + [value] 
+FROM temp t 
+WHERE t.id = temp.id 
+FOR xml path('')
+-- SELECT ',' + [value]  == field为空,去除field的xml，同时FOR xml path('') row也为空,最终得到,v1,v2
+
+stuff((
+SELECT ',' + [value] 
+FROM temp t 
+WHERE t.id = temp.id 
+FOR xml path('')) , 1 , 1 , '')
+-- 将,v1,v2第1个长度为1的内容替换成''
+```
+
+##### string_agg
+
+```sql
+select string_agg(field,',') from table where xxx group by xxx 
+```
+
+
+
+
+
 #### 执行追踪
-Sql profiler
+
+**Sql Profiler**
 追踪数据库执行的操作，可以看到执行的语句、用户、时间、资源等
 
 使用：工具->profiler
@@ -977,24 +1169,34 @@ Sql profiler
 需要较高的权限才能追踪
 
 
+
+
 #### 存储过程
 
-使用 exec name
+**使用**： exec name
+
+
 
 ##### 参数化
 
 如果存储过程中使用字符串拼接sql的话，上面的参数化将不会起作用，单引号必须经过判断并替换，在数据库中，用2个单引号代表1个实际的单引号。所以，如果是拼接sql字符串的方式，需要用Replace(@para,'''', '''''')来替换一下，将1个单引号替换为2个就没有问题了。
 
-使用这种参数化查询的办法，防止SQL注入的任务就交给ADO.NET了, 如果在项目中统一规定必须使用参数化查询，就不用担心因个别程序员的疏忽导致的SQL注入漏洞了。     但是，问题还没有完，SQL注入的漏洞是堵住了，但是查询结果的正确性，参数化查询并不能帮上什么忙。
+使用这种参数化查询的办法，防止SQL注入的任务就交给ADO.NET了, 如果在项目中统一规定必须使用参数化查询，就不用担心因个别程序员的疏忽导致的SQL注入漏洞了。
+
+
 
 #### 小知识
 
-多条sql语句用;连接
 
+
+**内存占用高**
 
 数据库占用内存偏高是正常的？是sql 提前占用的缓存空间
 
-###### 时间存储问题
+
+
+**时间存储问题**
+
 数据库时间存储方式：Datetime、时间戳、整数
 
 不同类型的影响：直观性影响，存储空间影响
@@ -1008,29 +1210,34 @@ Sql profiler
 问题点：
 - 1、timestamp 依赖于Mysql的时区配置，存进去之后，手动去数据库改这个时间也没用，而且只能到2038年。
 - 2、datetime 不依赖Mysql的时区配置，但是存储的是一个时间，所以实际上你不知道到底表示的是哪个时区下的。
-- 3、int只能到2038年
+- 3、int只能到2038年???
 - 4、bigint存的是时间戳，是绝对时间，而且搜索快。至于缺点其实可以忽略，一般你也不会去数据库看这个字段的时间
 
 
 
-###### 类型问题
-时间类型存储null时会变成 0001-01-01T00:00:00
+**类型问题**
+
+时间类型存储null时会变成 0001-01-01T00:00:00/1970-01-01 00:00:01
+
+> C#接收时，DateTime无法为null，所以变成初始值
+>
+> 代码中使用string存储
 
 
 
-###### 字符串自动补全空格问题
+**字符串自动补全空格问题**
+
 字段类型为char会自动补全
 
 
 
-
-###### 快捷键
+**快捷键**
 
 f5进行语句使用
 
 
 
-###### 操作
+**操作**
 
 ```sql
  两个表先排序后合并    加一个别名  加多一层
@@ -1088,6 +1295,8 @@ deny权限优先级更高，例：设置了owner和denywriter，仍然是不可�
 | **db_denydatareader** | 不能看到数据库中任何数据的用户                               |
 | **db_denydatawrite**  | 不能修改数据库中任何数据的用户                               |
 
+
+
 #### 博客
 
 [sql防注入](https://www.zhihu.com/question/22953267 )
@@ -1118,7 +1327,7 @@ With as提取子查询？
 
 
 
-##### 原因
+##### 场景缓慢原因
 
 大数据排序
 
@@ -1128,22 +1337,206 @@ With as提取子查询？
 
 #### 问题
 
+
+
+##### 账号启用问题
+
 [sa用户启用问题，sql启动sa后仍报错，需要修改的登录模式，重启sql服务](https://blog.csdn.net/ytm15732625529/article/details/72630050)
 
+> 账号未启用
 
-###### favtory库
+
+
+##### favtory库
 
 存储过程设置参数，要设置空值DBNull.Value;
 
 
 
-#### 使用
+#### 元数据操作
 
-##### 查询字符串包含'
+
+
+##### 表操作
 
 ```sql
-select * from table where column like '%a''b%'
+if Exists(
+    select top 1 * 
+    from sysObjects 
+    where Id=OBJECT_ID('[TableName]') and xtype='U') 
+-- 检查数据库表是否存在
 
+select * from sysObjects where  xtype='U'
+-- 查询所有的表？
+
+-- sysObjects系统对象表（存储所有表？）
+```
+
+
+
+**表PROPERTIES**
+
+```sql
+IF NOT EXISTS (
+  SELECT NULL
+  FROM SYS.EXTENDED_PROPERTIES
+  WHERE
+  [major_id] = OBJECT_ID('[TableName]')
+  AND [name] = N'[PROPERTIESName]'
+  AND [minor_id] = 0
+)
+-- 检查表是否存在属性
+
+SELECT *
+  FROM SYS.EXTENDED_PROPERTIES
+  WHERE
+  [major_id] = OBJECT_ID('TableName')
+  AND [minor_id] = 0
+-- 查询表所有的属性
+
+-- SYS.EXTENDED_PROPERTIES系统属性表？
+
+```
+
+
+
+```sql
+-- 存储过程
+exec sys.sp_addextendedproperty '[PROPERTIESName]','[描述信息]','SCHEMA','dbo','table','[TableName]';
+-- 向表增加特定的属性字段，内容为描述信息
+
+exec sys.sp_updateextendedproperty '[PROPERTIESName]','[描述信息]','SCHEMA','dbo','table','[TableName]';
+-- 更新表特定的属性字段，内容为描述信息
+
+```
+
+
+
+
+
+##### 列操作
+
+
+
+```sql
+IF EXISTS ( 
+    SELECT 1 
+    FROM SYSOBJECTS T1 
+    INNER JOIN SYSCOLUMNS T2 
+    ON T1.ID=T2.ID    
+  	WHERE T1.NAME='[TableName]' AND T2.NAME='[ColumnName]')
+-- 检查表是否存在特定列
+
+SELECT 1 
+FROM SYSOBJECTS T1 
+INNER JOIN SYSCOLUMNS T2 
+ON T1.ID=T2.ID    
+WHERE T1.NAME='[TableName]'
+-- 查询表所有的列
+
+-- SYSCOLUMNS系统列表？
+
+```
+
+
+
+**列PROPERTIES**
+
+```sql
+IF NOT EXISTS (
+  SELECT NULL
+  FROM SYS.EXTENDED_PROPERTIES
+  WHERE
+  [major_id] = OBJECT_ID('[TableName]')
+  AND [name] = N'[PROPERTIESName]'
+  AND [minor_id] = (
+      SELECT [column_id]
+      FROM SYS.COLUMNS
+      WHERE [name] = '[ColumnName]'
+      AND [object_id] = OBJECT_ID('[TableName]')
+  )
+)
+-- 检查特定表的特定列是否存在属性
+
+SELECT [name] FROM SYS.COLUMNS WHERE
+       [object_id] = OBJECT_ID('[TableName]')
+-- 获取特定表的所有列
+
+-- SYS.COLUMNS所有列的表？
+```
+
+
+
+```sql
+-- 存储过程
+
+ exec sys.sp_addextendedproperty '[PROPERTIESName]','[描述信息]','SCHEMA',N'dbo','TABLE','[TableName]','COLUMN','[ColumnName]';
+-- 向特定表的特定列增加属性
+
+ exec sys.sp_updateextendedproperty '[PROPERTIESName]','[描述信息]','SCHEMA','dbo','TABLE','[TableName]','COLUMN','[ColumnName]';
+
+```
+
+
+
+#### 使用
+
+##### 字符串拼接
+
+**2017**
+
+string_agg
+
+
+
+**其他**
+
+STUFF ( character_expression , start , length , replaceWith_expression )
+
+> character_expression中，将从start开始的length长度的的字符串替换成replaceWith_expression
+
+
+
+FOR xml path
+
+> 将select 的结果 输出xml格式的结果
+>
+> FOR xml path     ==> ```<row><field>v1</field></row> <row><field>v2</field></row>```
+>
+> FOR xml path('')   ==> ```<field>v1</field><field>v2</field>```
+>
+> FOR xml path('table') ==> ```<table><field>v1</field></table> <table><field>v2</field></table>```
+
+
+
+```sql
+SELECT ',' + [value] 
+FROM temp t 
+WHERE t.id = temp.id 
+-- 得到 ,v1 ; ,v2  两行数据
+
+
+SELECT ',' + [value] 
+FROM temp t 
+WHERE t.id = temp.id 
+FOR xml path('')
+-- SELECT ',' + [value]  == field为空,去除field的xml，同时FOR xml path('') row也为空,最终得到,v1,v2
+
+stuff((
+SELECT ',' + [value] 
+FROM temp t 
+WHERE t.id = temp.id 
+FOR xml path('')) , 1 , 1 , '')
+-- 将,v1,v2第1个长度为1的内容替换成''
+```
+
+
+
+
+
+##### 获取最新插入的ID
+
+```sql
 select id = @@IDENTITY  -- 获取最新的ID,刚插入
 ```
 
@@ -1187,5 +1580,6 @@ on users.id = most_recent_user_widget.user_id
 Update a set a.c1 = b.c2 from a,b where a.ID = b.ID
 
 > 将a表的c1字段值更新为b表的c2值
+
 
 
