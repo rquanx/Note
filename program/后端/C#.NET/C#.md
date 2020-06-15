@@ -240,6 +240,115 @@ parameterInfo.ParameterType // 读取参数信息的类型
 
 ### 知识点
 
+#### 内存泄漏
+
+##### Event订阅
+
+**描述**：A类劫持了B类的函数，且A类生命周期较长，会造成A无法释放
+
+
+
+**解决**
+
+- 注销订阅事件
+
+- 使用弱句柄（weak-handler）模式，类似Weak map?
+
+- 使用匿名函数进行订阅，并且不要捕获任何类成员
+
+
+
+##### 在匿名方法中捕获类成员
+
+引用对象这个事情在匿名方法中捕获类成员
+
+
+
+```c#
+public class MyClass
+
+{
+
+  private JobQueue _jobQueue;
+
+  private int _id;
+
+ 
+
+  public MyClass(JobQueue jobQueue)
+
+  {
+
+    _jobQueue = jobQueue;
+
+  }
+
+ 
+
+public void Foo()
+
+ {
+
+    _jobQueue.EnqueueJob(() =>
+
+    {
+      Logger.Log($"Executing job with ID {_id}");
+
+      // do stuff 
+
+});
+
+
+
+    // 解决
+
+    var local = _id;
+
+   // ... 
+
+  }
+
+}
+```
+
+
+
+
+
+**解决**
+
+将值分配给局部变量，不会有任何内容被捕获，并且避免了潜在的内存泄漏
+
+
+
+##### 静态变量
+
+静态变量不会被回收，如果静态变量是类似List，可以在运行时不断增加，但是不会被回收，可能会导致
+
+
+
+##### 缓存变量
+
+
+
+##### 不停止的线程
+
+不停止的线程或引用启动它的类
+
+
+
+##### Alloc
+
+手动分配内存后，需手动释放或添加Dispose
+
+
+
+##### 添加Dispose无效
+
+使用using() {}
+
+
+
 #### 函数传递
 
 ```c#
