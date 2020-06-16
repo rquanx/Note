@@ -97,6 +97,14 @@ DIV直接使用“focus”和“blur”两个方法是无效的,需要修改可�
 
 
 
+Form 表单中单选/多选最好(或一定)要配合 <fieldset> 和 <legend> 标签使用
+
+- legend == label 
+
+- fieldset最外层包裹
+
+
+
 #### Button
 
 点击时不会让选中项失去焦点
@@ -140,6 +148,22 @@ one-time-code: 触发短信验证码自动提示
 username, email, new-password, 
 
 current-password: 触发浏览器提示密码建议
+
+
+
+#### abbr
+
+用于必填校验设置
+
+
+
+```html
+<abbr title="required" aria-label="required">*</abbr>
+```
+
+
+
+
 
 
 
