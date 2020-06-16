@@ -1,12 +1,20 @@
-### 连接	
-https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components	      	
-https://docs.microsoft.com/zh-cn/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components	K753k951	
-https://weinteckdev.sharepoint.com/sites/Test/SitePages/testPage.aspx		
-https://weinteckdev.sharepoint.com/sites/App/AppCatalog/Forms/AllItems.aspx		
-https://weinteckdev-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/siteManagement		
+### 链接	
+[使用Fabric-react](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components)
+
+runquantan@weinteckdev.onmicrosoft.com
+
+K(int)k(int)
+
+[开发者账号测试页面](https://weinteckdev.sharepoint.com/sites/Test/SitePages/testPage.aspx)
+
+[开发者账号APP管理页](https://weinteckdev.sharepoint.com/sites/App/AppCatalog/Forms/AllItems.aspx)
+
+[开发者账号网站管理页](https://weinteckdev-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/siteManagement)
 
 
-### 目录说明
+
+
+### 项目结构
 
 ```js
 │  .editorconfig // 编辑器配置
@@ -130,9 +138,17 @@ npm
 
 
 
-SharePoint版本
+### 环境要求
 
-SPO or SP 2016 Feature Pack 2
+#### 开发
+
+node
+
+
+
+#### 运行
+
+SPO or SP 2016 Feature Pack 2以上
 
 
 
@@ -1058,6 +1074,10 @@ Even though you would not require the solution to be installed on the site, you'
 
 
 ### 通用
+
+#### 标识
+
+feature id，product id 、component id、打包名均一样时则为新的webpart
 
 
 
