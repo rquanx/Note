@@ -1484,6 +1484,18 @@ createElement不区分大小写
 
 可控制光标选中，获取选中信息
 
+#### Navigator
+
+##### 视频
+
+```js
+var promise = navigator.mediaDevices.getUserMedia(constraints);
+```
+
+
+
+
+
 
 
 #### DOM

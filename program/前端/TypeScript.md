@@ -4,8 +4,15 @@
 
 #### 语法
 
+##### declare
+
+声明全局变量
+
+
+
 declare var SP: any;
-​	可以去掉引用外部js东西时报错
+
+> 可以去掉引用外部js东西时报错
 
 
 
@@ -28,8 +35,6 @@ type t = typeof { b: "1"}
 ```
 
 
-
-#### 使用
 
 ##### 联合类型
 
@@ -176,28 +181,23 @@ type Test = ObjToNum<Person>;
 
  使用这个类型时，x的属性不完整也不会报错
 
+
+
 ###### Pick<x>
 
 
 
 ###### 声明扩展
 要向现有的ts类型中扩展出新的属性
-	建立xxx.d.ts文件
-	直接定一个同名的声明类名
-  可能需要在tsconfig中设置include
+1、建立xxx.d.ts文件
+2、直接定一个同名的声明类名
+3、在tsconfig中设置include新增的声明文件
+
 >  向现有的Windows类型定义中增加一个自定义的属性
 
 
-##### 预声明
 
-模块的预声明.d.ts，要和对应模块在同一路径下
-​	/caml.js
-​	/caml.d.ts     声明对于js的一些定义，方便编译器提示
-
-##### 别名
-
-import ObserverableArray = kendo.data.ObservableArray;
-type  str  = string;
+#### 资料
 
 [typescript的一些基础说明](https://www.jianshu.com/p/103933b7c2b4)
 
@@ -205,19 +205,12 @@ type  str  = string;
 
 
 
-
-
-##### 配置
-
-tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示  
-
-[tsconfig.json](http://www.css88.com/doc/typescript/doc/handbook/tsconfig.json.html)
-
-
-
 #### 声明查找
 
-1、只要声明文件的前缀和 JS 文件前缀相同，VSCode 就会自动引入声明文件
+1、只要声明文件的前缀和 JS 文件前缀相同，VSCode 就会自动关联声明文件
+
+> /caml.js
+> /caml.d.ts
 
 2、包内自带的声明文件可以不和源码放一起，单独放在某个文件夹维护，只要在 package.json 中指定声明文件的入口，VSCode 就会自动去找这个文件
 
@@ -231,10 +224,10 @@ tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示
 
 当我提及被检查的 `place` 时，我想表达的是在这个 `place`，TypeScript 将会检查以下内容（例如一个 `foo` 的位置）：
 
-- 如果这个 `place` 表示一个文件，如：`foo.ts`，欢呼！
-- 否则，如果这个 `place` 是一个文件夹，并且存在一个文件 `foo/index.ts`，欢呼！
-- 否则，如果这个 `place` 是一个文件夹，并且存在一个 `foo/package.json` 文件，在该文件中指定 `types` 的文件存在，那么就欢呼！
-- 否则，如果这个 `place` 是一个文件夹，并且存在一个 `package.json` 文件，在该文件中指定 `main` 的文件存在，那么就欢呼！
+- 如果这个 `place` 表示一个文件，如：`foo.ts`，done！
+- 否则，如果这个 `place` 是一个文件夹，并且存在一个文件 `foo/index.ts`，done！
+- 否则，如果这个 `place` 是一个文件夹，并且存在一个 `foo/package.json` 文件，在该文件中指定 `types` 的文件存在，done！
+- 否则，如果这个 `place` 是一个文件夹，并且存在一个 `package.json` 文件，在该文件中指定 `main` 的文件存在，done！
 
 
 
@@ -250,7 +243,7 @@ tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示
   import * as foo from 'foo'
   ```
 
-  ，将会按如下顺序查找模块：
+  将会按如下顺序查找模块：
 
   - `./node_modules/foo`
   - `../node_modules/foo`
@@ -265,7 +258,7 @@ tsconfig.json allowjs : true  ts会提供一些类型检查和智能提示
   import * as foo from 'something/foo'
   ```
 
-  ，将会按照如下顺序查找内容
+  将会按照如下顺序查找内容
 
   - `./node_modules/something/foo`
   - `../node_modules/something/foo`
@@ -327,9 +320,33 @@ declare module '*.html';
 
 
 
-#### 编码规范
+
+
+#### 推断规则
+
+TypeScript 默认我们数组中的元素是可变的，所以它会「悲观的」推断我们可能会改变元素的顺序
+
+```ts
+function swap<T, K>(v1: T, v2: K) {
+  return [v2, v1]
+}
+// 会被推断为 (T | K) []
+
+function swap<T, K>(v1: T, v2: K) {
+  return [v2, v1] as const
+}
+// 固定推断为[K,T]
+```
+
+
+
+
 
 #### TSLint
+
+已废弃，建立用eslint
+
+
 
 ##### 使用说明
 

@@ -242,6 +242,7 @@ node
 
 [IVWEB技术周刊](<https://github.com/iv-web/weekly>)
 
+[百度fex](http://fex.baidu.com/)
 
 
 ##### 技术网站
@@ -259,7 +260,9 @@ node
 [前端英文网站汇总](https://www.notion.so/0ba81e1707ae479b8c2b9ec79fe3a3ce)
 
 
+[一个针对程序员的搜索引擎，只搜索编程相关的网站，比如 GitHub 和 StackOverflow](https://quickref.dev/)
 
+[一个免费的、不用注册的在线文件储存服务，最大可以上传 2GB，保存48小时。它会自动生成下载链接，可以分享给其他人](https://sendfiles.online/)
 
 
 ##### 教程
