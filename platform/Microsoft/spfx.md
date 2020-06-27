@@ -1,4 +1,7 @@
+## *环境*
+
 ### 链接	
+
 [使用Fabric-react](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components)
 
 runquantan@weinteckdev.onmicrosoft.com
@@ -13,14 +16,36 @@ K(int)k(int)
 
 
 
+### 资料
+
+[官方文档](https://docs.microsoft.com/zh-cn/sharepoint/dev/spfx/set-up-your-development-environment)
+[微软官网文档](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+[微软官网文档](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/known-issues-and-common-questions )
+
+
+
+[陈希志博客](https://www.cnblogs.com/chenxizhang/category/967796.html)
+[微软开发者论坛](https://social.msdn.microsoft.com/Forums/en-US/home
+https://social.msdn.microsoft.com/Forums/en-US/c3180339-8111-4025-a174-46d87afc00c8/sharepoint-framework-in-onpremise-sp-2013?forum=sharepointdevelopment
+https://social.msdn.microsoft.com/Forums/en-US/77c90214-a5c0-430a-b8c7-05483c76a9d8/sharepoint-framework?forum=sharepointadmin
+https://rencore.com/blog/sharepoint-framework-webinar-qa-follow-part-1-sharepoint-framework/
+https://github.com/SharePoint/sp-dev-fx-webparts)
+[modern web stack](https://github.com/SharePoint/sp-dev-samples/tree/dev )
+
+
+
+
+
+## *Quick Start*
+
 
 ### 项目结构
 
 ```js
-│  .editorconfig // 编辑器配置
-│  .gitignore	// git提交忽略设置
-│  .yo-rc.json	// 记录模板生成器的信息
-│  gulpfile.js	// 打包脚本
+│  .editorconfig 		// 编辑器配置
+│  .gitignore			// git提交忽略设置
+│  .yo-rc.json			// 记录模板生成器的信息
+│  gulpfile.js			// 打包脚本
 │  package-lock.json	// 依赖版本锁定
 │  package.json			// 项目信息、依赖、指令记录
 │  README.md			// 官方README文档
@@ -31,7 +56,7 @@ K(int)k(int)
 │      copy-assets.json
 │      deploy-azure-storage.json
 │      package-solution.json	// 部署打包相关的信息，打包路径等
-│      serve.json			// 本地调试信息
+│      serve.json				// 本地调试信息
 │      write-manifests.json
 │      
 ├─dist
@@ -65,9 +90,9 @@ K(int)k(int)
 │          │      
 │          └─loc
 │                  en-us.js
-│-sharepoint	// 打包后的文件
+├─sharepoint			// 打包后的文件
 │  └─ solution
-│  	   │  hello.sppkg	// webpart
+│  	   │  hello.sppkg	// 部署webpart，可解压出文件
 │  	   │
 │  	   └─debug
 │      	   │  AppManifest.xml
@@ -89,13 +114,12 @@ K(int)k(int)
 │  └─webparts
 │      └─helloWorld
 │		   │  MockHttpClient.ts	// mock数据文件，需要自行创建
-│          │  HelloWorldWebPart.manifest.json 
-│		   │	// 定义webpart的一些信息:版本、id、属性等
-│          │  HelloWorldWebPart.ts	// 程序入口点，继承BaseClientSideWebPart
+│          │  HelloWorldWebPart.manifest.json // 定义webpart的一些信息:版本、id、属性等
+│          │  HelloWorldWebPart.ts			  // 程序入口点，继承BaseClientSideWebPart
 │          │  
 │          ├─components
 │          │      HelloWorld.module.scss
-│          │      HelloWorld.module.scss.ts	// 根据HelloWorld.module.scss生成
+│          │      HelloWorld.module.scss.ts	  // 根据HelloWorld.module.scss生成
 │          │      HelloWorld.tsx
 │          │      IHelloWorldProps.ts
 │          │      
@@ -124,29 +148,7 @@ K(int)k(int)
 
 
 
-### 基础知识
-
-React
-
-TypeScript
-
-Sass
-
-gulp
-
-npm
-
-
-
-### 环境要求
-
-#### 开发
-
-node
-
-
-
-#### 运行
+### 运行环境
 
 SPO or SP 2016 Feature Pack 2以上
 
@@ -248,6 +250,8 @@ gulp serve
  # 不打包静态资源，需要CDN或本地运行服务提供资源
  gulp package-solution
  
+ gulp serve --nobrowser # 本地运行服务提供资源
+ 
  # 打包静态资源，分别执行以下指令，如果启用CND，部署后会将资源托管到CDN,否则托管到SP列表中
  gulp bundle --ship
  gulp package-solution --ship
@@ -275,13 +279,9 @@ gulp serve
 
 
 
-如果使用gulp package-solution进行打包部署需要本地运行服务提供资源gulp serve --nobrowser
-
-
-
 ##### SP2016下部署
 
-1、修改config/write-manifests.json的cdnBasePath路径为文件上传路径
+1、修改config/write-manifests.json的cdnBasePath路径为资源文件上传路径
 
 2、执行打包指令
 
@@ -527,7 +527,7 @@ protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
   "manifestVersion": 2,
 
   // 如果为真只能部署在运行Custom Script的站点上
-  // Components that allow authors to embed arbitrary script code should set this to true.
+  // [Components that allow authors to embed arbitrary script code should set this to true.
   // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
       
@@ -1074,6 +1074,43 @@ Even though you would not require the solution to be installed on the site, you'
 
 
 ### 通用
+
+
+
+#### antd编译类型错误
+
+tsc版本问题，antd使用新的ts语法，SPFX编译工具使用低版本的tsc
+
+- 删除```node_modules/@microsoft/rush-stack-compiler-x```下```node_modules```的```typescript```包，并且修改```package.json```的版本
+- ```yarn.lock```、```package.lock```中修改```@microsoft/rush-stack-compiler-x```依赖的```typescript```版本，
+
+
+
+#### antd运行错误
+
+antd代码中使用了较新的方法，```Array.from```、```Array.includes```，在IE下运行时需添加polyfill
+
+- 全量polyfill引入，```import "@babel/polyfill";```
+- 按需polyfill引入，```import "core-js/es6/array";import "core-js/es7/array";```
+
+
+
+#### polyfill
+
+spfx打包时会自动附带上基础polyfill包的引用（从SP内置站点内容中请求）
+
+- ```es6-collections```：WeakMap 、Map 、Set、WeakSet 
+- ```whatwg-url```：URLSearchParams
+- ```es6-promise```
+- ```whatwg-fetch```
+
+
+
+#### 调试
+
+IE打开证书错误：```gulp trust-dev-cert```
+
+
 
 #### 标识
 

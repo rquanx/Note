@@ -261,7 +261,6 @@ node
 
 
 [一个针对程序员的搜索引擎，只搜索编程相关的网站，比如 GitHub 和 StackOverflow](https://quickref.dev/)
-
 [一个免费的、不用注册的在线文件储存服务，最大可以上传 2GB，保存48小时。它会自动生成下载链接，可以分享给其他人](https://sendfiles.online/)
 
 
@@ -570,3 +569,5 @@ Hacker and Painters
 如果业务下降10％，你应该有50％的营业利润率。
 
 如果你快速增长，就可以接受赔钱。随着增长放缓，你必须赚钱并增加利润。
+
+https://nodesign.dev/

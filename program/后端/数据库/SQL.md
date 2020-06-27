@@ -12,7 +12,7 @@
 
 ##### 书写顺序
 
-select -> from -> where -> group by -> having
+select -> from -> where -> group by -> having -> order by
 
 ##### 执行顺序
 
