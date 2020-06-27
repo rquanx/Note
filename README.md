@@ -12,53 +12,7 @@
 
 
 
-
-
-[俚语字典](https://www.urbandictionary.com/)
-
-[流行语字典](https://jikipedia.com/)
-
-
-
-#### 财务
-
-##### 读书
-
-穷查理宝典
-
-小狗钱钱
-
-
-
 #### 计算机
-
-
-
-##### 参考书目
-
-[大叔2011年读过的书及2012年即将要读的书](https://www.cnblogs.com/TomXu/archive/2012/01/04/2311258.html)
-
-设计模式	--四人帮
-
-暗时间
-
-王小波、吴军、村上春树、 东野圭吾
-
-Hacker and Painters
-
-跨越鸿沟
-
-逃离速度
-
-对付达尔文
-
-闪电式扩张
-
-格鲁夫给经理人的第一课
-
-[赵三本](https://www.douban.com/doulist/38002743/)
-
-
 
 ##### 基础课程
 
@@ -248,6 +202,10 @@ github.com --> githistory.xyz
 
 ##### 面试/招聘
 
+
+
+###### 准备
+
 [阮一峰简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
 
 [面试技巧](<https://www.cnblogs.com/JavaArchitect/p/7586949.html>)
@@ -257,6 +215,8 @@ github.com --> githistory.xyz
 
 
 ###### 需了解的内容
+
+[公司黑名单](https://docs.qq.com/sheet/DUWZRUE9iRUFJeklh?ADUIN=916589443&ADSESSION=1588228303&ADTAG=CLIENT.QQ.5689_.0&ADPUBNO=26982&tab=q8zmgc&c=B3A0K0)
 
 1、薪资 
 2、工作时间 (996？加班调休？？？)
@@ -269,6 +229,10 @@ github.com --> githistory.xyz
 9、技术基础设施
 10、项目开发、发布流程
 11、晋升、调薪等
+
+
+
+
 
 
 
@@ -324,6 +288,14 @@ github.com --> githistory.xyz
 
 #### 生活
 
+##### 字典
+
+[俚语字典](https://www.urbandictionary.com/)
+
+[流行语字典](https://jikipedia.com/)
+
+
+
 ##### 隐私
 
 [查看信息泄露](<https://monitor.firefox.com/scan>)
@@ -376,6 +348,80 @@ github.com --> githistory.xyz
 
 #### Todo
 
+##### 读书
+
+穷查理宝典
+
+小狗钱钱
+
+时尚杂志
+
+设计模式之美
+
+格鲁夫给经纪人
+
+小强升职记
+
+洞穴奇案
+
+明规则、潜规则
+
+君主论
+
+血酬定律
+
+爱的博弈
+
+苏菲的世界
+
+亲密关系
+
+饥饿站台
+
+代码大全
+
+[大叔2011年读过的书及2012年即将要读的书](https://www.cnblogs.com/TomXu/archive/2012/01/04/2311258.html)
+
+设计模式	--四人帮
+
+暗时间
+
+王小波、吴军、村上春树、 东野圭吾
+
+Hacker and Painters
+
+跨越鸿沟
+
+逃离速度
+
+对付达尔文
+
+闪电式扩张
+
+格鲁夫给经理人的第一课
+
+[赵三本](https://www.douban.com/doulist/38002743/)
+
+
+
+
+
+##### 学习
+
+安全学习
+
+
+
+##### 工具
+
+Snipaste
+
+录音笔
+
+
+
+##### 文章
+
 [前端代码混淆](<https://segmentfault.com/a/1190000019423501>)
 
 [为什么学了很多知识，仍然没有什么用](<https://mp.weixin.qq.com/s/L6AVwHDMXIxVlGJcW4wUoA>)
@@ -387,3 +433,97 @@ github.com --> githistory.xyz
 [前端异常监控解决方案研究](<https://www.tangshuang.net/5782.html>)
 
 [如何阅读源码](https://github.com/freedombird9/how-to-read-source-code/blob/master/how-to-read-code.md)
+
+[学习、参考flutter demo](https://github.com/phoenixsky/fun_android_flutter)
+
+[V8在react diff中的性能问题?  ](https://v8.dev/blog/react-cliff)
+
+[正则实现](https://www.yuque.com/dongchongyang/kgxvo9/aogxor?from=groupmessage)
+
+[react实现](https://pomb.us/build-your-own-react/)
+
+[自检清单]([https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590653&idx=1&sn=6138d5e7d4409aac385649da184c369a&chksm=8891dd99bfe6548f32e220f434fe8e1e2f6f8bf6c0c6b9f8d503647b869b95ac0f3bf32b632d&mpshare=1&scene=23&srcid=&sharer_sharetime=1574352476085&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#r](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590653&idx=1&sn=6138d5e7d4409aac385649da184c369a&chksm=8891dd99bfe6548f32e220f434fe8e1e2f6f8bf6c0c6b9f8d503647b869b95ac0f3bf32b632d&mpshare=1&scene=23&srcid=&sharer_sharetime=1574352476085&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd))
+
+[一年前端学习进度](https://www.zhihu.com/question/350289336/answer/873350617)
+
+面试
+
+> http://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484426&idx=1&sn=b5cc3452d717d4d40cd3289883d4c601&chksm=9782ca83a0f54395c274eec36d0294e0f7fd02682d5bb43733a74ba5065e944c43f91b98f480&mpshare=1&scene=23&srcid=&sharer_sharetime=1573449480889&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd
+>
+>  
+>
+> https://mp.weixin.qq.com/s/VRIOdGmV_y-hVk3tYUhZmw
+>
+>  
+>
+> https://mp.weixin.qq.com/s/5AAB4M15OehpgBzpuwQofw
+
+[交互设计](https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651234300&idx=1&sn=b27c99854d2bcedb449d175ec8cb47ff&chksm=bd4946788a3ecf6ee68466ee595fe0a420e3fefc05168551150128f6f2c7f48c2e7404e5bdb1&mpshare=1&scene=1&srcid=&sharer_sharetime=15713497)
+
+ [ 网络  ](http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651234302&idx=1&sn=13cbc951dc746e50490b0ac964fec5b9&chksm=bd49467a8a3ecf6cd6fb160faddaf1bfac76c3c15453359bc00a39b0095fefaca63e612cc968&mpshare=1&scene=23&srcid=&sharer_sharetime=1571446674102&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd)
+
+[ast](https://mp.weixin.qq.com/s/m94Sv57EcnhSIzoJBvgA2w)
+
+[字体](https://mp.weixin.qq.com/s/KfPGMtcXWnSMNtn8vHIJSQ)
+
+[web录屏](https://mp.weixin.qq.com/s/Vo4j1RRVrQZtBxK-8o19Og)
+
+[flex](https://zhuanlan.zhihu.com/p/46684565?utm_source=wechat_session&utm_medium=social&s_s_i=o7Tzxdzb5cu19Y02i%2FJQcA4o2a21HyImLSqzR%2Bj7%2BsA%3D&s_r=1#showWechatShareTip)
+
+[如何通过 JavaScript  编写高质量的函数](https://mp.weixin.qq.com/s?__biz=MzI4NjY4MTU5Nw==&mid=2247485925&idx=1&sn=8d8e39523d10a9f7655c81e2c8af50c0&chksm=ebd87977dcaff061a21cc4f2b6302c5099671b345e06ed3427d7b52e1249343a015f3fdc2630&mpshare=1&scene=23&srcid=&sharer_sharetime=1568852452148&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd)
+
+[Libuv学习——队列 ](https://mp.weixin.qq.com/s?__biz=MzU5MjczNTg2MQ==&mid=2247484311&idx=1&sn=36b5866a0f41a1d3eabcf9a9b82ea5c5&chksm=fe1a788dc96df19bc7244c5ef8582d9bc431765171c50a0c6a925128ab051cc394fb35e8b69d&mpshare=1&scene=23&srcid=&sharer_sharetime=1568856296681&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd)
+
+[Github漫游](http://github.phodal.com/#前言)
+
+[aria](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590353&idx=1&sn=cbdf69efb0a95397baa5aa1c86f9f558&chksm=8891dcb5bfe655a3541a60ebd517f06591c524d832cbbd22176740a2b038da62fecb189a00c0&mpshare=1&scene=23&srcid=&sharer_sharetime=1568667289106&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd)
+
+[浏览器知识](https://zhuanlan.zhihu.com/p/47407398)
+
+eslint
+
+> https://github.com/forthealllight/blog/issues/45
+>
+>  
+>
+> https://blog.rxliuli.com/p/ce3fba72/
+>
+>  
+>
+>  
+>
+> https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590172&idx=1&sn=6450e50e8ecf34772127819a687d49b9&chksm=8891dbf8bfe652ee4e83c27b5de0b9406a6ebe72374bdb254d825fd52b868dca23be879d1b86&mpshare=1&scene=23&srcid=&sharer_sharetime=1564571843654&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd
+
+
+
+[可视化](http://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247491161&idx=1&sn=200ce560fdec9d0823c6ab8576aade12&chksm=e9292356de5eaa40c0de44ec1380563966a4513954f2e54bdf08095b89e67ff3908dcf11aee6&mpshare=1&scene=23&srcid=&sharer_sharetime=1567383959974&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd)
+
+
+
+rxjs
+
+> https://github.com/langhuihui/rx4rx
+>
+> https://rxmarbles.com/
+
+
+
+[赚钱经验](https://github.com/loonggg/DevMoneySharing)
+
+
+
+[浏览器性能监控](https://zhuanlan.zhihu.com/p/46534239)
+
+[service-history](https://www.codedump.info/post/20190629-service-history/)
+
+缓存
+
+> https://zhuanlan.zhihu.com/p/44789005
+>
+> https://mp.weixin.qq.com/s/UWSinMVpJeusWABjWvB9mw
+
+
+
+[hack教程（star有另一个仓库）](https://www.hacksplaining.com/features)
+
+[关于职场](https://www.yuque.com/robinson/jobmaster/presay)
