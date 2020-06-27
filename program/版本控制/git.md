@@ -129,45 +129,69 @@ q
 
 
 
-#### 操作
+#### 命令
+
+##### 初始化
+
+```bash
+git init 					# 初始化一个新本地仓库，生成.git的隐藏文件夹
+
+git remote add origin <url> # 将本地仓库与远程仓库关联
+```
+
+
 
 ##### 数据查看
 
-git cat-file -t [hash]
+```bash
+git cat-file -t [hash] # 查看objects存储的数据类型
 
-> 查看objects存储的数据类型
+git cat-file -p [hash] # 查看objects中存储的内容
+```
 
 
-
-git cat-file -p [hash]
-
-> 查看objects中存储的内容
 
 
 
 ##### 日志
 
-git log 
+```bash
+git log  # 查看提交的日志
 
-> 查看提交的日志
+git relog # 显示所有历史记录
+```
 
-git relog
 
-> 显示所有历史记录
+
+##### 暂存
+
+```bash
+git stash save <name>  # 将当前工作区修改保存，名字为name并进入栈区，保存后所有文件回归未修改状态
+git stash pop 		   # 弹出最近一条保存的记录
+git stash apply <name> # 弹出特定名字的记录
+git stash 			   # 查看栈中所有记录
+```
+
+
 
 
 
 ##### 还原
 
-git revert
-
-将文件内容还原到特定节点的时候的样子，但是是通过产生新节点来实现
+```bash
+git revert -n <commit id>	  # 代码回滚指特定commit,不会抹除已有提交记录 
+# 将文件内容还原到特定节点的时候的样子，但是是通过产生新节点来实现
+```
 
 
 
 ##### 重置
 
-git reset
+```bash
+git reset --hard <commit id>  # 代码回滚指特定commit,会抹除回滚commit之后的提交记录
+```
+
+
 
 ###### 软重置
 
@@ -219,45 +243,35 @@ git rebase 指令会 复制 当前分支的所有最新提交，然后将这些�
 
 ##### 分支
 
-git checkout xxx
+```bash
+git checkout xxx # 切换分支
 
-> 切换分支
+git checkout -b xxx # 切换并创建分支
 
-
-
-git cherry-pick
-
-> 将某个分支节点加入到现有，场景：在错误的分支下进行了commit，不需要重写
+git cherry-pick <commit id> # 将某个分支节点加入到现有，场景：在错误的分支下进行了commit，不需要重写
+```
 
 
-
-
-
-> 
 
 
 
 ##### 源切换
 
-git remote add upstream xxxx
-
-> 将某个仓库作为只读的更新源
+```bash
+git remote add upstream xxxx # 将某个仓库作为只读的更新源
+```
 
 
 
 ##### 更新
 
-git fetch
+```bash
+git fetch # 从远程其他分支拉取代码到远程分支上，但是本地分支代码不受影响
+git merge # 
 
-> 从远程其他分支拉取代码到远程分支上，但是本地分支代码不受影响
-
-
-
-git pull upstream xxx
-
-> 从更新源拉起特定分支
-
-> pull == fetch + merge
+git pull upstream xxx # 从更新源拉起特定分支
+# pull == fetch + merge
+```
 
 
 
@@ -265,9 +279,9 @@ git pull upstream xxx
 
 ##### 提交
 
-commit --amend
-
-> 修改最近的一次提交
+```bash
+commit --amend # 修改最近的一次提交
+```
 
 
 
@@ -275,41 +289,46 @@ commit --amend
 
 add前
 
-> git checkout -- filename 将某个文件内容回滚
->
-> git checkout -- .     一次性回滚多个文件
+```bash
+git checkout -- filename # 将某个文件内容回滚
+
+git checkout -- .     # 一次性回滚多个文件
+```
 
 
 
 commit前
 
-> 1、git reset HEAD filename
->
-> 2、git reset HEAD 多个文件
+```bash
+git reset HEAD filename
+git reset HEAD # 多个文件
+```
 
 
 
 push前
 
-> 1、git log 找到hash
->
-> 2、git revert hash
+```bash
+git log # 找到hash
+git revert <hash>
+```
 
 
 
 push后
 
-> 1、git reset --hard hash
->
-> 2、git push --force  可以不用force?
+```bash
+git reset --hard hash
+git push --force  # 可以不用force?
+```
 
 
 
 ##### 其他
 
-git tag -a
-
-> 添加附注，创建tag
+```bash
+git tag -a # 添加附注，创建tag
+```
 
 
 
@@ -340,32 +359,51 @@ git push
 
 #### 规范
 
-##### commit
+模板
 
-```bash
+```xml
+<!-- 简化 -->
+<type>: <subject>
+
+<!-- 完整 -->
 <type>: <subject>
 // 空一行
 <body>
 // 空一行
-<footer>
-
-type：提交类型，可选值如下
-* work: 开发中(work in progress)
-* feature：新功能(new feature)
-* fix：修补bug(fix bug)
-* doc：文档(documentation changes)
-* style： 格式(change code format)
-* refactor：重构(modify code but not feature)
-* test：增加测试(test code)
-* chore：构建过程或辅助工具的变动(changes don't modify src and test files, only config or tasks)
-* none: 不写明
-
-subject：commit 目的的简短描述。
-
-body: 对本次 commit 的详细描述
-
-footer: 描述一些特殊情况，不兼容变动和issue关闭。
+<footer> 
 ```
+
+
+
+##### type（必选）
+
+- ```feat```：新增功能、行为
+- ```fix```：修复bug
+- ```docs```：文档修改
+- ```style```：格式（不影响代码运行的变动）
+- ```refactor```：重构（即不是新增功能，也不是修改bug的代码变动）
+- ```test```：增加测试
+- ```chore```：构建过程、辅助工具、项目配置相关的变动
+- ```merge```：解决冲突后的合并提交
+- ```update```：未定义/不明确type
+
+
+
+##### subject（必选）
+
+commit 目的的简短描述，不超过50个字符
+
+
+
+##### Body（可选）
+
+对本次 commit 的详细描述，可以分成多行。
+
+
+
+##### Footer(可选)
+
+描述一些特殊情况，不兼容变动和issue关闭。
 
 
 
@@ -374,8 +412,5 @@ footer: 描述一些特殊情况，不兼容变动和issue关闭。
 ##### 无法切换账号
 
 检查windows凭据管理
-
-
-
 
 

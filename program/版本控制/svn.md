@@ -1,8 +1,11 @@
 ### 操作
 
 #### 命令
-递归强制添加
-  svn add . --no-ignore --force
+```bash
+svn add . --no-ignore --force # 递归强制添加
+```
+
+
 
 #### 新建分支（打Tag?）
 
