@@ -1229,6 +1229,10 @@ build.configureWebpack.setConfig({
 
 
 
+webpart安装后，添加的时候无法找到
+
+> 到其他站点，或者用旧webpart的安装方式进行安装后，再回到页面试试
+
 
 
 #### 删除
