@@ -8,7 +8,7 @@
 
 
 
-#### 书写
+#### 书写/规范
 
 ##### 书写顺序
 
@@ -22,9 +22,19 @@ form --> where --> group by --> having --> select --> order by --> limit
 
 ##### 大小写
 
-对大小写不敏感
+**Linux**
 
- 
+MySQL 数据库名、表名、变量名是严格区分大小写的，而字段名是忽略大小写
+
+
+
+**Windows** 
+
+MySQL 不区分大小写
+
+ SQLServer大小写不区分
+
+
 
 ##### 引号
 
@@ -171,6 +181,74 @@ null == null ==> false
 > 例：bit类型
 >
 > a <> 1  不包含有null
+
+
+
+### 术语/概念
+
+####  数据库范式及编程规范
+
+根据实际情况取舍
+
+
+
+##### 数据库范式
+
+- student(id, name)
+
+- class(id, description)
+
+- student_class(student_id, class_id)
+
+三张表，查询时需要join，数据量大时容易产生性能问题
+
+
+
+##### 编程规范
+
+student_class_full(student_id, class_id, name, description)
+
+使用一张大表存储所有字段，虽然字段有冗余，但是不需要join
+
+
+
+#### 连接
+
+##### 等值连接
+
+```sql
+select * from a,b where a.x = b.x
+```
+
+
+
+##### 非等值连接
+
+```sql
+SELECT * FROM a, b WHERE a.x BETWEEN b.x AND b.x
+```
+
+
+
+##### 外连接
+
+```sql
+select * from a join b on a.x = b.x
+```
+
+
+
+##### 自连接
+
+```sql
+select * from a as aa,a as bb where aa.x = x and bb.x < x
+```
+
+
+
+##### 对比
+
+外连接（join?）相比其他连接，外连接是取小表进行hash连接，其他则是先将表进行笛卡尔积再进行过滤，会占用更多资源？
 
 
 
@@ -492,6 +570,14 @@ desc 倒序
 
 
 
+**MySQL中排序有两种**
+
+- `Index`：索引可以保证数据的有序性，因此不需要再进行排序。
+
+- `FileSort`：一般在内存中进行排序，占用CPU较多。如果待排结果较大，会产生临时文件I/O到磁盘进行排序，效率较低。
+
+
+
 ##### Top/Limit
 
 根据数据库支持使用top/limit
@@ -744,6 +830,36 @@ SELECT name FROM world WHERE continent = (SELECT continent FROM world WHERE name
 
 
 
+**关联子查询**
+
+ ***外部查询返回的每一行数据，内部查询都要执行一次***
+
+必须先执行外层查询，接着对所有通过过滤条件的记录，执行内层查询。
+
+外层查询和内层查询相互依赖，因为外层查询会把数据传递给内层查询
+
+
+
+```sql
+select * from dept d where exists(select * from emp e where e.deptno = d.deptno);
+```
+
+
+
+**非关联子查询**
+
+***子查询只执行一次***
+
+必须先完成内层查询之后，外层查询才能介入
+
+```sql
+select * from emp where sal = (select max(sal) from emp);
+```
+
+
+
+
+
 ##### 表复制
 
 ```sql
@@ -813,6 +929,83 @@ WHERE 条件
 
 
 
+
+
+### 进阶
+
+
+
+#### In/Not In VS  Exisit/Not Exists
+
+##### In/EXISTS
+
+`In`：把外表和内表作hash 连接
+
+`Exists`：对外表作loop 循环，每次loop 循环再对内表进行查询
+
+
+
+一般IN/EXISTS都能得到相同的结果，建立索引的情况下，看外部查询的主表的大小
+
+- 外部查询主表 > 内部查询子表 ==> IN效率高，对内部查询子表进行了索引
+- 外部查询主表 < 内部查询子表 ==> EXISTS效率高，对外部查询主表进行了索引
+
+总结：外表大，用IN；内表大，用EXISTS
+
+
+
+##### Not in/Not exists
+
+`not in`：内外表都进行全表扫描，没有用到索引
+
+`not extsts`：的子查询依然能用到表上的索引,not exists > not in
+
+
+
+#### Hash连接
+
+用第一个表（小表）建hash table，第二个表在hash table中查找匹配的项，复杂度是n，hash table占的内存可能会比较大
+
+##### 原理
+
+两个表做hash连接，使用较小的表作为`驱动表`（这里指运用了过滤条件后结果集较小的表），另一个表称为`探测表`
+
+
+
+**流程**
+
+- 对驱动表的关联列使用两个内置函数计算hash值，两个hash值分别记为`hash_value_1`和`hash_value_2`,`hash_value_1`相同的记录存放在一个`hash bucket`中，这里注意`hash bucket`只需要记录该sql语句的查询列、关联列及`hash_value_2`即可，hash bucket组成`hash table`
+
+- 利用连接列上的hash函数，将从驱动表上获取的结果集做成hash table存放在内存中，hash table中单元是hash bucket，key/value，value就是hash bucket
+
+- 取探测表的数据，对每一个数据都做关联列上的hash函数（和驱动表的hash函数相同），定位到hash table中的hash bucket，找到hash bucket就进去看看有没有匹配的数据
+
+- 如果hash bucket里没有数据，则丢弃探测表中的这一行数据。如果有，则进一步查看里面的数据是否和探测表的这条记录匹配
+
+- 循环处理，直到处理完探测表中的所有记录，返回结果集
+
+
+
+#### Join分类及复杂度
+
+##### Nested loop join 嵌套连接
+
+两个表读一行数据进行两两对比，复杂度是n^2
+
+
+
+##### Block nested loop join
+
+从两个表读很多行数据，然后进行两两对比，复杂度也是n^2
+
+
+
+##### Index nested loop join
+
+从第一个表读一行，然后在第二个表的索引中查找这个数据，索引是B+树索引，复杂度可以近似认为是nlogn
+
+
+
 ### 性能
 
 #### Count
@@ -878,14 +1071,12 @@ SELECT *
 
 ##### 索引失效
 
-索引失效的情况
-
 - <>
 - !=
+- NULL
 - NOT IN
 - 类型转换
   - 对char类型使用number值作条件
-
 - 子查询？
   - 子查询的结果会产生一张新表，不过如果不加限制大量使用中间表的话，会带来两个问题，一是展示数据需要消耗内存资源，二是原始表中的索引不容易用到
 
@@ -969,10 +1160,9 @@ SELECT *
 **注意点**
 
 - 较频繁的作为查询条件的字段应该创建索引；
-
 - 唯一性太差的字段不适合单独创建索引，即使该字段频繁作为查询条件；
-
 - 更新非常频繁的字段不适合创建索引
+- Where和Order尽量使用索引，where可以避免全表扫描，order可以避免`FileSort`排序
 
 
 
