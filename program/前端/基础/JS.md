@@ -844,6 +844,40 @@ var argModule = (function(jquery) {
 
 递归调用时，清除上一次操作形成的闭包占用的内存。使用递归定时，可以用clearTimeOut清除？
 
+
+
+#### 作用域和调用栈
+
+
+
+调用栈：表示当前函数环境调用的深度
+
+
+
+作用域：作用域（词法环境）在静态代码中已限定，定义函数时的环境与调用时的环境会不用，所以与调用栈无关
+
+
+
+```js
+const fn1 = (f) => {
+
+  var a = 1;
+
+  f();
+
+}
+
+
+
+const fn2 = () => { var b = 2;console.log(b); }
+
+
+
+fn1(fn2);
+```
+
+
+
 ### 常用基本对象
 
 #### Global
@@ -1995,6 +2029,12 @@ quick增加防抖和节流
 
 
 
+只能捕获捉到运行时非异步错误，对于语法错误和异步错误就捕捉不到。
+
+> 语法错误，由于是编译阶段，非运行阶段，即使在catch内也无法捕获
+
+
+
 ##### window.onerror 
 
 > 当 `JS` 运行时错误发生时，`window` 会触发一个 `ErrorEvent` 接口的 `error` 事件，并执行 `window.onerror()`。
@@ -2002,6 +2042,10 @@ quick增加防抖和节流
 > 可以进行一个错误拦截
 >
 > `window.onerror` 函数只有在返回 `true` 的时候，异常才不会向上抛出，否则即使是知道异常的发生控制台还是会显示 `Uncaught Error: xxxxx`
+>
+> 
+>
+> 网络异常错误不会事件冒泡，因此必须在捕获阶段将其捕捉到才行，但是这种方式虽然可以捕捉到网络请求的异常，但是无法判断 HTTP 的状态是 404 还是其他比如 500 等等
 >
 > 
 >
@@ -2039,6 +2083,22 @@ window.addEventListener('unhandledrejection', function (e) {
     var url = fileMsg.slice(0, -lno.length - cno.length - 2);}, true);
     var msg = e.reason.message;
     // 上报 【js错误】事件
+}
+```
+
+
+
+##### 异常上报
+
+**img标签上报**
+
+```js
+function report(error) {
+
+ var reportUrl = 'http://xxxx/report';
+
+ new Image().src = reportUrl + 'error=' + error;
+
 }
 ```
 

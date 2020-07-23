@@ -324,10 +324,37 @@ git push --force  # 可以不用force?
 
 
 
-##### 其他
+##### Tag 	
 
 ```bash
-git tag -a # 添加附注，创建tag
+git tag
+# 列出所有的tag
+
+git tag -l "1.0*"
+# 筛选tag
+
+
+git show <tag_name>
+# Eg. git show v1.0.1
+# 显示tag详情
+
+git tag -d <tag_name>
+# 删除tag
+
+git fetch --tags
+# 拉起tags
+
+git tag <tag_name>
+# Eg. git tag v1.0.1
+
+git tag -a <tag_name> -m "message"
+# Eg. git tag -a v1.0.1 -m "First release"
+
+git tag <tag_name> <commit_sha>
+# 以特定commit打tag
+
+git push --tags
+# 推送tag至远程服务器
 ```
 
 
