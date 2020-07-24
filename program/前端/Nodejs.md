@@ -133,6 +133,26 @@ npm i module_name  -D  => npm install module_name --save-dev
 
 
 
+#### 修改node_modules
+
+
+
+**一、利用webpack别名**
+
+
+
+别名原理：将import路径中的字符串进行替换，再进行查找，对node_modules中的路径同样有效
+
+1、复制node_modules要修改的文件到src，然后修改，将文件的import路径进行修正
+
+2、通过webpack别名，对引入这个文件的路径进行替换
+
+
+
+**二、利用patch-package包**
+
+
+
 #### PM2
 
 应用管理

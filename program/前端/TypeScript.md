@@ -597,7 +597,7 @@ jsxFactory": "h",// preact设置   编译成h
 
     /* 配置文件继承 */
     // "extends": "./tsconfig.base.json"
-
+	// "jsRules": { "no-empty": true } 对js文件不进行规则检验
 }
 ```
 

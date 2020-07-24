@@ -982,6 +982,28 @@ inline-flex：使父元素尺寸跟随子元素们的尺寸动态调整，包裹
 
 ### CSS3
 
+#### 变量
+
+```js
+// 通过js设置变量
+
+element.style.setProperty("name","value") // 可设置为动态值，例当事件触发时设置
+
+// 设置变量后在css中可以通过var(name)来自动获取，实现CSS变量动态变化从而样式动态调整
+```
+
+
+
+// 通过js设置变量
+
+element.style.setProperty("name","value") // 可设置为动态值，例当事件触发时设置
+
+// 设置变量后在css中可以通过var(name)来自动获取，实现CSS变量动态变化从而样式动态调整
+
+\```
+
+
+
 #### 计数器
 
 ##### counter-reset

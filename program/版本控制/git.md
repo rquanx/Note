@@ -181,6 +181,9 @@ git stash 			   # 查看栈中所有记录
 ```bash
 git revert -n <commit id>	  # 代码回滚指特定commit,不会抹除已有提交记录 
 # 将文件内容还原到特定节点的时候的样子，但是是通过产生新节点来实现
+
+# revert后需要提交一次，留存revert记录
+# revert会回退到特定commit前，并把commit的内容add
 ```
 
 
