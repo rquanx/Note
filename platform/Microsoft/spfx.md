@@ -1075,6 +1075,14 @@ Even though you would not require the solution to be installed on the site, you'
 
 ### 通用
 
+#### webpart 打包问题
+
+在umi框架移动到spfx框架中，代码打包差异问题，导致每次移动都需要改动较多代码，影响打包效率
+
+- Less：umi框架增加sass支持，直接写sass / 通过工具将less转sass
+
+- SPComponentLoader : 嵌套一层组件
+
 
 
 #### antd编译类型错误

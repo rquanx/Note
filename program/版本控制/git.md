@@ -305,6 +305,7 @@ commit前
 ```bash
 git reset HEAD filename
 git reset HEAD # 多个文件
+git reset .  
 ```
 
 
