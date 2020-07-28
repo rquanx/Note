@@ -1,4 +1,28 @@
+#### 技巧
+
+##### 局域网共享
+
+[访问共享电脑的局域网ip](https://bbs.feng.com/read-htm-tid-10271954.html)
+
+##### 自颁发https证书
+
+Iis-->网站-->右侧绑定-->添加-->选择协议、选择证书(iis develop 证书)-->给localhost颁发https证书
+
+
+
 #### 问题
+
+
+
+##### Iis被另一程序占用
+
+`netstat -ano`:查看端口状态，找到占用程序`pid`，任务管理器关掉
+
+
+
+##### 文件上传大小
+
+[iis上传大小限制](https://www.cnblogs.com/budai/p/7810107.html)
 
 
 

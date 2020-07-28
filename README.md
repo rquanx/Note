@@ -170,6 +170,8 @@ zeplin
 
 [多种编程语言在线运行](https://glot.io/)
 
+[文字生成链接分享、阅后即焚](https://pasteme.cn/)
+
 
 
 **搜索**

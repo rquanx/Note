@@ -1116,9 +1116,9 @@ spfx打包时会自动附带上基础polyfill包的引用（从SP内置站点内
 
 #### 调试
 
-IE打开证书错误：```gulp trust-dev-cert```
+**IE打开证书错误**：```gulp trust-dev-cert```
 
-
+**script error 无法加载调试manifest.js**:`gulp trust-dev-cert`
 
 #### 标识
 

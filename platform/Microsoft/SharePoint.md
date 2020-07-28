@@ -271,6 +271,16 @@ Sharepoint designer 提示不能编辑非SP网站，重启，利用网页启动
 
 
 
+#### 账号
+
+账号设置分布
+
+- iis 应用池 账号设置
+- windows服务账号设置
+- sharepoint   邮件传出、nintex提示、UserProfile
+
+
+
 ### 列表
 
 
