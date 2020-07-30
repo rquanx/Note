@@ -1033,7 +1033,7 @@ A C I D
 
 ### 进阶
 
-##### 存储方式
+#### 存储方式
 
 **平衡二叉树**
 
@@ -1834,12 +1834,6 @@ Sql执行计划：查看开销
 
 
 
-##### 索引
-
-添加索引
-
-
-
 ##### 其他
 
 减少不必要的join
@@ -1848,9 +1842,7 @@ Sql执行计划：查看开销
 
 With as提取子查询？
 
-
-
-##### 场景缓慢原因
+##### 常见缓慢原因
 
 大数据排序
 
@@ -2016,44 +2008,7 @@ string_agg
 
 STUFF ( character_expression , start , length , replaceWith_expression )
 
-> character_expression中，将从start开始的length长度的的字符串替换成replaceWith_expression
-
-
-
 FOR xml path
-
-> 将select 的结果 输出xml格式的结果
->
-> FOR xml path     ==> ```<row><field>v1</field></row> <row><field>v2</field></row>```
->
-> FOR xml path('')   ==> ```<field>v1</field><field>v2</field>```
->
-> FOR xml path('table') ==> ```<table><field>v1</field></table> <table><field>v2</field></table>```
-
-
-
-```sql
-SELECT ',' + [value] 
-FROM temp t 
-WHERE t.id = temp.id 
--- 得到 ,v1 ; ,v2  两行数据
-
-
-SELECT ',' + [value] 
-FROM temp t 
-WHERE t.id = temp.id 
-FOR xml path('')
--- SELECT ',' + [value]  == field为空,去除field的xml，同时FOR xml path('') row也为空,最终得到,v1,v2
-
-stuff((
-SELECT ',' + [value] 
-FROM temp t 
-WHERE t.id = temp.id 
-FOR xml path('')) , 1 , 1 , '')
--- 将,v1,v2第1个长度为1的内容替换成''
-```
-
-
 
 
 
