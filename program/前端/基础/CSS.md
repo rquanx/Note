@@ -121,11 +121,26 @@ p:only-child { /* 只有一个子元素且为p */}
 
 
 
+#### 优先级
+
+##### 样式优先级
+
+!important > 内联(元素标签) > style(head标签) > link(外部文件)
+同级的 后一个会覆盖前一个
 
 
-#### Link标签
 
-##### 属性
+##### 选择器优先级
+
+!important > 内联 > id选择器 > class选择器  > 元素选择器，当一个元素被多个不同级别的css选中，且冲突时，按优先级应用
+
+
+
+#### 标签
+
+##### Link
+
+**属性**
 
 media
 
@@ -136,6 +151,83 @@ media
 rel
 
 > 可设置为候选样式，候选样式表可供用户选择切换，跟title关联
+
+
+
+#### 单位
+
+##### px
+
+比起设置px,设成百分比或者em更易维护
+
+em相对父级大小，rem相对根元素大小
+
+
+
+##### rem
+
+
+
+
+
+##### em
+
+
+
+##### vh
+
+
+
+##### vw
+
+
+
+##### 像素定义
+
+px 是viewport像素
+
+在PC上px == 逻辑像素
+
+
+
+物理像素
+
+> 反映显示屏的硬件条件
+>
+> 反映的就是显示屏内部led灯的数量，
+>
+> 简单理解，一组三色led代表一个物理像素，当然根据屏幕物理属性以及处理led的方法不一样。强调这是物理的，因为这是一个纯硬件指标。
+>
+> 比如我把屏幕锯了一半，物理像素就只有一半
+
+
+
+逻辑像素
+
+> 是为了调和距离不一样导致的差异，将所有设备根据距离，透视缩放到一个相等水平的观看距离之后得到的尺寸，是一个抽象的概念，这个单位就是ios开发的px，安卓开发的dp。对于pc，包括win（8+） linux，mac，由各自系统的或者对应软件（比如webview内部）提供的图像界面处理引擎处理进行缩放
+>
+> 
+>
+> 假设一个ppi160，2寸x3寸的屏幕，物理像素应该是320x480
+>
+> 同理ppi320，同样尺寸的屏幕，物理像素是640x960
+> 调和不同设备，不同dpr，不同屏幕，不同分辨率，不同观看距离之间的如何解决显示问题的方案
+
+
+
+
+
+渲染像素
+
+> 在系统内部对物理像素的分配进行再一次的调整
+>
+> 在pc上，渲染像素 == 设置里边的分辨率。
+>
+> 对于显示设备，系统为显示设备提供渲染尺寸，由显示设备的“缩放引擎”（带存储器阵列的数字视频处理器）处理。这种“缩放引擎”一般内部有一系列的合理分辨率和一个推荐分辨率。
+>
+> 一般推荐分辨率就是最大渲染像素，也是设备的物理分辨率（为了最佳表现）。这是一个软硬件（偏硬）结合的缩放方案。
+>
+> 根据物理像素进行缩放？
 
 
 
@@ -154,6 +246,51 @@ rel
 
 
 
+#### 伪元素
+
+:before 、:after...
+
+根据input的类型，有的支持伪元素，有的不支持
+
+
+
+#### 伪类
+
+##### 链接伪类
+
+:link
+:visited
+
+##### 动态伪类
+
+动态伪类理论上可以应用于任何元素，具体看浏览器支持
+
+:hover
+:active
+:focus
+
+##### 伪类连用
+
+a:visited:hover {xxx}
+
+
+
+##### 其他
+
+**:empty**
+
+匹配内容为空的标签
+
+可实现对空内容的标签进行填充/隐藏处理
+
+
+
+**:only-child**
+
+匹配没有任何兄弟元素的元素
+
+
+
 #### 盒模型
 
 除inline元素外，每个元素都有盒模型，inline设置了也无效
@@ -167,6 +304,34 @@ box-sizing:border-box （IE盒模型）
 ##### margin 
 
 用于元素之间隔离
+
+
+
+`margin: auto`
+
+对长度或宽度进行智能计算，对拉伸部分进行分配
+
+
+
+**`margin: 0 atuo` 为什么可以水平居中？**
+
+> 会将元素进行拉伸，拉伸后如果没有宽度默认会占满，但是当有强制宽度后，由于进行了auto分配，没被占用的地方会被自动分配，所有水平居中
+>
+> 如果要实现右对齐： 
+>
+> 一、margin-left: auto即可，剩余的空间会自动分配给左侧形成右对齐
+>
+> 二、使用绝对定位，top、bottom、right、left为0，则就会进行宽和高的拉伸
+>
+> 拉伸后进行宽高设置，这时再进行atuo，就可以右对齐、水平居中、垂直居中等....
+>
+> 三、为什么margin: auto 0 不能实现垂直居中
+>
+> 因为margin-top,margin-bottom不能进行拉伸
+>
+> 
+>
+> flex布局下所有元素就处于一个可拉伸的上下文中，所以使用margin-top: auto就可以实现顶部对齐 
 
 
 
@@ -202,9 +367,9 @@ box-sizing:border-box （IE盒模型）
 
 
 
-display: block ==> display: block-block // 非官方
+`display: block ==> display: block-block` // 非官方
 
-display: inline ==> display: inline-inline // 非官方
+`display: inline ==> display: inline-inline` // 非官方
 
 > 例：display: inline-table,可以让元素同行显示，同时内部可进行表格处理
 
@@ -285,6 +450,23 @@ top、bottom、left、right是相对于父元素的
 ##### fixed
 
 脱离文档流，基于窗口绝对定位，不管怎么滚动，总是处于窗口的指定位置窗口，===随滚动走
+
+
+
+设置fixed后直接以窗口为基准，位置设置需要用top、bottom…. 
+
+
+
+**顶部固定**
+
+```css
+position: fixed;
+width: 100%; // ？
+top: 0;
+z-index: 9999;
+```
+
+
 
 
 
@@ -435,74 +617,6 @@ overflow-x / -y 可以单独对x和y进行设置
 
 
 
-#### 背景
-
-任何元素都能设置background为图片，从而实现一些功能
-
-
-
-##### background
-
--repeat	将图片复制，铺满整个页面
--image	图片
--color	颜色
--attachment	背景是否随页面滚动
-
-
-
-##### background-clip
-
- padding-box / content-box 限制背景色不影响border / padding
-
-
-
-#### 优先级
-
-##### 样式优先级
-
-!important > 内联(元素标签) > style(head标签) > link(外部文件)
-同级的 后一个会覆盖前一个
-
-
-
-##### 选择器优先级
-
-!important > 内联 > id选择器 > class选择器  > 元素选择器，当一个元素被多个不同级别的css选中，且冲突时，根据优先级  
-
-#### 伪元素
-
-根据input的类型，有的支持伪元素，有的不支持
-
-
-
-#### 边框
-
-outline类似于border但不会影响布局
-
-
-
-#### 动画
-
- transition : arg1 arg2 ,arg1 arg2		可以一次设置多个属性效果
-​	arg1  哪个属性变化后产生动画
-​	arg2	 动画持续时间
-
-
-
-#### 变形
-
-##### transition
-
-设置元素渐变,配合形变transform、opacity变化等可形成简单动画效果
-
-
-
-##### transform
-
-transform:translateY(-50%)		以自身原本为参考，往上移动50%  
-
-
-
 #### 字体图标
 
 引入css和字体文件后
@@ -511,369 +625,7 @@ transform:translateY(-50%)		以自身原本为参考，往上移动50%
 
 
 
-#### 伪类
 
-##### 链接伪类
-
-:link
-:visited
-
-##### 动态伪类
-
-动态伪类理论上可以应用于任何元素，具体看浏览器支持
-
-:hover
-:active
-:focus
-
-##### 伪类连用
-
-a:visited:hover {xxx}
-
-
-
-##### 其他
-
-**:empty**
-
-匹配内容为空的标签
-
-可实现对空内容的标签进行填充/隐藏处理
-
-
-
-**:only-child**
-
-匹配没有任何兄弟元素的元素
-
-
-
-### 应用
-
-#### 放大
-transform: scale(1.2)
-> 例：hover时元素放大
-
-
-
-#### 项目css编写方式
-
-- .以块+元素命名。 class="Contains-Div-Input ...."	简明，量大，不易复用
-- 以功能效果命名,然后将功能进行组合。 class = " bg-xxx   size-xxx .... "  复用，易懂，明显
-
-
-
-#### 菜单伸展
-
-可以通过js动态增删 一个隐藏的类来完成
-
-
-
-#### 居中 
-
-##### 水平居中
-
-1、inline inline-block文字：text-align: center
-
-2、div居中：margin:0 auto
-
-
-
-##### 垂直居中
-
-在明确页面高度的情况下设置line-hight: 页面高度
-
-
-
-### 兼容性
-
-浏览器兼容
-
-```css
-/*
-	条件注释控制
-https://www.cnblogs.com/kenan9527/p/4539673.html
-*/
-<!--[if !IE]> <!--> 
-	除IE外都可识别 
-<!-- <![endif]--> 
-
-.transform {
-    -webkit-transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    transform: rotate(-3deg);
-}
-/* 
-	-webkit- chrome,safari
-	-moz- 火狐
-	-m  IE
-	-o opera
-	各个浏览器可能会有自己的实现，为兼容使用前缀，且写全，下面的有效会覆盖上面的,所以默认的标准属性写在最后，postcss 帮助。。。
-*/
-
-```
-### 应用
-
-##### margin: atuo
-
-对长度或宽度进行智能计算，对拉伸部分进行分配
-
-margin: 0 atuo 为什么可以水平居中？
-
-> 会将元素进行拉伸，拉伸后如果没有宽度默认会占满，但是当有强制宽度后，由于进行了auto分配，没被占用的地方会被自动分配，所有水平居中
->
-> 如果要实现右对齐： 
->
-> 一、
->
-> margin-left: auto即可，剩余的空间会自动分配给左侧形成右对齐
->
-> 
->
-> 二、
->
-> 使用绝对定位，top、bottom、right、left为0，则就会进行宽和高的拉伸
->
-> 拉伸后进行宽高设置，这时再进行atuo，就可以右对齐、水平居中、垂直居中等....
->
-> 
->
-> 三、为什么margin: auto 0 不能实现垂直居中
->
-> 因为margin-top,margin-bottom不能进行拉伸
->
-> 
->
-> flex布局下所有元素就处于一个可拉伸的上下文中，所以使用margin-top: auto就可以实现顶部对齐 
-
-
-
-
-##### Flex
-
-flex:1;
-
-> 占满空间，对空间进行分配，如果多个元素会等分？
->
-> flex: auto
->
-> width: 100%也一样的效果
->
-> width: -webkit-fill-available
-
-
-
-###### 属性
-
-Flex-direction : row , column
-
-
-justify- 操作的是主轴（main axis）对齐，对齐方向与 flex-direction 方向一致。
-
-align- 操作的是交叉轴（cross axis）对齐，对齐方向与 flex-direction 方向垂直
-
-> Align-items 对单行和多行都有效
-> Align-content 只对多行有效
-> Align-self 对元素自己单独设置
-
-
-
-
-Place-content    
-> justify和align的简写  ==> margin和margin-right等的关系
-
-
-
-##### table
-
-> 祖先设置table，table-layout：fixed;
->
-> 然后子元素设置tale-cell就可以自动等分
-
-
-
-##### 左右间距
-
-> 实际开发左右1rem,通过大的结构元素控制；
->
-> :not(:last-child) {margin-right: 1rem;}设置，这种方式不需要重置
->
-> 单纯使用:last-child/first-child亦可，但是需要重置
-
-
-
-### 小知识
-
-#### 滚动条
-
-Chrome 浏览器是子元素超过 content box 尺寸触发滚动条显示
-
-IE 和 Firefox 浏览器是超过 padding box 尺寸触发滚动条显示
-
-
-
-#### 根节点样式
-
-根据不同浏览器的实现，body和html在被设置属性前可能是不被激活的，或者已经被预设了一定的作用
-
- 浏览器会自动使用被激活的最顶层结点作为根节点，根节点属性必定作用于整个屏幕？（例设置background + border，但是background会被全屏使用）
-
- ```css
-body 
-{ 
-    background: black; 
-    margin: 100px; 
-    border: 10px solid red; 
-}
- ```
-
-
-
-#### 高度
-
-height: 100%
-
-要往上遍历祖先元素要有高度可寻（非auto or 没设置）
-
-```css
-body{ background:#039; border:50px solid #C00; }
-/* 给body设置背景色后可发现 默认body不是height: 100%的 */
-```
-
-
-
-
-
-#### 宽度
-
-内容总宽度超过100%会下滑（非flex，flex可以使用wrap）
-
-
-
-width: 100%
-
-> 对于 width 属性，就算父元素 width 为 auto，其百分比值也是支持的
-
-
-
-
-
-#### 字体
-
-
-
-##### 换行与不换行
-
-word-break:break-all;只对英文起作用，以字母作为换行依据
-
-word-wrap:break-word; 只对英文起作用，以单词作为换行依据
-
-white-space:pre-wrap; 只对中文起作用，强制换行
-
-white-space:nowrap; 强制不换行，都起作用
-
-white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出部分隐藏且以省略号形式出现（部分浏览器支持）
-
-
-
-##### line-height
-
-单纯设置数字的话，不便于维护，可以设置成font-size的x倍，便于维护
-
-
-
-##### transform
-
-Transform缩放可以超出限制
-
-例：显示10px，chrome默认最小12px 
-
-
-
-##### font weight
-
-Font weight从100->200没有变化 ==> 字体支持问题
-
-
-
-
-
-#### 自适应
-
-height不设置就会根据内容自适应
-
-
-
-#### 间隙
-
-##### 描述
-
-在标签中回车符，回车符相当于空白符，多个连续的空白符会合并成一个空白符，而产生“空白间隙”，在inline-block时会容易影响
-
-##### 影响
-
-1、两个元素间无法合并
-
- 2、可能会导致总宽度大于100%，影响布局
-
-
-
-##### 解决
-
-1、标签连着写，不换行
-
-2、增加父元素设置font-size:0;由于继承的原因子元素需要重设font-size
-
-3、取消两个div之间的空格，需要在div上加上 vertical-align:bottom，消除底部间隙？
-
-
-
-#### overflow: scroll不能平滑滚动
-
-iphone : -webkit-overflow-scrolling: touch;
-
-
-
-#### Fixed
-
-设置fixed后直接以窗口为基准，位置设置需要用top、bottom…. 
-
-
-
-##### 顶部固定
-
-```css
-position: fixed;
-width: 100%; // ？
-top: 0;
-z-index: 9999;
-```
-
-
-
-
-
-word-break:break-all;只对英文起作用，以字母作为换行依据
-
-word-wrap:break-word; 只对英文起作用，以单词作为换行依据
-
-white-space:pre-wrap; 只对中文起作用，强制换行
-
-white-space:nowrap; 强制不换行，都起作用
-
-white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出部分隐藏且以省略号形式出现（部分浏览器支持）
-
-
-
-
-
-#### px
-
-比起设置px,设成百分比或者em更易维护
-
-em相对父级大小，rem相对根元素大小
 
 
 
@@ -944,9 +696,42 @@ flex-grow，flex-shrink，flex-basis的缩写
 
 
 
-flex:1
+**flex:1**
 
 > 1 1 0%，【父控件有剩余空间占1份放大，父控件空间不足按1缩小，自身的空间大小是0%
+
+> 占满空间，对空间进行分配，如果多个元素会等分？
+>
+
+
+
+
+
+**flex: auto**
+
+>
+> width: 100%也一样的效果
+>
+> width: -webkit-fill-available
+
+
+
+##### flex-direction : row / column
+
+
+justify- 操作的是主轴（main axis）对齐，对齐方向与 flex-direction 方向一致。
+
+align- 操作的是交叉轴（cross axis）对齐，对齐方向与 flex-direction 方向垂直
+
+> Align-items 对单行和多行都有效
+> Align-content 只对多行有效
+> Align-self 对元素自己单独设置
+
+
+
+##### Place-content    
+
+justify和align的简写  ==> margin和margin-right等的关系
 
 
 
@@ -977,6 +762,175 @@ flex:1
 flex：父元素的尺寸不由子元素尺寸动态调整，不设置时默认是100%
 
 inline-flex：使父元素尺寸跟随子元素们的尺寸动态调整，包裹性？
+
+
+
+#### Table
+
+
+
+##### 等分
+
+> 祖先设置table，table-layout：fixed;
+>
+> 然后子元素设置tale-cell就可以自动等分
+
+
+
+### CSS属性
+
+#### 好用的属性
+
+Attr()	
+
+> 获取元素属性值
+
+
+
+currentColor	
+
+> 返回当前的标签所继承的文字颜色
+
+
+
+user-select	
+
+> 可以控制用户能否选中内容
+
+
+
+direction
+
+> 指定块元素的文字方向
+
+
+
+text-align: start
+
+> 设置后可自动根据direction进行调整
+
+
+
+resize:both
+
+> 设置resize:both后，除了 textarea 元素之外，其他元素想要使用缩放，必须设置 overflow 属性（overflow:visible 除外）
+
+
+
+outline
+
+> 会占用focus事件，导致tabIndex无法选中，可以用box-shadow实现同样的效果
+
+
+
+#### 背景
+
+任何元素都能设置background为图片，从而实现一些功能
+
+
+
+##### background
+
+-repeat	将图片复制，铺满整个页面
+-image	图片
+-color	颜色
+-attachment	背景是否随页面滚动
+
+
+
+##### background-clip
+
+ padding-box / content-box 限制背景色不影响border / padding
+
+
+
+
+
+
+
+
+
+#### 边框
+
+outline类似于border但不会影响布局
+
+
+
+#### 变形
+
+##### transition
+
+设置元素渐变,配合形变transform、opacity变化等可形成简单动画效果
+
+
+
+ transition : arg1 arg2 ,arg1 arg2		可以一次设置多个属性效果
+`arg1`  哪个属性变化后产生动画
+`arg2`	 动画持续时间
+
+
+
+##### transform
+
+**位移**
+
+transform:translateY(-50%)		以自身原本为参考，往上移动50%  
+
+
+
+**放大**
+
+transform: scale(1.2)
+
+> 例：hover时元素放大
+
+
+
+#### 字体
+
+
+
+##### 换行与不换行
+
+word-break:break-all;只对英文起作用，以字母作为换行依据
+
+word-wrap:break-word; 只对英文起作用，以单词作为换行依据
+
+white-space:pre-wrap; 只对中文起作用，强制换行
+
+white-space:nowrap; 强制不换行，都起作用
+
+white-space:nowrap; overflow:hidden; text-overflow:ellipsis;不换行，超出部分隐藏且以省略号形式出现（部分浏览器支持）
+
+
+
+##### line-height
+
+单纯设置数字的话，不便于维护，可以设置成font-size的x倍，便于维护
+
+
+
+##### transform
+
+Transform缩放可以超出限制
+
+例：显示10px，chrome默认最小12px 
+
+
+
+##### font weight
+
+Font weight从100->200没有变化 ==> 字体支持问题
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1050,62 +1004,178 @@ html嵌套来配合使用，counters可以让计数器在每一个父层级进�
 
 
 
+### 规范
+
+#### ？？
+
+- .以块+元素命名。 class="Contains-Div-Input ...."	简明，量大，不易复用
+- 以功能效果命名,然后将功能进行组合。 class = " bg-xxx   size-xxx .... "  复用，易懂，明显
+
+#### BEM
+
+
+
+
+
+### 兼容
+
+浏览器兼容
+
+```css
+/*
+	条件注释控制
+https://www.cnblogs.com/kenan9527/p/4539673.html
+*/
+<!--[if !IE]> <!--> 
+	除IE外都可识别 
+<!-- <![endif]--> 
+
+.transform {
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+}
+/* 
+	-webkit- chrome,safari
+	-moz- 火狐
+	-m  IE
+	-o opera
+	各个浏览器可能会有自己的实现，为兼容使用前缀，且写全，下面的有效会覆盖上面的,所以默认的标准属性写在最后，postcss 帮助。。。
+*/
+
+```
+
+
+
+### 小知识
+
+#### 滚动条
+
+Chrome 浏览器是子元素超过 content box 尺寸触发滚动条显示
+
+IE 和 Firefox 浏览器是超过 padding box 尺寸触发滚动条显示
+
+
+
+#### 根节点样式
+
+根据不同浏览器的实现，body和html在被设置属性前可能是不被激活的，或者已经被预设了一定的作用
+
+ 浏览器会自动使用被激活的最顶层结点作为根节点，根节点属性必定作用于整个屏幕？（例设置background + border，但是background会被全屏使用）
+
+ ```css
+body 
+{ 
+    background: black; 
+    margin: 100px; 
+    border: 10px solid red; 
+}
+ ```
+
+
+
+#### Height百分比高度
+
+height: 100%
+
+要往上遍历祖先元素要有高度可寻（非auto or 没设置）
+
+```css
+body{ background:#039; border:50px solid #C00; }
+/* 给body设置背景色后可发现 默认body不是height: 100%的 */
+```
+
+
+
+
+
+#### 宽度
+
+内容总宽度超过100%会下滑（非flex，flex可以使用wrap）
+
+
+
+width: 100%
+
+> 对于 width 属性，就算父元素 width 为 auto，其百分比值也是支持的
+
+
+
+#### 自适应
+
+height不设置就会根据内容自适应
+
+
+
+#### 间隙
+
+**描述**
+
+在标签中回车符，回车符相当于空白符，多个连续的空白符会合并成一个空白符，而产生“空白间隙”，在inline-block时会容易影响
+
+**影响**
+
+1、两个元素间无法合并
+
+ 2、可能会导致总宽度大于100%，影响布局
+
+**解决**
+
+1、标签连着写，不换行
+
+2、增加父元素设置font-size:0;由于继承的原因子元素需要重设font-size
+
+3、取消两个div之间的空格，需要在div上加上 vertical-align:bottom，消除底部间隙？
+
+
+
+#### overflow: scroll不能平滑滚动
+
+`iphone` :`-webkit-overflow-scrolling: touch;`
+
 
 
 ### 应用
 
 
 
-#### 屏幕
+#### 内容伸展
 
-px 是viewport像素
+##### 菜单
 
-在PC上px == 逻辑像素
-
-
-
-物理像素
-
-> 反映显示屏的硬件条件
->
-> 反映的就是显示屏内部led灯的数量，
->
-> 简单理解，一组三色led代表一个物理像素，当然根据屏幕物理属性以及处理led的方法不一样。强调这是物理的，因为这是一个纯硬件指标。
->
-> 比如我把屏幕锯了一半，物理像素就只有一半
+可以通过js动态增删 一个隐藏的类即可实现
 
 
 
-逻辑像素
+##### 动画
 
-> 是为了调和距离不一样导致的差异，将所有设备根据距离，透视缩放到一个相等水平的观看距离之后得到的尺寸，是一个抽象的概念，这个单位就是ios开发的px，安卓开发的dp。对于pc，包括win（8+） linux，mac，由各自系统的或者对应软件（比如webview内部）提供的图像界面处理引擎处理进行缩放
->
-> 
->
-> 假设一个ppi160，2寸x3寸的屏幕，物理像素应该是320x480
->
-> 同理ppi320，同样尺寸的屏幕，物理像素是640x960
-> 调和不同设备，不同dpr，不同屏幕，不同分辨率，不同观看距离之间的如何解决显示问题的方案
+max-height从0变为足够小的安全值，可较好的实现如收起、展开的动画（浏览器自带）
 
 
 
+#### 居中 
 
+##### 水平居中
 
-渲染像素
+1、inline inline-block文字：text-align: center
 
-> 在系统内部对物理像素的分配进行再一次的调整
->
-> 在pc上，渲染像素 == 设置里边的分辨率。
->
-> 对于显示设备，系统为显示设备提供渲染尺寸，由显示设备的“缩放引擎”（带存储器阵列的数字视频处理器）处理。这种“缩放引擎”一般内部有一系列的合理分辨率和一个推荐分辨率。
->
-> 一般推荐分辨率就是最大渲染像素，也是设备的物理分辨率（为了最佳表现）。这是一个软硬件（偏硬）结合的缩放方案。
->
-> 根据物理像素进行缩放？
+2、div居中：margin:0 auto + 定宽
+
+3、display:block; + text-align:center; 实现文字水平居中
 
 
 
-#### 数据处理
+##### 垂直居中
+
+在明确页面高度的情况下设置line-hight: 页面高度
+
+父元素line-height === 高度，让文字垂直居中    button内文字默认居中
+
+
+
+#### 数据上报
 
 ##### 通过伪类来上传按钮点击数据
 
@@ -1131,19 +1201,17 @@ px 是viewport像素
 
 
 
-#### 技巧
-
-##### 障眼法
+#### 障眼法
 
 
 
-##### 图标
+#### 图标
 
 absolute、relative配合使用常用于实现图标定位
 
 
 
-小尾巴
+##### 小尾巴
 
 原理：设置伪元素，描出特定（左右）边框，设置特定的border-radius
 
@@ -1159,7 +1227,7 @@ absolute、relative配合使用常用于实现图标定位
 
 
 
-三角形
+##### 三角形
 
 原理：设置了4个相对的三角形，
 
@@ -1173,91 +1241,24 @@ absolute、relative配合使用常用于实现图标定位
 
 
 
-长方形
+##### 长方形
 
 > 用box-shadow or 背景色绘制
 
 
 
-音量喇叭图标
+##### 音量喇叭图标
 
 > 可看作长方形 + 三角形组合 or 长方形 + 梯形组合
 
 
 
-圆弧边
+##### 圆弧边
 
 > 只可见部分border，且是border-radius
 
 
 
-双圆弧
+##### 双圆弧
 
 > 单纯的圆，然后利用background-clip隔开一个空白边
-
-
-
-##### 垂直居中
-
-父元素line-height === 高度让文字垂直居中    button内文字默认居中
-
-
-##### 水平居中
-
-display:block; + text-align:center; 实现文字水平居中
-
-
-
-定宽 + margin 0 auto  实现水平居中
-
-
-
-##### 属性
-
-Attr()	
-
-> 获取元素属性值
-
-
-
-currentColor	
-
-> 返回当前的标签所继承的文字颜色
-
-
-
-user-select	
-
-> 可以控制用户能否选中内容
-
-
-
-direction
-
-> 指定块元素的文字方向
-
-
-
-text-align: start
-
-> 设置后可自动根据direction进行调整
-
-
-
-resize:both
-
-> 设置resize:both后，除了 textarea 元素之外，其他元素想要使用缩放，必须设置 overflow 属性（overflow:visible 除外）
-
-
-
-outline
-
-> 会占用focus事件，导致tabIndex无法选中，可以用box-shadow实现同样的效果
-
-
-
-##### 动画
-
-收起展开
-
-max-height从0变为足够小的安全值，可较好的实现如收起、展开的动画
