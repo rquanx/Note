@@ -308,7 +308,7 @@ github.com --> githistory.xyz
 
 [多语言在线翻译](<https://i18ns.com/index.html>)
 
-
+[AI工具](https://www.gradio.app/hub)
 
 ##### 杂
 

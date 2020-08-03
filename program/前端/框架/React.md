@@ -1,28 +1,14 @@
 
 
-
-
-
-
-
-
-
-
-
-
-##### 简述
+#### 简述
 
 [react由来，好文](http://taoweng.site/index.php/archives/293/)
 
+从PHP诞生
 
 
 
-
-##### 属性
-
-对组件的配置项,通信，数据
-
-##### 状态
+#### 状态
 
 the state is meant to hold variables that relate to the current state of the UI
 
@@ -33,7 +19,7 @@ the state is meant to hold variables that relate to the current state of the UI
 不要在 state 中添加 render() 方法中不需要的数据，会影响渲染性能！
 可以将组件内部使用但是不渲染在视图中的内容，直接添加给 this
 
-###### SetState
+##### SetState
 
 **同步/异步**
 
@@ -63,9 +49,9 @@ setState(x)  x为null时不触发，{}会触发，必定render，然后根据新
 但是如果在外部进行setState，则由于React无法捕获和优化所以会马上render,代码层面表现为batchUpdate不为true?
 
 
-##### 使用
+#### 使用
 
-使用polyfill
+polyfill
 1、页面全局引用
 2、react内引入，在最顶部引入，或在webpack中设置打包
 
@@ -80,13 +66,7 @@ setState(x)  x为null时不触发，{}会触发，必定render，然后根据新
 
 
 
-
-
-
-
-
-
-##### 组件分类
+#### 组件分类
 
 样式型组件 
 
@@ -120,7 +100,7 @@ setState(x)  x为null时不触发，{}会触发，必定render，然后根据新
 
 
 
-##### 函数组件
+#### 函数组件
 
 ```react
 let S = (props) => (<h1>{props.data}</h1>);
@@ -128,7 +108,7 @@ let S = (props) => (<h1>{props.data}</h1>);
 
 ```
 
-##### 事件机制
+#### 事件机制
 
 合成事件
 	1、屏蔽浏览器差异（兼容性），简化事件处理和回收，效率提高
@@ -139,26 +119,26 @@ let S = (props) => (<h1>{props.data}</h1>);
 	6、由于事件捕获的兼容性问题，且实际用处不大，React只实现事件冒泡
 	7、不只是注册了一个onchange事件，还注册了很多其他事件。而这个时候我们向文本框输入内容的时候，是可以实时的得到内容的。然而原生只注册一个onchange的话，需要在失去焦点的时候才能触发这个事件。所以这个原生事件的缺陷react也帮我们弥补了
 	
-	
-	
 
 使用原生DOM进行事件绑定时，卸载需要手动卸载，否则可能会产生内存泄漏
 
 
-##### 生命周期
 
-###### 是否要根据props设定state
+
+#### 生命周期
+
+##### 是否要根据props设定state
 将属性值转化为state，建议只用来作初始化
 
 在componentDidUpdate中判断新属性和旧属性，然后进行更新
 
 新的方法试用useMemo可以实现依赖于某个属性更新时重新计算
 
-###### willmount
+##### willmount
 
-  在render前,被后续版本会被取消
+  在render前,在后续版本会被取消
 
-###### didmount 
+##### didmount 
 
  在render后,建议用于异步的数据加载
 
@@ -177,11 +157,11 @@ componentDidMount = async () => {
 
 
 
-###### shouldComponentUpdate
+##### shouldComponentUpdate
 
 最好只用于性能优化  
 
-###### willreceive
+##### willreceive
 
 对于willreceive尽量不要无条件的更新状态，即做些判断？
 ​	判断
@@ -190,7 +170,7 @@ componentDidMount = async () => {
 
 控制好willreceive更新的状态，如一个输入框，如果在willreceive里有更新的话，这样本来应该受手动输入影响的就会多了父组件的render影响
 
-###### getDerivedStateFromProps
+##### getDerivedStateFromProps
 
 返回状态对象来更新，不更新返回null =>  替代willreceive?
 
@@ -198,11 +178,11 @@ componentDidMount = async () => {
 
 
 
-componentDidCatch
+##### componentDidCatch
 
 
 
-##### Context
+#### Context
 
 组件间隔层传递数据，全局，但是需要通过provider和consumer来使用
 ​	例如将某个组件的状态属性和状态更新函数传递给某个子组件
@@ -218,7 +198,7 @@ this.context.changeData();
 
 
 
-##### Protal
+#### Protal
 
 将组件render到悬浮最顶层，常用为dialog
 
@@ -232,7 +212,7 @@ ReactDOM.createPortal(child, container)
 
 
 
-##### Fragments
+#### Fragments
 
 它是 React 中的常见模式，用于组件返回多个元素。*Fragments* 可以让你聚合一个子元素列表，而无需向 DOM 添加额外节点。
 
@@ -252,7 +232,7 @@ render() {
 
 
 
-##### Hook
+#### Hook
 
 ```typescript
 const App: React.FC<{ title: string }> = ({ title }) => {
@@ -264,78 +244,78 @@ App.defaultProps = {
 }
 ```
 
-useState
+**useState**
 
-> 普通状态或set
-
-
-
-useEffect
-
-> 替代didupdate,
->
-> ​	返回值：一个函数，函数会用于willunmount
->
-> ​	第二个参数：在useEffect里setState会触发再次执行，第二个参数传入依赖值，只有依赖变了才会再触发useEffect，空数组则只会执行一次
->
-> 每次变化都能监控到，如果用didupdate是批量更新只获取到最新的
->
-> 
->
-> 时机：在组件挂载或者更新 DOM 之后的下一个tick
-> 由于时机问题？
+普通状态或set
 
 
 
-useRef
+**useEffect**
 
-> 用来存储数据
->
-> 创建一个一直存在的可变对象，修改值不会影响render
->
-> 可当作this，作为一个固定的容器存放想要保持的数据
+替代didupdate
 
+返回值：返回一个函数，函数会在willunmount时调用
 
+第二个参数：在useEffect里setState会触发再次执行，第二个参数传入依赖值，只有依赖变了才会再触发useEffect，空数组则只会执行一次
 
-useCallback
-
-> 成一个不随着组件更新而再次创建的 callback
->
-> 缓存函数  用来建立常量，不随render重建,依赖项变化才重建   == useMemo
->
-> 函数要么放外面声明，要么用usecallback，提高性能
+每次变化都能监控到，如果用didupdate是批量更新只获取到最新的
 
 
 
-useMemo
-
-> 返回会缓存计算值
-> 当依赖的状态发生改变时，才会触发计算函数的执行
-> 在渲染期间执行
-
-
-useLayoutEffect
-
-> 时机：在组件挂载或者更新 DOM 之后同步调用
+时机：在组件挂载或者更新 DOM 之后的下一个tick
 
 
 
-##### 高阶组件
+**useRef**
 
-###### 概念
+存储数据，创建一个一直存在的可变对象，修改值不会影响render
+
+可当作this，作为一个固定的容器存放想要保持的数据
+
+
+
+**useCallback**
+
+成一个不随着组件更新而再次创建的 callback
+
+缓存函数  用来建立常量，不随render重建,依赖项变化才重建   == useMemo
+
+函数要么放外面声明，要么用usecallback，提高性能
+
+
+
+**useMemo**
+
+返回会缓存计算值
+当依赖的状态发生改变时，才会触发计算函数的执行
+在渲染期间执行
+
+
+
+**useLayoutEffect**
+
+时机：在组件挂载或者更新 DOM 之后同步调用
+
+
+
+#### 高阶组件
+
+##### 概念
 
 接受一个或多个组件作为参数并且返回一个组件就可称之为 高阶组件
 
 
 
-###### 分类
+##### 分类
 
 - 无状态
 - 有状态
 
 
 
-属性代理
+##### 作用
+
+**属性代理**
 
 - 操作 `props`
   - 在render中给组件增加属性
@@ -346,7 +326,7 @@ useLayoutEffect
 
 
 
-反向继承
+**反向继承**
 
 **一个函数接受一个 WrappedComponent 组件作为参数传入，并返回一个继承了该传入 WrappedComponent 组件的类，且在该类的 render() 方法中返回 super.render() 方法**
 
@@ -359,7 +339,7 @@ useLayoutEffect
 
 
 
-###### 高阶组件问题
+##### 高阶组件问题
 
 - 静态方法丢失
 - `refs` 属性不能透传
@@ -381,46 +361,39 @@ useLayoutEffect
 
 
 
-###### 应用场景
-
-- 权限判断
-
-
-
-##### Render Props
-
-通过children函数
-
-像 **控制反转（IoC）**
 
 
 
 
-##### 编码技巧 
+#### Render Props
 
-###### 条件渲染
+通过children函数，像 **控制反转（IoC）**
+
+
+
+
+#### 编码技巧 
+
+##### 条件渲染
 isTrue ? <p>True!</p> : null ;  ==>  isTrue && <p>True!</p>
 
 jsx表达式可以写iife来嵌入函数进行条件渲染
 
 
 
-##### 知识点
+#### 知识点
 
-###### 正交性
+##### 正交性
 
 [正交性](https://zhuanlan.zhihu.com/p/96084784?utm_source=qq&utm_medium=social&utm_oi=583565170786308096 )
 
 核心将组件进行拆分，抽象出UI,数据获取，错误处理等，各自分离
 
-\> 优点：更易于维护，粒度更细  缺点：抽象有难度、可能会繁杂
+> 优点：更易于维护，粒度更细  缺点：抽象有难度、可能会繁杂
 
 
 
-
-###### static defaultProps
-
-###### refs
+##### refs
 
 隐含的对象，  ref=x    this.refs.x   可以拿到元素
 
@@ -432,27 +405,27 @@ ref 中使用回调函数
 onref
 > 在子组件挂载时回调父组件函数，将this传递给父组件
 
-###### key
+##### key
 
 key值并不是需要全局唯一，而只需要在相邻的兄弟元素中唯一就好,用于渲染
 
-###### this 
+##### this 
 
 如果不绑定this.handleClick方法，那么在事件发生并且精确调用这个方法时，方法内部的this会丢失指向。
 这不是React的原因，这是JavaScript中本来就有的。如果你传递一个函数名给一个变量，然后通过在变量后加括号()来调用这个方法，
 　此时方法内部的this的指向就会丢失
 
-###### childrenthis
+##### childrenthis
 
 this.props.children属性。它表示组件的所有子节点
 
 
 
-###### 兼容性
+##### 兼容性
 
 [浏览器兼容](https://reactjs.org/docs/react-dom.html#browser-support)
 
-###### pureComponent和component
+##### pureComponent和component
 pureComponent
 > 更新前会进行浅比较,变化后才会render
 
@@ -476,19 +449,19 @@ component
 
 
 
-###### 强制刷新
+##### 强制刷新
 
-​	component.forceUpdate(callback)
+component.forceUpdate(callback)
 
 
 
-##### 国际化
+#### 国际化
 
  [react-intl](https://segmentfault.com/a/1190000005824920#articleHeader8)
 
 
 
-##### 文章
+#### 文章
 
 
 
@@ -585,15 +558,15 @@ defaultValue={this._editDate.item["Remark"]} onChanged={this._getRemark}
 
 
 
-##### 应用
+#### 应用
 
-###### 组件缓存
+##### 组件缓存
 
 [React 缓存](https://www.v2ex.com/t/602399#reply0)
 
 
 
-###### 拖拽上传
+##### 拖拽上传
 
 ```react
 render()	{
@@ -627,7 +600,7 @@ render()	{
   }
 ```
 
-###### PDF预览
+##### PDF预览
 
 react-pdf
 canvas渲染
@@ -646,7 +619,7 @@ svg
 
 [React实现全局组件：Toast轻提示](https://segmentfault.com/a/1190000016473517)
 
-###### 路由
+##### 路由
 this.props.history.push可以适用于hash route
 hash路由依赖于window.location.href
 
@@ -654,7 +627,7 @@ hash路由依赖于window.location.href
 
 
 
-##### 性能
+性能
 
 react-profile查看性能
 
