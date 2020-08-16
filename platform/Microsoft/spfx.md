@@ -1114,6 +1114,31 @@ spfx打包时会自动附带上基础polyfill包的引用（从SP内置站点内
 
 
 
+##### pnpjs polyfill
+
+ie11兼容性问题，不能用全部polyfill，不能用pnp-ie11
+
+```js
+// 官方提供全量需要的polyfill
+import "@pnp/polyfill-ie11"; // 可能会出现异常
+
+// 单独引入
+import "core-js/modules/es6.array.from";
+import "core-js/modules/es6.array.fill";
+import "core-js/modules/es6.array.iterator";
+import "core-js/es6/promise";
+import "core-js/es6/reflect";
+import "es6-map/implement";
+import "core-js/es6/symbol";  // 重复polyfill时可能异常，此时可摘除引入
+import "whatwg-fetch";
+```
+
+
+
+
+
+
+
 #### 调试
 
 **IE打开证书错误**：```gulp trust-dev-cert```
@@ -1231,15 +1256,21 @@ build.configureWebpack.setConfig({
 
 
 
-添加app时报错The System Account cannot perform this action
+**部署识别，提示错误码但但无异常信息**
 
-> 账号问题，管理员不一定能添加app
+回收站检查是否有未清除的包，清除后再部署
 
 
 
-webpart安装后，添加的时候无法找到
+**添加app时报错The System Account cannot perform this action**
 
-> 到其他站点，或者用旧webpart的安装方式进行安装后，再回到页面试试
+账号问题，管理员不一定能添加app
+
+
+
+**webpart安装后，添加的时候无法找到**
+
+到其他站点，或者用旧webpart的安装方式进行安装后，再回到页面试试
 
 
 

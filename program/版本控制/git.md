@@ -438,7 +438,25 @@ commit 目的的简短描述，不超过50个字符
 
 
 
+#### 开发流程
+
+[5中gitflow介绍](https://zepel.io/blog/5-git-workflows-to-improve-development/)
+
+
+
 #### 问题
+
+##### Could't find the binary git
+
+git安装问题，导致终端找不到git这个文件去执行
+
+1、检查git是否安装
+
+2、检查终端是否未把最新的环境变量加载
+
+> 打开终端后再安装git
+
+
 
 ##### 无法切换账号
 

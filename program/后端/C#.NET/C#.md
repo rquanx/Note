@@ -246,6 +246,69 @@ parameterInfo.ParameterType // 读取参数信息的类型
 
 
 
+### 集合 
+
+#### DataTable/DataRow
+
+
+
+**DataRow创建**
+
+```c#
+// 根据特定的数据产生
+object[] objs = dataRow.itemArray;
+dataRow.Table.Rows.Add(objs);
+
+
+// 自动产生空行，如果列存在not null等限制，会无法创建
+dataRow.Table.Rows.Add()
+```
+
+
+
+
+
+**注意点**
+
+- 单元格存在readonly可导致无法赋值
+
+- 单元格值长度有max限制，会导致无法赋值
+
+- 单元格有Not Null限制，导致无法创建空白Row
+
+
+
+### 多线程
+
+#### Task
+
+**Task.Factory.StartNew**
+
+内部如果是async的话，不会等待
+
+1、改成async function，不套Task.Factory.StartNew
+2、使用Task.Run
+
+
+
+##### void vs Task
+
+```C#
+async void Bar();// 不可等待，调用后就不管了
+
+async Task Foo(); // 可等待
+```
+
+
+
+
+
+
+
+
+
+
+
 ### 知识点
 
 #### 内存泄漏
@@ -592,7 +655,39 @@ dll存放在bin文件夹中，type要到具体的类
 
 
 
+### 应用
+
+#### 动态载入DLL
+
+```c#
+//载入dll中的函数
+//Assembly asm = Assembly.Load(strDllPath);//载入当前根文件夹的dll
+Assembly asm = Assembly.LoadFile(@"F:\WorkSpace\VS測试代码\反射測试001\反射message方法\reflect\reflect\bin\Debug\reflect.dll");//依据dll文件实际路径载入
+
+//用类型的命名空间和类获得类型
+System.Type FromClass = asm.GetType("reflect.Form1");
+
+//须要实例化类型,才干够使用,參数能够人为的指定,也能够无參数,静态实例能够省略
+Object obj = System.Activator.CreateInstance(FromClass);
+
+//通过方法名称获得方法(调试走到以下这一步的时候，就能够弹出“动态载入Dll測试”这个消息了)
+MethodInfo method = FromClass.GetMethod("TestReflect");
+
+//获取TestReflect函数的返回值，在这里会获取到"TestReflect返回值"，假设没有返回值，能够省略这一步
+object o = method.Invoke(obj, new object[] { });
+```
+
+
+
+
+
 ### 问题
+
+
+
+#### 调试时一直说找不到dll且debug模式却用的release的路径
+
+重启vs
 
 
 

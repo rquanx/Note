@@ -9,6 +9,16 @@
 
 #### 问题
 
+##### browser' doesn't contain a valid alias configuration
+
+使用多种工具安装依赖后可能产生的异常，例：npm装后再用cnpm装
+
+解决：重装依赖
+
+
+
+
+
 ##### 请求时出现read ECONNRESET
 
 Headers增加：Connection: 'keep-alive'

@@ -269,6 +269,16 @@ px 是viewport像素
 :active
 :focus
 
+##### 逻辑伪类
+
+:not 
+
+> :not(:foucs)：不是聚焦的时候
+>
+> :not(:hover)
+
+
+
 ##### 伪类连用
 
 a:visited:hover {xxx}
@@ -288,6 +298,14 @@ a:visited:hover {xxx}
 **:only-child**
 
 匹配没有任何兄弟元素的元素
+
+
+
+**:invalid**
+
+输入框非法时显示的样式
+
+
 
 
 
