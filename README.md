@@ -194,7 +194,9 @@ zeplin
 
 [在线PS1](<https://www.photopea.com/>)
 
+[Pexels](https://link.zhihu.com/?target=https%3A//www.pexels.com/)
 
+> 高质量的图片网站，资源非常丰富，免费的，无版权的
 
 **Git**
 
@@ -314,6 +316,18 @@ github.com --> githistory.xyz
 
 [AI工具](https://www.gradio.app/hub)
 
+[地图生成器](https://link.zhihu.com/?target=http%3A//datav.aliyun.com/tools/atlas/)
+
+> 生成地图svg，导入ppt可编辑
+
+[Canva](https://link.zhihu.com/?target=https%3A//www.canva.cn/templates/)
+
+> 海报、PPT模板
+
+[remove.bg](https://link.zhihu.com/?target=https%3A//www.remove.bg/zh)
+
+> 在线抠图工具
+
 ##### 杂
 
 [查询相似的网站](https://www.similarsites.com/ )
@@ -428,14 +442,6 @@ Hacker and Painters
 ##### 学习
 
 安全学习
-
-
-
-##### 工具
-
-Snipaste
-
-录音笔
 
 
 
