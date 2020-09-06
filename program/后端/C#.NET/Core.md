@@ -134,9 +134,22 @@ ASP.NET Core会读取系统中环境变量ASPNETCOREENVIRONMENT的值来确定�
 
 ### 问题
 
+##### 配置文件读取问题
+
+Xunit使用ConfigurationManager读取配置文件，需要将配置文件命名为testhost.dll.config，并且复制到生成路径
+
+
+
+
+
+##### MIME
+
+mime配置IIS无效，需要在代码里设置
+
+
+
 ##### Error 500.19
 
 部署站点还需要安装Hosting Bundle
-
 
 

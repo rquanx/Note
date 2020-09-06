@@ -2,7 +2,31 @@
 
 [import默认文件](https://www.cnblogs.com/goloving/p/8889585.html)
 
+
+
+#### 日志
+
 #### 知识点
+
+##### 日志
+
+- AccessLog: 这是最常见的日志类型，一般在 nginx 等方向代理中也有日志记录，但在业务系统中有时需要更详细的日志记录，如 API 耗时，详细的 request body 与 response body
+
+- SQLLog: 关于数据库查询的日志，记录 SQL、涉及到的 table、以及执行时间，「从此可以筛选出执行过慢的SQL，也可以筛选出某条API对应的SQL条数」
+
+- RequestLog: 请求第三方服务产生的日志
+
+- Exception: 异常
+
+- RedisLog: 缓存，也有一些非缓存的操作如 zset 及分布式锁等
+
+- Message Queue Log: 记录生产消息及消费消息的日志
+
+- CronLog: 记录定时任务执行的时间以及是否成功
+
+\- 关键业务逻辑
+
+
 
 ##### 大文件复制
 [Stream pipe](https://segmentfault.com/a/1190000021582224)

@@ -541,6 +541,32 @@ classlist.remove('xxx')移除类
 
 
 
+#### addEventListener 
+
+第三个参数是指定是否在捕获阶段触发事件相应函数，默认 false，即默认事件是在冒泡阶段触发
+
+
+
+#### stopImmediatePropagation/stopPropagation
+
+是否会执行当前节点剩余的事件
+
+
+
+#### stopImmediatePropagation
+
+作用在当前节点以及事件链上的所有后续节点上，目的是在执行完当前事件处理程序之后，停止当前节点以及所有后续节点的事件处理程序的运行
+
+
+
+#### **stopPropagation**
+
+作用在后续节点上，目的在执行完绑定到当前元素上的所有事件处理程序之后，停止执行所有后续节点的事件处理程序
+
+
+
+
+
 ### 视频、音频
 
 旧的html需要flash

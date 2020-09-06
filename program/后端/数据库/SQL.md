@@ -483,15 +483,16 @@ select * from (  VALUES(1),(2),(3)  ) t
 
 临时表缓存
 
+CTE後面必須直接跟使用CTE的SQL語句
+
+> with as 只能在下一句sql中生效
+
 
 
 ```sql
 with tableName as (select * from [table])
+-- 将查询结果作为tableName表
 ```
-
-
-
-将...的查询结果作为tableName表
 
 
 
@@ -1032,6 +1033,14 @@ A C I D
 
 
 ### 进阶
+
+json_value只能不能用于text类型字段，可用于nvarchar
+
+
+
+#### SQL
+
+json_value
 
 #### 存储方式
 

@@ -82,6 +82,18 @@ ALTER TABLE Stations ADD  LeadPlants int foreign key(LeadPlants) references Lead
 
 #### 函数
 
+##### datediff
+
+```sql
+- 计算当前事件是一小时内的
+datediff(hh,DateTime,now()) <= 1
+
+- 字段说明
+DATEDIFF(datepart,startdate,enddate)
+```
+
+
+
 ##### STUFF 
 
 STUFF ( character_expression , start , length , replaceWith_expression )
@@ -450,6 +462,24 @@ SELECT [name] FROM SYS.COLUMNS WHERE
 
 
 #### 使用
+
+##### 大文件SQL执行
+
+大量SQL执行
+
+
+
+```bash
+sqlcmd -S serverName -i xxx.sql
+
+sqlcmd -S 192.168.30.235 -U  sa -P 123456789 -i ./1.sql
+
+# 执行大.sql文件
+```
+
+
+
+
 
 ##### 字符串拼接
 
