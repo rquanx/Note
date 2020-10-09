@@ -1034,13 +1034,7 @@ A C I D
 
 ### 进阶
 
-json_value只能不能用于text类型字段，可用于nvarchar
 
-
-
-#### SQL
-
-json_value
 
 #### 存储方式
 

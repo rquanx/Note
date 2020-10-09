@@ -190,6 +190,14 @@ struct是值类型
 
 ### 面向对象
 
+#### 类
+
+**静态构造函数**
+
+没有参数、没有修饰符、自动在合适的时候被调用，可以被用来初始化静态变量
+
+
+
 
 
 #### 抽象类
@@ -220,15 +228,13 @@ abstract 方法会要求子类重写
 
 类型约束,可以用来约束泛型
 
+- `where T : struct` ：值类型限制，限制类型参数T必须继承自`System.ValueType`。
 
+- `where T : class`： 引用类型限制，限制类型参数T必须是引用类型，也就是不能继承自`System.ValueType`。
 
-where T : struct 限制类型参数T必须继承自System.ValueType。
+- `where T : new()`：限制类型参数T必须有一个缺省的构造函数，当与其他约束一起使用时，new() 约束必须最后指定
 
-where T : class 限制类型参数T必须是引用类型，也就是不能继承自System.ValueType。
-
-where T : new() 限制类型参数T必须有一个缺省的构造函数
-
-where T : NameOfClass 限制类型参数T必须继承自某个类或实现某个接口。
+- `where T : NameOfClass`： 限制类型参数T必须继承自某个类或实现某个接口。
 
 
 
@@ -286,13 +292,26 @@ C#编译后会产生IL和Metadata，Metadata记录了代码的元数据
 
 #### Attribute
 
+对类、属性、字段、方法进行额外标记
+
+##### 应用
+
+标记后可以通过反射进行特定处理
+
+- IOC：类构造参数、函数参数、示例属性 注入
+- ORM：标记表名、字段名，自动拼接SQL
+- 别名：标记别名、显示名等
+- 数据校验：非空等规则校验，校验抽离在对象内
 
 
-##### 官方提供
 
-AuthorizeAttribute：MVC提供的特性，可以用来进行校验
+##### 框架提供
 
-handleErrorattribute：MVC提供的特性
+`AuthorizeAttribute`：MVC提供的特性，可以用来进行校验
+
+`handleErrorattribute`：MVC提供的特性
+
+`HttpGet/Post`: 标记api请求
 
 
 
@@ -310,9 +329,42 @@ parameterInfo.ParameterType // 读取参数信息的类型
 
 
 
+##### Type
+
+**泛型类**
+
+`makrgenerictype`后再进行实例化
+
+
+
+
+
+##### Assembly
+
+- 动态加载DLL
+  - Load 当前路径下加载dll
+  - LoadFrom  当前路径下加载dll
+  - LoadFile  指定特定路径下加载Dll
+
+- 读取DLL中的信息（Type.....）
+
 ##### propertyinfo
 
 获取属性信息时得到的操作对象
+
+
+
+获取属性对象：`Getproperties`
+
+设置属性值：`setvalue`
+
+读取属性值：`getvalue`
+
+
+
+静态属性和普通属性一样读取
+
+
 
 
 
@@ -320,13 +372,61 @@ parameterInfo.ParameterType // 读取参数信息的类型
 
 获取字段信息时得到的操作对象
 
+获取字段对象：`Getfields`
+
+静态字段和普通字段一样读取
+
+
+
+##### Method
+
+**bindingflags**
+
+通过配置`bindingflags`参数可以强行读取私有方法
+
+
+
+**Getmethod** 
+
+根据方法名获取方法，可通过传入type参数来查找方法重载
+
+静态方法：同样可通过`getmethod`读取调用
+
+重载方法：
+
+```C#
+// 方法重载时根据参数查找
+instance.Getmethod("Name",new Type[] { typeof(int) });
+```
+
+泛型方法：
+
+`getmethod`后通过`makegenericmethod`，设置/生成泛型方法，然后进行调用
+
 
 
 ##### 技巧
 
+**类型转换**
+
+(Type) 和 as Type的区别
+
+```C#
+var type = typeof(string);
+
+var t1 = (int)Activator.CreateInstance(type);   // 失败时抛出异常
+var t2 = Activator.CreateInstance(type) as int; // 失败时t2为null
+```
+
+
+
+
+
 **表达式树**
 
 通过代码和lambda，在运行时计算出一个表达式树，并且compiler后生成一个委托可以被使用
+
+应用：`SQLBuilder`等内部DSL
 
 
 
@@ -334,27 +434,14 @@ parameterInfo.ParameterType // 读取参数信息的类型
 
 泛型类在执行时会生成一个临时类存在内存中，通过设置静态属性，可以将一些计算数据存储起来进行复用
 
+- 两个类的数据转换
+- 缓存反射结果
 
-
-例：两个类的数据转换
-
-
-
-**attributeExtend**
-
-静态类 扩展方法
+优化：通过编译将部分泛型提前编译？会占用内存，但速度会加快
 
 
 
-**attribute能做什么**
-
-非空等规则校验，校验抽离在对象内
-
-
-
-抽象基类 + 方法
-
-
+**反射缓存**
 
 反射 --> 表达式树 + 字典缓存 --> 表达式树 + 泛型缓存
 
@@ -424,6 +511,17 @@ async Task Foo(); // 可等待
 
 
 ### 知识点
+
+#### 区分类和基本类型
+
+```c#
+type.IsPrimitive // int bool double...
+Type.Equals(typeof(string)) // 字符串要单独处理
+```
+
+
+
+
 
 #### 装饰器模式
 

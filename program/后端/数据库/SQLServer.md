@@ -80,6 +80,54 @@ ALTER TABLE Stations ADD  LeadPlants int foreign key(LeadPlants) references Lead
 
 
 
+##### JSON
+
+**模式**
+
+- 宽松模式：属性不存在返回`null`
+
+- 严格模式：属性不存在异常
+
+
+
+**json_value**
+
+读取json字符串中的属性值，不存在属性返回`null`，只能读取json基础值
+
+```sql
+select json_value(Column,'$.prop') as value from table
+```
+
+
+
+只能不能用于text类型字段，可用于nvarchar
+
+
+
+**json_modify**
+
+修改json对象属性，对于宽松模式下不存在属性会尝试进行添加，设置为null会删除属性
+
+```sql
+-- 更新单个属性
+update  table set column = JSON_MODIFY(column,'$.a','123') where ID  = 1;
+
+-- 更新多个属性 递归叠加
+update  table set column = JSON_MODIFY(	JSON_MODIFY(column,'$.b','123'),'$.a','123') where ID  = 1;
+```
+
+
+
+**JSON_QUERY**
+
+读取json中的对象或数组，无法读取基本值
+
+
+
+
+
+
+
 #### 函数
 
 ##### datediff

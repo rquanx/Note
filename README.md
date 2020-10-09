@@ -292,6 +292,10 @@ github.com --> githistory.xyz
 
 #### 生活
 
+##### 借钱
+
+[借款模板](https://www.yuque.com/docs/share/f302e893-a7f5-4da6-84a9-3956e331f8ea#kxXE)
+
 ##### 搜索
 
 [Yandex 图片搜索](https://yandex.com/images/)
