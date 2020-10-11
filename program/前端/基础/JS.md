@@ -524,9 +524,25 @@ obj.xxx()调用函数，依赖的是obj
 
 
 
+##### DOM
+
+`ocument.activeElement`：当前获得焦点的元素
+
+
+
+
+
 #### 对象
 
 使用obj[key]来判断，如果value是false的就会有问题
+
+
+
+##### URL
+
+query 部分会对一些字符进行百分号编码，具体是 ASCII 码以外的字符（比如汉字）、ASCII 里的控制字符（0x00-0x1F，0x7F）、以及几个特殊符号：空格、"、#、<、> [规范](https://url.spec.whatwg.org/#c0-control-percent-encode-set)
+
+
 
 ##### 内存泄漏？
 对象key

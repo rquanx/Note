@@ -187,6 +187,60 @@ type Test = ObjToNum<Person>;
 
 
 
+###### infer
+
+推断类型：自动将参数提取出来进行使用
+
+extends的条件语句中推断待推断的类型
+
+
+
+使用场景:
+
+React推断reducer返回值
+
+对于联合类型进行推断
+
+```ts
+type ReturnType<T> =  T extends (...args: any[]) => infer P ? P :any;
+type Func = () => User;
+type Test = ReturnType<Func> // Test == User
+// infer 将返回值提取成P,并在后续的返回值中使用
+
+
+
+type Ids = number[];
+type Names = string[];
+//  获取数组里的元素类型
+type Unpacked<T> = T extends Names ? string : T extends Ids ? number : T;
+type idType = Unpacked<Ids>; // idType 类型为 number
+type nameType = Unpacked<Names>; // nameType 类型为string
+
+
+// 使用infer
+type Unpacked<T> = T extends (infer R)[] ? R : T;
+
+type idType = Unpacked<Ids>; // idType 类型为 number
+type nameType = Unpacked<Names>; // nameType 类型为string
+
+
+
+// 模板字符串配合infer
+type Whitespace = ' ' | '\n' | '\r' | '\t'  // 空格类型
+
+type TrimStart<S extends string, P extends string = Whitespace> =
+  S extends `${P}${infer R}` ? TrimStart<R, P> : S
+TrimStart<'---value','-'> // ==> value
+
+// ---value 是否继承于`${P}${infer R}` ==> ${P} == -, ${infer R} == --value
+// 是继承，infer提取出R即--value,再进行TrimStart<R, P>
+// 递归进行去除-
+```
+
+
+
+
+
 ###### 声明扩展
 要向现有的ts类型中扩展出新的属性
 1、建立xxx.d.ts文件
