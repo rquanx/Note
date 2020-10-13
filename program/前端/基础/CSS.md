@@ -637,9 +637,31 @@ overflow-x / -y 可以单独对x和y进行设置
 
 #### 字体图标
 
-引入css和字体文件后
+页面在渲染文字的时候，会先将文字转换为对应的 unicode 编码，然后根据 css 中配置的 @font-face url 找到对应的字体文件（eot ttf woff 等），接下来在该字体文件中找到这个 unicode 编码对应的绘制外形，最后绘制在页面上
 
+
+
+##### 使用
+
+1、css中引入字体文件
+
+2、定义字体类
+
+3、
+
+- 通过伪类写unicode
+
+```html
 <I class="fa fa-xx"></i>
+```
+
+- 对标签增加字体类同时内容中直接写unicode
+
+```html
+<I class="fa fa-xx">unicode</i>
+```
+
+
 
 
 
