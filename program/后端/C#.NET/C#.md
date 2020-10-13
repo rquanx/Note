@@ -254,7 +254,71 @@ abstract 方法会要求子类重写
 
 
 
+### 对象
+
+#### ExpandoObject
+
+可以通过 instance.field来读取和设置值
+
+
+
+动态可扩展对象，实现了`IDictionary<string, object>`接口，`(IDictionary<string, object>)`强转后，可以通过instance[field]来读取或设置值
+
+
+
+
+
 ### 高级
+
+#### 表达式目录树
+
+```C#
+Expression<Func<string, bool>> e = (s) => s.Length > 0;
+
+// (a,b)=>a*3+b*4 中表达式会被拆分处理  a * 3和b * 4然后再拆分为 a  3和b 4
+```
+
+
+
+
+
+##### ExpressionVisitor
+
+继承Visitor,然后重写内部的一些方法，会在遍历时调用，然后将值处理成目标值
+
+**方法？**
+
+- VisitBinary: 二元运算符
+
+- VisitConstant: 常量
+
+
+
+**节点类型**
+
+- Parameter: 声明参数
+
+- Property: 声明属性
+
+- Lambda
+
+- Add： 加法运算
+
+- Subtract: 减
+
+- Multiply： 乘
+
+- Assign： 赋值
+
+- Call： 调用方法
+
+
+
+**运算符**
+
+- ExpressionType.Add：加法运算符
+
+
 
 #### IL
 
@@ -952,6 +1016,10 @@ object o = method.Invoke(obj, new object[] { });
 
 
 ### 问题
+
+#### 发布后提示各种dll依赖找不到，但是文件却有的时候
+
+彻底清理bin再重新打包
 
 
 

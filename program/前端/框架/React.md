@@ -361,7 +361,21 @@ App.defaultProps = {
 
 
 
+#### Error Boundary
 
+开发模式下，如果使用Try Catch实现会导致组件异常在框架内捕获，无法利用调试工具的`Pause on exceptions`进行中断，不便于调试
+
+
+
+解决方法：利用error事件和自定义Event组合进行异步、发布订阅的方式来实现异常既可`Pause on exceptions`，又可实现`Error Boundary`功能
+
+
+
+总结：
+
+生产模式下`Error Boundary`是使用try catch?
+
+开发模式下`Error Boundary`是利用了error事件来实现？
 
 
 

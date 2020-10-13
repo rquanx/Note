@@ -178,13 +178,18 @@ for(var i of array) {
 
 }  
 
-// for in 遍历所有可枚举的属性
+// for in 遍历所有可枚举的属性,
+
 for(var i in obj) {}
 ```
 
 
 
+**for in**
 
+- 数组的键名是数字，但是`for...in`循环是以字符串作为键名“0”、“1”、“2”等等。
+- `for...in`循环不仅遍历数字键名，还会遍历手动添加的其他键，甚至包括原型链上的键。
+- 某些情况下，`for...in`循环会以任意顺序遍历键名。
 
 
 
@@ -524,9 +529,25 @@ obj.xxx()调用函数，依赖的是obj
 
 
 
-##### DOM
+#### DOM
 
-`ocument.activeElement`：当前获得焦点的元素
+##### 自定义事件
+
+```js
+const event = document.createEvent('Event');
+const evtType = 'fake-event';
+
+// 初始化Event，并设置事件名
+event.initEvent(evtType, false, false);
+
+
+// 监听Event
+const fakeNode = document.createElement('fake');
+fakeNode.addEventListener(evtType, callCallback, false);
+
+// 触发事件
+fakeNode.dispatchEvent(event);
+```
 
 
 
@@ -1405,6 +1426,21 @@ e.keycode
 
 
 ### 其他内置对象
+
+#### Math
+
+**Max**
+
+```js
+// 取最大值
+Math.max(...[1,2,3])
+Math.max(1,2,3)
+Math.max.apply(null,[1,2,3])
+```
+
+
+
+
 
 #### XML对象
 

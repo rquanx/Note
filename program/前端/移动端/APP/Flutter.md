@@ -2260,7 +2260,58 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 # 问题
 
+#### 升级Xcode后编译失败，ios-deploy有问题
+
+用`/ usr/local/lib/node_modules/ios - deploy/build/Release/ios - deploy` 替换 `/ flutter/bin/cache/artifacts/ios - deploy`
+
+ios-deploy在/usr/local/bin 或npm的全局路径下
+
+
+
+#### 调试时Android Studio报错E/GnssHAL_GnssInterface: gnssSvStatusCb: b: input svInfo.flags is 8
+
+手机模拟器设置关闭GPS
+
+#### 下载包失败Could not download jar
+
+- `android/build.gradle`、`flutter/packages/flutter_tools/gradle/fluter.gradle`设置镜像（谷歌等需要注释）
+
+- flutter clean
+
+- 运行
+
+```gradle
+maven{ url 'https://maven.aliyun.com/repository/google' }
+
+maven{ url 'https://maven.aliyun.com/repository/jcenter' }
+
+maven{url 'https://maven.aliyun.com/nexus/content/groups/public'}
+```
+
+
+
+#### Could not resolve io.flutter:flutter_embedding
+
+- android/build.gradle、flutter/packages/flutter_tools/gradle/fluter.gradle设置镜像 
+
+- flutter clean
+
+- 运行
+
+```gradle
+maven { url "http://download.flutter.io" }
+```
+
+
+
+#### Failure [INSTALL_FAILED_NO_MATCHING_ABIS:  Failed to extract native libraries, res=-113] Error launching application on Android SDK built for x86.
+
+没有适配x86架构，build.gradle中的ndk.abiFilters添加x86
+
+
+
 #### 问题集
+
 [flutter常见问题](https://blog.iw3c.com/archive/1166)
 
 [Textfield placrholde 对齐](https://github.com/flutter/flutter/issues/40248)
