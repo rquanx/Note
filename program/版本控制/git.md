@@ -470,7 +470,7 @@ commit 目的的简短描述，不超过50个字符
 
 [5中gitflow介绍](https://zepel.io/blog/5-git-workflows-to-improve-development/)
 
-
+[不同项目类型的实践](https://zhuanlan.zhihu.com/p/257158164)
 
 #### 问题
 

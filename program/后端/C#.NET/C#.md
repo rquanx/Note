@@ -206,6 +206,14 @@ a.(para2: xxxx); // 给para2指定参数，不影响其他参数
 
 ### 面向对象
 
+#### 修饰符
+
+- public
+- `protected`:类或子类可访问
+- `virtual`: 虚函数，可以被`override`
+
+
+
 #### 类
 
 **静态构造函数**
@@ -225,6 +233,10 @@ abstract 方法会要求子类重写
 
 
 特点：抽象类中可以包含字段，构造函数，析构函数，静态成员，常量，接口不可以
+
+抽象类里可以包含两种抽象成员，分别是`抽象方法`声明和`抽象属性`，同时可以包含其他非抽象成员
+
+
 
 #### 接口
 
@@ -417,6 +429,10 @@ parameterInfo.ParameterType // 读取参数信息的类型
 
 
 
+**BaseType**
+
+读取基类
+
 
 
 ##### Assembly
@@ -425,8 +441,15 @@ parameterInfo.ParameterType // 读取参数信息的类型
   - Load 当前路径下加载dll
   - LoadFrom  当前路径下加载dll
   - LoadFile  指定特定路径下加载Dll
-
 - 读取DLL中的信息（Type.....）
+
+
+
+**读取Assembly**
+
+`Assembly`是懒加载的，`AppDomain.CurrentDomain.GetAssemblies`只会取到已加载的Dll，可能有遗漏
+
+
 
 ##### propertyinfo
 
@@ -1012,8 +1035,10 @@ object o = method.Invoke(obj, new object[] { });
 ```
 
 
+### 资料
+#### 博客
 
-
+[老赵](http://blog.zhaojie.me/)
 
 ### 问题
 

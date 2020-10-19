@@ -706,6 +706,8 @@ MySQL: 无限制，但对sql大小有限制，默认`4M`
 
 选出介于a和b间的,可以是数组，文本，日期
 
+between包含两端
+
 
 
 ##### Not Between a and b

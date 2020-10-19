@@ -766,6 +766,12 @@ maybePop
 
 
 
+### Window(顶层屏幕)
+
+强制自己的子元素必须铺满，任何限制都失效
+
+
+
 ### 页面
 
 #### MaterialApp
@@ -813,6 +819,10 @@ style
 
 
 #### Scaffold
+
+允许子项设置自身大小（不超过自身）
+
+
 
 provides a default app bar, title, and a body property that holds the widget tree for the home screen.
 
@@ -934,6 +944,12 @@ new FlatButton(
 返回future对象
 
 > pop的时候将pop的数据传递？
+
+
+
+#### **PopupRoute**
+
+弹出按钮？
 
 
 
@@ -1083,7 +1099,10 @@ https://mp.weixin.qq.com/s/Pzbfoszuoj_JDz1KvBGieA
 
 #### Container 
 
-只有一个子 Widget。默认充满，包含了padding、margin、color、宽高、decoration 等配置。   
+- 没有子元素、宽高时，会尽可能的铺满
+
+- 自身无宽高，但有子元素，会尽可能的小，最终被子元素遮挡 ≈ 子元素会被强制尽可能的大？
+  - 由于父元素会尽可能大，自身特性尽可能小，最终导致
 
 
 
@@ -1466,6 +1485,14 @@ element.this == buildcontext
 
 
 
+- 没有子元素、宽高时，会尽可能的铺满
+
+- 自身无宽高，但有子元素，会尽可能的小，最终被子元素遮挡 ≈ 子元素会被强制尽可能的大？
+  - 由于父元素会尽可能大，自身特性尽可能小，最终导致
+- 父元素限制优先级高于子元素？
+
+
+
 #### Padding 
 
 只有一个子 Widget。只用于设置Padding，常用于嵌套child，给child设置padding。  
@@ -1476,11 +1503,19 @@ element.this == buildcontext
 
  只有一个子 Widget。只用于居中显示，常用于嵌套child，给child设置居中。
 
-   
+   允许子项设置自身大小（不超过自身），但会让子元素居中
+
+
 
 #### Stack 
 
 可以有多个子 Widget。 子Widget堆叠在一起。   
+
+
+
+#### Align
+
+允许子项设置自身大小（不超过自身），但会强制设置位置
 
 
 
@@ -1490,9 +1525,61 @@ element.this == buildcontext
 
   
 
+#### UnconstrainedBox
+
+允许子项设置自身大小（没有限制，可能出现溢出警告）
+
+
+
+#### LimitedBox
+
+只应用于无限大的父元素（UnconstrainedBox）时有效，添加大小限制，防止子元素溢出
+
+
+
+#### OverflowBox
+
+允许子项设置自身大小（没有限制，但只显示能显示的部分，无溢出警告）
+
+
+
+#### FittedBox
+
+缩放
+
+强制子元素与自身一样大，填满，只能缩放 有界的 widget（宽度和高度都不是无限的）
+
+
+
+#### Flexible
+
+同样会忽略子项宽高，但不同于Expanded，Flexible会将其子项的宽度小于等于自身，尽可能小？不会强制填充
+
+
+
+#### Column
+
+使用Expanded后元素自身原始的宽高就无效了，会根据其他子项进行统一分配
+
+
+
+同时会尽可能的占用更多空间
+
+
+
+
+
 #### Row 
 
 可以有多个子 Widget。水平布局。   
+
+
+
+UnconstrainedBox 一样,不施加约束，自由设定大小；
+
+会将子元素按他们设定的大小并排放置，然后其余空间自动分配，置空
+
+由于无约束，可能出现溢出警告
 
 
 ##### 属性
@@ -1653,6 +1740,127 @@ class TabContainer extends StatelessWidget {
 
 
 ## Dart
+
+
+
+
+
+### 布局
+
+[布局规则(中)](https://mp.weixin.qq.com/s/t5R112IIQUc9SXwWeAgsoA)
+
+[布局规则(英，官方文档)](https://flutter.dev/docs/development/ui/layout/constraints)
+
+
+
+#### 约束
+
+严格：强制子元素必须有指定宽高（顶层window强制铺满）
+
+宽松：允许子元素设定自身宽高（Center）
+
+
+
+#### 规则
+
+- 一个 widget 只能在其父项赋予的约束内决定其自身的大小。这意味着 widget 往往 不能自由决定自己的大小 。
+
+- widget 不知道，也无法确定自己在屏幕上的位置 ，因为它的位置是由父项决定的。
+
+- 由于父项的大小和位置又取决于上一级父项，因此只有考虑整个树才能精确定义每个 widget 的大小和位置。
+
+#### 示例
+
+```dart
+
+// 顶层屏幕不会对子元素进行分配，Container就是最顶层的widget,由于上一层父元素是屏幕，子元素必须铺满，所以宽高是无效的
+Container(width: 100, height: 100, color: Colors.red);
+
+// 套入Center后，Center会被铺满屏幕，这时候再去设置Container，就会被Center进行分配
+// 由于子元素位置有父元素控制，Center会优先让子元素居中布局
+Center(
+   child: Container(width: 100, height: 100, color: Colors.red)
+)
+
+// Align被铺满，同时子元素被安排到右下角
+Align(
+   alignment: Alignment.bottomRight,
+   child: Container(width: 100, height: 100, color: Colors.red),
+)
+
+// Container 没有子项且没有固定大小，因此它决定要尽可能变大，结果就填满了屏幕
+Center(child: Container(color: Colors.red))
+
+// Container大小不能超出屏幕。由于红色 Container 没有大小，但有一个子项，因此它决定要与子项的大小相同。
+Center(
+   child: Container(
+      color: Colors.red,
+      child: Container(color: Colors.green, width: 30, height: 30),
+   )
+)
+
+// 由于父元素空间足够，然后基于自身要求和子元素大小，最终呈现为70 x 70 (30 + 20 + 20)
+Center(
+   child: Container(
+     color: Colors.red,
+     padding: const EdgeInsets.all(20.0),
+     child: Container(color: Colors.green, width: 30, height: 30),
+   )
+)
+
+// ConstrainedBox 会在 widget 从父项获得的约束基础之上施加 额外的 约束
+// ConstrainedBox 强制为与屏幕大小完全相同,导致constraints无效，子元素Container自身特性铺满
+ConstrainedBox(
+   constraints: BoxConstraints(
+      minWidth: 70,
+      minHeight: 70,
+      maxWidth: 150,
+      maxHeight: 150,
+   ),
+   child: Container(color: Colors.red, width: 10, height: 10),
+)
+
+// 加入Center后，ConstrainedBox不会被强制铺满，所以约束有效
+
+Center(
+   child: ConstrainedBox(
+      constraints: BoxConstraints(
+         minWidth: 70,
+         minHeight: 70,
+         maxWidth: 150,
+         maxHeight: 150,
+      ),
+      child: Container(color: Colors.red, width: 10, height: 10),
+   )
+)
+
+// UnconstrainedBox允许子项控制自己大小，且无限制，子项超过最大大小时（非无限大），会出现溢出警告
+UnconstrainedBox(
+   child: Container(color: Colors.red, width: 20, height: 50),
+)
+
+// Flutter无法渲染无限大，所以子项不被渲染，同时会报错
+UnconstrainedBox(
+   child: Container(
+      color: Colors.red,
+      width: double.infinity,
+      height: 100,
+   )
+)
+
+// 文字超长，FittedBox会根据子元素不断占用空间，直到最大，然后调整Text的大小为适配的大小
+// 应用：自适应、不换行，强制显示全文？文字会进行缩放
+// 没有FittedBox控制时，Text同样会占用但是会进行换行调整
+Center(
+   child: FittedBox(
+      child: Text('This is some very very very large text that is too big to fit a regular screen in a single line.'),
+   )
+)
+
+Center(
+   child: Text('This is some very very very large text that is too big to fit a regular screen in a single line.'),
+)
+```
 
 
 
@@ -2451,3 +2659,9 @@ Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 [awesome-flutter](https://github.com/Solido/awesome-flutter)
 
 [规范](%5bhttps:/github.com/alibaba/flutter-go/blob/develop/Flutter_Go%20%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83.md%5d(https:/github.com/alibaba/flutter-go/blob/develop/Flutter_Go%20代码开发规范.md))
+
+
+
+### 博客
+
+[Gityuan,flutter](http://gityuan.com/)

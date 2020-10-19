@@ -187,6 +187,16 @@ npm i module_name  -D  => npm install module_name --save-dev
 
 
 
+#### NVM
+
+多版本node.js管理
+
+[nvm下载nodejs，下载失败，修改镜像](https://blog.csdn.net/qq_25479327/article/details/105609021)
+
+> nvm install fails with stream error: stream ID 7; INTERNAL_ERROR - yet reports complete.
+
+
+
 #### PM2
 
 应用管理

@@ -55,6 +55,8 @@ xxx.trim()，trim()不止过滤普通空格（Space键敲出来的空格）
 
 ###### 模板字符串
 
+可以用来声明多行字符串
+
  ${name}字符串模板进行拼接，ie不兼容
 
 ###### 标签模板
@@ -65,6 +67,8 @@ xxx.trim()，trim()不止过滤普通空格（Space键敲出来的空格）
 const func = (...arg) => console.logO(arg)
 const a = 'hhh'
 fun`asd${a}`
+
+// 本质是一个array like的对象
 ```
 
 
@@ -74,6 +78,18 @@ fun`asd${a}`
 1、eval 
 
 2、new Function
+
+
+
+###### 其他
+
+**换行**
+
+当反斜线字符“\”位于一行的末尾（其后立即是代码文本中的换行）时，也用于表示连续的字符串声明
+
+
+
+
 
 
 
@@ -474,6 +490,25 @@ caller属性  记录着被调函数的引用，
 ​	arguments.caller
 ​	arguments.callee.caller 
 ​	可能已被禁用
+
+
+
+##### Function
+
+
+
+##### AsyncFunction
+
+**构造Async**
+
+如`new Function`,async函数需要通过另外的方式构造
+```js
+const f async function(){}
+console.log(f.constructor) // AsyncFunction() { [native code] }
+const AsyncF = f.constructor // 使用方式和new Function一样
+```
+
+
 
 ##### 匿名函数
 
@@ -1362,6 +1397,36 @@ contextType
 
 强制重新渲染
 
+##### 绘制圆形
+
+```js
+// 绘制圆形
+ctx.beginPath();
+ctx.arc(x,y,radius,0,Math.PI * 2);
+ctx.closePath();
+ctx.fillStyle;
+ctx.fill();
+
+// 清空
+ctx.fillStyle = "rgba(255, 255, 255, .4)"; // 设置填充背景色
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+```
+
+
+
+##### 动画绘制步骤
+
+1、绘出画布
+
+2、绘出元素
+
+3、定时计算元素位置、刷新画布、根据新的位置重绘元素，使用`requestAnimationFrame`
+
+4、为元素设定运动轨迹（初始位置、位移量[速度]）
+
+5、为元素设定物理特性（边界处理、碰撞处理...）
+
+
 
 
 #### 其他
@@ -1426,6 +1491,16 @@ e.keycode
 
 
 ### 其他内置对象
+
+#### Intl
+
+国际化对象，有自己的标准
+
+**Intl.RelativeTimeFormat**
+
+> 可以实现本地区域化相对时间格式。“昨天”，“20秒前”或“1个月”之类的短语
+
+
 
 #### Math
 
@@ -1601,15 +1676,43 @@ var promise = navigator.mediaDevices.getUserMedia(constraints);
 
 
 
-#### MutationObserver
+##### 获取元素宽高
+
+**getBoundingClientRect**
+
+```js
+dom.getBoundingClientRect().width
+//dom.getBoundingClientRect().height
+// 计算一个元素的绝对位置（相对于视窗左上角），它能拿到元素的left、top、width、height 4个属性
+```
+
+
+
+**getComputedStyle**
+
+```js
+window.getComputedStyle(dom).width
+// window.getComputedStyle(dom).height
+// 获取的也是浏览器渲染以后的元素的宽和高，但这种写法兼容性更好
+```
+
+
+
+
+
+
+
+##### MutationObserver
 
 监测某个范围内DOM的变动，如节点的增减、属性的变动，文本节点的变化等，异步
 
 
 
-##### Dom节点变动检测并录制
 
 
+###### 应用
+
+**Dom节点变动检测并录制**
 
 使用MutationObserver监听整个页面，每当有页面变动，则将页面的html转换成图片进行存储，回放用户操作即不停从队列中取出元素进行展示
 
@@ -1617,11 +1720,7 @@ html2canvas配合canvas.toDataURL实现录制图像
 
 
 
-
-
-##### 应用
-
-###### 长按截图
+**长按截图**
 
 监听长按的操作，然后html2canvas配合canvas.toDataURL实现
 
@@ -1727,6 +1826,26 @@ web worker的postMessage是深拷贝的
 2、为了解决竞争，浏览器提供了Atomics API，可以将操作封装成原子操作，不会被中断（锁）
 
 3、基于Atomics API进行封装锁，从而解决竞争问题
+
+
+
+### 迭代器
+
+
+
+#### ...
+
+对象没实现`Symbol.iterator`，所以无法使用[...obj]
+
+调用`Symbol.iterator`的场景
+
+- for...of
+
+- 数组和 Set 解构
+
+- 扩展运算符
+
+- yield* 
 
 
 

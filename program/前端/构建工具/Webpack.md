@@ -35,6 +35,17 @@ Loader
 - 写include 处理include路径下所有符合条件的文件
 - 在最后的 loader 首先被执行
 
+
+
+#### 热更新
+
+[一年前，我去面试，小姐姐问我webpack热更新原理，我跟她说了一小时](https://mp.weixin.qq.com/s/gG_FwVGHiJGjQOvt5rZheA)
+[彻底搞懂 vite 中的 HMR 原理](https://mp.weixin.qq.com/s/xRAg_6I5QLbsVjL4YH6qeQ)
+
+
+
+
+
 #### 插件
 
 ##### dll plugin
@@ -142,6 +153,10 @@ Typescript 直出 ES5 已经非常成熟，用 ts-loader 即可，如果有需�
 
 
 #### 常见问题
+
+##### Invalid Host/Origin header
+
+[webpack `Invalid Host/Origin header`问题](https://blog.csdn.net/u013243347/article/details/85223016)
 
 ##### require引入错误的同名文件
 

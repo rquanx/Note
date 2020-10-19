@@ -421,6 +421,12 @@ inline	只占元素大小的空间，一般不可设置宽高
 
 
 
+width、height：无效
+
+padding：左右有效 ，但是由于设置padding上下不占页面空间，无法显示效果，所以无效。
+
+> 上下会扩展到上下的元素上，但不会占用空间
+
 
 
 ###### 标记盒子
@@ -1172,6 +1178,10 @@ height不设置就会根据内容自适应
 2、增加父元素设置font-size:0;由于继承的原因子元素需要重设font-size
 
 3、取消两个div之间的空格，需要在div上加上 vertical-align:bottom，消除底部间隙？
+
+
+
+[去除inline-block元素间间距的N种方法](http://www.zhangxinxu.com/wordpress/?p=2357)
 
 
 
