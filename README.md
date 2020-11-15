@@ -316,6 +316,12 @@ github.com --> githistory.xyz
 
 ##### 工具
 
+**装机**
+
+[系统](https://next.itellyou.cn)
+
+[激活、Office](https://otp.landian.vip/zh-cn/)
+
 [多语言在线翻译](<https://i18ns.com/index.html>)
 
 [AI工具](https://www.gradio.app/hub)
