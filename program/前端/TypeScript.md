@@ -4,6 +4,9 @@
 
 #### 语法
 
+#### 泛型和
+
+
 ##### declare
 
 声明全局变量
@@ -14,9 +17,14 @@ declare var SP: any;
 
 > 可以去掉引用外部js东西时报错
 
+##### 类型声明
+
+利用is / in来判断
 
 
-##### type
+
+
+#### type
 
 ```typescript
 type a = {
@@ -90,6 +98,24 @@ interface ObjMap {
 
 
 ##### 高级
+
+###### In
+
+
+
+```ts
+// 嵌套解析
+interface t {
+    a: number;
+    b: string;
+}
+
+type P<T> = {
+    [k in keyof T]?: T[k] extends object ? P<T[k]> : T[k]
+}
+```
+
+
 
 ###### Omit
 
@@ -235,6 +261,23 @@ TrimStart<'---value','-'> // ==> value
 // ---value 是否继承于`${P}${infer R}` ==> ${P} == -, ${infer R} == --value
 // 是继承，infer提取出R即--value,再进行TrimStart<R, P>
 // 递归进行去除-
+```
+
+
+
+###### never
+
+永不存在的值的类型
+
+```ts
+interface T {
+    a: never;
+    b: string;
+}
+
+type keys = [keyof T] // 取T得所有key   ==> a | b
+type tt = T[keyof T] // 提取T所有属性的类型，但由于never永不存在的值的类型,所以会被去除
+// string    通过索引取never是会被去除
 ```
 
 
@@ -653,6 +696,59 @@ jsxFactory": "h",// preact设置   编译成h
     // "extends": "./tsconfig.base.json"
 	// "jsRules": { "no-empty": true } 对js文件不进行规则检验
 }
+```
+
+
+
+
+
+#### 示例
+
+##### 把函数的参数、返回值解promise/action
+
+```ts
+// { [P in keyof T]: T[P] extends Function ? P : never } 构造出函数为有效，非函数为nerver的类型
+// [keyof T] ==> 所有key的联合类型
+// type[key]的时候会忽略never类型
+// { [P in keyof T]: T[P] extends Function ? P : never }[keyof T]  获取对象函数的key
+
+// 提取函数名key
+type FuncName<T> = {
+  [P in keyof T]: T[P] extends Function ? P : never;
+}[keyof T];
+
+
+// 函数类型改造
+type TT<T> = 
+T extends (input: Promise<infer U>) => Promise<Action<infer V>>
+  ? (input: U) => Action<V>
+  : 
+    T extends (action: Action<infer U>) => Action<infer V>
+  	? (action: U) => Action<V>
+  	: never;
+
+type Names = FuncName<EffectModule>;
+
+type Result = {
+   [M in Names]: TT<EffectModule[M]>
+}
+
+
+// 不通过中间类型，一次性处理
+type A<T> = {
+  [k in 
+    
+    {[{P} in keyof T]: T[P] extends Function ? P : never; }[keyof T]
+    
+    ]: T[k] extends Function
+    ? 
+    	T[k] extends (input: Promise<infer U>) => Promise<Action<infer V>>
+      	? (input: U) => Action<V>
+      	: T[k] extends (action: Action<infer U>) => Action<infer V>
+      		? (action: U) => Action<V>
+      		: never
+    : never;
+};
 ```
 
 
