@@ -252,7 +252,7 @@ App.defaultProps = {
 
 **useEffect**
 
-替代didupdate
+替代`didupdate`
 
 返回值：返回一个函数，函数会在willunmount时调用
 
@@ -262,7 +262,7 @@ App.defaultProps = {
 
 
 
-时机：在组件挂载或者更新 DOM 之后的下一个tick
+时机：在组件挂载或者更新 DOM 之后的下一个tick，会在每次渲染完毕后执行，所以使用ref时，ref的值在本次渲染过程永远会停留在上一次。
 
 
 

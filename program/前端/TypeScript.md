@@ -704,6 +704,15 @@ jsxFactory": "h",// preact设置   编译成h
 
 #### 示例
 
+##### 不重复声明，将对象设置为类型使用
+
+```ts
+var store = {}
+export type Store = typeof store
+```
+
+
+
 ##### 把函数的参数、返回值解promise/action
 
 ```ts

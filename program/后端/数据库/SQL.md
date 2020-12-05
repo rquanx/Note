@@ -694,11 +694,17 @@ WHERE column_name IN (value1,value2,...)
 
 
 
-oracle：单个参数最大数量1000，超过时可用`where x in () or x in () `
+`oracle`：单个参数最大数量1000，超过时可用`where x in () or x in () `
 
-Sql Server：单个参数最大数量1000，超过时可用`where x in () or x in () `
+`Sql Server`：单个参数最大数量1000，超过时可用`where x in () or x in () `
 
-MySQL: 无限制，但对sql大小有限制，默认`4M`
+`MySQL`: 无限制，但对sql大小有限制，默认`4M`
+
+
+
+**in返回顺序**
+
+当不进行`order by`时，返回的结果顺序是无法保证的
 
 
 

@@ -141,6 +141,31 @@ strStore[3] = "Four";
 ```
 
 
+
+##### Option Chain
+
+**?. ?[]**
+
+```c#
+// 对于null的变量，正常
+List<string> l = null;
+var a = l?[0];
+
+// 对于字典
+// 读取不为null的字典中不存在的key，不可
+Dictionary<string,string> d?[""]  
+
+// 读取值为null的字典则正常忽略掉
+Dictionary<string, string> d = null;
+d?[""]
+
+// 总结： ?. 、?[]  针对的是前面的变量是否为null，而不是判断是否存在key 
+```
+
+
+
+
+
 #### 枚举
 
 C#的枚举值toString()会返回枚举的文本值
@@ -198,6 +223,34 @@ struct是值类型
 
 ```c#
 a.(para2: xxxx); // 给para2指定参数，不影响其他参数
+```
+
+
+
+##### 不限参数
+
+``params object[]ps`
+
+**作用**
+
+```c#
+// 当传递多个参数时，自动将参数合并成数组
+pass(1,2,new List() { 1,2 }) // ps = [1,2,new List(){1,2}]
+
+// 当传入一个object[]时，直接用传入的object[]
+pass(new object[] {1,2,new List() { 1,2 }}) //  ps = [1,2,new List(){1,2}]
+
+// 当存在有前置参数，再传入一个object[]时，直接用传入的object[]
+pass("a",new object[] {1,2,new List() { 1,2 }}) 
+// a = ""; ps = [1,2,new List(){1,2}]
+// new object[] {}  --> param object[] ps    是不会产生再嵌套的
+
+// 当传入多个参数，即使有object[]会被处理为嵌套
+pass("a",
+     new object[] {1,2,new List() { 1,2 }}，
+     new P{})
+// a = ""; ps = [[1,2,new List(){1,2}],{1,2}]
+
 ```
 
 
@@ -989,6 +1042,43 @@ dll存放在bin文件夹中，type要到具体的类
 ### 应用
 
 #### ORM
+
+##### In的处理
+
+```C#
+// in会被拆分拼接为key + i的SQL
+connection.Query<int>($@"
+	select * from (
+		select 1 as Id union all 
+		select 2 union all 
+		select 3) as X 
+where Id in @Ids", new { Ids = new int[] { 1, 2, 3 } });
+
+// Will be translated to:
+
+// select * from (
+//		select 1 as Id union all 
+//		select 2 union all 
+//      select 3) as X 
+// where Id in (@Ids1, @Ids2, @Ids3)" 
+// @Ids1 = 1 , @Ids2 = 2 , @Ids2 = 3
+```
+
+
+
+connection.Query<int>("select * from (select 1 as Id union all select 2 union all select 3) as X where Id in @Ids", new { Ids = new int[] { 1, 2, 3 } });
+
+
+
+// Will be translated to:
+
+
+
+select * from (select 1 as Id union all select 2 union all select 3) as X where Id in (@Ids1, @Ids2, @Ids3)" // @Ids1 = 1 , @Ids2 = 2 , @Ids2 = 3
+
+\```
+
+
 
 ##### Join表实现
 

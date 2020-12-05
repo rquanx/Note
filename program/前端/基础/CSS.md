@@ -982,6 +982,37 @@ Font weight从100->200没有变化 ==> 字体支持问题
 
 ### CSS3
 
+
+
+#### 动画
+
+
+
+**@keyframes**
+
+指定动画名、初始态、中间态，最终态，
+
+```css
+@keyframes name {
+  0% { transform: translate(0, 0); }
+  25% {}
+  100% { transform: translate(0, -$height); }
+}
+/**
+animation-name: 定义动画名
+
+animation-duration: 定义动画初态到终态的时间
+
+animation-timing-function： 动画速度曲线
+  - cubic-bezier(0.21, 0.85, 1, 1); 贝塞尔曲线
+
+animation-iteration-count: 动画重复播放的次数
+
+animation-fill-mode：动画外的状态
+  - 过渡动画执行完后，为了将让元素应用动画最后一帧的属性值
+**/
+```
+
 #### 变量
 
 ```js
