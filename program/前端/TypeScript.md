@@ -708,7 +708,7 @@ jsxFactory": "h",// preact设置   编译成h
 
 ```ts
 var store = {}
-export type Store = typeof store
+export type Store = typeof store	
 ```
 
 

@@ -73,6 +73,17 @@ options.env有关
 
 
 
+##### **内存不足**
+
+解决方式：通过设置加大内存
+
+- Script设置：`"build": "NODE_OPTIONS=--max_old_space_size=4096 umi build "`
+
+- 设置环境变量
+  - `windows`：临时-`set NODE_OPTIONS=--max_old_space_size=4096`，永久-`setx NODE_OPTIONS --max_old_space_size=4096`
+
+
+
 #### 文件操作
 
 
