@@ -2355,6 +2355,19 @@ var v = foo?.bar; // bar 为null 则为null
 
 ```
 
+### 扩展方法
+
+```dart
+extension StringExtension on String { bool get isNullOrEmpty => (this == null || this.isEmpty); }
+
+// 一般用法,只能扩展 member function
+
+extension ExtensionName on ExtensionType { 
+    bool test() {}
+    bool get isNullOrEmpty => (this == null || this.isEmpty); 
+}
+```
+
 
 
 ### 操作符重载
@@ -2665,3 +2678,23 @@ Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 ### 博客
 
 [Gityuan,flutter](http://gityuan.com/)
+
+
+
+### 常用库
+
+```
+
+cupertino_icons: ^0.1.2           //图标库
+fluro: 1.5.2                     //路由导航库
+pull_to_refresh: 1.5.8              //下拉刷新
+flutter_swiper: 1.1.6               //Swiper库
+cached_network_image: 2.0.0       //网络图片
+intl: 0.16.1                       //国际化
+open_file: 3.0.1                   //文件选择
+photo_view: ^0.9.2               //大图预览
+fluttertoast: ^3.1.3               //Toast消息提示
+oktoast
+syncfusion_flutter_charts: ^18.1.0   //图表组件库
+```
+

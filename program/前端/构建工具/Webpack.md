@@ -28,7 +28,7 @@ tapPromise: 增加Promise型事件
 
 #### Loader
 
-Loader  
+函数 只做一件事，输入，文件转换或获取文件
 
 - 不写Include   会处理全部符合正则的代码
 - Exclude  排除
@@ -48,9 +48,11 @@ Loader
 
 #### 插件
 
+类，监听不同生命周期进行工作 输出，更改输出的内容
+
+
+
 ##### dll plugin
-
-
 
 **问题**
 

@@ -397,6 +397,16 @@ jsx表达式可以写iife来嵌入函数进行条件渲染
 
 #### 知识点
 
+##### 类组件SetState同步、异步
+
+- 在React生命周期中为异步
+  - mount 流程结束或事件操作结束，才会拿出所有的 state 进行一次计算。
+- 脱离了 React 的生命周期或者 React 提供的事件流为同步：setTimeout回调，外部调用setState
+
+**原理**：源码中有batchupdate flag，到进入生命周期或事件流时会默认一开始设置为会进行批量更新，当脱离后被调用时未设置此flag
+
+
+
 ##### 正交性
 
 [正交性](https://zhuanlan.zhihu.com/p/96084784?utm_source=qq&utm_medium=social&utm_oi=583565170786308096 )
@@ -577,6 +587,33 @@ defaultValue={this._editDate.item["Remark"]} onChanged={this._getRemark}
 ##### 组件缓存
 
 [React 缓存](https://www.v2ex.com/t/602399#reply0)
+
+- `display:none`
+- `Portals`
+
+**Portals**
+
+[基于Portal的keep-alive](https://zhuanlan.zhihu.com/p/214166951)
+
+原理
+
+- ReactDOM.createPortal创建一个存在内存的虚拟节点
+
+- 封装组件，固定渲染一个元素
+
+- 通过属性/状态控制Portal在何时挂载到固定渲染的元素下
+
+
+
+问题
+
+- 需要通过懒加载等方式处理首次加载问题
+
+- 需要手动控制keep-alive的挂载、卸载
+
+- 生命周期
+
+- SSR支持
 
 
 

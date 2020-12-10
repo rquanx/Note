@@ -578,7 +578,19 @@ grid布局产生
 
 在css2.1中也属于BFC
 
-#### 层次
+#### 层叠
+
+[层叠关系有七层](http://www.w3help.org/zh-cn/kb/013)
+
+[css层叠顺序探究](https://aotu.io/notes/2015/11/08/css-stack-order/)
+
+##### 层叠上下文
+
+上下文可认为是一个Block
+
+Block内遵循统一的关系，多个同级Block间遵循统一关系？
+
+
 
 ##### z-index   
 
@@ -1127,6 +1139,27 @@ https://www.cnblogs.com/kenan9527/p/4539673.html
 
 
 ### 小知识
+
+#### 给图标换颜色
+
+- 使用filter滤镜进行颜色转换
+- 使用遮罩实现，使用mask属性
+- background-blend-mode：需图标为白底黑字
+
+
+
+#### Canvas
+
+
+
+##### Canvas实现事件系统
+
+RGB --> ID元素定位
+> 设计两个画布，同样大小真实画布与影子画布，真是画布为显示颜色内容，影子画布根据元素设计id -> rgba的映射，即可通过坐标获取影子画布的颜色然后反向计算出当前位置对应的id，从而找到元素
+
+事件系统
+> 借用canvas元素的原生事件、原生事件组合 + 元素定位实现Canvas内的元素的事件监听
+
 
 
 
