@@ -1013,6 +1013,32 @@ new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
 // 构造时设置day为0，读取getdate可以读取对于月份的天数
 ```
 
+#### Console
+
+console.log(object [, object, …])
+
+占位符：根据占位符的位置填入后续递n个参数的内容
+- %s: 字符串
+- %d or %i: 整数
+- %f: 浮点数
+- %o: 收起的对象、收起的DOM
+- %O: 收起的对象、展开的DOM
+- %c: 传入css样式，会对输出的内容进行渲染
+
+
+
+##### 应用
+
+**利用console显示ASCII字符画**
+
+利用工具生成字符串即可
+
+- [picascii](http://picascii.com/)
+
+- [img2txt](https://www.degraeve.com/img2txt.php)
+
+- ASCII Generator
+
 
 
 #### File

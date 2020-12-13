@@ -151,6 +151,12 @@ current-password: 触发浏览器提示密码建议
 
 
 
+#### Template
+
+在使用前不会被渲染，不会执行加载等操作，也能够实现隐藏标签内容，而且位置任意性，可以在<head>中，也可以在<body>或者<frameset>中
+
+
+
 #### abbr
 
 用于必填校验设置
@@ -667,6 +673,90 @@ pause()
 #### webgl	
 
 ​	游戏
+
+
+
+### Shadow DOM
+
+#### 简述
+
+Shadow DOM允许在文档（document）渲染时插入一棵DOM元素子树，但是这棵子树不在主DOM树中，Shadow DOM可嵌套，Shadow DOM内嵌入Shadow DOM
+
+#### 特点
+
+**默认隐藏**
+
+需Chrome 的开发者工具，点击右上角的`Settings`按钮，勾选`Show user agent shadow DOM`
+
+
+
+**根节点**
+
+`#shadow-root`，影子根
+
+
+
+**隔离性**
+
+Shadow DOM和主DOM间存在边界，主 DOM写的 CSS 选择器和 JavaScript 代码都不会影响到Shadow DOM
+
+
+
+**事件重定向/阻塞**
+
+click:影子DOM绑定的事件，在触发时触发元素会被定向到主元素的影子DOM父节点
+
+abort、 error、 select 、change 、load 、reset 、resize 、scroll 、selectstart: 不进行重定向，被取消
+
+
+
+#### 使用
+
+```js
+element.createShadowRoot();
+```
+
+
+
+#### 应用
+
+##### 如何通过主DOM影响影子DOM?
+
+**1、content + template**
+
+- 需<content>和<template>配合才能实现？？？（推断：不一定，利用js动态创建content？）
+
+- <content>:select属性为CSS选择器， 被select选中的元素会被content引用
+
+- <template>:提前定义模板
+
+- 最终将content内容拷贝到影子DOM中即可使用主DOM的元素内容
+
+
+
+**2、::shadow**
+
+通过::shadow设置的样式可影响影子DOM内的元素，但只能穿透一层边界
+```css
+主DOM中影子DOM Selector::shadow 影子DOM内元素Selector {}
+```
+
+
+
+**3、/deep/**
+
+样式可穿透多层影子边界影响
+
+```css
+主DOM中影子DOM Selector/deep/ 影子DOM内元素Selector {}
+```
+
+
+
+##### 如何通过影子DOM影响主DOM?
+
+- :host(x): 定义宿主样式、可被宿主覆盖,x为选择器
+- ::content:对通过content复制到影子DOM内的元素的样式产生影响
 
 
 

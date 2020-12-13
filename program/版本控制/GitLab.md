@@ -74,6 +74,14 @@ gitlab平台会扫描根目录的.gitlab-ci.yml文件，并据此处理ci流程
 
 
 
+
+
+### Release
+
+写了release note才会有release
+
+
+
 ### 实操
 
 #### 前端

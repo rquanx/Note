@@ -113,6 +113,24 @@ interface t {
 type P<T> = {
     [k in keyof T]?: T[k] extends object ? P<T[k]> : T[k]
 }
+
+//定义一个泛型T，并且要从T中选出需要的属性，则要定义K 的类型是T所有public **属性名** 的联合类型
+type MyPick<T,K extends keyof T> = {
+// K是一个联合类型，我们需要遍历K，使用映射类型的语法[K in Keys]
+  [P in K]:T[P]// P是属性名，T[p]则可以拿到属性类型
+}
+type name = MyPick<User,"name"> // 取出name属性
+
+
+// 遍历属性，全部可选
+type MyPartial<T>={
+  // keyof T 可以拿到泛型T中所有pubilc的属性名
+  // in 可以遍历所有属性名，并将属性名赋值给K
+  // 则T[K]就是属性类型
+  //？代表可选
+  
+  [K in keyof T]?:T[K]
+}
 ```
 
 
@@ -174,6 +192,15 @@ type a = b & c & d
 ###### Keyof 
 
 从对象类型中取出键名集合，约束类型为集合的某一个
+
+
+
+只能获取类型上的 public 属性名，属性名为字符串类型
+
+返回的是联合类型
+
+
+
 ```ts
 interface Person {
     name: string;
@@ -200,6 +227,14 @@ type Person = {
 type Test = ObjToNum<Person>;
 // Test = { name: number, address: number }
 
+// 示例2
+interface OP {
+    a: number;
+    b: string
+}
+type ko = keyof OP; // a,b
+
+type p = OP[ko] // number | string
 ```
 
 
@@ -278,6 +313,30 @@ interface T {
 type keys = [keyof T] // 取T得所有key   ==> a | b
 type tt = T[keyof T] // 提取T所有属性的类型，但由于never永不存在的值的类型,所以会被去除
 // string    通过索引取never是会被去除
+```
+
+
+
+###### 修饰符
+
+**-？**
+减去可选 ==> 必选
+
+**-readonly**
+减去只读 ==> 非只读
+
+
+
+```ts
+// IfEquals
+// 如果泛型X 和 泛型 Y相同，则返回 A，否正返回B
+// IfEquals是一个函数 ==> <T>() => xx
+type IfEquals<X, Y, A = X, B = never> = 
+(<T>() => T extends X ? 1 : 2)
+ extends 
+ <T>() => T extends Y ? 1 : 2
+   ? A
+   : B;
 ```
 
 

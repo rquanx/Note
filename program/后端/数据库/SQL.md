@@ -712,7 +712,11 @@ WHERE column_name IN (value1,value2,...)
 
 选出介于a和b间的,可以是数组，文本，日期
 
-between包含两端
+
+
+数据库类型如果是data 则包括两端
+
+如果是datatime 则不包括右边
 
 
 

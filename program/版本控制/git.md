@@ -1,3 +1,45 @@
+
+
+#### Branch
+
+```bash
+Merge branch 'Beta' into GA
+
+Merge branch branchA into branchB
+
+--no-ff会产生新的commit
+
+fast则不会有此commit
+```
+
+
+
+
+
+#### Hook
+
+##### 前端
+
+`package.json`中配置`githooks`
+
+根据需要在提供的构子中执行相应的命名
+
+
+
+如： `pre-commit`（提交前进行格式校验）中执行`lint-staged`（配置不同文件类型执行的命令）
+
+
+
+**配合prettier**
+
+`lint-staged`执行`prettier`命令 `prettier --write`
+
+`prettier`根据`.prettier.js`(格式化配置)、`.prettierignore`（格式化忽略）
+
+
+
+
+
 #### 存储系统
 
 ##### 存储类型
@@ -395,6 +437,8 @@ git push --tags
 
 [Git的奇技淫巧--操作指令](https://github.com/521xueweihan/git-tips)
 
+[git常用操作](https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md)
+
 #### 脚本
 
 
@@ -471,6 +515,22 @@ commit 目的的简短描述，不超过50个字符
 [5中gitflow介绍](https://zepel.io/blog/5-git-workflows-to-improve-development/)
 
 [不同项目类型的实践](https://zhuanlan.zhihu.com/p/257158164)
+
+
+
+##### 管理规范
+
+- 每个需求必须新开一个本地分支，并备注好需求描述。
+- 每个分支只做一个需求，切勿需求交叉修改。
+- 合并后或无用的分支需立即删除，如果有修改，再重新拉一个新分支。
+- 约束命名规则，如采取master、dev、feat、release、hotfix命名方式。
+
+
+
+
+
+
+
 
 #### 问题
 
