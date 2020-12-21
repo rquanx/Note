@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+}
+.flex :first-child {
+  margin-right: 10px;
+}
+
+body style {
+  display: block;
+  border: 1px solid black;
+  background-color: black;
+  color: yellow;
+  padding: 10px;
+  width: 400px;
+}
+
+.container {
+  background-color: skyblue;
+  border-radius: 2em;
+  width: 200px;
+  height: 50px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../common.css" type="text/css" />
+  </head>
+
+  <body>
+    <h4>冒泡</h4>
+    <section class="flex">
+      <style contenteditable="true">
+        /* 100 --> -100 --> 300 y轴往上 */
+        /* x轴 -50%,调整图标初始出现的x轴位置 */
+        /* scale缩放从小 -> 大 */
+        @keyframes y {
+          0% {
+            transform: translate(-50%, 50px) scale(0);
+          }
+          50% {
+            transform: translate(-50%, -50px) scale(1.5);
+          }
+          100% {
+            transform: translate(-50%, -200px) scale(1.5);
+          }
+        }
+        @keyframes x {
+          0% {
+            margin-left: 0px;
+          }
+          25% {
+            margin-left: 25px;
+          }
+          75% {
+            margin-left: -25px;
+          }
+          100% {
+            margin-left: 0px;
+          }
+        }
+
+        .bubble {
+
+          margin-top: 200px;
+          pointer-events: none;
+
+          /* 设定元素外形 */
+          width: 25px;
+          height: 25px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url(https://img14.360buyimg.com/ling/jfs/t1/134959/40/26/8929/5ec79d68E968b0377/aa4feff2b7bcf231.png);
+
+
+
+          animation: x 3s 0s linear infinite, y 4s 0s linear infinite;
+          /*  给 bubble 开启了硬件加速 */
+
+          /* 
+            虽然是修改 margin 来改变 x 轴偏移距离，但实际上与修改 transform没有太大的性能差异
+            因为通过 @keyframes animation-y 中的 transform 已经新建了一个渲染层 ( PaintLayers )
+            animation 属性 可以让该渲染层提升至 合成层(Compositing Layers) 拥有单独的图形层 ( GraphicsLayer )，
+            即开启了硬件加速 ，不会影响其他渲染层的 paint、layout */
+        }
+      </style>
+      <div class="bubble"></div>
+    </section>
+  </body>
+</html>

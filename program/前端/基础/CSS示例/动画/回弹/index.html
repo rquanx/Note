@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../common.css" type="text/css" />
+  </head>
+
+  <body>
+    <h4>回弹</h4>
+    <section class="flex">
+      <style contenteditable="true">
+        @keyframes popup {
+          0% {
+            top: -100%;
+            opacity: 0;
+          }
+          25% {
+            top: 60%;
+            opacity: 1;
+          }
+          50% {
+            top: 48%;
+            opacity: 1;
+          }
+          75% {
+            top: 52%;
+            opacity: 1;
+          }
+          100% {
+            top: 50%;
+            opacity: 1;
+          }
+        }
+
+        .popup {
+          animation: popup 1.5s;
+          animation-iteration-count: infinite;
+          animation-timing-function: cubic-bezier(0.21, 0.85, 1, 1); 
+          animation-fill-mode: forwards; /* 最后时保持的状态 */
+          
+          background-color: red;
+          
+          line-height:200px; /* 撑高内容且让文字垂直居中*/
+          text-align: center; /* 让文字水平居中 */
+          width: 300px;
+
+          /* 设置定位，用于在动画处理时元素定位使用 */
+          position: fixed;
+        }
+      </style>
+      <div class="popup">回弹</div>
+    </section>
+  </body>
+</html>
