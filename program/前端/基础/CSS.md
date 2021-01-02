@@ -902,7 +902,21 @@ outline
 
 
 
+#### 圆角
 
+`border-radius`  ===  `border-top-left-radius` + `border-top-right-radius` + `border-bottom-right-radius` + `border-bottom-left-radius`
+
+```css
+/* 百分比是用的是父级的长度，按钮宽度远大与高度，所以用百分比写得到的弧度是不一样的 */
+{
+  border-radius: 2em
+}
+
+{
+  border-radius: 10%
+}
+
+```
 
 
 
@@ -930,11 +944,22 @@ outline类似于border但不会影响布局
 
 ##### transform
 
+应用于元素的2D或3D转换。这个属性允许你将元素旋转，缩放，移动，倾斜等
+
+
+
 **位移**
 
-transform:translateY(-50%)		以自身原本为参考，往上移动50%  
+```css
+{
+  /* 平移 x轴长度，y轴平移长度*/
+  transform: translate(x, y);
+}
 
-
+{
+    transform:translateY(-50%)		/* 以自身原本为参考，往上移动50%  */
+}
+```
 
 **放大**
 
@@ -1011,14 +1036,20 @@ Font weight从100->200没有变化 ==> 字体支持问题
   100% { transform: translate(0, -$height); }
 }
 /**
-animation-name: 定义动画名
+animation-name: 对元素要应用的动画名
 
-animation-duration: 定义动画初态到终态的时间
+animation-duration: 定义动画初态到终态的时间，动画一个周期的时间
 
-animation-timing-function： 动画速度曲线
+animation-timing-function： 动画速度曲线 (line、ease、cubic-bezier等函数)
   - cubic-bezier(0.21, 0.85, 1, 1); 贝塞尔曲线
 
+ animation-delay: 动画延时时间;
+
 animation-iteration-count: 动画重复播放的次数
+
+animation-direction: 下一周期是否逆向(normal、alternate);
+
+animation-play-state:动画当前状态(paused、running);
 
 animation-fill-mode：动画外的状态
   - 过渡动画执行完后，为了将让元素应用动画最后一帧的属性值
@@ -1140,6 +1171,16 @@ https://www.cnblogs.com/kenan9527/p/4539673.html
 
 ### 小知识
 
+#### CSSpointer-events
+设置为none时
+- 阻止用户的点击动作产生任何效果
+- 阻止缺省鼠标指针的显示
+- 阻止CSS里的hover和active状态的变化触发事件
+- 阻止JavaScript点击动作触发的事件
+
+
+
+
 #### 给图标换颜色
 
 - 使用filter滤镜进行颜色转换
@@ -1252,6 +1293,12 @@ height不设置就会根据内容自适应
 #### overflow: scroll不能平滑滚动
 
 `iphone` :`-webkit-overflow-scrolling: touch;`
+
+### 工具
+
+#### clip-path生成
+
+[clip-path生成](https://bennettfeely.com/clippy)
 
 
 

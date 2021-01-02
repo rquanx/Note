@@ -261,6 +261,12 @@ struct是值类型
 
 
 
+#### 委托
+
+委托本质是类
+
+
+
 #### 函数
 
 ##### 构造函数
@@ -757,6 +763,29 @@ async Task Foo(); // 可等待
 
 ### 知识点
 
+#### 装箱、拆箱
+
+装箱：把值类型转换成引用类型
+
+拆箱：把引用类型转换成值类型
+
+
+
+#### ICloneable
+
+ ICloneable接口的Clone()方法，并调用MemberwiseClone()方法来实现浅克隆
+
+
+
+#### Using
+
+- 可以在 using 语句之中声明对象。
+  - using 语句中使用的对象必须实现 IDisposable 接口。此接口提供了 Dispose 方法，该方法将释放此对象的资源。
+
+- 命名空间引入alias
+
+
+
 #### 区分类和基本类型
 
 ```c#
@@ -1228,6 +1257,20 @@ object o = method.Invoke(obj, new object[] { });
 [老赵](http://blog.zhaojie.me/)
 
 ### 问题
+
+#### app_global.asax.dll 和app_global.asax.compiled
+
+文件作用???
+
+
+
+#### CodeDOM（csc.exe not found）
+
+CodeDomProvider低版本存在没有复制csc.exe bug，更新新版即可
+
+> 会修改webconfig中的codeDom
+
+
 
 #### 发布后提示各种dll依赖找不到，但是文件却有的时候
 

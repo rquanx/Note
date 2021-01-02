@@ -797,6 +797,10 @@ join会先取两个表然后返回大的那一个作为计算?
 
 ##### Cross join
 
+
+
+自连接性能消耗更大
+
 进行笛卡尔积的结果查询
 
 左表的每条记录都有和右表中所有记录相对应的信息
@@ -1282,13 +1286,23 @@ SELECT *
 ##### 索引失效
 
 - <>
-- !=
+- 负向比较（例如：!=）
 - NULL
 - NOT IN
-- 类型转换
-  - 对char类型使用number值作条件
+- where 类型转换
+  - 对char类型使用number值作条件（字符集不同，存储空间不同）
 - 子查询？
   - 子查询的结果会产生一张新表，不过如果不加限制大量使用中间表的话，会带来两个问题，一是展示数据需要消耗内存资源，二是原始表中的索引不容易用到
+- or,可能会导致全表扫描，此时可以优化为 union 查询
+- 数据编码
+  - 相 join 的两个表的字符编码不同，不能命中索引，会导致笛卡尔积的循环计算（nested loop）
+- 条件表达式的左侧不为原始字段
+  - `where c * 2 > 1 ==> where c > 1 / 2 -- 不可索引 ==> 可索引`
+  - `where substr(col) = '1' -- 不可索引`
+
+
+
+
 
 ### 设计
 
@@ -1542,6 +1556,22 @@ mysql底层使用的数据结构，节点中存储索引（地址）
 
 
 
+#### 联合索引
+
+有顺序关系的索引，根据最左匹配原则进行索引应用，按顺序向右应用当应用失败时，则索引利用停止，剩余范围内的数据进行普通遍历处理
+
+- 有序：一般数据库使用联合索引时需要按设置的顺序才会有效，但有的数据库有实现顺序颠倒时亦可使用索引，但性能会稍差
+
+- 可缺：联合索引三个字段，但查询条件只有两个字段，可以被应用索引
+
+
+
+假设数据表中有两列，A and B,我们将A、B设置为联合索引，然后在where语句中调用where A = ? AND B = ?，该查询语句会使用AB联合索引，调用where A = ?，该查询语句也会使用AB联合索引，但当调用where B = ？时，它将不会使用AB联合索引（**视数据库实现，也有数据库可以使用**）
+
+
+
+
+
 ### 知识点
 
 #### 查询瓶颈
@@ -1561,6 +1591,69 @@ mysql底层使用的数据结构，节点中存储索引（地址）
 **语义检查**：检查 SQL 中的访问对象是否存在。
 
 **缓存**：Oracle通过共享池进行缓存，MySQL新版本中已去除
+
+
+
+### 从集合角度理解
+
+#### 集合算法
+
+##### 和(Union)
+
+**Union 和 Union All**
+
+Union会去除重复内容,为了方便去重，默认会进行排序
+
+Union All不去除重复内容，不进行排序，性能会有所提升
+
+
+
+
+##### 差(Except)
+
+部分场景可用Not in 代替
+
+```sql
+select * from Test except select top 3 * from Test
+-- 结果为所有Test内容 - 前3条
+```
+
+##### 积(cross join)
+
+
+
+##### 交集(INTERSECT)
+
+```sql
+select * from Test INTERSECT  select top 3 * from Test
+-- 交集为前3条，会返回前三条
+```
+
+##### 应用
+
+**判断两个表相对**
+
+理论：集合，A 和 B的交集 === A 和 B的并集
+
+```sql
+-- 交集  A INTERSECT B
+select * from A INTERSECT select * from B
+-- 并集 A Union B
+select * from A Union select * from B
+
+-- 相等判断
+-- A INTERSECT B  -  A Union B = 0
+
+select case when count(*) = 0 then '相对' else '不相等' end as result
+from (
+  (select * from A INTERSECT select * from B)
+  Except
+  (select * from A Union select * from B)
+)
+
+```
+
+
 
 
 

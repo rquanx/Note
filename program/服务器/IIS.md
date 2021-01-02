@@ -22,6 +22,25 @@ Pkcs12 -export -out x.pfx -inkey x.key -in x.crt
 
 
 
+#### 应用
+
+##### 反向代理
+
+[IIS代理](https://www.cnblogs.com/xzlive/p/11175420.html)
+在iis的顶级站点中有`Application Routing Request`功能，`Application Routing Request` -> `Server Proxy Settings`可以设置
+- 是否启用代理
+- 请求超时时间
+- 代理请求头
+- 缓存
+
+
+
+##### 禁止浏览后端api目录
+
+`webconfig --> system.webServer/directoryBrowse/enabled`
+
+
+
 #### 问题
 
 

@@ -999,7 +999,11 @@ updateListItemByCaml，由于共用上下文信息所以可以不受版本冲突
 
 **0x80131904**
 
-```mException from HRESULT: 0x80131904```：caml中值问题，例lookupid使用了字符串
+- ```Exception from HRESULT: 0x80131904```：caml中值问题，例lookupid使用了字符串
+
+> 数据类型/格式设置异常，查阅项不是ID/日期字符串格式异常
+
+- 字段不允许插入？？？（待验证，例修改自带Created字段）
 
 
 

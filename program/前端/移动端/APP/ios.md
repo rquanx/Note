@@ -1,5 +1,13 @@
 ### 知识点
 
+
+
+#### CocoaPods
+
+用 Ruby 编写的包管理器
+
+
+
 #### XCode
 
 XCode 12 仅支持 iOS 9.0 以上的版本，因此 Flutter 项目已将默认支持的版本从 8.0 更新到了1
@@ -61,12 +69,24 @@ ios9~12需要通过Loadfileurl进行加载？
 
 Provisioning Profile，每年过期，需提前处理
 
+描述文件==provisioning profile
+
+
+
 **步骤**
 
 - 新建Provisioning Profile 
 - 选择：企业证书 In House；App ID（app的bundleID）；选择Certificates 账号
 - 设置好后到Certificates中下载选中账号的Certificates并在mac中双击进行安装，查看钥匙串可知是否安装
 - 重新打包app，手动/自动选择Profile ；xcode可以自动下载Provisioning Profile 
+
+**查看过期时间**
+
+`ipa`修改后缀为`.zip`，解压后可以得到`XXX.mobileprovision`
+
+使用命令`security cms -D -i XXX.mobileprovision` 查看描述文件，可以查看描述文件信息、过期时间
+
+> mac自带security命令
 
 
 
@@ -118,6 +138,12 @@ APN Push
 - 设置app下载url, .ipa结尾，设置图片
 
 
+
+#### 打包产物
+
+**ipa**
+
+ipa是压缩文件，修改后缀为.zip，解压后可以看到相关信息文件
 
 
 

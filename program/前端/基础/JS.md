@@ -35,8 +35,6 @@ Number(xx)  和 new Number(xx)  不同,一个是类型转换
 
 在 JavaScript 中，字符串值是一个由零或多个 Unicode 字符（字母、数字和其他字符）组成的序列。
 
-字符串中的每个字符均可由一个转义序列表示。比如字母 a，也可以用转义序列 \u0061 表示
-
 
 
 ###### 方法
@@ -119,6 +117,8 @@ null === 没有对象，object原型的原型就是null
 
 Void 0 可以代表undefined,由于局部undefined实际也是可以被赋值的，所以void 0更准确,void后面跟1、2、3都一样
 
+> void 运算符仅求值其操作数，然后返回 undefined。访问 undefined 的一种常见手法是 void 0
+
 
 
 在ECMAScript 5后通过设置是否可写属性设置为false，所以全局上的undefined是不可修改的，但是局部在可被修改
@@ -135,6 +135,16 @@ Void 0 可以代表undefined,由于局部undefined实际也是可以被赋值的
 a ? a : b ==> a || b
 
 ##### ==
+
+来源：原本是为了响应 alpha 用户的请求，以简化 JavaScript 同 HTTP / HTML 的集成。
+
+例如，Netscape 的内部用户要求使用 == 来比较包含字符串值 "404" 的 HTTP 状态码与数字 404。他们还要求在
+
+数字上下文中将空字符串自动转换为 0，从而为 HTML 表单的空字段提供默认值。这些类型转换规则带来了一些
+
+意外，例如 `1 == '1' 且 1 == '1.0'，但 '1' != '1.0'`
+
+
 
 [== 时的类型转换](https://tc39.es/ecma262/#sec-abstract-equality-comparison)
 
@@ -1346,6 +1356,10 @@ Promise.reslove(1).then(() => {})
 
 
 
+- `Promise resolve`后，跟着的then中的回调会马上进入微任务队列
+
+- `return`了`Promise.resolve()`后的then需要落后两个微任务队列
+
 
 
 #### Json
@@ -1364,6 +1378,21 @@ Promise.reslove(1).then(() => {})
 
 ###### toJSON方法
 如果对象函数toJSON方法，stringify时会调用这个函数
+```js
+const json = JSON.stringify({
+  answer: { toJSON: () => 42 }
+});
+
+console.log(json); // {"answer":42}
+```
+
+
+
+**JSON.parse(objectString)的性能要比对象字面量**
+
+JS是解释语言，对于 JS 引擎来说，不管对象字面量还是json字符串，在 JS 引擎眼里其实也就是字符串，处理流程都是首先需要解析整一句语句，然后对其进行词意分析，语义分析等等编译流程，最后生成变量和对象。
+
+JSON.parse性能更好的原因：JSON 的关键字比 JS 少，JS 引擎对对象字面量做的编译，要考虑所有 JS 关键字和语法，而JSON.parse只需要考虑 JSON 的语法和关键字，处理时可以省略很多处理
 
 
 
@@ -1644,7 +1673,14 @@ Document.execCommand
 
 ie不兼容 append()
 
+##### elementsFromPoint
 
+
+获取到当前视口内指定坐标处，由里到外排列的所有元素
+
+```js
+ var elements = document.elementsFromPoint(x, y);
+```
 
 ##### createElement
 
@@ -1693,6 +1729,18 @@ var promise = navigator.mediaDevices.getUserMedia(constraints);
 ##### 事件绑定
 
 绑定事件使用addevent ，直接使用onxxx= 容易被覆盖
+
+```xml
+<button onclick="doSomethingWhenClicked()">
+  Click me
+</button>
+<!--
+处理完 HTML 元素后，浏览器将创建一个 JavaScript 函数，并将其赋为按钮对象 onclick 属性的值。
+onclick 的代码片段会被用作函数体。当被 JavaScript 事件处理器监听的事件发生时，它将被放入未决（pending）事件池中。
+一旦没有正在执行的 JavaScript 代码，浏览器就会从事件池中获取一个未决事件，并调用与其关联的函数。和脚本一样，事件处理器函数也是运行到完成为止的。
+-->
+```
+
 
 
 
@@ -1940,6 +1988,18 @@ port2.postMessage("发送给port1");
 
 ### 小知识
 
+#### 支持URL协议
+
+`javascript`:是浏览器可识别的特殊 URL 协议,这意味着要对后面的 JavaScript 代码求值，并使用将其转换为字符串的结果
+
+```XML
+<a href='javascript: void 0' />
+
+<!-- 除非获得 undefined，否则 <a> 元素将尝试继续处理该响应文档。通常 Web 开发者想要的只是在单击链接时对 JavaScript 表达式求值而已。给表达式加上前缀 void 即可允许以这种方式使用该表达式，避免 <a> 元素的进一步处理 -->
+```
+
+
+
 #### 严格模式
 
 类和模块内部都说严格模式，ES6把将代码都提升到了严格模式？
@@ -1967,6 +2027,21 @@ Event.key和event.keyCode，如果不需要兼容IE8下，建议使用.key，不
 全局绑定事件可能会冲突，如为了实现点击上下选择东西，可能会与浏览器的上下滚动冲突
 
 ### JS应用
+
+#### 请求缓存
+
+
+- 缓存请求结果：在请求函数中内置对象进行缓存：
+
+  - 缺点当短时间进行多次请求时，仍会产生多次请求
+- Promise缓存：不缓存结果而是缓存promise，请求前判断是否存在promise缓存，存在则返回缓存的promise，即使短时间产生多次promise，由于共用同一个promise，请求结束后then会被遍历回调（请求成功/失败后需对缓存进行处理），promise完成状态变更后再被使用时会马上执行回调（reject可以使用Promise.reject(cb)）,Promise对象自动缓存了请求结果
+- 多Promise缓存：针对同时发起多个请求请求数据时进行缓存，底层使用Primise缓存，封装循环调用即可
+
+  - Promise缓存 + 循环请求 --> 多Promise缓存
+- 时间缓存：设置请求过期时间
+
+
+
 
 #### 瀑布流
 

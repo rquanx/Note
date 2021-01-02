@@ -343,6 +343,13 @@ deny权限优先级更高，例：设置了owner和denywriter，仍然是不可�
 
 #### 性能优化
 
+##### 批量插入
+
+SqlBulkCopy，性能是普通插入的几百倍
+> 原理是采用了SQL Server的BCP协议进行数据的批量复制
+
+
+
 ##### 执行计划
 
 Sql执行计划：查看开销
@@ -444,6 +451,10 @@ exec sys.sp_updateextendedproperty '[PROPERTIESName]','[描述信息]','SCHEMA',
 
 
 
+
+
+
+
 ##### 列操作
 
 
@@ -506,6 +517,18 @@ SELECT [name] FROM SYS.COLUMNS WHERE
  exec sys.sp_updateextendedproperty '[PROPERTIESName]','[描述信息]','SCHEMA','dbo','TABLE','[TableName]','COLUMN','[ColumnName]';
 
 ```
+
+
+
+**查询表字段、类型**
+
+```sql
+select  t2.TABLE_NAME,t2.COLUMN_NAME,t2.data_type,t2.character_maximum_length,
+* FROM information_schema.columns t2
+where table_name='tableName'
+```
+
+
 
 
 
