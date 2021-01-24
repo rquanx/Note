@@ -353,7 +353,8 @@ git pull upstream xxx # 从更新源拉起特定分支
 ##### 提交
 
 ```bash
-commit --amend # 修改最近的一次提交
+git commit --amend -m 'xxx' # 修改最近的一次提交
+# 如果暂存区有发生变化的文件，会一起提交到仓库。还可以整个把上一次提交替换掉
 ```
 
 
@@ -376,6 +377,9 @@ commit前
 git reset HEAD filename
 git reset HEAD # 多个文件
 git reset .  
+
+# 撤销暂存
+git rm --cached [filename]
 ```
 
 

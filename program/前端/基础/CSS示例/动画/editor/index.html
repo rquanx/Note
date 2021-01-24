@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../editor/editor.css" type="text/css" />
+    <title>HTML Editor</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+    </style>
+    <textarea id="data">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+    </style>
+    <div class="container">123</div>
+  </body>
+</html>
+      </textarea
+    >
+    <div class="controls">
+      <label>
+        <input type="checkbox" id="realtime" onclick="update()" checked />
+        realtime
+      </label>
+      <a href="#" onclick="update()">update</a> |
+      <a href="#" onclick="goFullscreen(false)">fullscreen</a> |
+      <a href="#" onclick="goFullscreen(true)">new fullscreen</a> |
+      <a href="https://github.com/no-gravity/html_editor" target="_blank"
+        >github</a
+      >
+    </div>
+    <iframe name="hello" style="width: 100%; height: 100%"></iframe>
+    <script src="../editor/editor.js"></script>
+  </body>
+</html>

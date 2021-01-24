@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      background: #e4e4e4;
+    }
+
+    /* 居中 */
+    .container {
+      width: 140px;
+      margin: auto;
+
+      /* 让子元素可通过绝对定位定位 */
+      position: relative;
+    }
+
+    .battery {
+      box-sizing: border-box;
+      position: relative;
+      height: 220px;
+      background: #fff;
+      border-radius: 15px 15px 5px 5px;
+    }
+
+    .battery:before {
+      position: absolute;
+      content: "";
+
+      /* 电池顶部头设定宽高，居中 */
+      width: 26px;
+      height: 10px;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -10px);
+
+      /* ？？？*/
+      box-sizing: border-box;
+
+      /* 电池顶部头圆角 */
+      border-radius: 5px 5px 0 0;
+
+      /* 电池顶部头背景色 */
+      background: rgba(240, 240, 240, 0.88);
+    }
+
+    .battery:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      /* 初始电量 */
+      top: 80%;
+
+      /* 电量渐变色 */
+      background: linear-gradient(
+        to bottom,
+        #7abcff 0%,
+        #00bcd4 44%,
+        #2196f3 100%
+      );
+
+      /* 底部圆角与元素统一 */
+      border-radius: 0px 0px 5px 5px;
+
+      animation: charging 10s linear infinite;
+
+      /* 低电量颜色偏转滤镜 */
+      filter: hue-rotate(90deg);
+      /* box-shadow: 0 14px 28px rgba(33, 150, 243, 0),
+        0 10px 10px rgba(9, 188, 215, 0.08); */
+    }
+
+    @keyframes charging {
+      /* 电池边框阴影 */
+      50% {
+        box-shadow: 0 14px 28px rgba(0, 150, 136, 0.83),
+          0px 4px 10px rgba(9, 188, 215, 0.4);
+      }
+
+      95% {
+        /* 动画位置 */
+        top: 5%;
+
+        /* 底部圆角与元素统一 */
+        border-radius: 0 0 5px 5px;
+
+        /* 高电量颜色偏转滤镜，由于动画原因，初始态到95%滤镜偏转是渐变的 */
+        filter: hue-rotate(0deg);
+
+        /* 电池边框阴影 */
+        box-shadow: 0 14px 28px rgba(0, 150, 136, 0.83),
+          0px 4px 10px rgba(9, 188, 215, 0.4);
+      }
+      100% {
+        /* 动画位置 */
+        top: 0%;
+        /* 上下圆角与元素统一 */
+        border-radius: 15px 15px 5px 5px;
+
+        /* 最终态保持颜色不偏转 */
+        filter: hue-rotate(0deg);
+
+        /* 电池边框阴影 */
+        box-shadow: 0 14px 28px rgba(0, 150, 136, 0.83),
+          0px 4px 10px rgba(9, 188, 215, 0.4);
+      }
+    }
+
+    /* 赋值电池形状，被battery遮挡且超出部分隐藏，用于定位 + 遮挡波浪球 */
+    .battery-copy {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 220px;
+      width: 140px;
+      border-radius: 15px 15px 5px 5px;
+      overflow: hidden;
+    }
+
+    .g-wave {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.8);
+
+      /* 画出不规则圆形，不规则圆形才容易画成波浪 */
+      border-radius: 45% 47% 44% 42%;
+
+      /* 定位圆球初始高低位置 */
+      bottom: 25px;
+
+      /* 居中 */
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      /* 分离动画层，提高性能？ */
+      z-index: 1;
+
+      animation: move 10s linear infinite;
+    }
+
+    /* 其他圆形分别使用不同的不规则波浪，居中且初始角度不同，分别集合左中右，3个角度一起旋转来模拟波浪 */
+    .g-wave:nth-child(2) {
+      border-radius: 38% 46% 43% 47%;
+      transform: translate(-50%, 0) rotate(-135deg);
+    }
+
+    .g-wave:nth-child(3) {
+      border-radius: 42% 46% 37% 40%;
+      transform: translate(-50%, 0) rotate(135deg);
+    }
+
+    /* 动画，x轴居中，y轴从原来逐渐过渡至-160,形成往上移动
+        rotate控制旋转，且控制旋转速率，最终态时旋转720度
+    */
+    @keyframes move {
+      100% {
+        transform: translate(-50%, -160px) rotate(720deg);
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="battery"></div>
+      <div class="battery-copy">
+        <div class="g-wave"></div>
+        <div class="g-wave"></div>
+        <div class="g-wave"></div>
+      </div>
+    </div>
+  </body>
+</html>
