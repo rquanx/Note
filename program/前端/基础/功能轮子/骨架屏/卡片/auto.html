@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #f6f6f6;
+        font-family: Helvetica;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .card {
+        width: 320px;
+        background-color: #fff;
+        overflow: hidden;
+        border-radius: 6px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.12);
+      }
+      .image {
+        height: 200px;
+      }
+      .image img {
+        display: block;
+        height: inherit;
+        width: 100%;
+        /* 保持比例 */
+        object-fit: cover;
+      }
+
+      .content {
+        padding: 2rem 1.8rem;
+      }
+      h4 {
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+        line-height: 1.4rem;
+      }
+    </style>
+
+    <style>
+      :root {
+        --loading-grey: #ededed;
+      }
+
+      /* 内容部分统一设置颜色 */
+      .loading .image,
+      .loading h4,
+      .loading .description {
+        background-color: var(--loading-grey);
+
+        /* 通过渐变色 + 动画形成加载效果 */
+        background: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0) 60%
+          )
+          var(--loading-grey);
+
+        /* 拉大背景渐变，设定渐变位置，用于优化动画展示 */
+        background-size: 200% 100%;
+        background-position-x: 180%;
+
+        animation: 1s loading ease-in-out infinite;
+      }
+
+      @keyframes loading {
+        to {
+          background-position-x: -20%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="image">
+        <img
+          alt=""
+        />
+      </div>
+      <div class="content">
+        <h4>CodingStartup</h4>
+        <div class="description">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex quasi
+          enim facere commodi omnis...
+        </div>
+      </div>
+    </div>
+    <script>
+      let card = document.querySelector('.card');
+      card.className = `${card.className} loading`;
+      console.log(card);
+    </script>
+  </body>
+</html>
