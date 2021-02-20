@@ -160,7 +160,9 @@ zeplin
 
 ##### 工具
 
+[编码小工具](https://www.345tool.com/zh-hans)
 
+[代码样式主题在线预览](https://coding-fonts.css-tricks.com/fonts/anonymous-pro/?language=html)
 
 [多种编程语言在线运行](https://glot.io/)
 
