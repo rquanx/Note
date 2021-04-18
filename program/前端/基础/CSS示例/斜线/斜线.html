@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 400px;
+        height: 150px;
+        border: 2px solid red;
+      }
+
+      .canvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container canvas-container"></div>
+  </body>
+  <script>
+    let element = Array.from(
+      document.getElementsByClassName("canvas-container")
+    )[0];
+    let canvas = document.createElement("canvas");
+    canvas.className = "canvas";
+    element.append(canvas);
+
+    let rect = canvas.getBoundingClientRect();
+    console.log(rect);
+    let ctx = canvas.getContext("2d");
+    rect.x = 0;
+    rect.y = 0;
+    ctx.moveTo(rect.x, rect.y + rect.height);
+    ctx.lineTo(rect.x + rect.width, rect.y);
+    ctx.stroke();
+  </script>
+</html>
