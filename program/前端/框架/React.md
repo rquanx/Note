@@ -246,7 +246,7 @@ App.defaultProps = {
 
 **useState**
 
-普通状态或set
+普通状态或set，参数传入为函数时，只有挂载初始化时会调用,惰性求值
 
 
 
@@ -262,7 +262,10 @@ App.defaultProps = {
 
 
 
-时机：在组件挂载或者更新 DOM 之后的下一个tick，会在每次渲染完毕后执行，所以使用ref时，ref的值在本次渲染过程永远会停留在上一次。
+时机：
+
+- 在组件挂载或者更新 DOM 之后的下一个tick，会在每次渲染完毕后执行，所以使用ref时，ref的值在本次渲染过程永远会停留在上一次。
+- useEffect是在render后执行，当通过useEffect来更新ref的时候会导致在更新ref前先render，界面已显示，然后再执行useEffect更新ref值，但是ref值不会更新视图
 
 
 
@@ -689,3 +692,36 @@ react-profile查看性能
 React Developer Tools  highlight update功能
 
 > 可查看哪些组件被update,在插件界面开启即可
+
+
+
+### 优化
+
+#### 空props导致渲染
+
+```tsx
+    // 触发时不会重复渲染子组件
+    <ThemeContext.Provider value={theme}>
+      <button onClick={onChangeTheme}>改变皮肤</button>
+      {children} // 利用children减少重复渲染,当theme变化时，优化children时外部传入，不会产生重新render
+    </ThemeContext.Provider>
+
+    // 一、 触发时会重复渲染子组件，原因ThemeContext渲染时，对于子组件会产生新的{} props，props不一致渲染
+    // 二、 React.memo
+    <ThemeContext.Provider value={theme}>
+      <button onClick={onChangeTheme}>改变皮肤</button>
+      <ChildWithTheme />
+      <ChildNonTheme />
+      <ChildNonTheme />
+      <ChildNonTheme />
+    </ThemeContext.Provider>
+```
+
+
+
+#### 多重probider
+
+当provider的value变化，会重新渲染订阅的组件；
+
+如果provider提供的对象属性有多个，有的会频繁变化，有的基本不变时，如果一起转递下去，会导致只消费变化少属性的组件也进行重新渲染
+方案：采用属性分离（读写分离）的方式将属性拆分成多个provider

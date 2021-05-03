@@ -942,6 +942,26 @@ outline类似于border但不会影响布局
 
 
 
+**transition过渡效果**
+
+用于指定为一个或多个 CSS 属性添加过渡效果
+
+```sass
+<!-- 对max-hight进行处理 -->
+{
+    max-height: 0;
+    transition: max-height 0.3s linear;
+
+    &.up {
+        max-height: 0;
+    }
+    &.down {
+        max-height: 1000px;
+    }
+}
+```
+
+
 ##### transform
 
 应用于元素的2D或3D转换。这个属性允许你将元素旋转，缩放，移动，倾斜等
@@ -1055,6 +1075,38 @@ animation-fill-mode：动画外的状态
   - 过渡动画执行完后，为了将让元素应用动画最后一帧的属性值
 **/
 ```
+
+
+
+##### 动画技巧
+
+**波浪**
+
+多个不规则圆 + 动画
+
+
+**GraphicsLayer**
+
+浏览器为了提升动画的性能，为了在动画的每一帧的过程中不必每次都重新绘制整个页面。在特定方式下可以触发生成一个合成层，合成层拥有单独的 GraphicsLayer，需要进行动画的元素包含在这个合成层之下，这样动画的每一帧只需要去重新绘制这个 Graphics Layer 即可，从而达到提升动画性能的目的
+
+创建GraphicsLayer层
+
+- 硬件加速的 iframe 元素（比如 iframe 嵌入的页面中有合成层）
+- 硬件加速的插件，比如 flash 等等
+- 使用加速视频解码的 <video> 元素
+- 3D 或者 硬件加速的 2D Canvas 元素
+- 3D 或透视变换(perspective、transform) 的 CSS 属性
+- 对自己的 opacity 做 CSS 动画或使用一个动画变换的元素
+- 拥有加速 CSS 过滤器的元素
+- 元素有一个包含复合层的后代节点(换句话说，就是一个元素拥有一个子元素，该子元素在自己的层里)
+- 元素有一个 z-index 较低且包含一个复合层的兄弟元素
+
+坑
+
+- GPU 硬件加速也会有坑，当我们希望使用利用类似 transform: translate3d() 这样的方式开启 GPU 硬件加速，一定要注意元素层级的关系，尽量保持让需要进行 CSS 动画的元素的 z-index 保持在页面最上方（z-index在下的话，GraphicsLayer层会包含其他上层元素，会引起不必要的性能损耗）
+
+
+
 
 #### 变量
 
@@ -1301,6 +1353,44 @@ height不设置就会根据内容自适应
 [clip-path生成](https://bennettfeely.com/clippy)
 
 
+
+### 原理
+
+#### margin: auto
+
+##### display: block 下 margin: auto 垂直方向无法居中元素的原因
+
+If both margin-left and margin-right are auto, their used values are equal, causing horizontal centring.
+> —CSS2 Visual formatting model details: 10.3.3
+
+If margin-top, or margin-bottom are auto, their used value is 0.
+> —CSS2 Visual formatting model details: 10.6.3
+
+规定水平上平分，垂直上都是0
+
+
+
+##### FFC 下 margin: auto 垂直方向可以居中元素的原因
+
+在FFC(flex formatting context)，GFC(grid formatting context) 均可
+
+Prior to alignment via justify-content and align-self, any positive free space is distributed to auto margins in that dimension.
+> CSS Flexible Box Layout Module Level 1 -- 8.1. Aligning with auto margins
+
+Note: If free space is distributed to auto margins, the alignment properties will have no effect in that dimension because the margins will have stolen all the free space left over after flexing.
+> CSS Flexible Box Layout Module Level 1 -- 8.1. Aligning with auto margins
+
+
+
+##### 总结
+
+- 块格式化上下文中margin-top 和 margin-bottom 的值如果是 auto，则他们的值都为 0
+
+- flex 格式化上下文中，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去
+
+- 单个方向上的自动 margin 也非常有用，它的计算值为该方向上的剩余空间
+
+- 使用了自动 margin 的 flex 子项目，它们父元素设置的 justify-content 以及它们本身的 align-self 将不再生效
 
 ### 应用
 

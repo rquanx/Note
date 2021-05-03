@@ -423,6 +423,12 @@ li默认不会根据内容进行伸缩？可设置成display: table
 
 ### 通用属性
 
+#### Tabindex
+
+`tabindex="-1" `：tabindex 负值表示元素是可聚焦的，但是不能通过键盘导航来访问到该元素。因为我们只需要让元素能够获得 focus 事件，而不需要他真的能够被键盘导航来访问。
+
+
+
 #### for
 
 label的for属性 + input的id可以让label和input进行关联，点击label聚焦到Input
@@ -479,7 +485,16 @@ Chrome:Alt + key触发不同系统、浏览器都不一致
 **keydown**   键盘按下输入时就会触发，在按下生效前触发
 **keyup**      键盘
 **onpaste** 复制粘贴文件   onpaste事件
-**focus**    焦点事件，调用可手动获取焦点?
+
+#### focus    
+
+焦点事件，调用可手动获取焦点?
+
+在 MacOS 的 Safari 和 Firefox 中， 点击`<button>` 元素，不会触发 `<button>` 的 focus 事件，也没有 focus 事件冒泡。
+
+在 Windows 的 Safari 和 Firefox 中， 点击 `<button>` 元素，会触发 `<button>` 的 focus 事件，但在被目标元素捕捉到之后，不会继续向上冒泡。
+
+
 
 #### 剪切相关事件
 

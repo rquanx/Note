@@ -1406,6 +1406,14 @@ JSON.parse性能更好的原因：JSON 的关键字比 JS 少，JS 引擎对对�
 
 ##### Methods
 
+- createRadialGradient:创建放射状/圆形渐变对象
+    - addColorStop: 向渐变对象增加渐变色
+- createLinearGradient：线性渐变
+- strokeStyle: 设置画笔颜色
+- fillStyle: 填充颜色
+- fill: 填充图像,如果路径未关闭，那么 fill() 方法会从路径结束点到开始点之间添加一条线，以关闭该路径，然后填充该路径
+- shadowBlur: 阴影相关
+
 **getContext**
 
 contextType
@@ -1704,12 +1712,24 @@ createElement不区分大小写
 
 可控制光标选中，获取选中信息
 
+#### Notification
+
+浏览器通知
+
+
+
 #### Navigator
 
 ##### 视频
 
 ```js
 var promise = navigator.mediaDevices.getUserMedia(constraints);
+```
+
+##### 定位
+
+```js
+var nav = navigator.geolocation
 ```
 
 
@@ -1986,7 +2006,30 @@ port2.postMessage("发送给port1");
 
 
 
+#### Why
+
+引入微任务的初衷是为了解决异步回调的问题
+
+- 方案 1：将异步回调进行宏任务队列的入队操作
+- 方案 2：将异步回调放到当前宏任务的末尾
+
+如果采用第一种方式，那么执行回调的时机应该是在前面所有的宏任务完成之后，倘若现在的任务队列非常长，那么回调迟迟得不到执行，造成应用卡顿
+
+
+
+
+
+
+
 ### 小知识
+
+#### 存储
+
+值类型与调用栈（函数帧），一起打包存储到栈中，当函数出栈后，内存也就被释放
+
+> 闭包变量是存在堆内存中的,否则当函数出栈时就被释放丢失
+
+
 
 #### 支持URL协议
 

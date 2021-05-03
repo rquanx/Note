@@ -43,6 +43,10 @@ Pkcs12 -export -out x.pfx -inkey x.key -in x.crt
 
 #### 问题
 
+##### 0x80070021
+
+可能是没安装asp.net windows功能 --> web服务器 --> 应用程序开发 --> asp.net
+
 
 
 ##### Iis被另一程序占用

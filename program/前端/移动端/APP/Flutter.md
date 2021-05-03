@@ -1025,6 +1025,12 @@ divideTiles
 
 
 
+### Drawer
+
+抽屉，结合`scaffold`使用，弹出层级和组合的`scaffold`层次有关，如果不在较高层，可能会被遮挡
+
+
+
 ### Icon
 
 图标组件
@@ -1486,10 +1492,10 @@ element.this == buildcontext
 
 
 - 没有子元素、宽高时，会尽可能的铺满
-
 - 自身无宽高，但有子元素，会尽可能的小，最终被子元素遮挡 ≈ 子元素会被强制尽可能的大？
   - 由于父元素会尽可能大，自身特性尽可能小，最终导致
 - 父元素限制优先级高于子元素？
+- 设置宽高后，constraints 属性会被设置为对应宽高的紧约束，宽高被固定
 
 
 
@@ -1524,6 +1530,20 @@ element.this == buildcontext
 可以有多个子 Widget。垂直布局。
 
   
+
+#### **ColoredBox**
+
+用于给child设置颜色，给Container设置color本质是套了层ColorBox
+
+
+
+#### **ConstrainedBox**
+
+
+
+约束是延展的???
+
+
 
 #### UnconstrainedBox
 
@@ -1623,6 +1643,88 @@ flex
 ### SafeArea
 
 根据屏幕尺寸进行内容适配，避免由于屏幕形状导致内容显示不全
+
+
+
+### **KeppAliveMinin**
+
+
+
+混入后，会对子widget包裹keepAliveHandle,keepAliveHandle
+
+
+
+### **AnimatedCrossFade**
+
+通过状态，可进行两个局部组件切换，可设置动画
+
+### **Transform**
+
+对元素进行旋转弧度
+
+
+
+坐标轴方向，手机竖直方向为 z，直面屏幕为 x
+
+
+
+Matrix4.rotationX
+
+Matrix4.rotationY
+
+Matrix4.rotationZ
+
+
+
+### **CurvedAnimation**
+
+曲线动画生成器
+
+根据传入的曲线函数和动画控制器，不断调用动画运行
+
+
+
+### **Curves**
+
+动画曲线类
+
+
+
+### **AnimationController**
+
+动画控制器
+
+
+
+addListener：动画运行时调用（每次动画变动）
+
+addStatusListener：监听动画状态
+
+
+
+
+
+### **ExpansionTile**
+
+伸展菜单
+
+
+
+### **RotationTransition**
+
+旋转
+
+
+
+### **InteractiveViewer**
+
+可移动、缩放容器
+
+
+
+### **TweenSequence**
+
+动画序列,组合多个动画
 
 
 
@@ -2479,7 +2581,124 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 
 
+### 尺寸
+
+flutter 中默认组件尺寸单位都是 dp(devicePixelRatio)
+
+devicePixelRatio: 物理像素 / 逻辑像素（px），始终可能存在溢出
+
+
+
+### 动画
+
+#### 分类
+
+- 补间 (Tween)
+  > 补间动画是一种预先定义物体运动的起点和终点，物体的运动方式，运动时间，时间曲线，然后从起点过渡到终点的动画
+  > 补间动画是介于两者之间的简称，在补间动画中定义起点和终点、时间点以及定义时间变化和速度的曲线，然后由系统计算如何从开始点到结束点
+- 物理 (Physics)
+  
+  > 物理动画是运动被模拟为与真实世界的行为相似，比如抛一件物体，它落在什么地方取决于这个物体的重量，抛出去的速度以及这个物体与地面的高度，类似数学中的抛物线运动轨迹
+
+
+
+### Iconfont使用
+
+
+本质也是字体和前端一样，可以在iconfont中下载，内置的其实也是一样的，不过通过类和const定义了名字
+
+使用方式：
+
+- 下载
+- assets放置
+- pubspec.yaml中设置 fonts引用
+  > family设置字体
+  > fonts: assert: 设置fonts ttf文件引用
+- IconData传参使用
+
+```python
+# 转换脚本
+# -*- coding:utf-8 -*-
+import re
+from pathlib import Path
+import time
+ROOT = Path(__file__).resolve().parent
+MAIN = ROOT
+# 生成的IconFont.dart 文件路径
+IconDart = 'lib/app/constants/iconFont.dart'
+# iconfont css 文件存放路径
+IconCss = 'assets/fonts/iconfont.css'
+# 将 iconfont 的 css 自动转换为 dart 代码
+def translate():
+    print('Begin translate...')
+    
+    code = """
+        import 'package:flutter/widgets.dart';
+        
+        /// @author:  hsc
+        /// @date: {date}
+        /// @description  代码由程序自动生成。请不要对此文件做任何修改。
+        
+        class IconFont {
+        
+        static const String FONT_FAMILY = 'IconFont';
+        
+        {icon_codes}
+        
+        }
+        """.strip()
+    strings = []
+    content = open(MAIN / IconCss).read().replace('\n  content', 'content')
+    matchObj = re.finditer( r'.icon-(.*?):(.|\n)*?"\\(.*?)";', content)
+    for match in matchObj:
+        name = match.group(1)
+        name = name.replace("-","_")
+        string = '  static const IconData ' + name + ' = const IconData(0x' + match.group(3) + ', fontFamily: IconFont.FONT_FAMILY);'
+        strings.append(string)
+    strings = '\n'.join(strings)
+    code = code.replace('{icon_codes}', strings)
+    code = code.replace('{date}', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    open(MAIN / IconDart, 'w').write(code)
+    print('Finish translate...')
+
+if __name__ == "__main__":
+    translate()
+```
+
+
+
+
+
 # 问题
+
+#### Maven依赖下载
+
+[Flutter 踩坑](https://www.jianshu.com/p/171a9660e1f9)
+/packages/flutter_tools/gradle/flutter.gradle
+
+```
+project.rootProject.allprojects {
+            repositories {
+                maven {
+                    url repository
+                }
+            }
+        }
+// to
+
+        project.rootProject.allprojects {
+            repositories {
+                maven {
+                    url 'http://download.flutter.io'
+                }
+            }
+        }
+
+```
+
+
+
+
 
 #### 升级Xcode后编译失败，ios-deploy有问题
 
@@ -2487,6 +2706,12 @@ new Future.delayed(const Duration(seconds: 1), () {
 
 ios-deploy在/usr/local/bin 或npm的全局路径下
 
+
+#### **Exception in thread ”main” java.net.ConnectException: Operation timed out (Connection timed out) at java.net**
+
+/android/gradle/wrapper/gradle-wrapper.properties可以看到distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
+
+下载gradle-x.x.x-all.zip，`C:\Users\用户名\.gradle\wrapper\dists\gradle-x.x-bin\{hash}`
 
 
 #### 调试时Android Studio报错E/GnssHAL_GnssInterface: gnssSvStatusCb: b: input svInfo.flags is 8
@@ -2627,6 +2852,22 @@ Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 #### Mac getpackages失败/久
 
 在bash里export 然后flutter packages get
+
+
+
+# 技巧
+
+
+
+#### 建立多个main入口文件
+
+- 新建main_dev、main.prod，分布import不同的配置文件
+
+- flutter build apk lib/main_dev.dart
+- flutter run lib/main_dev.dart
+- vscode F5 修改program为lib/main_dev.dart
+
+
 
 
 

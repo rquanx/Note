@@ -233,6 +233,10 @@ git revert -n <commit id>	  # 代码回滚指特定commit,不会抹除已有提�
 ##### 重置
 
 ```bash
+git reset --soft [<commit-id>/HEAD~n>] # 已将更改提交到本地，需要撤回提交，更改项还原到暂存区，HEAD~n 前几个commit
+
+git reset --mixed [<commit-id>/HEAD~n>] # 已将更改提交到本地，需要撤回提交，更改项还原到工作区
+
 git reset --hard <commit id>  # 代码回滚指特定commit,会抹除回滚commit之后的提交记录
 ```
 
@@ -254,11 +258,15 @@ git reset --hard <commit id>  # 代码回滚指特定commit,会抹除回滚commi
 
 合并会根据当前代码情况产生两种变化
 
+```bash
+# 撤销合并，撤回到 merge 前的特定 commit
+```
+
 
 
 ###### merge
 
-fast-forward
+fast-forward（直进式合并）
 
 > 合并的时候主分支从分出分支后没有任何提交，即可直接将分支所有的提交合并到主分支
 >
@@ -270,9 +278,13 @@ fast-forward
 
 
 
-no-fast-forward
+no-fast-forward（非直进式合并）
 
 > 两边都有修改，会创建一个新的提交节点，并且指针同时指向两个分支的合并节点
+>
+> 
+>
+> --no-ff 合并后会产生一个单独的节点，利于保持commit信息的清晰和以后的回滚
 
 
 
@@ -322,6 +334,12 @@ git checkout xxx # 切换分支
 git checkout -b xxx # 切换并创建分支
 
 git cherry-pick <commit id> # 将某个分支节点加入到现有，场景：在错误的分支下进行了commit，不需要重写
+
+git push origin --delete fea-xx # 删除远端分支
+
+git branch -m <oldbranch> <newbranch> # 分支重命名
+
+git branch --contains <commit-id> # 检查分支是否包含特定commit
 ```
 
 
@@ -353,6 +371,8 @@ git pull upstream xxx # 从更新源拉起特定分支
 ##### 提交
 
 ```bash
+git commit --amend # 修改最近的一次提交，会打开编辑器窗口
+
 git commit --amend -m 'xxx' # 修改最近的一次提交
 # 如果暂存区有发生变化的文件，会一起提交到仓库。还可以整个把上一次提交替换掉
 ```
@@ -434,6 +454,57 @@ git tag <tag_name> <commit_sha>
 git push --tags
 # 推送tag至远程服务器
 ```
+
+
+
+##### 场景
+
+**需忽略的文件已提交上去**
+
+1、删除本地文件 commit
+2、git rm --cached filename,不需要删除本地文件
+
+
+**提交空文件夹**
+
+git 会忽略空文件夹,空文件夹下随便建个文件即可/.gitkeep
+
+
+
+**创建空分支，文件保持，但无历史**
+
+git checkout --orphan emptyBranchName
+
+该命令会生成一个叫 emptybranch 的分支，该分支会包含父分支的所有文件。但新的分支不会指向任何以前的提交，就是它没有历史，如果你提交当前内容，那么这次提交就是这个分支的首次提交。
+
+想要空分支，所以需要把当前内容全部删除，用 git 命令
+git rm -rf .
+
+
+
+**自动定位 bug commit**
+
+git bisect start [终点哈希] [起点哈希]
+
+> 开始后会自动用二分法进行
+
+git bisect good
+
+> 当前段正常，继续往前进行二分法
+
+git bisect bad
+
+> 已经出现错误，往后进行二分法
+
+一直到没有时会提示 xxx is the first bad commit
+
+git bisect reset
+
+> 退出查找
+
+git bisect run script
+
+> 可以执行自定义脚本,然后执行单元测试，就可以自动化找出异常 commit
 
 
 
@@ -531,7 +602,95 @@ commit 目的的简短描述，不超过50个字符
 
 
 
+##### git flow
 
+
+
+**协作方式**
+
+常驻两个分支，根据需要拉出临时分支，进行合并合并后临时分支删除；相对复杂，频繁发布（持续发布）时常驻分支差异不大
+
+
+
+**常驻分支**
+
+- master,供给用户使用的正式版本
+
+- develop
+
+
+
+**临时分支**
+
+- 功能（feature）分支
+
+- 预发布（release）分支
+
+- 修补bug（fixbug）分支
+
+  > master拉取hotfix,合并至dev和master
+
+
+
+
+
+##### github flow
+
+**协作方式**
+
+常驻master,开发或修bug时拉出新分支，修改完毕后发起PR
+
+符合持续发布，假设更新和发布是同时的，但实际根据应用类型可能不能马上发布从而存在差异（app审核、定期发布）
+
+
+
+**常驻分支**
+
+- master
+
+
+
+##### gitlab flow
+
+协作方式：严格规得上游和下游，prod --> pre-prod --> master，不管什么时候，均从master拉取分支，然后一步一步向上合并，只有紧急情况才能跳过
+
+
+
+**常驻**
+
+- prod
+
+- pre-prod
+
+- master
+
+
+
+#### 文件
+
+**.git/config**
+
+可通过修改`remote url`修改所关联的git仓库地址
+
+
+
+**.gitignore**
+
+每个目录都可以有自己的 ignore，当仓库存放多端代码时可以各自管理
+
+
+
+#### 小知识
+
+##### SSH
+
+1、生成 ssh-keygen -t rsa -C "xxxxx@xxxxx.com"
+
+2、查看.pub，cat ~/.ssh/id_rsa.pub（windows user/.ssh）
+
+3、赋值内容粘贴到 github/gitlab 中
+
+4、测试是否联通,ssh -T git@github.com
 
 
 

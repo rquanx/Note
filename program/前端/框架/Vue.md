@@ -93,6 +93,14 @@ v-modal
 > ```
 >
 > 和bind一样，但是是双向绑定，只能绑定有value属性的元素
+>
+> 
+>
+> 本质
+>
+> \- v-bind绑定一个value值
+>
+> \- v-on指令给当前元素绑定input事件
 
 v-for
 

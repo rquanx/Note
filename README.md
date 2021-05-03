@@ -168,6 +168,18 @@ zeplin
 
 [文字生成链接分享、阅后即焚](https://pasteme.cn/)
 
+[npm库对比](https://moiva.io/)
+
+[使用最多的免费商用图片,免注册](https://www.pexels.com/zh-cn/)
+
+[行业报告查一查](http://report.seedsufe.com/#/report)
+
+[文件临时传递,体验好](https://airportal.cn/)
+
+- 在 GitHub 域名后面加 1s 可以直接使用 vscode online 打开仓库代码，例如 https://github1s.com/justjavac/1s
+
+- 当你看到喜欢的 YouTube 视频时，可以在 youtube 后面加 1s，直接下载此视频,https://www.youtube1s.com/watch?v=RGOj5yH7evk
+
 
 
 **搜索**
@@ -379,6 +391,12 @@ github.com --> githistory.xyz
 
 #### Todo
 
+##### 课题
+
+- 发布涉及前端，后端，app如何回滚
+
+
+
 ##### 团队
 
 - Webconfig覆盖问题.发布问题
@@ -457,6 +475,14 @@ Hacker and Painters
 
 
 ##### 文章
+
+[创建表单框架之前的小建议](https://mp.weixin.qq.com/s/Zg-Sk7VbNips8Ek2hgPL2w)
+
+[前端领域驱动设计](https://cloud.tencent.com/developer/article/1474000)
+
+[图解TCP](https://mp.weixin.qq.com/s/h89R86KhWiQKsBvfZpyF5Q)
+
+[go学习资料](https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/)
 
 [轮子博客](https://www.cnblogs.com/geniusvczh/default.html?page=2)
 
