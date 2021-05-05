@@ -118,3 +118,23 @@ jobs:
 - status
 - watch
 - workflow_run
+
+
+
+#### 问题
+
+##### 网速慢
+
+```
+# 拉取代码
+git clone https://github.com/facebook/react.git
+
+# 如果拉取速度很慢，可以考虑如下2个方案：
+
+# 1. 使用cnpm代理
+git clone https://github.com.cnpmjs.org/facebook/react
+
+# 2. 使用码云的镜像（一天会与react同步一次）
+git clone https://gitee.com/mirrors/react.git
+
+```

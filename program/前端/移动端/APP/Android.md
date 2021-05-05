@@ -1,3 +1,9 @@
+##### 命令
+
+`keytool -list -v -keystore xxx.jks`：查看指纹
+
+
+
 ##### 包管理
 
 **maven镜像**
@@ -36,6 +42,12 @@ android文件夹下，配置sdk位置，`sdk.dir=C:\\Users\\userName\\AppData\\L
 
 
 ##### 问题
+
+**java.lang.NullPointerException (no error message)**
+
+删除android下的 .gradle文件夹
+
+
 
 **Android项目卡在Gradle: Download gradle-6.5-bin.zip**
 

@@ -56,6 +56,29 @@ flutter升级： 普通网络即可
 
 ## 打包
 
+### 打包命令
+
+```flutter build <apk|ios|appbundle> --no-sound-null-safety main_<prod|dev>.dart``
+
+- `--no-sound-null-safety`：第三方包存在未升级null safe的包，运行编译非null safe的库
+- appbundle：安卓上架可用的一种打包方式
+
+
+
+#### 传递参数（--dart-define）
+
+通过如下命令，在打包 Android 或者 iOS 时，可以通过 --dart-define 来指定不同的 dart 参数.
+
+flutter build ios --release --dart-define=CHANNEL=GSY --dart-define=LANGUAGE=Dart
+在 dart 代码里可以通过 String.fromEnvironment 获取到对应的自定义配置参数。
+
+```dart
+const CHANNEL = String.fromEnvironment('CHANNEL');
+const LANGUAGE = String.fromEnvironment('LANGUAGE')
+```
+
+
+
 ### Andorid
 
 #### 设置桌面图标
@@ -1622,6 +1645,10 @@ flex
 
 可以有多个子 Widget
 
+### CupertinoButton
+
+不传onperss永远会自动为灰色
+
 
 
 ### RepaintBoundary
@@ -1682,7 +1709,9 @@ Matrix4.rotationZ
 
 根据传入的曲线函数和动画控制器，不断调用动画运行
 
+### SpringSimulation
 
+弹簧曲线
 
 ### **Curves**
 
@@ -2589,6 +2618,74 @@ devicePixelRatio: 物理像素 / 逻辑像素（px），始终可能存在溢出
 
 
 
+### Canvas
+
+**CurveTween**
+
+曲线动画
+
+**TextPainter**
+
+绘制文字
+
+**画形状**
+
+```dart
+
+// 定义形状，矩形
+final Rect rect = Rect.fromLTWH(50.0, 50.0, 100.0, 100.0);
+// 指定画笔的样式
+final Paint paint = Paint()
+  ..color = Colors.orange
+  ..strokeWidth = 4.0
+  ..style = PaintingStyle.stroke
+  ..isAntiAlias = true;
+// drawRect绘出形状
+canvas.drawRect(rect, paint);
+
+```
+
+**画出方格**
+
+```dart
+
+// 获取边界
+final double sw = size.width;
+final double sh = size.height;
+
+// 使用 Paint 定义路径的样式
+final Paint paint = Paint()
+  ..color = Colors.black87
+  ..style = PaintingStyle.stroke
+  ..strokeWidth = 1.0;
+final Path path = Path();
+var xGap = 10.0;
+var yGap = 10.0;
+
+// 画竖线，横坐标从0到最大，间隔xGap，从(x,0) 画到 (x,hmax)
+for (var x = 0.0; x <= sw; x += xGap) {
+  path
+    ..moveTo(x, 0)
+    ..lineTo(x, sh);
+}
+
+// 画横线，纵坐标从0到最大，间隔yGap，从(0,y) 画到 (wmax,y)
+for (var y = 0.0; y <= sh; y += yGap) {
+  path
+    ..moveTo(0, y)
+    ..lineTo(sw, y);
+}
+// 使用 drawPath 方法绘制路径
+canvas.drawPath(path, paint);
+```
+
+**画圆**
+
+drawCircle
+
+
+
+
 ### 动画
 
 #### 分类
@@ -2599,6 +2696,77 @@ devicePixelRatio: 物理像素 / 逻辑像素（px），始终可能存在溢出
 - 物理 (Physics)
   
   > 物理动画是运动被模拟为与真实世界的行为相似，比如抛一件物体，它落在什么地方取决于这个物体的重量，抛出去的速度以及这个物体与地面的高度，类似数学中的抛物线运动轨迹
+
+
+
+#### 显式动画
+
+
+指的是需要手动设置动画的时间，运动曲线，取值范围的动画
+
+- RotationTransition
+- FadeTransition
+- ScaleTransition
+- SizeTransition
+- SlideTransition
+
+#### 隐式动画
+
+使用 Flutter 框架内置的动画部件创建，通过设置动画的起始值和最终值来触发
+
+- AnimatedOpacity: 通过 opacity 控制组件显示、隐藏
+
+
+
+#### Hero 动画
+
+在页面切换时一个元素从旧页面运动到新页面的动画。Hero 动画需要使用两个 Hero 控件实现：一个用来在旧页面中，另一个在新页面。两个 Hero 控件需要使用相同的 tag 属性，并且不能与其他 tag 重复
+
+- Hero
+
+
+
+#### 交织动画
+
+由一系列的小动画组成的动画。每个小动画可以是连续或间断的，也可以相互重叠。其关键点在于使用 Interval 部件给每个小动画设置一个时间间隔，以及为每个动画的设置一个取值范围 Tween，最后使用一个 AnimationController 控制总体的动画状态
+
+
+
+
+### 字体
+
+FLutter 字体默认不会跟随系统， Android 端默认使用 Roboto，而在 iOS 端默认使用 San Francisco
+
+**静态加载**
+
+```yaml
+fonts:
+  - family: "xxx"
+    fonts:
+      - assest: "xxx"
+```
+
+**动态加载**
+
+```dart
+// FontLoader加载字体,load font file
+Future loadFontFile() async {
+    var fontLoader = FontLoader('FenPinYinTi2');
+    fontLoader.addFont(fetchFontByteData());
+    await fontLoader.load().catchError((e) {
+      loge("loadFontFile erro: $e");
+    });
+    setState(() {});
+}
+
+// 从assets中加载，也可以通过NetworkAssetBundle 从网络获取，或dio请求获取
+Future<ByteData> fetchFontByteData() => DefaultAssetBundle.of(context).load('fonts/FenPinYinTi2.ttf');
+```
+
+**字体使用**
+
+- 全局或局部，使用 themeData 中的 fontFamily
+- 更细颗粒的使用，TextStyle 的 fontFamily
 
 
 
@@ -2671,7 +2839,43 @@ if __name__ == "__main__":
 
 # 问题
 
+#### throwToolExit
+
+ios连接设备真机测试，要把设备添加到设备清单中，xcode可以自动处理，不确定，但最好处理
+
+
+
+#### the executable was signed with invalid entitlements
+
+ios真机调试,签名证书问题，建议使用automatic sign进行调试
+
+
+
+#### pagerouterbuilder导致ios无法回退
+
+默认的materialPageRouter是可以回退的，但是pagerouterbuilder无法
+
+> 本质是materialPageRouter的默认动画问题，如果重写materialPageRouter，也会导致无法回退
+
+[github issue](https://github.com/flutter/flutter/issues/49266)
+
+
+
+#### willpopscope导致的ios无法回退
+
+
+
+onwillpop设置为null可正常回退，但设置函数时ios无法触发并且回退
+
+[github issue](https://github.com/flutter/flutter/issues/14203)
+
+
+
+
+
 #### Maven依赖下载
+
+一、
 
 [Flutter 踩坑](https://www.jianshu.com/p/171a9660e1f9)
 /packages/flutter_tools/gradle/flutter.gradle
@@ -2697,6 +2901,14 @@ project.rootProject.allprojects {
 ```
 
 
+
+二、
+
+安装依赖失败时
+
+1、代理
+
+2、适当调整build.gradle中的repositories链接顺序
 
 
 
@@ -2852,6 +3064,20 @@ Ideviced_id（xxx） 无法验证开发者，找打文件打开即可信任
 #### Mac getpackages失败/久
 
 在bash里export 然后flutter packages get
+
+
+
+## 库
+
+
+
+### Bloc
+
+路由切换后 bloc是读取不到的，解决方式
+
+- 传参
+
+- 上层注入
 
 
 

@@ -43,3 +43,12 @@
 - `<text>`
 - `<set>`
 - `<marker>`
+
+
+
+#### 工具
+
+[SVG Generators](https://www.smashingmagazine.com/2021/03/svg-generators/) 
+
+集结了大量有用的 SVG 操作网站：背景生成、滤镜生成、形状生成、路径可视化、数据可视化、裁剪、转 Favicon、转 JSX、转雪碧图等。
+

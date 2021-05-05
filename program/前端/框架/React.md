@@ -283,7 +283,7 @@ App.defaultProps = {
 
 缓存函数  用来建立常量，不随render重建,依赖项变化才重建   == useMemo
 
-函数要么放外面声明，要么用usecallback，提高性能
+函数要么放外面声明，要么用usecallback（需配合memo使用？），提高性能
 
 
 
@@ -695,7 +695,61 @@ React Developer Tools  highlight update功能
 
 
 
+### React 16
+
+#### 时间切片
+
+利用MessageChannel和requestAnimationFrame组合来实现，在渲染结束后进行切片任务
+
+
+
+1、requestAnimationFrame参数可以取到总的时间
+
+2、分别在requestAnimationFrame和MessageChannel记录时间戳，对比可得出requestAnimationFrame到渲染结束耗时
+
+3、结合上述两个时间，检查是否有任务被饿死（长时间未执行），检查是否仍有空闲，执行其他任务
+
+
+
+##### 注
+
+**messagechannel**
+
+优先messagechannel,递归执行 setTimeout(fn, 0) 时，最后间隔时间会变成 4 毫秒
+
+
+
+**requestIdleCallback**
+
+猜测
+
+[issue](https://github.com/facebook/react/issues/13206?source=post_page---------------------------#issuecomment-418923831)
+
+- 兼容性
+- 后台不执行
+- 执行次数有限
+
+
+
+#### 事件优先级
+
+- Immediate(-1)：这个优先级的任务会同步执行, 或者说要马上执行且不能中断
+- UserBlocking(250ms)：这些任务一般是用户交互的结果, 需要即时得到反馈
+- Normal (5s)：应对哪些不需要立即感受到的任务，例如网络请求
+- Low (10s)：这些任务可以放后，但是最终应该得到执行. 例如分析通知
+- Idle (没有超时时间)：一些没有必要做的任务 (e.g. 比如隐藏的内容), 可能会被饿死
+
+
+
+
+
 ### 优化
+
+#### function props
+
+如果你的function会作为props传递给子组件，请一定要使用 useCallback 包裹，对于子组件来说，如果每次render都会导致你传递的函数发生变化，可能会对它造成非常大的困扰。同时也不利于react做渲染优化?
+
+
 
 #### 空props导致渲染
 

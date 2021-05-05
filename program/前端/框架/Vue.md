@@ -16,6 +16,10 @@ new Vue({
 })
 ```
 
+##### 自定义指令
+
+vue.directive是以组件维度进行绑定。即关联到元素所在的template的组件的生命周期中
+
 
 
 ##### 指令
@@ -151,6 +155,32 @@ Vue的实现是在每个节点编译，引用数据时都为其生成一个Watch
 > 虚拟DOM进行底层的Diff
 >
 > 高层依赖于响应式Watcher来监控
+
+
+
+#### 数组监听
+
+**原因**：不监听数组就单纯的是因为性能原因，和收益不成正比
+
+
+
+当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+当你修改数组的长度时，例如：vm.items.length = newLength
+
+[Object.defineProperty对数组已有元素也是实现监听的](https://github.com/vuejs/vue/issues/8562)
+> 监听是基于key的，新增的由于未监听所以监听不到，对于已有的可以监听，大数组就需要监听大量的数据,容易产生较大的性能损耗
+
+解决办法
+
+1、[$set](https://www.cnblogs.com/yaxinwang/p/13827529.html)
+
+2、[变异数组方法](https://juejin.cn/post/6919650694110642184)
+
+> 对不同数组变异方法进行不同的处理，对能增加数组⻓度 的 3 个⽅法 push、unshift、splice ⽅法做了判断，获取到插⼊的值，然后把新添加的值变成⼀个响应式对象
+
+
+
+
 
 
 

@@ -55,6 +55,56 @@ ios9~12需要通过Loadfileurl进行加载？
 
 
 
+### 发布
+
+#### app图标
+
+ios不支持透明和Alpha通道，png是自带Alpha的，所以建议图标原图使用jpg，然后生成出所需的图标
+
+
+
+#### 上架（testflight + app store）
+
+上架testflight需要发布证书
+
+- 申请distribute证书
+- 配置好InfoList，建议所有权限配置均配置
+- scheme中analyze和archive都要设置release模式
+- 上传新包只需要修改build number不用改version（ios中每个版本的build number可从1重新开发，android不可，只可增加）
+- archive
+- App Store Connect
+- upload
+
+
+
+
+
+
+
+#### 蒲公英
+
+蒲公英要正常安装需要扫描信任蒲公英的证书
+
+
+
+- 蒲公英账号创建
+- 链接电脑查看设备uuid
+- provision设置好设备uuid
+- archive
+- Ad Hoc
+- export
+- upload到蒲公英
+
+
+
+#### 企业发布
+
+- archive
+- enterprise
+- 发布到下载网站
+
+
+
 ### 打包、账号相关
 
 #### 账号
@@ -64,6 +114,26 @@ ios9~12需要通过Loadfileurl进行加载？
 类型分开发者和发布者
 
 对于已占用满发布者后，如果其他设备要进行发布需要对应发布者机器发布.ipa文件，描述文件可从官网开发者中进行获取
+
+
+
+##### 基本步骤
+
+
+- 创建cer或者使用现有的cer(导出.p12),(证书安装后要在账号prefrence中加载？)
+- 创建appid(应用标识)
+- 创建provision profile
+
+[上传testflight](https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/testflight-%E4%B8%8A%E5%82%B3%E6%95%99%E5%AD%B8-99aabc6c91dd)
+
+
+
+##### appid
+
+- Explicit App ID：唯一的App ID，用于唯一标识一个应用程序。例如“com.apple.garageband”这个App ID，用于标识Bundle Identifier为“com.apple.garageband”的App。
+- Wildcard App ID：含有通配符的App ID，用于标识一组应用程序。例如“*”（实际上是Application Identifier Prefix）表示所有应用程序；而“com.apple.*”可以表示Bundle Identifier以“com.apple.”开头（苹果公司）的所有应用程序
+
+
 
 ##### 描述文件
 
@@ -134,7 +204,11 @@ Xcode自动生成管理的签名文件会自动更新，而手动创建的必须
 
 
 #### 开发调试
-需要给设备设置开发证书，然后在Identify里设置对于的bundle id
+需要给设备设置开发证书，然后在Identify里设置对于的bundle id，
+
+iOS调试时如果设备未注册，连接设备，打开xcode点击开始运行（图标），会提示可以自动注册
+
+
 
 #### 打包发布
 
@@ -167,7 +241,16 @@ ipa是压缩文件，修改后缀为.zip，解压后可以看到相关信息文�
 
 #### 问题
 
-**cocoapods未设置**
+##### 提交审核缺少推送配置
+
+- appid里勾选推送（应该是勾选后才出此错误）
+- 创建推送证书
+- xcode的Capability中添加push Notifications
+
+
+
+
+##### cocoapods未设置
 
 sudo gem install cocoapods
 
@@ -175,7 +258,8 @@ sudo gem install cocoapods
 
 
 
-**Ios build Archive 提示  library not found for…**
+##### Ios build Archive 提示  library not found for…
+
 https://www.jianshu.com/p/026f54eef568
 https://github.com/flutter/flutter/issues/10654
 

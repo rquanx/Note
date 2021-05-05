@@ -393,6 +393,30 @@ box-sizing:border-box （IE盒模型）
 
 
 
+**display: contents**
+
+
+
+
+display: contents 的元素本身不会被渲染，但是其子元素能够正常被渲染
+
+- 充当无语义的包裹框
+- 让代码更加符合语义化
+
+```html
+<!--  不想要button的样式和行为，自己进行控制，但单纯的p标签会导致语义化降低  -->
+<p class="button">
+  <button style="display: contents">Button</button>
+</p>
+<p class="button">
+  <button style="display: contents">Click Me</button>
+</p>
+```
+
+- 对于一些常见的可替换元素、表单元素,相当于 display: none
+
+
+
 ###### 块级元素
 
 具有换行特性（所以能配合clear实现清除浮动???）
@@ -595,6 +619,12 @@ Block内遵循统一的关系，多个同级Block间遵循统一关系？
 ##### z-index   
 
 当多个元素重叠时，会被后来的盖住，通过设置z-index的大小来定义谁覆盖的层次级，可随意设置，数字越大层次越高
+
+
+
+同一层叠上下文中,当我们给元素一个z-index，那么这个值只会和在相同 context 下的其他元素竞争。z-index 不是全局的
+
+显式创建上下文isolation: isolate; }
 
 
 
@@ -991,7 +1021,29 @@ transform: scale(1.2)
 
 #### 字体
 
+##### 要点
 
+
+- 基线：书写英语字母时，字母 X 底部所在的位置
+- 行高( line-height )：两行文字基线之间的距离
+- content area : 围绕文字看不见的 Box，其大小与 font-size 有关，修改 font-size 实际是对这款区域大小的修改?
+- inline boxes: 不会成块显示，而是并排显示在一行的 boxes ，如 span,a,em 等标签以及匿名 inline boxes（即不含把标签的裸露的文字）
+- line boxes: 由一个一个的 inline boxes 组成，一行即为一个 line box
+- containing box: 外层盒子模型,包含了其他的 boxes
+
+
+
+
+**vertical-align**
+
+起作用的前提：元素为 inline 水平元素或 table-cell 元素，包括 span , img , input , button , td 以及通过 display 改变了显示水平为 inline 水平或者 table-cell 的元素。这也意味着，默认情况下， div , p 等元素设置 vertical-align 无效
+
+> float 和 position: absolute ，一旦设置了这两个属性之一，元素的 display 值被忽略，强制当成 block 方式处理，因此，vertical-align 也就失去了作用
+
+- baseline: vertical-align 的默认值，其意思是指基线对齐,可以把每一个行框盒子的后面想象有一个看不见的节点 x 元素就是和这个字母 x 的下边缘对齐
+- top 与 bottom: 元素的顶部（底部）和当前行框盒子的顶部（底部）对齐；即与 line-box 的顶部（底部）对齐 对于 table-cell 元素，指的是元素的顶 padding 边缘和表格行的顶部对齐
+- middle:元素的垂直中心点与行框盒子基线往上 1/2x-height 处对齐,就是字母 X 的中心位置对齐
+- text-top: 盒子的顶部和父级内容区域的顶部对齐，即与 content-area 顶部对齐
 
 ##### 换行与不换行
 
@@ -1038,6 +1090,16 @@ Font weight从100->200没有变化 ==> 字体支持问题
 
 
 ### CSS3
+
+
+
+#### 模糊滤镜
+
+```css
+.x {
+	backdrop-filter: blur(10px);
+}
+```
 
 
 

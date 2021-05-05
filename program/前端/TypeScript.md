@@ -4,7 +4,7 @@
 
 #### 语法
 
-#### 泛型和
+
 
 
 ##### declare
@@ -24,14 +24,16 @@ declare var SP: any;
 
 
 
-#### type
+##### type and interface
 
 ```typescript
+// 可以进行 | 枚举
 type a = {
 	b: string
 }
 
-/** x */
+/** x */ 
+// 可重复声明来追加属性
 interface b {
     
 }
@@ -39,7 +41,6 @@ interface b {
 type bb = b[];
 
 type t = typeof { b: "1"}
-
 ```
 
 
@@ -98,6 +99,29 @@ interface ObjMap {
 
 
 ##### 高级
+
+##### ？ -？
+
+```ts
+interface A {
+  a: string;
+  b?: number;
+}
+
+// -? 将所有字段变为必填
+type B<T> = {
+    [key in keyof T]-?: T[key];
+}
+
+// ? 将所有字段变为选填
+type C<T> = {
+    [key in keyof T]?: T[key];
+}
+```
+
+
+
+
 
 ###### In
 
@@ -758,6 +782,73 @@ jsxFactory": "h",// preact设置   编译成h
 ```
 
 
+
+#### TS类型编程
+
+##### 数据类型
+
+- Boolean
+- Number
+- String
+- Array
+- Tuple
+- Enum
+- Unknow
+- Any
+- Void
+- Null and Undefined
+- Never
+- Object
+- 自定义类型，class、interface、type
+
+
+
+##### 函数
+
+泛型，泛型根据传入的参数T然后返回处理后的类型
+
+```ts
+// 此类型函数会给参数T增加一个属性，输入类型返回类型，输入变量返回变量
+type B<T> = T & {
+    attrB: "anthor value"
+}
+
+// 函数名
+// B
+
+// 函数括号和函数参数列表
+// <T>
+
+// 函数体
+// T & {
+//     attrB: "anthor value"
+// }
+```
+
+**参数类型**
+
+```ts
+// <K extends keyof T> 表示参数K的类型是属于keyof T的
+type MyRequired<T, K extends keyof T> = T &
+  {
+    [key in K]-?: T[key];
+  };
+```
+
+##### 表达式
+
+```ts
+// 条件表达式/带三元运算符的条件表达式
+type ToDeclareType<T> = T extends (args: any) => PromiseLike<infer R> ? R : never; 
+
+// 函数调用表达式
+type ToDeclareType = Omit<App>; 
+
+// 循环表达式，遍历T的key进行Omit处理
+type ToDeclareType<T> = { 
+    [key in keyof T]: Omit<T[key], '_id'>
+}
+```
 
 
 

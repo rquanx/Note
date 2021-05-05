@@ -110,6 +110,8 @@
 
 ###### 设计/原型
 
+[设计知识网站](http://www.ynsj001.com/)
+
 https://nodesign.dev/
 
 [在线手绘风格原型](https://github.com/excalidraw/excalidraw)
@@ -324,6 +326,8 @@ github.com --> githistory.xyz
 
 ##### 工具
 
+[pdf在线处理大全](https://pdfreal.com/)
+
 **装机**
 
 [系统](https://next.itellyou.cn)
@@ -475,6 +479,20 @@ Hacker and Painters
 
 
 ##### 文章
+
+[谈谈你对BFC的理解](https://mp.weixin.qq.com/s/4WC-1COpRL0scgPqD3I-Sg)
+
+[混合开发 框架对比](https://www.jianshu.com/p/8e99b4aed464)
+
+[年终盘点跨平台技术优劣势对比（Hybrid、RN、Weex、Flutter）](https://segmentfault.com/a/1190000039099456)
+
+[程序员都去哪了](https://mp.weixin.qq.com/s/k2NKnO-p15fugqeYGqBdSA)
+
+[张一鸣：CEO总想招一些便宜的人，这才是最贵的](https://mp.weixin.qq.com/s/Dj2ib6wSIaXnIq8f4ddclw)
+
+[Code Review最佳实践](https://zhuanlan.zhihu.com/p/73809355)
+
+[登录表单最佳实践](https://zhuanlan.zhihu.com/p/349805214)
 
 [创建表单框架之前的小建议](https://mp.weixin.qq.com/s/Zg-Sk7VbNips8Ek2hgPL2w)
 

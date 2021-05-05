@@ -154,6 +154,14 @@ require.resolve拼接好路径以后，它会主动去帮你判断这个路径�
 
 ##### package.json
 
+###### 本地包
+
+```bash
+"umi-plugin-sharepoint": "file:./packages/umi-plugin-sharepoint" 
+```
+
+
+
 ###### 版本
 ~自动更新至最新的小版本
 
@@ -216,6 +224,31 @@ npm i module_name  -S  = >  npm install module_name --save
 
 npm i module_name  -D  => npm install module_name --save-dev   
 ​	写入到 devDependencies 对象  
+
+
+
+##### publish
+
+**命令**
+
+发布包: `npm publish`
+
+下架已发布的包: `npm unpublish $packagename`、`npm unpublish $packagename@$version`
+
+
+
+**npm login 提示用户已存在**
+
+如果切换了使用淘宝源需切换回原来的，`npm config set registry https://registry.npmjs.org/`
+
+**npm publish  401 Unauthorized**
+
+如果切换了使用淘宝源需切换回原来的，`npm config set registry https://registry.npmjs.org/`
+
+**npm发布项目配置**
+
+scripts增加prepublish会在npm publish前执行
+package.json文档，将需要发布的文件包含到files字段，需要排除的文件放入.npmignore
 
 
 

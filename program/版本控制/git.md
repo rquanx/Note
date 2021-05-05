@@ -459,6 +459,18 @@ git push --tags
 
 ##### 场景
 
+**代码行数统计**
+
+`git log --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'`
+
+
+
+**强行合并两个不关联的分支**
+
+`git merge branch --allow-unrelated-histories`
+
+
+
 **需忽略的文件已提交上去**
 
 1、删除本地文件 commit
@@ -473,12 +485,23 @@ git 会忽略空文件夹,空文件夹下随便建个文件即可/.gitkeep
 
 **创建空分支，文件保持，但无历史**
 
-git checkout --orphan emptyBranchName
+`git checkout --orphan emptyBranchName`
 
 该命令会生成一个叫 emptybranch 的分支，该分支会包含父分支的所有文件。但新的分支不会指向任何以前的提交，就是它没有历史，如果你提交当前内容，那么这次提交就是这个分支的首次提交。
 
 想要空分支，所以需要把当前内容全部删除，用 git 命令
-git rm -rf .
+`git rm -rf .`
+
+
+
+**只合并部分代码**
+
+避免需要处理自己改动外的冲突，只合并自己熟悉的部分
+
+`git pull origin dev` --> 存在大量 conflict --> `git reset --hard`(回滚 merge)
+--> `git checkout -b dev-backup`(备份当前修改) --> git checkout dev
+--> `git reset --hard origin/dev`(分支之间使用远程的，放弃此分支本地所有 commit)
+--> `git checkout dev-backup pages/xxxx`(将 dev-backup 分支上的 xxx 目录下或者 xxx 文件的代码单独合并到 dev)
 
 
 
@@ -666,7 +689,7 @@ commit 目的的简短描述，不超过50个字符
 
 
 
-#### 文件
+#### 文件/文件夹
 
 **.git/config**
 
@@ -677,6 +700,32 @@ commit 目的的简短描述，不超过50个字符
 **.gitignore**
 
 每个目录都可以有自己的 ignore，当仓库存放多端代码时可以各自管理
+
+**Hooks**
+
+hook 配置文件
+
+
+
+**COMMIT_EDITMSG**
+
+本地最后一个提交的信息
+
+
+
+**packed-refs**
+
+clone 仓库时所有的引用
+
+
+
+**objects**
+
+文件夹下先以对象哈希前两位划分文件夹再存放对象
+
+- 系统对同一层级目录下文件数量有限制，用两位 16 进制划分，限制了文件夹只能有 256 个
+
+- 性能问题？作为索引或分页依据？
 
 
 

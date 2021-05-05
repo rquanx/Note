@@ -1,9 +1,16 @@
 #### 环境
+
 ##### 初始化
 
 `npx react-native init {projectName}`
 
 
+
+##### 调试打包
+
+```bash
+npx react-native run-android --variant devDebug # debug运行，会输出详细信息，用于定位bug
+```
 
 
 

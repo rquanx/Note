@@ -194,6 +194,7 @@ a && b   //  a、b均为真 返回b,否则返回a
 
 解构赋值使用的是迭代器
 For of可中断，中断时会调用return函数
+
 > break / throw,均会执行return
 
 ##### for
@@ -674,6 +675,33 @@ var obj = {
 
 
 
+#### 解构赋值
+
+
+
+##### 数组解构
+
+本质是利用了迭代器
+
+```js
+var myIterable = {};
+myIterable[Symbol.iterator] = function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+};
+
+[...myIterable]	// 让对象也支持类似数组解构
+```
+
+
+
+##### 对象解构
+
+找到同名属性，然后再赋给对应的变量，数组本质是特殊的对象，可以通过索引作为kay进行对象解构
+
+
+
 #### async/await
 
 [async/await 原理与实现](https://github.com/zexiplus/theory/blob/master/async/async.md)
@@ -715,6 +743,12 @@ Object.defineProperty
 ##### LocalStorage
 
 localstorage的key也会占用空间
+
+
+
+##### sessionStorage
+
+打开新页面会复制一份原有的sessionStorage 
 
 
 
@@ -800,6 +834,12 @@ new F().__proto__ === F.prototype
 Class X{  a = () => {} } 会将函数绑定到this（实例）上，无法共用
 
 Class XX { a() {}}  会绑定到原型上，可共用
+
+
+
+**属性枚举**
+
+类内部声明的方法，是不可枚举的，而通过原型链声明的方法是可以枚举的
 
 
 
@@ -944,6 +984,11 @@ decode...
 #### Map
 map对象要通过.set,.get,.delete进行操作，key可以是对象
 
+**this**
+
+- Map|Set:内部存储的数据必须通过 this 来访问，无法被 Proxy 代理 set 操作,需要通过 get 代理进行 bind 绑定后才能进行 set
+- Array: 由于历史原因，数组不会有 Map|Set 的问题
+
 #### Array
 
 **sort**   
@@ -1007,6 +1052,21 @@ function add(a,b) {
 
 
 
+##### proxy
+
+
+
+- push 的内部逻辑就是先给下标赋值，然后设置 length,触发 set
+  > 第一次为插入元素
+  > 第二次为 length 修改，但 length 已经是新值了
+- shift 或 unshift,如果数组长度是 N，shift|unshift 就会触发 N set
+  
+  > 往前插入、删除一个，全部元素往前挪
+- splice 同样会产生多次
+  
+  > 会产生元素索引挪动
+
+影响: proxy 代理时会触发多次 set,push 可通过判断 length 来避免,shift 等（Vue 不解决，而是通过批量渲染来保证最终不会渲染多次）
 
 
 
@@ -1021,6 +1081,11 @@ function add(a,b) {
 // 可接受年月日时分秒参数，是本地时间。
 new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
 // 构造时设置day为0，读取getdate可以读取对于月份的天数
+
+new Date('2020-02-10')   // 符合 ISO 8601 格式，所以被解析成為 UTC +0 的 2 月 10 號 0 點 0 分，所以我們看到的結果才會是 +8 時區的 8 點。
+new Date('2020/02/10')   // 不符合 ISO 8601 格式，V8 會當作是 local time
+// 2020-02-02 13:00:00      // 不符合 ISO 8601 格式，Safari  Invalid Date
+// 2020-02-02T13:00:00      // 符合 ISO 8601 格式,Chrome Sun Feb 02 2020 13:00:00 GMT+0800,Safari Sun Feb 02 2020 21:00:00 GMT+0800,Safari当作utc进行处理
 ```
 
 #### Console
@@ -1402,7 +1467,65 @@ JSON.parse性能更好的原因：JSON 的关键字比 JS 少，JS 引擎对对�
 
 
 
+#### 编码
+
+**escape**
+
+返回一个字符的Unicode编码值
+
+除了ASCII字母、数字、标点符号"@ * _ + - . /"以外，对其他所有字符进行编码。在\u0000到\u00ff之间的符号被转成%xx的形式，其余符号被转成%uxxxx的形式
+
+
+
 #### Canvas
+
+Canvas元素默认宽 300px, 高 150px
+> CSS规范中定义的，作为替换元素，默认的尺寸是300*150,<svg>元素也是替换元素，因此，<svg>默认的尺寸也是300\*150
+
+
+
+##### Canvas画布大小调整
+
+通过css设置px的方式设定canvas宽高的时候会导致容器拉伸，但是内容画布仍以默认宽、高进行计算，从而呈现出意外的结果
+
+canvas标签设置width和height的时候，有以下几种方式和产生的后果
+
+方法一：
+```html
+<canvas width="500" height="500"></canvas>
+```
+
+方法二：使用HTML5 Canvas API操作
+```js
+var canvas = document.getElementById('欲操作canvas的id');
+canvas.width = 500;
+canvas.width = 500;
+```
+
+
+
+若通过如下方法设置宽高，那么Canvas元素将由原来大小被拉伸到所设置的宽高：
+方法一：使用CSS 会被拉伸
+
+```css
+.canvas｛
+    width:1000px;
+    height:1000px;
+｝
+```
+也包含了行间样式中的 style="" 。也就是上面的例子，也会产生拉伸的情况。
+
+方法二：使用HTML5 Canvas API操作 会被拉伸
+```js
+var canvas = document.getElementById('欲操作canvas的id');
+canvas.style.width = "1000px";
+canvas.style.height = "1000px";
+```
+
+其它：canvas的width和height也不能用百分比表示。canvas会将百分值当成数值显示
+
+
+
 
 ##### Methods
 
@@ -1460,6 +1583,14 @@ contextType
 
 强制重新渲染
 
+
+
+**save、restore**
+
+存储/弹出画布状态，处理的不是画布内容，而是画布的绘制属性（即画笔设置）
+
+
+
 ##### 绘制圆形
 
 ```js
@@ -1496,7 +1627,9 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 ##### requestAnimationFrame
 
-会在每次重绘前执行
+会在每次重绘前执行，在浏览器每一帧开始绘制之前会执行
+
+[与屏幕刷新率有关](https://juejin.cn/post/6953541785217925151#heading-2)
 
 缺点：页面处于后台时该回调函数不会执行
 
@@ -1594,6 +1727,16 @@ var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
 // dom对象转字符串
 (new XMLSerializer()).serializeToString(x)
 ```
+
+
+
+#### **BOM和WebPlatform**
+
+BOM（旧有概念）其实是非标准的东西（维基百科），所以w3c也没有明确的说明文档，反而是有很多window扩展的标准文档
+
+
+
+[WebPlatform](https://webplatform.github.io/docs/apis/): 新提出来的为了整合零散API，包含旧有的BOM概念
 
 
 
@@ -1830,11 +1973,43 @@ settimeout告诉js多长时间后把这个任务加入到队列中，如果队�
 
 
 
+**setTimeout多久执行?** 
+
+html5规范里规定最少4ms执行
+
+
+
 #### 弹框
 
 - alert
 - confirm
 - prompt
+
+
+
+### Object
+
+#### Object.is
+
+判断两个值是否为同一个值,基础类型之间比对值，引用类型比对引用,+0 !== -0、Number.NaN == NaN
+
+> === 会将+0 == -0,Number.NaN !== NaN
+
+```js
+Object.is(0, -0); // false
+Object.is(0, +0); // true
+Object.is(-0, -0); // true
+Object.is(NaN, 0 / 0); // true
+```
+
+
+
+#### Object.keys
+
+**顺序**
+
+先对整数类型的key进行从小到大排序，然后其他类型的按创建时间排序
+
 
 
 
@@ -1943,8 +2118,17 @@ web worker的postMessage是深拷贝的
 
 
 
-
 ### 事件模型/事件循环/Event Loop
+
+#### 概述
+
+JS规范中是没有这个概念的，反而在html规范中定义，是宿主的东西
+
+事件循环本质上是 user agent (如浏览器端) 用于协调用户交互（鼠标、键盘）、脚本（如 JavaScript）、渲染（如 HTML DOM、CSS 样式）、网络等行为的一个机制
+
+
+
+#### 运作
 
 每一轮执行完宏任务后会清理所有的微任务
 
@@ -2070,6 +2254,42 @@ Event.key和event.keyCode，如果不需要兼容IE8下，建议使用.key，不
 全局绑定事件可能会冲突，如为了实现点击上下选择东西，可能会与浏览器的上下滚动冲突
 
 ### JS应用
+
+#### 模拟实现准时的setTimeout
+
+- while: 准确但阻塞主线程，不可用
+- Worker: 准确且不阻塞
+- requestAnimationFrame： 不准确
+- setTimeout 时间补偿：每次以当前时间进行计算，调整时间
+
+
+
+#### 字符串转DOM
+
+**Range**
+
+script脚本会执行，使用时候需要注意
+
+```js
+let elements = document.createRange().createContextualFragment(html).children;
+```
+
+**innerHTML**
+
+**insertAdjacentHTML**
+
+**DOMParser**
+
+- HTML字符串、XML字符串，SVG字符串解析
+- 反转义html(已转移的html字符串反转义)
+- script脚本不会执行
+- 性能最差
+
+```js
+new DOMParser().parseFromString(html, 'text/html').body.childNodes;
+```
+
+
 
 #### 请求缓存
 
@@ -2315,27 +2535,60 @@ window.onload =  function () {
 
 
 
-### 常用技巧
+### 异常
 
-[前端常用数据类型转换](https://juejin.im/post/5c00e8a66fb9a049db72dbd0)
+#### 异常类型
 
-#### 节流、防抖
+##### JS内置异常
 
-quick增加防抖和节流
+**异常类型**
 
-> 防抖：只有足够的空闲时间，才执行代码一次。
->
-> > 当停止输入一定时间后才执行代码
->
-> 节流：一定的时间内只执行一次代码
->
-> > 连续 多次点击搜索按钮
-
+- SyntaxError（语法错误）
+- ReferenceError（引用错误）
+- RangeError（范围错误）
+- TypeError（类型错误）
+- URLError（URL错误）
+- EvalError（eval错误）
 
 
-#### 截取整数和小数
 
-[截取整数和小数](<https://github.com/akira-cn/FE_You_dont_know/issues/5>)
+**捕获方式**
+
+- onerror: 会被覆盖，建议弃用
+- addEventListener: 存在兼容性问题，结合attachEvent一起使用
+- attachEvent: ie8前使用，监听时需增加on前缀
+
+
+
+##### Promise未处理异常
+
+**捕获**：window.onunhandledrejection
+
+
+
+**注意**？？
+
+如果一个Promise错误最初未被处理，但是稍后又得到了处理，则会触发rejectionhandled事件。因此最好在监听到unhandledrejection事件时，不要立刻触发上报，可以选择等待一定时间(settimeout)，监听是否被处理了，到时再进行上报处理。尤其在混合开发的时候容易遇到
+
+> 监听rejectionhandled判断事件是否真的被处理，然后再上报，已处理则取消上报
+
+
+
+
+##### 资源加载异常
+
+img、script里的src和link标签里的href属性存在时，会请求对应的资源。如果错误资源报错，该标签会触发error事件，执行DOM的onerror方法，但并不会冒泡到全局，需对元素进行onerror监听
+
+坑:使用onerror事件去获取一个默认地址的图片,如果刚好onerror去获取的图片也不在，那么就会一直触发onerror事件，这个标签一直在请求一个不存在的图片。也就是会一直循环请求
+
+
+
+##### 网络请求异常
+
+XMLHttpRequest、fetch
+
+重写内置对象，对对象的事件进行重写从而实现请求时各个阶段的监听
+
 
 
 
@@ -2404,7 +2657,26 @@ window.addEventListener('unhandledrejection', function (e) {
 
 
 
-##### 异常上报
+##### React 异常捕获
+
+componentDidCatch
+
+> 可以非常简单的获取到 `react` 下的错误信息
+
+error boundary
+
+> 不会捕捉下面这些错误。
+>
+> 1.事件处理器
+> 2.异步代码
+> 3.服务端的渲染代码
+> 4.在 `error boundaries` 区域内的错误
+
+
+
+
+
+#### 异常上报
 
 **img标签上报**
 
@@ -2420,20 +2692,33 @@ function report(error) {
 
 
 
-##### React 异常捕获
 
-componentDidCatch
 
-> 可以非常简单的获取到 `react` 下的错误信息
 
-error boundary
 
-> 不会捕捉下面这些错误。
+### 常用技巧
+
+[前端常用数据类型转换](https://juejin.im/post/5c00e8a66fb9a049db72dbd0)
+
+#### 节流、防抖
+
+quick增加防抖和节流
+
+> 防抖：只有足够的空闲时间，才执行代码一次。
 >
-> 1.事件处理器
-> 2.异步代码
-> 3.服务端的渲染代码
-> 4.在 `error boundaries` 区域内的错误
+> > 当停止输入一定时间后才执行代码
+>
+> 节流：一定的时间内只执行一次代码
+>
+> > 连续 多次点击搜索按钮
+
+
+
+#### 截取整数和小数
+
+[截取整数和小数](<https://github.com/akira-cn/FE_You_dont_know/issues/5>)
+
+
 
 
 

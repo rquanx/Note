@@ -44,6 +44,18 @@ tapPromise: 增加Promise型事件
 
 
 
+监听本地文件的变化主要是通过文件的生成时间是否有变化
+
+
+
+**原理**
+
+webpack 模块都是缓存在 module 对象中，热更新则是将旧的 value 删除然后以新的值替换
+
+- 热更新代码请求：通过 jsonp 请求 js 获取 js 代码，然后创建 script 标签执行
+- 调用全局方法 webpackHotUpdate，移除缓存中的过期模块，存储新模块
+- 通过**webpack_require**执行新的模块代码
+
 
 
 #### 插件

@@ -171,6 +171,8 @@ site setting --> (转到首要网站设置) --> 存储标准 --> file    不一�
 http://192.168.20.40:8091/sites/rgciland/_catalogs/users/simple.aspx
 /_catalogs/users/simple.aspx
 
+隐藏用户表名：User Information List
+
 
 
 **隐藏账号**
@@ -708,6 +710,15 @@ in条件内部超过500不行 	   in可以查lookup
 
 ##### 阈值
 
+2010引入了列表视图阈值，通过限制可查询和显示的列表数据量，有助于保持 SharePoint 服务器的良好运行
+
+**why**
+
+当查询大量的项目而没有合适的索引时，在对列表进行排序和/或筛选时，sqlserver 必须扫描数据库表中所有记录(即 SharePoint 列表中的所有项)中的排序/筛选字段,在大约5,000个项目之后，sqlserver 通常确定应用表锁来解决争用问题更有效,会导致阻塞其他用户，影响并发性能
+> 会触发锁升级（Lock Escalations）
+
+
+
 - caml查询第一个条件必须筛选到阈值以下(复合索引未知)
 - caml设置路径后可以RecursiveAll和Recursive，在指定路径下进行
   时间索引可用来筛选
@@ -1106,6 +1117,12 @@ ViewXml: `<View Scope='RecursiveAll' ><Query><Where><Contains><FieldRef Name='Fi
 
 ##### 问题
 
+**请求大小写**
+
+请求地址大小写敏感(主要是batch请求时？)
+
+
+
 **转义**
 
 更新时字段内容不能含有"\\"  转义字符
@@ -1244,3 +1261,11 @@ clear-spdistributedcacheitem -containerType DistributedLogonTokenCache
 启动
 
 流程状态界面，选择流程，进入流程启动界面，点击启动
+
+
+
+#### 原生功能
+
+**SharePoint登出**
+
+a标签，href = /_layouts/SignOut.aspx

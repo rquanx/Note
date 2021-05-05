@@ -775,6 +775,33 @@ element.createShadowRoot();
 
 
 
+### 规范文档
+
+#### DTD
+
+旧有概念，[Doctype Declarations](https://www.w3.org/QA/2002/04/valid-dtd-list.html)
+
+
+
+**Entities**
+
+标记了浏览器中特殊符号的别称
+
+[dtd 1](https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd)
+[dtd 1 lat1](https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent)
+[dtd 1 symbol](https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent)
+[dtd 1 special](https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent)
+
+
+
+#### Aria
+
+非标准化的内容，但在国外比较重视，主要是为了让设备可以识别元素然后针对元素进行可访问性的优化（对残障人士意义较大）
+
+主要是在标签中增加了role属性，通过role来标准元素的作用[文档](https://www.w3.org/TR/html-aria/)
+
+
+
 ### 应用
 
 #### 语义化
