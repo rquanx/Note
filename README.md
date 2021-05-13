@@ -1,12 +1,6 @@
-#### 生活
-1688参考
-购买：看生产商，代工，除去溢价
+### 计算机
 
-
-
-#### 计算机
-
-##### 基础课程
+#### 基础课程
 
 [计算机基础](https://github.com/ossu/computer-science)
 
@@ -14,35 +8,25 @@
 
 
 
-##### 前端
+#### 前端
 
-###### JavaScript
+##### JavaScript
 
 [深入理解JS系列](https://www.cnblogs.com/TomXu/tag/JavaScript/default.html?page=2)
 
 [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
-###### CSS
+
+
+##### CSS
 
 [CSS-Inspiration，特效实现集合](https://github.com/chokcoco/CSS-Inspiration)
-
-
-
-**工具**
-
-[正则大全](https://regexlib.com/?AspxAutoDetectCookieSupport=1)
-
-[常用配色](http://www.ruanyifeng.com/blog/2019/03/coloring-scheme.html)
 
 [在线css效果预览](<https://css3generator.com/>)
 
 
 
-[无版权图库](<https://www.pickpik.com/>)
-
-[免费图片](https://unsplash.com/)
-
-
+##### 字体图标
 
 [Font Awesome](<http://www.fontawesome.com.cn/>)
 
@@ -60,47 +44,49 @@
 
 
 
-###### React
+##### 无版权图片
+
+[无版权图库](<https://www.pickpik.com/>)
+
+[免费图片](https://unsplash.com/)
+
+[使用最多的免费商用图片,免注册](https://www.pexels.com/zh-cn/)
+
+[Pexels](https://link.zhihu.com/?target=https%3A//www.pexels.com/)
+
+> 高质量的图片网站，资源非常丰富，免费的，无版权的
+
+##### 正则
+
+[正则大全](https://regexlib.com/?AspxAutoDetectCookieSupport=1)
+
+
+
+##### UI
+
+[常用配色](http://www.ruanyifeng.com/blog/2019/03/coloring-scheme.html)
+
+
+
+##### React
 
 [React 面试题 & 回答](<https://github.com/semlinker/reactjs-interview-questions>)
 
 
 
-###### NodeJS
-
-《深入浅出Node.js》
-
-
-
-###### 构建
+##### 构建
 
 [你真的会拆分代码吗,好](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247490234&idx=1&sn=a57614db8d5570eb4cf71c39d376ab46&chksm=f951aff9ce2626ef928250381d1914629393d75d75bbb124da6a3370bef94820132b07d11c6b&mpshare=1&scene=23&srcid=01094hCOdOckeg4crRiHe5xz#rd)
 
 
 
-###### Browser
+##### V8
 
 [V8系列文章](http://www.jayconrod.com/posts/51/a-tour-of-v8--full-compiler)
 
 
 
-###### 博客
-
-[阮一峰](http://www.ruanyifeng.com/blog/)
-
-[dan blog](https://overreacted.io/)
-
-
-
-###### 抓包
-
-[whistle，http调试，抓包](https://zhuanlan.zhihu.com/p/47029559)
-
-
-
-###### 教程
-
-[webgl](<https://webglfundamentals.org/webgl/lessons/zh_cn/>)
+##### 函数式
 
 [Function Program Guide](https://mostly-adequate.gitbooks.io/mostly-adequate-guide/content/)
 
@@ -108,7 +94,21 @@
 
 
 
-###### 设计/原型
+##### 博客
+
+[阮一峰](http://www.ruanyifeng.com/blog/)
+
+[dan blog](https://overreacted.io/)
+
+
+
+##### WebGL
+
+[webgl](<https://webglfundamentals.org/webgl/lessons/zh_cn/>)
+
+
+
+##### 设计/原型
 
 [设计知识网站](http://www.ynsj001.com/)
 
@@ -116,27 +116,17 @@ https://nodesign.dev/
 
 [在线手绘风格原型](https://github.com/excalidraw/excalidraw)
 
-[蓝湖](<https://lanhuapp.com/>)
+##### 请求
 
-墨刀 
+http://httpbin.org/anything
+http://httpbin.org/ip
+http://httpbin.org/user-agent
+http://httpbin.org/headers
+http://httpbin.org/post
+http://httpbin.org/gzip
+http://httpbin.org/cookies
 
-pxcook 
-
-sketch 
-
-zeplin
-
-
-
-
-
-##### 安全
-
-[安全工具](https://www.freebuf.com/sectool/215644.html)
-
-
-
-##### 日报、周报
+##### 日报
 
 [早报](https://wubaiqing.github.io/zaobao/)
 
@@ -145,8 +135,6 @@ zeplin
 ##### 周报
 
 [TNFE-Weekly](<https://github.com/Tnfe/TNFE-Weekly>)
-
-[百度fex](http://fex.baidu.com/)
 
 [奇舞周刊](https://weekly.75team.com/)
 
@@ -160,65 +148,174 @@ zeplin
 
 
 
-##### 工具
-
-[编码小工具](https://www.345tool.com/zh-hans)
-
-[代码样式主题在线预览](https://coding-fonts.css-tricks.com/fonts/anonymous-pro/?language=html)
-
-[多种编程语言在线运行](https://glot.io/)
-
-[文字生成链接分享、阅后即焚](https://pasteme.cn/)
+##### npm
 
 [npm库对比](https://moiva.io/)
 
-[使用最多的免费商用图片,免注册](https://www.pexels.com/zh-cn/)
+#### Go
 
-[行业报告查一查](http://report.seedsufe.com/#/report)
+[go学习资料](https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/)
+
+#### Shell
+
+[shell语句功能说明](<https://explainshell.com/>)
+
+
+
+#### 安全
+
+[安全工具](https://www.freebuf.com/sectool/215644.html)
+
+
+
+[hack教程（star有另一个仓库）](https://www.hacksplaining.com/features)
+
+### 工具
+
+#### 地图
+
+[地图生成器](https://link.zhihu.com/?target=http%3A//datav.aliyun.com/tools/atlas/)
+
+> 生成地图svg，导入ppt可编辑
+
+#### 百科
+
+[俚语字典](https://www.urbandictionary.com/)
+
+[流行语字典](https://jikipedia.com/)
+
+#### 装机
+
+[系统](https://next.itellyou.cn)
+
+[激活、Office](https://otp.landian.vip/zh-cn/)
+
+#### 翻译
+
+[多语言在线翻译](<https://i18ns.com/index.html>)
+
+#### AI
+
+[AI工具](https://www.gradio.app/hub)
+
+#### 文件处理
+
+
+
+##### PDF
+
+[pdf在线处理大全](https://pdfreal.com/)
+
+
+
+#### 分享
+
+##### 文字分享
+
+[文字生成链接分享、阅后即焚](https://pasteme.cn/)
+
+
+
+##### 文件分享
 
 [文件临时传递,体验好](https://airportal.cn/)
-
-- 在 GitHub 域名后面加 1s 可以直接使用 vscode online 打开仓库代码，例如 https://github1s.com/justjavac/1s
-
-- 当你看到喜欢的 YouTube 视频时，可以在 youtube 后面加 1s，直接下载此视频,https://www.youtube1s.com/watch?v=RGOj5yH7evk
-
-
-
-**搜索**
-
-[一个针对程序员的搜索引擎，只搜索编程相关的网站，比如 GitHub 和 StackOverflow](https://quickref.dev/)
-
-
-
-**文件**
 
 [临时文件分享](https://sendfiles.online/)
 
 
 
-**图片**
+#### 编码
 
-[logo生成](<https://mybrandnewlogo.com/logo-maker>)
+[多种编码小工具](https://www.345tool.com/zh-hans)
 
-[在线PS2](<https://ps.gaoding.com/#/>)
 
-[在线PS1](<https://www.photopea.com/>)
 
-[Pexels](https://link.zhihu.com/?target=https%3A//www.pexels.com/)
+##### +1s
 
-> 高质量的图片网站，资源非常丰富，免费的，无版权的
+- 在 GitHub 域名后面加 1s 可以直接使用 vscode online 打开仓库代码，例如 https://github1s.com/justjavac/1s
+- 当你看到喜欢的 YouTube 视频时，可以在 youtube 后面加 1s，直接下载此视频,https://www.youtube1s.com/watch?v=RGOj5yH7evk
 
-**Git**
+
+
+##### 在线运行环境
+
+[多种编程语言在线运行](https://glot.io/)
+
+
+
+##### 代码主题
+
+[代码样式主题在线预览](https://coding-fonts.css-tricks.com/fonts/anonymous-pro/?language=html)
+
+
+
+##### Git
+
+**git历史**
 
 github.com --> githistory.xyz
 
 
 
-##### 面试/招聘
+#### 行业
 
 
 
-###### 准备
+##### 报告
+
+[行业报告查一查](http://report.seedsufe.com/#/report)
+
+
+
+##### 企业信息
+
+[企业信息查询，鉴定公司是否存在](http://www.gsxt.gov.cn/index.html)
+
+
+
+#### 图片
+
+[logo生成](<https://mybrandnewlogo.com/logo-maker>)
+
+##### PS
+
+[在线PS2](<https://ps.gaoding.com/#/>)
+
+[在线PS1](<https://www.photopea.com/>)
+
+[remove.bg](https://link.zhihu.com/?target=https%3A//www.remove.bg/zh)
+
+> 在线抠图工具
+
+
+
+##### 识图
+
+[Yandex 图片搜索](https://yandex.com/images/)
+
+
+
+
+
+#### 信息安全
+
+
+
+[查看信息泄露](<https://monitor.firefox.com/scan>)
+
+
+
+#### 其他
+
+[查询相似的网站](https://www.similarsites.com/ )
+
+
+
+### 面试/招聘
+
+
+
+#### 准备
 
 [阮一峰简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
 
@@ -228,9 +325,7 @@ github.com --> githistory.xyz
 
 
 
-###### 需了解的内容
-
-[公司黑名单](https://docs.qq.com/sheet/DUWZRUE9iRUFJeklh?ADUIN=916589443&ADSESSION=1588228303&ADTAG=CLIENT.QQ.5689_.0&ADPUBNO=26982&tab=q8zmgc&c=B3A0K0)
+#### 需了解的内容
 
 1、薪资 
 2、工作时间 (996？加班调休？？？)
@@ -246,17 +341,7 @@ github.com --> githistory.xyz
 
 
 
-
-
-
-
-##### Shell
-
-[shell语句功能说明](<https://explainshell.com/>)
-
-
-
-#### 资源
+### 资源
 
 ##### 电子书
 
@@ -270,13 +355,9 @@ github.com --> githistory.xyz
 
 
 
-#### 工作
+### 生活
 
-##### 信息查询
-
-[企业信息查询，鉴定公司是否存在](http://www.gsxt.gov.cn/index.html)
-
-
+[借款模板](https://www.yuque.com/docs/share/f302e893-a7f5-4da6-84a9-3956e331f8ea#kxXE)
 
 
 
@@ -300,92 +381,43 @@ github.com --> githistory.xyz
 
 
 
-#### 生活
+#### 娱乐
 
-##### 借钱
-
-[借款模板](https://www.yuque.com/docs/share/f302e893-a7f5-4da6-84a9-3956e331f8ea#kxXE)
-
-##### 搜索
-
-[Yandex 图片搜索](https://yandex.com/images/)
-
-##### 字典
-
-[俚语字典](https://www.urbandictionary.com/)
-
-[流行语字典](https://jikipedia.com/)
-
-
-
-##### 隐私
-
-[查看信息泄露](<https://monitor.firefox.com/scan>)
-
-
-
-##### 工具
-
-[pdf在线处理大全](https://pdfreal.com/)
-
-**装机**
-
-[系统](https://next.itellyou.cn)
-
-[激活、Office](https://otp.landian.vip/zh-cn/)
-
-[多语言在线翻译](<https://i18ns.com/index.html>)
-
-[AI工具](https://www.gradio.app/hub)
-
-[地图生成器](https://link.zhihu.com/?target=http%3A//datav.aliyun.com/tools/atlas/)
-
-> 生成地图svg，导入ppt可编辑
-
-[Canva](https://link.zhihu.com/?target=https%3A//www.canva.cn/templates/)
-
-> 海报、PPT模板
-
-[remove.bg](https://link.zhihu.com/?target=https%3A//www.remove.bg/zh)
-
-> 在线抠图工具
-
-##### 杂
-
-[查询相似的网站](https://www.similarsites.com/ )
-
-
-
-
-
-##### 娱乐
+##### 游戏
 
 [在线小霸王](https://www.yikm.net/)
 
 [在线老游戏](<https://dos.zczc.cz/>)
+
+
+
+##### 表情包
 
 [表情包](https://lab.bangbang93.com/)
 
 [表情包](https://www.doutula.com/maker)
 
 
-#### 话
 
-互联网创业公司有一条40％规则：
+### 话
 
-年收入增长率 + 营业利润率 应该等于40％。
 
-如果你的年增长率达到100％，那么可以承受60％的亏损。
 
-如果年增长率为40％，你应该收支平衡。
+如果你快速增长，就可以接受赔钱。随着增长放缓，你必须赚钱并增加利润
 
-如果增长率为20％，你应该有20％的营业利润率。
-
-如果没有增长，你应该有40％的营业利润率。
-
-如果业务下降10％，你应该有50％的营业利润率。
-
-如果你快速增长，就可以接受赔钱。随着增长放缓，你必须赚钱并增加利润。
+> 互联网创业公司有一条40％规则：
+>
+> 年收入增长率 + 营业利润率 应该等于40％。
+>
+> 如果你的年增长率达到100％，那么可以承受60％的亏损。
+>
+> 如果年增长率为40％，你应该收支平衡。
+>
+> 如果增长率为20％，你应该有20％的营业利润率。
+>
+> 如果没有增长，你应该有40％的营业利润率。
+>
+> 如果业务下降10％，你应该有50％的营业利润率。
 
 
 
@@ -393,7 +425,11 @@ github.com --> githistory.xyz
 
 
 
-#### Todo
+让正确的事情持续不断的发生
+
+
+
+### Todo
 
 ##### 课题
 
@@ -402,10 +438,6 @@ github.com --> githistory.xyz
 
 
 ##### 团队
-
-- Webconfig覆盖问题.发布问题
-
-- sql sugar,框架效率问题
 
 - 岗位职责问题（18、19、20，每年都在问）
 - 团队感问题
@@ -470,21 +502,9 @@ Hacker and Painters
 
 
 
-
-
-##### 学习
-
-安全学习
-
-
-
 ##### 文章
 
 [谈谈你对BFC的理解](https://mp.weixin.qq.com/s/4WC-1COpRL0scgPqD3I-Sg)
-
-[混合开发 框架对比](https://www.jianshu.com/p/8e99b4aed464)
-
-[年终盘点跨平台技术优劣势对比（Hybrid、RN、Weex、Flutter）](https://segmentfault.com/a/1190000039099456)
 
 [程序员都去哪了](https://mp.weixin.qq.com/s/k2NKnO-p15fugqeYGqBdSA)
 
@@ -500,43 +520,21 @@ Hacker and Painters
 
 [图解TCP](https://mp.weixin.qq.com/s/h89R86KhWiQKsBvfZpyF5Q)
 
-[go学习资料](https://draveness.me/golang/docs/part1-prerequisite/ch01-prepare/golang-debug/)
-
-[轮子博客](https://www.cnblogs.com/geniusvczh/default.html?page=2)
-
 [为什么学了很多知识，仍然没有什么用](<https://mp.weixin.qq.com/s/L6AVwHDMXIxVlGJcW4wUoA>)
 
 > 单纯积累知识并没有什么用，它并不能帮你解决问题。能做到这一点的，是思维方式
 
 [前端异常监控解决方案研究](<https://www.tangshuang.net/5782.html>)
 
-[前端异常监控解决方案研究](<https://www.tangshuang.net/5782.html>)
-
 [如何阅读源码](https://github.com/freedombird9/how-to-read-source-code/blob/master/how-to-read-code.md)
-
-[学习、参考flutter demo](https://github.com/phoenixsky/fun_android_flutter)
 
 [V8在react diff中的性能问题?  ](https://v8.dev/blog/react-cliff)
 
 [正则实现](https://www.yuque.com/dongchongyang/kgxvo9/aogxor?from=groupmessage)
 
-[react实现](https://pomb.us/build-your-own-react/)
-
 [自检清单]([https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590653&idx=1&sn=6138d5e7d4409aac385649da184c369a&chksm=8891dd99bfe6548f32e220f434fe8e1e2f6f8bf6c0c6b9f8d503647b869b95ac0f3bf32b632d&mpshare=1&scene=23&srcid=&sharer_sharetime=1574352476085&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#r](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590653&idx=1&sn=6138d5e7d4409aac385649da184c369a&chksm=8891dd99bfe6548f32e220f434fe8e1e2f6f8bf6c0c6b9f8d503647b869b95ac0f3bf32b632d&mpshare=1&scene=23&srcid=&sharer_sharetime=1574352476085&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd))
 
 [一年前端学习进度](https://www.zhihu.com/question/350289336/answer/873350617)
-
-面试
-
-> http://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484426&idx=1&sn=b5cc3452d717d4d40cd3289883d4c601&chksm=9782ca83a0f54395c274eec36d0294e0f7fd02682d5bb43733a74ba5065e944c43f91b98f480&mpshare=1&scene=23&srcid=&sharer_sharetime=1573449480889&sharer_shareid=e30c241e6ea232b1cd9b089a4705b5f5#rd
->
->  
->
-> https://mp.weixin.qq.com/s/VRIOdGmV_y-hVk3tYUhZmw
->
->  
->
-> https://mp.weixin.qq.com/s/5AAB4M15OehpgBzpuwQofw
 
 [交互设计](https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651234300&idx=1&sn=b27c99854d2bcedb449d175ec8cb47ff&chksm=bd4946788a3ecf6ee68466ee595fe0a420e3fefc05168551150128f6f2c7f48c2e7404e5bdb1&mpshare=1&scene=1&srcid=&sharer_sharetime=15713497)
 
@@ -545,8 +543,6 @@ Hacker and Painters
 [ast](https://mp.weixin.qq.com/s/m94Sv57EcnhSIzoJBvgA2w)
 
 [字体](https://mp.weixin.qq.com/s/KfPGMtcXWnSMNtn8vHIJSQ)
-
-[web录屏](https://mp.weixin.qq.com/s/Vo4j1RRVrQZtBxK-8o19Og)
 
 [flex](https://zhuanlan.zhihu.com/p/46684565?utm_source=wechat_session&utm_medium=social&s_s_i=o7Tzxdzb5cu19Y02i%2FJQcA4o2a21HyImLSqzR%2Bj7%2BsA%3D&s_r=1#showWechatShareTip)
 
@@ -603,7 +599,5 @@ rxjs
 > https://mp.weixin.qq.com/s/UWSinMVpJeusWABjWvB9mw
 
 
-
-[hack教程（star有另一个仓库）](https://www.hacksplaining.com/features)
 
 [关于职场](https://www.yuque.com/robinson/jobmaster/presay)
