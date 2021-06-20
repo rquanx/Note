@@ -865,6 +865,8 @@ prototype方法无法访问 构造函数var 变量，作用域，无法访问
 
 
 
+
+
 #### 闭包
 
 ##### 说明
@@ -1629,6 +1631,10 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 会在每次重绘前执行，在浏览器每一帧开始绘制之前会执行
 
+每次 loop 结束发现需要渲染，在渲染之前执行的一个回调函数，不是宏微任务
+
+
+
 [与屏幕刷新率有关](https://juejin.cn/post/6953541785217925151#heading-2)
 
 缺点：页面处于后台时该回调函数不会执行
@@ -1637,9 +1643,11 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 ###### 使用requestAnimationFrame实现有哪些好处？
 
-相对于过去使用setInterval实现，requestAnimationFrame性能要好。requestAnimationFrame保证了每次改动样式后再进行回流重绘，setInterval可能使浏览器作出无效的回流和重绘。requestAnimationFrame在每一帧的生命周期都会触发，会使动画更加流畅，而setInterval不能保证每一帧都能触发。
+性能：相对于过去使用setInterval实现，requestAnimationFrame保证了每次改动样式后再进行回流重绘，setInterval可能使浏览器作出无效的回流和重绘。
 
-requestAnimationFrame的兼容性是非常好的,可以一直向下兼容到IE10。对于IE9及其以下，可以降级使用setTimeout或者setInterval实现requestAnimationFrame的polyfill。
+稳定：requestAnimationFrame在每一帧的生命周期都会触发，会使动画更加流畅，而setInterval不能保证每一帧都能触发。
+
+兼容：向下兼容IE10。对于IE9及其以下，可以降级使用setTimeout或者setInterval实现requestAnimationFrame的polyfill。
 
 使用：自己写就可以实现各种不同的滚动速度了，可以实现线性速度，也可以实现先加速后减速的效果。
 
@@ -2102,7 +2110,7 @@ web worker的postMessage是深拷贝的
 
 
 
-#### ...
+#### ... 解构运算符？
 
 对象没实现`Symbol.iterator`，所以无法使用[...obj]
 
@@ -2125,6 +2133,27 @@ web worker的postMessage是深拷贝的
 JS规范中是没有这个概念的，反而在html规范中定义，是宿主的东西
 
 事件循环本质上是 user agent (如浏览器端) 用于协调用户交互（鼠标、键盘）、脚本（如 JavaScript）、渲染（如 HTML DOM、CSS 样式）、网络等行为的一个机制
+
+
+
+#### 多队列
+
+事件循环中可能会有一个或多个任务队列，这些队列分别为了处理：
+
+- 鼠标和键盘事件
+- 其他的一些 Task
+
+浏览器会在保持任务顺序的前提下，可能分配四分之三的优先权给鼠标和键盘事件，保证用户的输入得到最高优先级的响应，而剩下的优先级交给其他 Task，并且保证不会“饿死”它们
+> 这个规范也导致 Vue 2.0.0-rc.7 这个版本 nextTick 采用了从微任务 MutationObserver 更换成宏任务 postMessage 而导致了一个 [Issue](https://github.com/vuejs/vue/issues/3771#issuecomment-249692588)
+> 在用户持续滚动的情况下 nextTick 任务被延后了很久才去执行，导致动画跟不上滚动了,后续又改回microTask 去实现 nextTick
+
+
+
+#### 渲染
+
+- 不是每次任务循环都会附带有渲染，有可能执行两次settimeout才进行一次渲染，所以定时器宏任务可能会直接跳过渲染
+
+- resize和scroll事件其实自带节流，它只在 Event Loop 的渲染阶段去派发事件到 EventTarget 上
 
 
 
@@ -2156,6 +2185,16 @@ JS规范中是没有这个概念的，反而在html规范中定义，是宿主�
 宏任务：主代码块 > setImmediate（兼容性，Node.js 环境和ie） > MessageChannel > setTimeout / setInterval
 
 > setImmediate指定的回调函数，总是排在setTimeout前面
+
+
+
+#### QA
+
+
+
+##### 执行微任务过程中产生微任务
+
+执行完microtask queue中的所有的microtask，如果microtask执行过程中又添加了microtask，那么仍然会执行新添加的microtask，当然，这个机制好像有限制，一轮microtask的执行总量似乎有限制(1000?)，数量太多就执行一部分留下的以后再执行？
 
 
 
@@ -2207,6 +2246,51 @@ port2.postMessage("发送给port1");
 
 ### 小知识
 
+#### AO
+
+在新规范中，AO为广义的抽象，而不再是狭义的定义：`每当函数被调用的时候，其都会创建一个活跃对象。该对象对开发者不可见，是一个隐藏的数据结构，其中包含了一些函数在执行时必要的信息和绑定，以及返回值的地址等等`。
+
+
+
+##### 类比
+
+在 C 语言中，这个对象会在一个栈中被分配生成。当函数返回的时候，该对象会被销毁（或者出栈）。
+
+
+
+JavaScript 与 C 语言不同，它是从堆中分配该对象。且这个活跃对象并不会在函数返回时被自动销毁，它的生命周期与普通对象的垃圾回收机制类似，是根据引用数量决定的
+
+
+
+##### 旧规范中定义
+
+在 ECMAScript 1 和 ECMAScript 3 中，的确是有着关于活跃对象的定义
+
+当控制进入函数代码的执行上下文时，创建一个活动对象并将它与该执行上下文相关联， 并使用一个名为 arguments、特征为 {DontDelete} 的属性初始化该对象。该属性的初始值是稍后将要描述的一个参数对象
+
+
+
+##### 新规范中替换
+
+在 ES5 及之后的 ES 版本，已经不存在活跃对象（AO）及一系列周边内容的概念了。取而代之，是一个叫词法环境（Lexical Environments）的定义
+
+
+
+##### 从AO角度理解闭包
+
+一个拥有外层函数对象所对应的活跃对象引用的函数对象就被称为闭包。
+
+
+
+#### 赋值
+
+- 如果对象上该属性不存在，会查找原型链上的属性，然后创建一个自有属性并赋值
+  
+    > 坑：如果原型链上有此属性且writable为false，则会异常（？？），通过Object.defineProperty设置属性则不会触发原型链查找
+- 如果对象上该属性已存在，则修改该属性的值，修改过程会触发该属性上的 data descriptor（writable 配置）检测或 accessor descriptor (setter 配置) 的调用。
+
+
+
 #### 存储
 
 值类型与调用栈（函数帧），一起打包存储到栈中，当函数出栈后，内存也就被释放
@@ -2254,6 +2338,39 @@ Event.key和event.keyCode，如果不需要兼容IE8下，建议使用.key，不
 全局绑定事件可能会冲突，如为了实现点击上下选择东西，可能会与浏览器的上下滚动冲突
 
 ### JS应用
+
+#### 跨域
+
+- jsonp：通过插入一个 script 标签，利用 script 可以跨域请求来实现的，所以只支持get请求
+
+
+
+#### 性能优化
+
+- 使用for循环
+- 数据结构优化尽量统一，减少类型变化？复用Shape?
+- new Function：代码动态生成，对于遍历的数据可直接拍平计算，不用遍历进行计算
+- 构造正则：正则是可以被jit编译成原生??
+
+
+
+#### 中断事件
+
+##### **AbortController**
+
+
+```js
+const controller = new AbortController();
+const { signal } = controller;
+
+el.addEventListener('mousemove', callback, { signal });
+el.addEventListener('pointermove', callback, { signal });
+el.addEventListener('touchmove', callback, { signal });
+
+// 之后某个时刻，移除所有的三个监听器：
+controller.abort();
+```
+
 
 #### 模拟实现准时的setTimeout
 

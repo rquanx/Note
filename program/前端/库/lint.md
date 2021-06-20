@@ -1,0 +1,1 @@
+commit hook进行yarn lint的时候不是整个项目进行lint而是对暂存区的进行lint

@@ -637,6 +637,18 @@ classlist.remove('xxx')移除类
 
 
 
+#### 扩展
+
+
+
+##### 旧版本chrome事件顺序
+
+常规认知逻辑：chrome先捕获到最底层然后往上冒泡
+
+- Chrome 89.0.4363.0前：目标元素（最底层元素）触发事件按代码绑定顺序，不受捕获、冒泡影响，非目标元素（上层元素）按捕获 -> 冒泡执行
+
+- Chrome 89.0.4363.0后：所有元素均按捕获、冒泡进行执行，更有逻辑性，符合直觉
+
 
 
 ### 视频、音频
@@ -803,6 +815,20 @@ element.createShadowRoot();
 
 
 ### 应用
+
+#### A11y
+
+[无障碍化开发：亲近更体贴用户](https://mp.weixin.qq.com/s/yzE_3m67ABV00FI-nRw8Sw)
+
+[无障碍设计](https://zhuanlan.zhihu.com/p/349761993)
+
+
+
+#### 常用模板
+
+[模板 + 解析](https://www.matuzo.at/blog/html-boilerplate/)
+
+
 
 #### 语义化
 

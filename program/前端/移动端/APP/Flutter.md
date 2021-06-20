@@ -698,8 +698,17 @@ mac
 
 Xcode,点击runner文件夹可以看到project setting
 
-
 ### android调试
+
+#### 原生代码
+
+- 运行debug模式运行dart
+- 以项目的android文件夹开启一个AS项目
+- 使用attach debugger to android process可以进行断点调试
+
+修改安卓代码需要重新运行调试才生效
+
+
 
 #### webview
 
@@ -2838,6 +2847,18 @@ if __name__ == "__main__":
 
 
 # 问题
+
+#### flutter版本变化后产生的invalid kernel binary format version
+
+删除flutter/bin/cache
+
+flutter 
+
+flutter doctor
+
+删除.pub-cache/bin/fvm,再重新安装
+
+
 
 #### throwToolExit
 

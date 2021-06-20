@@ -261,3 +261,8 @@ sudo gitlab-runner restart
 
 使用artifact
 
+
+
+**AD组织架构变化、账号被禁用**
+
+Ad关联后组织结构变化，账号会被禁

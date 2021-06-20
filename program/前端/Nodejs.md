@@ -23,6 +23,20 @@ nvm 设置淘宝镜像
 设置 npm_mirror:
 nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 
+#### 调试
+
+`--inspect`参数是启动调试模式必需的
+
+`--inspect-brk`：在首行就断住
+
+
+
+启动后，可以通过chrome进行断点调试
+
+[Node 调试工具入门教程](http://www.ruanyifeng.com/blog/2018/03/node-debugger.html)
+
+
+
 
 
 #### 日志
@@ -182,9 +196,75 @@ npm outdated  查看包的版本情况
 
 npm outdated -g 查看全局包的版本情况
 
-###### Script
+###### Scripts
 
 快速指令 `npm run xxx`
+
+
+
+**运行时环境变量**
+
+npm run，就会自动新建一个 Shell，会将当前目录的node_modules/.bin子目录加入PATH变量，执行结束后，再将PATH变量恢复原样
+
+
+
+**退出码**
+
+npm 脚本的退出码，也遵守 Shell 脚本规则。如果退出码不是0，npm 就认为这个脚本执行失败
+
+``````bash
+Exit x
+``````
+
+
+
+**传参**
+
+使用--标识要传递参数,在执行script命令时作为后缀添加到命令中
+
+```$ npm run lint -- --param params```
+
+- 多个参数使用空格隔开
+- 参数带有空格可用 "" 进行包裹
+
+
+
+**hook**
+
+执行xxx命令时会自动检查scripts中是否有prexxx、postxxx的命令,最终会执行`npm run pre{xxx} && npm run {xxx} && npm run post{xxx}`
+> 只支持一重的pre、post，preprexxx无效
+
+- pre{xxx}
+- post{xxx}
+- prepublish: 内置hook，在执行publish前会执行
+    > npm5前`npm install`（不带任何参数）前会执行`prepublish`
+    > npm4后新增[prepare](https://docs.npmjs.com/cli/v6/using-npm/scripts),npm6前和`prepublish`一样
+    > npm7 [`prepublish`废弃](https://docs.npmjs.com/cli/v7/using-npm/scripts)
+
+
+
+**变量**
+
+- 环境变量
+
+```json
+"scripts": { "env": "env" } // env命令可以输出当前所有环境变量
+```
+
+- `npm_lifecycle_event`: 在执行命令的时候可以通过`process.env.npm_lifecycle_event`读取到，值为当前执行的script名
+- `process.env.npm_package{xxx}`: 可以通过此变量读取package.json中的内容,`process.env.npm_package_name`,只能取到字符串，如果是对象则嵌套`process.env.npm_package_scripts_build`
+- `npm_config_{xxx}/process.env.npm_config_{xxx}`: 读取npm config中设置的变量，淘宝源等
+  
+    > `echo npm_config_{xxx}`读取不到,process.env.npm_config_{xxx}可以
+    
+    
+
+**内置命令**
+
+- npm start是npm run start
+- npm stop是npm run stop的简写
+- npm test是npm run test的简写
+- npm restart是npm run stop && npm run restart && npm run start的简写
 
 
 
@@ -193,15 +273,6 @@ npm outdated -g 查看全局包的版本情况
 - 串行执行: &&，顺序执行多条命令, 当碰到执行出错的命令后将不执行后面的命令
 - 并行执行: &，并行执行多条命令, 在命名最后跟上 wait 可阻塞当前进程, 直到所有并行命令执行完毕才会结束进程
 - 或: ||，顺序执行多条命令, 当命令被正确执行那么后面的命令将不会被执行
-
-
-
-**传参**
-
-```npm run <脚本> <参数列表>```
-
-- 多个参数使用空格隔开
-- 参数带有空格可用 "" 进行包裹
 
 
 

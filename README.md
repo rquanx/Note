@@ -198,6 +198,12 @@ http://httpbin.org/cookies
 
 [AI工具](https://www.gradio.app/hub)
 
+#### 画图
+
+[程序员应该知道的那些画图工具](https://mp.weixin.qq.com/s/oWDoWEHNqdKWmHX9akcxPQ)
+
+
+
 #### 文件处理
 
 
@@ -205,6 +211,10 @@ http://httpbin.org/cookies
 ##### PDF
 
 [pdf在线处理大全](https://pdfreal.com/)
+
+##### PPT
+
+[MarkDown转PPT](https://mark.show/)
 
 
 

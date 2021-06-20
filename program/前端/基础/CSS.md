@@ -1106,6 +1106,10 @@ Font weight从100->200没有变化 ==> 字体支持问题
 #### 动画
 
 
+[网页动画的十二原则](https://cssanimation.rocks/cn/principles/)
+> 动画分类、理解
+
+
 
 **@keyframes**
 
@@ -1447,14 +1451,85 @@ Note: If free space is distributed to auto margins, the alignment properties wil
 ##### 总结
 
 - 块格式化上下文中margin-top 和 margin-bottom 的值如果是 auto，则他们的值都为 0
-
 - flex 格式化上下文中，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去
-
 - 单个方向上的自动 margin 也非常有用，它的计算值为该方向上的剩余空间
-
 - 使用了自动 margin 的 flex 子项目，它们父元素设置的 justify-content 以及它们本身的 align-self 将不再生效
 
+### 规范分类
+
+
+
+#### **OOCSS**
+
+面向对象的CSS，是由Nicole Sullivan提出的css理论
+
+
+- Separate structure and skin（分离结构和主题）减少对 HTML 结构的依赖
+- Separate container and content（分离容器和内容）增加样式的复用性
+
+特点：
+
+- 使用class，避免使用id等
+- 抽象化，命名不再特指具象的事物
+- 追求复用性
+
+
+
+#### SMACSS
+
+##### 设计规范
+
+- Categorizing CSS Rules（为css分类）
+    - Base: 基础规范,描述的是任何场合下，页面元素的默认外观。它的定义不会用到class和ID。css reset也属于此类。常见的如normalize.css,CSS Tools
+    - Layout: 作为高层级的布局，或者低层级的容器，栅格系统、左右布局等，约定了一个前缀l-/layout-来标识布局的class `.layout-header {}; .layout-container {}; .l-header {}； .l-container {}`
+    - Module: 按模块（领域？）划分增加前缀 `.todolist{}; .todolist-title{};`
+    - State: 描述的是任一元素在特定状态下的外观,如消息框可能有success和error等状态，有较强的复用性 `.is-hidden { display: none; }`
+    - Theme Or Skin: 描述了页面主题外观，一般是指颜色、背景图。Theme Rules可以修改前面4个类别的样式，且应和前面4个类别分离开来（分开定义）（便于切换，也就是“换肤”）,如果是单独的定义使用theme前缀 `.theme-a-background`
+- Naming Rules（命名规范）
+    - Base: 无特殊要求
+    - Layout: l-/layout-前缀
+    - Module: 模块名作为前缀
+    - State: is-作为前缀
+    - Theme: 修饰已有的延用类名，否则theme-作为前缀
+- Minimizing the Depth of Applicability（最小化适配深度）
+  
+    - 最小适配深度原则，样式尽量不依赖于html结构
+    
+    
+
+#### BEMCSS
+
+BEM 分别代表着：Block（块）、Element（元素/子块/组成部分）、Modifier（修饰符），是一种组件化的 CSS 命名方法和规范，由俄罗斯 Yandex 团队所提出
+
+命名: .[Block 块]__[Element 元素]_[Modifier 修饰符]（常见模式）
+
+- Block: 一个独立的实体，即通常所说的模块或组件 `header、menu、search`
+  
+    - 块名需能清晰的表达出，其用途、功能或意义，具有唯一性
+- Element: 块中的组成部分，对应块中的子元素/子节点 `header title、menu item、list item`
+  
+    - 元素名需能简单的描述出，其结构、布局或意义，并且在语义上与块相关联
+- Modifier: 定义块和元素的外观、状态或类型 `color、disabled、size`
+  
+    - 修饰符需能直观易懂表达出，其外观、状态或行为
+    
+    
+
+#### METACSS
+
+原子css
+- 功能性css
+- 原子性css
+
+
+
 ### 应用
+
+
+
+#### Loading
+
+[100种Loading](https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje)
 
 
 

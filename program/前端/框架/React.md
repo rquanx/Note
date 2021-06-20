@@ -364,6 +364,12 @@ App.defaultProps = {
 
 
 
+#### KeepAlive
+
+[为什么不支持keepalive,官方认为这个功能容易造成内存泄漏](https://github.com/facebook/react/issues/12039)
+
+
+
 #### Error Boundary
 
 开发模式下，如果使用Try Catch实现会导致组件异常在框架内捕获，无法利用调试工具的`Pause on exceptions`进行中断，不便于调试
@@ -399,6 +405,12 @@ jsx表达式可以写iife来嵌入函数进行条件渲染
 
 
 #### 知识点
+
+#### 渲染
+
+只要父组件触发render，子组件就会render，可以使用purecomponent/memo优化
+
+
 
 ##### 类组件SetState同步、异步
 

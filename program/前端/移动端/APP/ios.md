@@ -241,6 +241,31 @@ ipa是压缩文件，修改后缀为.zip，解压后可以看到相关信息文�
 
 #### 问题
 
+##### 此应用需要开发者更新以在此ios版本上运行
+
+- Build Settings，Valid Architectures中设置好支持的架构
+
+- 打包时选择`Generic iOS Device`
+
+
+
+##### Rebuild from Bitcode失败
+
+```
+ipatool failed with an exception: #<CmdSpec...
+`block in CompileOrStripBitcodeInBundle`
+```
+
+去掉Rebuild from Bitcode勾选
+
+
+
+##### Specs satisfying the `sqflite (from `.symlinks/plugins/sqflite/ios`)` dependency were found, but they required a higher minimum deployment target.
+
+依赖对部署的设备有最低版本要求，要在xcode中修改deploytarget系统版本，具体可查看 `.symlinks/plugins/sqflite/ios/xxx.podspec`内容
+
+
+
 ##### 提交审核缺少推送配置
 
 - appid里勾选推送（应该是勾选后才出此错误）

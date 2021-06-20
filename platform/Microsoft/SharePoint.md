@@ -171,7 +171,11 @@ site setting --> (转到首要网站设置) --> 存储标准 --> file    不一�
 http://192.168.20.40:8091/sites/rgciland/_catalogs/users/simple.aspx
 /_catalogs/users/simple.aspx
 
-隐藏用户表名：User Information List
+
+
+英文表名：User Information List
+
+中文表名：用户信息列表
 
 
 
@@ -280,6 +284,12 @@ Sharepoint designer 提示不能编辑非SP网站，重启，利用网页启动
 - iis 应用池 账号设置
 - windows服务账号设置
 - sharepoint   邮件传出、nintex提示、UserProfile
+
+#### 组、人员
+
+- `/_layouts/15/groups.aspx`  SP站点用户组
+
+- `/_layouts/15/people.aspx`   SPMembers组人员
 
 
 
@@ -1065,6 +1075,39 @@ http://ramdotnetdeveloper.blogspot.com/2017/07/to-get-file-and-folder-from-docum
 
 #### Rest
 
+##### 隐藏API
+
+- `读取M365用户组(Microsoft 365，AD用户组？)`：https://tclo365.sharepoint.com/sites/IPMS_PRD/_api/SP.Directory.DirectorySession/Group('9b2794a8-1d8e-48c4-ab30-9b7f4f203904')
+
+- `读取M365用户组成员`:https://tclo365.sharepoint.com/sites/IPMS_PRD/_api/SP.Directory.DirectorySession/Group('9b2794a8-1d8e-48c4-ab30-9b7f4f203904')/members
+
+
+
+**浏览器请求**
+
+```js
+fetch("https://tclo365.sharepoint.com/sites/IPMS_PRD/_api/SP.Directory.DirectorySession/Group('9b2794a8-1d8e-48c4-ab30-9b7f4f203904')/members?$skip=0&$top=20&$inlinecount=allpages&$select=PrincipalName,Id,DisplayName,PictureUrl,UserType,Mail", {
+  "headers": {
+    "accept": "application/json;odata=verbose",
+    "accept-language": "en-US,en;q=0.9",
+    "content-type": "application/json;odata=verbose",
+    "if-modified-since": "Mon, 24 May 2021 06:51:41 GMT",
+    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requestdigest": "0xAA695C00D997A629C7DDFEDB568A30F688D307C1581A2C00A26179021EC271C4FDFAD8CE8ECC2D5A54534E084AC0EBCC03EB699318E3F44216D1AC778E6FF492,24 May 2021 07:13:39 -0000"
+  },
+  "referrer": "https://tclo365.sharepoint.com/sites/IPMS_PRD",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "include"
+});
+```
+
 ##### 常用操作
 
 **move + copy**
@@ -1158,6 +1201,52 @@ https://blog.csdn.net/abrahamcheng/article/details/12612455)
 [rest api 更新文档库的列表项会不同](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html)
 
 [How to Check User Permission in SharePoint 2013 Using REST API](https://www.c-sharpcorner.com/UploadFile/sagarp/how-to-check-user-permission-in-sharepoint-2013-using-rest-a/)
+
+
+
+#### 权限认证
+
+##### **Client ID 生成**
+
+[操作教程](https://ypcode.wordpress.com/2017/05/11/expose-on-public-web-your-sharepoint-online-information/)
+
+- 进入`{site}/_layouts/15/appregnew.aspx`页面
+
+- 生成 Client ID 、Client Secret
+
+  - domain: localhost / 域名
+  -  redirect URL： localhost / 实际站点地址
+
+- 进入`{site}/_layouts/15/appinv.aspx`页面
+
+- 输入App Id（client ID）,Lookup
+
+- Permission Request XML输入
+
+  ```xml
+  <AppPermissionRequests AllowAppOnlyPolicy="true">
+  <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="Read"/>
+  </AppPermissionRequests>
+  ```
+
+
+
+##### 测试代码
+
+```c#
+// nuget pnp framework
+var clientID = "";
+var secret = "";
+var siteUrl = "";
+var authManager = new AuthenticationManager();
+var ctx = authManager.GetACSAppOnlyContext(siteUrl, clientID, secret);
+var list = ctx.Web.Lists.GetByTitle("用户信息列表");
+var items = list.GetItems(new CamlQuery());
+ctx.Load(items);
+ctx.ExecuteQuery(); 
+```
+
+
 
 
 
