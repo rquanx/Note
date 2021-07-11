@@ -2147,7 +2147,13 @@ JS规范中是没有这个概念的，反而在html规范中定义，是宿主�
 > 这个规范也导致 Vue 2.0.0-rc.7 这个版本 nextTick 采用了从微任务 MutationObserver 更换成宏任务 postMessage 而导致了一个 [Issue](https://github.com/vuejs/vue/issues/3771#issuecomment-249692588)
 > 在用户持续滚动的情况下 nextTick 任务被延后了很久才去执行，导致动画跟不上滚动了,后续又改回microTask 去实现 nextTick
 
+**任务队列的分类标准之一**
 
+一个线程可以拥有多个任务队列。每一个任务队列都对应某一任务源，并包含了一堆来自该任务源的任务。像setTimeout/Promise/DOM事件/AJAX等都是任务源，来自同类任务源的任务我们称它们是同源的，比如setTimeout与setInterval就是同源的
+
+**任务队列的分类标准之二**
+
+在ES6中，我们用另一种方式对任务队列进行分类。宏任务、微任务
 
 #### 渲染
 
